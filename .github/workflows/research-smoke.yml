@@ -24,6 +24,18 @@ jobs:
         run: python -m pip install -r requirements-dev.txt
       - name: Offline scientific-data transformation tests
         run: python -m unittest discover -s tests -v
+      - name: Inspect GDC public aggregate EGFR project counts
+        run: |
+          python - <<'PY'
+          import json, urllib.request
+          url = 'https://api.gdc.cancer.gov/analysis/top_cases_counts_by_genes?gene_ids=ENSG00000146648'
+          req = urllib.request.Request(url, headers={'User-Agent':'open-cancer-pilot/0.2','Accept':'application/json'})
+          with urllib.request.urlopen(req, timeout=40) as resp:
+              raw=resp.read(2000000)
+          data=json.loads(raw)
+          print('GDC_AGG_TOP_KEYS',list(data.keys()),'RESPONSE_BYTES',len(raw),flush=True)
+          print('GDC_AGG_SAMPLE', json.dumps(data)[:2000],flush=True)
+          PY
       - name: Retrieve source releases and derive public summary
         run: |
           python results/egfr-luad-evidence-coverage/pilot-20261110/analyze.py \
