@@ -186,6 +186,12 @@
     "verified_on": {
       "type": "string",
       "format": "date"
+    },
+    "citation_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "description": "Optional upstream publication or bibliography for this particular record."
     }
   }
 }

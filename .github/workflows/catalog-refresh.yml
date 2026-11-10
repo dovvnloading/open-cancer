@@ -1,0 +1,42 @@
+name: Refresh public catalog metadata
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'scripts/refresh_catalog.py'
+      - 'tests/test_refresh_catalog.py'
+      - '.github/workflows/catalog-refresh.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Discover accession metadata from all three sources
+        run: python scripts/refresh_catalog.py --output catalog-candidates
+      - name: Validate candidate records against the dataset schema
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator, FormatChecker
+
+          schema = json.loads(Path('schemas/dataset.schema.json').read_text())
+          validator = Draft202012Validator(schema, format_checker=FormatChecker())
+          for path in sorted(Path('catalog-candidates').glob('*.json')):
+              validator.validate(json.loads(path.read_text()))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: catalog-metadata-candidates
+          path: catalog-candidates/
+          if-no-files-found: error

@@ -1,0 +1,36 @@
+{
+  "source_id": "civic",
+  "documentation_url": "https://docs.civicdb.org/en/latest/using/data_releases.html",
+  "access": {
+    "level": "open",
+    "notes": "Nightly bulk TSV is publicly downloadable without authentication; content changes as CIViC editors update records."
+  },
+  "reuse": {
+    "status": "verified-permissive",
+    "license_id": "CC0-1.0",
+    "terms_url": "https://civicdb.org/releases/licensing",
+    "notes": "CIViC explicitly dedicates published data to the public domain under CC0; retain source/version citations for scientific provenance."
+  },
+  "release": {
+    "label": "nightly latest, mutable (archive exact bytes by SHA-256)",
+    "mutable": true
+  },
+  "verified_on": "2026-11-10",
+  "id": "civic-nightly-assertions",
+  "accession": {
+    "namespace": "CIViC export filename",
+    "value": "nightly-AssertionSummaries.tsv"
+  },
+  "title": "CIViC nightly assertion summaries",
+  "description": "Nightly CIViC assertion table. The export header identifies records with assertion_id and includes flags and review dates.",
+  "landing_url": "https://civicdb.org/releases",
+  "retrieval_url": "https://civicdb.org/downloads/nightly/nightly-AssertionSummaries.tsv",
+  "disease": {
+    "name": "Multiple cancer types (pan-cancer)"
+  },
+  "modalities": [
+    "variant-evidence"
+  ],
+  "unit_of_observation": "One CIViC assertion per row",
+  "cohort_definition": "All assertion records included in the named nightly CIViC export, across diseases and molecular profiles."
+}
