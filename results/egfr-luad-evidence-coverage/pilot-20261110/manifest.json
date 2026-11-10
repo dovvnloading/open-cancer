@@ -13,10 +13,10 @@
     {
       "description": "Source hashes, aggregate counts and interpretation limitations",
       "path": "coverage.json",
-      "sha256": "9bcdca40c6a372abb886e2c60f9fb03dde9cd8e80970572e6ead2297012931ca"
+      "sha256": "4ea31c899c006e0bb113ce79f0f3b6b07b10574a7c6541df87e9efcd3dcaf4d3"
     }
   ],
-  "created_at": "2026-11-10T22:46:44.018948Z",
+  "created_at": "2026-11-10T23:00:42.121249Z",
   "execution": {
     "code_path": "analyze.py",
     "command": "python results/egfr-luad-evidence-coverage/pilot-20261110/analyze.py --out-dir results/egfr-luad-evidence-coverage/pilot-20261110 --run-id pilot-20261110",
@@ -44,9 +44,16 @@
       "source_id": "gdc",
       "source_release": "sha256:7d5f5cb309211cd8dd82b7cde1a301c497ab40d3d4fefd4bb55787f5e0f2ef80",
       "url": "https://api.gdc.cancer.gov/projects/TCGA-LUAD?format=json"
+    },
+    {
+      "accessed_on": "2026-11-10",
+      "query_or_filter": "SSM occurrences: case.project.project_id=TCGA-LUAD and ssm.consequence.transcript.gene.gene_id=ENSG00000146648; single-page bound 1000; count distinct case IDs in memory",
+      "source_id": "gdc",
+      "source_release": "sha256:fe2ba1aac2fbacfae48e0cf26a7b5678063177aa633fbdad99cfa1a951f77fc8",
+      "url": "https://api.gdc.cancer.gov/ssm_occurrences?filters=%7B%22content%22%3A%5B%7B%22content%22%3A%7B%22field%22%3A%22ssm.consequence.transcript.gene.gene_id%22%2C%22value%22%3A%5B%22ENSG00000146648%22%5D%7D%2C%22op%22%3A%22in%22%7D%2C%7B%22content%22%3A%7B%22field%22%3A%22case.project.project_id%22%2C%22value%22%3A%5B%22TCGA-LUAD%22%5D%7D%2C%22op%22%3A%22in%22%7D%5D%2C%22op%22%3A%22and%22%7D&fields=case.case_id%2Cssm.ssm_id&size=1000&from=0&format=json"
     }
   ],
-  "limitations": "Unreviewed descriptive source coverage; no clinical or causal conclusions. GDC EGFR case aggregates do not establish mutation pathogenicity or variant-level concordance.",
+  "limitations": "Unreviewed source-coverage snapshot; GDC occurrence-level case counts are not full project prevalence, clinical relevance, or comparable to cBioPortal mutation-call counts.",
   "run_id": "pilot-20261110",
   "schema_version": 1,
   "submitted_by": {
