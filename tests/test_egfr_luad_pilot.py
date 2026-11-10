@@ -100,6 +100,27 @@ class ResearchPilotTests(unittest.TestCase):
                 p.read_text() for p in run_dir.glob("*.csv")))
             self.assertEqual(manifest["findings"], [])
 
+    def test_unavailable_optional_gdc_is_null_not_zero(self):
+        study, mutations = cbio_fixtures()
+        data = {
+            "civic": civic_fixture(),
+            "cbio_study": study,
+            "cbio_mutations": mutations,
+            "gdc": json.dumps({"data": {"project_id": "TCGA-LUAD"}}).encode()
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            run_dir = Path(tmp) / "pilot-20261110"
+            run(data, run_dir, "pilot-20261110", "2026-11-10",
+                "2026-11-10T23:00:00Z", optional_gdc_error="HTTP 500")
+            coverage = json.loads((run_dir / "coverage.json").read_text())
+            manifest = json.loads((run_dir / "manifest.json").read_text())
+            gdc = coverage["gdc"]["egfr_gene_aggregate"]
+            self.assertEqual(gdc["status"], "unavailable")
+            self.assertIsNone(gdc["reported_gene_associated_case_bucket_count"])
+            self.assertNotIn("gdc_gene", coverage["source_content_sha256"])
+            self.assertTrue(all(x["url"] != SOURCE_URLS["gdc_gene"]
+                                for x in manifest["inputs"]))
+
 
 if __name__ == "__main__":
     unittest.main()

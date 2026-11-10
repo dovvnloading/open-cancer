@@ -33,6 +33,7 @@ GDC_GENE = "https://api.gdc.cancer.gov/analysis/top_cases_counts_by_genes?gene_i
 SOURCE_URLS = {"civic": CIVIC, "cbio_study": CBIO_STUDY,
                "cbio_mutations": CBIO_MUTATIONS, "gdc": GDC,
                "gdc_gene": GDC_GENE}
+MANDATORY_SOURCES = frozenset({"civic", "cbio_study", "cbio_mutations", "gdc"})
 REQUIRED_CIVIC = {"molecular_profile", "evidence_id", "evidence_status",
                   "disease", "doid", "evidence_type", "evidence_civic_url"}
 GENE_PATTERN = re.compile(r"\bEGFR\b", flags=re.IGNORECASE)
@@ -220,19 +221,31 @@ def gdc_gene_analysis(raw: bytes) -> dict:
         "project_id": "TCGA-LUAD",
         "reported_gene_associated_case_bucket_count": count,
         "unit": "GDC gene analysis endpoint project bucket doc_count; NOT driver mutation prevalence",
-        "interpretation": "GDC reports cases associated with simple somatic mutations in this gene. Variant consequence and assay coverage are not filtered here.",
+        "interpretation": "This is the API's reported gene-associated case-count bucket; its relationship to variant calls or clinical definitions has not been independently validated.",
         "verification": "Endpoint was checked separately against TP53, TTN and an invalid gene ID. Counts vary by gene.",
     }
 
 
 def run(downloads: dict[str, bytes], outdir: Path, run_id: str, accessed_on: str,
-        captured_at: str, emit_review_payload: bool = False) -> dict:
-    if set(downloads) != set(SOURCE_URLS):
-        raise ValueError("All four upstream responses are mandatory")
+        captured_at: str, emit_review_payload: bool = False,
+        optional_gdc_error: str | None = None) -> dict:
+    received = set(downloads)
+    if not MANDATORY_SOURCES.issubset(received) or received - set(SOURCE_URLS):
+        raise ValueError("Missing mandatory upstream source or unexpected source key")
     civic, rows = civic_analysis(downloads["civic"])
     cbio, changes = cbio_analysis(downloads["cbio_study"], downloads["cbio_mutations"])
     gdc = gdc_analysis(downloads["gdc"])
-    gdc["egfr_gene_aggregate"] = gdc_gene_analysis(downloads["gdc_gene"])
+    if "gdc_gene" in downloads:
+        gdc["egfr_gene_aggregate"] = gdc_gene_analysis(downloads["gdc_gene"])
+        gdc["egfr_gene_aggregate"]["status"] = "retrieved"
+    else:
+        gdc["egfr_gene_aggregate"] = {
+            "status": "unavailable",
+            "reported_gene_associated_case_bucket_count": None,
+            "unit": "GDC gene analysis endpoint project bucket doc_count",
+            "error": optional_gdc_error or "No gene-level response retrieved",
+            "interpretation": "A null value represents unavailable data, NOT zero EGFR-associated cases.",
+        }
     source_hashes = {key: sha256(value) for key, value in sorted(downloads.items())}
     outdir.mkdir(parents=True, exist_ok=True)
     coverage = {
@@ -244,13 +257,15 @@ def run(downloads: dict[str, bytes], outdir: Path, run_id: str, accessed_on: str
         "disease": {"name": "lung adenocarcinoma", "doid": "DOID:3910"},
         "source_content_sha256": source_hashes,
         "source_urls": SOURCE_URLS,
+        "source_availability": {key: ("retrieved" if key in downloads else "unavailable")
+                                for key in SOURCE_URLS},
         "civic": civic, "cbioportal": cbio, "gdc": gdc,
         "limitations": [
             "CIViC evidence items, cBioPortal mutation-call rows and GDC project metadata are different units; their counts are not directly comparable.",
             "CIViC DOID:3910 uses an exact ontology filter; broader non-small cell lung cancer evidence is excluded even when it might overlap LUAD.",
             "CIViC molecular profiles can be compound; matching the EGFR token does not imply an isolated EGFR alteration.",
             "cBioPortal counts reflect this specific study and assay/profiling coverage, not all lung cancers or prevalence.",
-            "GDC reports an EGFR gene-associated case bucket from its analysis endpoint, but variant-level records and assay filters were not queried. The count is not a driver-mutation prevalence estimate.",
+            "GDC may report an EGFR gene-associated case bucket from its analysis endpoint, but variant-level records and assay filters were not queried. The count, if present, is not a driver-mutation prevalence estimate. An unavailable response is null, never zero.",
             "Nightly CIViC files and cBioPortal API results are mutable: match source hashes and dates before comparing reruns.",
             "No patient-level records are saved; result has not undergone scientific or clinical review.",
         ],
@@ -273,10 +288,11 @@ def run(downloads: dict[str, bytes], outdir: Path, run_id: str, accessed_on: str
         {"source_id": "gdc", "accessed_on": accessed_on,
          "query_or_filter": "Project TCGA-LUAD metadata; format=json",
          "url": GDC, "source_release": "sha256:" + source_hashes["gdc"]},
-        {"source_id": "gdc", "accessed_on": accessed_on,
-         "query_or_filter": "Project-specific aggregated case counts for Ensembl EGFR gene ENSG00000146648; no mutation-level filtering",
-         "url": GDC_GENE, "source_release": "sha256:" + source_hashes["gdc_gene"]},
     ]
+    if "gdc_gene" in downloads:
+        inputs.append({"source_id": "gdc", "accessed_on": accessed_on,
+            "query_or_filter": "Project-specific gene-associated case count aggregate for Ensembl EGFR ENSG00000146648; no mutation-level filtering",
+            "url": GDC_GENE, "source_release": "sha256:" + source_hashes["gdc_gene"]})
     manifest = {
         "schema_version": 1,
         "task_id": "egfr-luad-evidence-coverage",
@@ -320,10 +336,16 @@ def main() -> int:
     parser.add_argument("--emit-review-payload", action="store_true")
     args = parser.parse_args()
     today = datetime.now(timezone.utc)
-    downloads = {key: fetch(url) for key, url in SOURCE_URLS.items()}
+    downloads = {key: fetch(SOURCE_URLS[key]) for key in sorted(MANDATORY_SOURCES)}
+    optional_gdc_error = None
+    try:
+        downloads["gdc_gene"] = fetch(GDC_GENE, retries=3)
+    except RuntimeError as exc:
+        optional_gdc_error = str(exc)
+        print("WARNING: Optional GDC gene-level aggregate unavailable; recording null, not zero.", flush=True)
     run(downloads, args.out_dir, args.run_id,
         today.date().isoformat(), today.isoformat().replace("+00:00", "Z"),
-        args.emit_review_payload)
+        args.emit_review_payload, optional_gdc_error)
     return 0
 
 
