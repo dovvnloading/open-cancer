@@ -34,7 +34,16 @@ jobs:
               raw=resp.read(2000000)
           data=json.loads(raw)
           print('GDC_AGG_TOP_KEYS',list(data.keys()),'RESPONSE_BYTES',len(raw),flush=True)
-          print('GDC_AGG_SAMPLE', json.dumps(data)[:2000],flush=True)
+          buckets=data.get('aggregations',{}).get('projects',{}).get('buckets',[])
+          selected=[b for b in buckets if b.get('key') == 'TCGA-LUAD']
+          print('GDC_AGG_LUAD', json.dumps(selected)[:2000], flush=True)
+          for gene in ('ENSG00000141510','ENSG00000155657','ENSG00000000000'):
+              control_url='https://api.gdc.cancer.gov/analysis/top_cases_counts_by_genes?gene_ids='+gene
+              with urllib.request.urlopen(urllib.request.Request(control_url,headers={'User-Agent':'open-cancer-pilot/0.2','Accept':'application/json'}),timeout=40) as response:
+                  other=json.loads(response.read(2000000))
+              bs=other.get('aggregations',{}).get('projects',{}).get('buckets',[])
+              luad=next((b for b in bs if b.get('key')=='TCGA-LUAD'),{})
+              print('GDC_CONTROL',gene,'luad_count',luad.get('doc_count'),'gene_buckets',luad.get('genes',{}).get('my_genes',{}).get('gene_id',{}).get('buckets'),flush=True)
           PY
       - name: Retrieve source releases and derive public summary
         run: |
