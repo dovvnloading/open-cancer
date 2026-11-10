@@ -18,6 +18,7 @@ import re
 import sys
 import time
 from urllib.error import HTTPError, URLError
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 CIVIC = "https://civicdb.org/downloads/nightly/nightly-ClinicalEvidenceSummaries.tsv"
@@ -29,10 +30,26 @@ CBIO_MUTATIONS = (
     f"?sampleListId={CBIO_STUDY_ID}_all&entrezGeneId=1956"
 )
 GDC = "https://api.gdc.cancer.gov/projects/TCGA-LUAD?format=json"
-GDC_GENE = "https://api.gdc.cancer.gov/analysis/top_cases_counts_by_genes?gene_ids=ENSG00000146648"
+# Do not use /analysis/top_cases_counts_by_genes: its aggregate semantics
+# differed from independently requested occurrence-level data on 2026-11-10.
+GDC_OCCURRENCE_FILTER = {
+    "op": "and", "content": [
+        {"op": "in", "content": {
+            "field": "ssm.consequence.transcript.gene.gene_id",
+            "value": ["ENSG00000146648"]}},
+        {"op": "in", "content": {
+            "field": "case.project.project_id", "value": ["TCGA-LUAD"]}},
+    ]
+}
+MAX_GDC_OCCURRENCES = 1000
+GDC_OCCURRENCES = "https://api.gdc.cancer.gov/ssm_occurrences?" + urlencode({
+    "filters": json.dumps(GDC_OCCURRENCE_FILTER, separators=(",", ":"), sort_keys=True),
+    "fields": "case.case_id,ssm.ssm_id",
+    "size": MAX_GDC_OCCURRENCES, "from": 0,
+})
 SOURCE_URLS = {"civic": CIVIC, "cbio_study": CBIO_STUDY,
                "cbio_mutations": CBIO_MUTATIONS, "gdc": GDC,
-               "gdc_gene": GDC_GENE}
+               "gdc_occurrences": GDC_OCCURRENCES}
 MANDATORY_SOURCES = frozenset({"civic", "cbio_study", "cbio_mutations", "gdc"})
 REQUIRED_CIVIC = {"molecular_profile", "evidence_id", "evidence_status",
                   "disease", "doid", "evidence_type", "evidence_civic_url"}
@@ -195,34 +212,53 @@ def gdc_analysis(raw: bytes):
     }
 
 
-def gdc_gene_analysis(raw: bytes) -> dict:
-    """Parse NCI GDC documented project-specific EGFR case-count aggregation."""
+def gdc_occurrences_analysis(raw: bytes) -> dict:
+    """Count distinct public GDC case IDs for EGFR SSM occurrences in memory.
+
+    No case-level identifiers, observed mutations, or raw response are written.
+    This counts distinct cases IN THE MUTATION-OBSERVED COHORT only, not the
+    full project population or clinical driver mutation prevalence.
+    """
     obj = json.loads(raw)
-    if not isinstance(obj, dict) or obj.get("timed_out") is not False:
-        raise ValueError("GDC gene aggregation failed or timed out")
-    if (obj.get("_shards") or {}).get("failed", 0) != 0:
-        raise ValueError("GDC gene aggregation returned failed shards")
-    buckets = (((obj.get("aggregations") or {}).get("projects") or {})
-               .get("buckets") or [])
-    matched = [b for b in buckets if b.get("key") == "TCGA-LUAD"]
-    if len(matched) != 1:
-        raise ValueError("GDC LUAD project aggregate absent or duplicated")
-    bucket = matched[0]
-    gene_buckets = ((((bucket.get("genes") or {}).get("my_genes") or {})
-                     .get("gene_id") or {}).get("buckets") or [])
-    matches = [b for b in gene_buckets if b.get("key") == "ENSG00000146648"]
-    if len(matches) != 1 or not isinstance(matches[0].get("doc_count"), int):
-        raise ValueError("GDC EGFR gene bucket missing or invalid")
-    count = matches[0]["doc_count"]
-    if count < 0 or bucket.get("doc_count") != count:
-        raise ValueError("Unexpected GDC EGFR aggregate bucket totals")
+    if not isinstance(obj, dict) or obj.get("warnings"):
+        raise ValueError("GDC occurrence endpoint returned warnings or a non-object")
+    data = obj.get("data")
+    if not isinstance(data, dict):
+        raise ValueError("GDC occurrence endpoint missing data")
+    pagination = data.get("pagination")
+    hits = data.get("hits")
+    if not isinstance(pagination, dict) or not isinstance(hits, list):
+        raise ValueError("GDC occurrence response lacks pagination or hits")
+    total = pagination.get("total")
+    if type(total) is not int or total <= 0 or total > MAX_GDC_OCCURRENCES:
+        raise ValueError("GDC occurrence count is zero, invalid, or exceeds the safe single-page limit")
+    if pagination.get("from") != 0 or len(hits) != total:
+        raise ValueError("GDC occurrence response is incomplete or truncated")
+    case_ids = set()
+    occurrence_ids = set()
+    for hit in hits:
+        if not isinstance(hit, dict) or not isinstance(hit.get("case"), dict):
+            raise ValueError("GDC occurrence record missing case")
+        case_id = hit["case"].get("case_id")
+        occurrence_id = hit.get("id")
+        if not isinstance(case_id, str) or not case_id:
+            raise ValueError("GDC occurrence missing case_id")
+        if not isinstance(occurrence_id, str) or not occurrence_id:
+            raise ValueError("GDC occurrence missing id")
+        if occurrence_id in occurrence_ids:
+            raise ValueError("Duplicate GDC occurrence ID; response cannot be trusted")
+        case_ids.add(case_id)
+        occurrence_ids.add(occurrence_id)
     return {
-        "gene_id": "ENSG00000146648",
+        "status": "retrieved",
         "project_id": "TCGA-LUAD",
-        "reported_gene_associated_case_bucket_count": count,
-        "unit": "GDC gene analysis endpoint project bucket doc_count; NOT driver mutation prevalence",
-        "interpretation": "This is the API's reported gene-associated case-count bucket; its relationship to variant calls or clinical definitions has not been independently validated.",
-        "verification": "Endpoint was checked separately against TP53, TTN and an invalid gene ID. Counts vary by gene.",
+        "gene_id": "ENSG00000146648",
+        "somatic_mutation_occurrence_rows": len(occurrence_ids),
+        "distinct_case_ids_with_recorded_occurrence": len(case_ids),
+        "unit": "Distinct GDC public case identifiers associated with an EGFR simple somatic mutation occurrence",
+        "interpretation": "A descriptive, project-filtered count among indexed mutation occurrences; neither driver status nor full-cohort prevalence.",
+        "privacy": "Case identifiers are deduplicated only in memory; none are written to the repository or logs.",
+        "limit": MAX_GDC_OCCURRENCES,
     }
 
 
@@ -235,16 +271,16 @@ def run(downloads: dict[str, bytes], outdir: Path, run_id: str, accessed_on: str
     civic, rows = civic_analysis(downloads["civic"])
     cbio, changes = cbio_analysis(downloads["cbio_study"], downloads["cbio_mutations"])
     gdc = gdc_analysis(downloads["gdc"])
-    if "gdc_gene" in downloads:
-        gdc["egfr_gene_aggregate"] = gdc_gene_analysis(downloads["gdc_gene"])
-        gdc["egfr_gene_aggregate"]["status"] = "retrieved"
+    if "gdc_occurrences" in downloads:
+        gdc["egfr_occurrences"] = gdc_occurrences_analysis(downloads["gdc_occurrences"])
     else:
-        gdc["egfr_gene_aggregate"] = {
+        gdc["egfr_occurrences"] = {
             "status": "unavailable",
-            "reported_gene_associated_case_bucket_count": None,
-            "unit": "GDC gene analysis endpoint project bucket doc_count",
-            "error": optional_gdc_error or "No gene-level response retrieved",
-            "interpretation": "A null value represents unavailable data, NOT zero EGFR-associated cases.",
+            "somatic_mutation_occurrence_rows": None,
+            "distinct_case_ids_with_recorded_occurrence": None,
+            "unit": "GDC public simple somatic mutation occurrence records",
+            "error": optional_gdc_error or "No GDC mutation occurrences retrieved",
+            "interpretation": "Null means an unavailable upstream response, NOT zero mutation occurrences or patients.",
         }
     source_hashes = {key: sha256(value) for key, value in sorted(downloads.items())}
     outdir.mkdir(parents=True, exist_ok=True)
@@ -261,11 +297,11 @@ def run(downloads: dict[str, bytes], outdir: Path, run_id: str, accessed_on: str
                                 for key in SOURCE_URLS},
         "civic": civic, "cbioportal": cbio, "gdc": gdc,
         "limitations": [
-            "CIViC evidence items, cBioPortal mutation-call rows and GDC project metadata are different units; their counts are not directly comparable.",
+            "CIViC evidence items, cBioPortal mutation-call rows and GDC project case identifiers are different units and study selections; their counts are not directly comparable.",
             "CIViC DOID:3910 uses an exact ontology filter; broader non-small cell lung cancer evidence is excluded even when it might overlap LUAD.",
             "CIViC molecular profiles can be compound; matching the EGFR token does not imply an isolated EGFR alteration.",
             "cBioPortal counts reflect this specific study and assay/profiling coverage, not all lung cancers or prevalence.",
-            "GDC may report an EGFR gene-associated case bucket from its analysis endpoint, but variant-level records and assay filters were not queried. The count, if present, is not a driver-mutation prevalence estimate. An unavailable response is null, never zero.",
+            "GDC case IDs are deduplicated from filtered SSM occurrences in memory. No variant-consequence, driver, or sequenced-denominator filter is applied; this is not a prevalence estimate. A missing response is null, never zero.",
             "Nightly CIViC files and cBioPortal API results are mutable: match source hashes and dates before comparing reruns.",
             "No patient-level records are saved; result has not undergone scientific or clinical review.",
         ],
@@ -289,10 +325,11 @@ def run(downloads: dict[str, bytes], outdir: Path, run_id: str, accessed_on: str
          "query_or_filter": "Project TCGA-LUAD metadata; format=json",
          "url": GDC, "source_release": "sha256:" + source_hashes["gdc"]},
     ]
-    if "gdc_gene" in downloads:
+    if "gdc_occurrences" in downloads:
         inputs.append({"source_id": "gdc", "accessed_on": accessed_on,
-            "query_or_filter": "Project-specific gene-associated case count aggregate for Ensembl EGFR ENSG00000146648; no mutation-level filtering",
-            "url": GDC_GENE, "source_release": "sha256:" + source_hashes["gdc_gene"]})
+            "query_or_filter": "SSM occurrences: case.project.project_id=TCGA-LUAD and ssm.consequence.transcript.gene.gene_id=ENSG00000146648; single-page bound 1000; count distinct case IDs in memory",
+            "url": GDC_OCCURRENCES,
+            "source_release": "sha256:" + source_hashes["gdc_occurrences"]})
     manifest = {
         "schema_version": 1,
         "task_id": "egfr-luad-evidence-coverage",
@@ -310,7 +347,7 @@ def run(downloads: dict[str, bytes], outdir: Path, run_id: str, accessed_on: str
                            "cbio_protein_changes.csv": "Aggregated EGFR mutation-call rows; no sample identifiers",
                        }[name]} for name, content in sorted(artifact_text.items())],
         "findings": [],
-        "limitations": "Unreviewed descriptive source coverage; no clinical or causal conclusions. GDC EGFR case aggregates do not establish mutation pathogenicity or variant-level concordance.",
+        "limitations": "Unreviewed source-coverage snapshot; GDC occurrence-level case counts are not full project prevalence, clinical relevance, or comparable to cBioPortal mutation-call counts.",
     }
     artifact_text["manifest.json"] = json.dumps(manifest, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
     for name, content in artifact_text.items():
@@ -324,7 +361,8 @@ def run(downloads: dict[str, bytes], outdir: Path, run_id: str, accessed_on: str
         "civic_exact_luad_evidence_items": civic["egfr_accepted_evidence_exact_luad"],
         "cbio_egfr_mutation_calls": cbio["egfr_mutation_call_rows"],
         "gdc_project": gdc["project_id"],
-        "gdc_egfr_gene_associated_cases": gdc["egfr_gene_aggregate"]["reported_gene_associated_case_bucket_count"],
+        "gdc_egfr_occurrences": gdc["egfr_occurrences"]["somatic_mutation_occurrence_rows"],
+        "gdc_egfr_distinct_cases": gdc["egfr_occurrences"]["distinct_case_ids_with_recorded_occurrence"],
         "source_hashes": source_hashes}))
     return coverage
 
@@ -339,10 +377,13 @@ def main() -> int:
     downloads = {key: fetch(SOURCE_URLS[key]) for key in sorted(MANDATORY_SOURCES)}
     optional_gdc_error = None
     try:
-        downloads["gdc_gene"] = fetch(GDC_GENE, retries=3)
-    except RuntimeError as exc:
+        downloads["gdc_occurrences"] = fetch(GDC_OCCURRENCES, retries=3)
+        # Do not silently turn GDC warnings, schema changes, or truncation into results.
+        gdc_occurrences_analysis(downloads["gdc_occurrences"])
+    except (RuntimeError, ValueError, json.JSONDecodeError) as exc:
+        downloads.pop("gdc_occurrences", None)
         optional_gdc_error = str(exc)
-        print("WARNING: Optional GDC gene-level aggregate unavailable; recording null, not zero.", flush=True)
+        print("WARNING: Optional GDC SSM occurrences unavailable; recording null, not zero.", flush=True)
     run(downloads, args.out_dir, args.run_id,
         today.date().isoformat(), today.isoformat().replace("+00:00", "Z"),
         args.emit_review_payload, optional_gdc_error)

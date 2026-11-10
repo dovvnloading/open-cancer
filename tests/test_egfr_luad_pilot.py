@@ -8,7 +8,7 @@ import unittest
 
 from scripts.egfr_luad_pilot import (
     CIVIC, CBIO_STUDY_ID, SOURCE_URLS, as_csv, civic_analysis,
-    cbio_analysis, gdc_analysis, run,
+    cbio_analysis, gdc_analysis, gdc_occurrences_analysis, run,
 )
 
 HEADERS = ["molecular_profile", "evidence_id", "evidence_status", "disease",
@@ -78,14 +78,13 @@ class ResearchPilotTests(unittest.TestCase):
             "civic": civic_fixture(), "cbio_study": study,
             "cbio_mutations": muts,
             "gdc": json.dumps({"data": {"project_id": "TCGA-LUAD", "summary": {"case_count": 585}}}).encode(),
-            "gdc_gene": json.dumps({
-                "timed_out": False, "_shards": {"failed": 0},
-                "aggregations": {"projects": {"buckets": [{
-                    "key": "TCGA-LUAD", "doc_count": 12,
-                    "genes": {"my_genes": {"gene_id": {"buckets": [
-                        {"key": "ENSG00000146648", "doc_count": 12}]}}}
-                }]}}
-            }).encode(),
+            "gdc_occurrences": json.dumps({"data": {
+                "pagination": {"from": 0, "total": 3},
+                "hits": [
+                    {"id": "occ-1", "case": {"case_id": "internal-case-a"}},
+                    {"id": "occ-2", "case": {"case_id": "internal-case-a"}},
+                    {"id": "occ-3", "case": {"case_id": "internal-case-b"}},
+                ]}}).encode(),
         }
         self.assertEqual(set(raw), set(SOURCE_URLS))
         with tempfile.TemporaryDirectory() as tmp:
@@ -94,7 +93,9 @@ class ResearchPilotTests(unittest.TestCase):
             snapshot = json.loads((run_dir / "coverage.json").read_text())
             manifest = json.loads((run_dir / "manifest.json").read_text())
             self.assertEqual(snapshot["status"], "unreviewed")
-            self.assertEqual(snapshot["gdc"]["egfr_gene_aggregate"]["reported_gene_associated_case_bucket_count"], 12)
+            self.assertEqual(snapshot["gdc"]["egfr_occurrences"]["somatic_mutation_occurrence_rows"], 3)
+            self.assertEqual(snapshot["gdc"]["egfr_occurrences"]["distinct_case_ids_with_recorded_occurrence"], 2)
+            self.assertNotIn("internal-case-a", (run_dir / "coverage.json").read_text())
             self.assertEqual(len(manifest["artifacts"]), 3)
             self.assertNotIn("PRIVATE-NOT-PUBLISHED", "".join(
                 p.read_text() for p in run_dir.glob("*.csv")))
@@ -114,12 +115,25 @@ class ResearchPilotTests(unittest.TestCase):
                 "2026-11-10T23:00:00Z", optional_gdc_error="HTTP 500")
             coverage = json.loads((run_dir / "coverage.json").read_text())
             manifest = json.loads((run_dir / "manifest.json").read_text())
-            gdc = coverage["gdc"]["egfr_gene_aggregate"]
+            gdc = coverage["gdc"]["egfr_occurrences"]
             self.assertEqual(gdc["status"], "unavailable")
-            self.assertIsNone(gdc["reported_gene_associated_case_bucket_count"])
-            self.assertNotIn("gdc_gene", coverage["source_content_sha256"])
-            self.assertTrue(all(x["url"] != SOURCE_URLS["gdc_gene"]
+            self.assertIsNone(gdc["distinct_case_ids_with_recorded_occurrence"])
+            self.assertNotIn("gdc_occurrences", coverage["source_content_sha256"])
+            self.assertTrue(all(x["url"] != SOURCE_URLS["gdc_occurrences"]
                                 for x in manifest["inputs"]))
+
+    def test_gdc_bad_pagination_fails_closed(self):
+        bad = {"data":{"pagination":{"from": 0, "total": 4},
+                       "hits":[{"id":"occ1","case":{"case_id":"one"}}]}}
+        with self.assertRaises(ValueError):
+            gdc_occurrences_analysis(json.dumps(bad).encode())
+
+    def test_gdc_duplicate_occurrence_id_rejected(self):
+        bad = {"data":{"pagination":{"from": 0, "total": 2},
+                       "hits":[{"id":"same","case":{"case_id":"one"}},
+                               {"id":"same","case":{"case_id":"two"}}]}}
+        with self.assertRaises(ValueError):
+            gdc_occurrences_analysis(json.dumps(bad).encode())
 
 
 if __name__ == "__main__":
