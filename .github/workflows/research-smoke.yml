@@ -1,0 +1,45 @@
+name: Research data source smoke test
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/research-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect public endpoint response structure (no patient data)
+        run: |
+          python - <<'PY'
+          import urllib.request, json, csv, io
+          endpoints = {
+            'civic_evidence': 'https://civicdb.org/downloads/nightly/nightly-ClinicalEvidenceSummaries.tsv',
+            'cbio_study': 'https://www.cbioportal.org/api/studies/luad_tcga_pan_can_atlas_2018',
+            'cbio_egfr': 'https://www.cbioportal.org/api/molecular-profiles/luad_tcga_pan_can_atlas_2018_mutations/mutations?sampleListId=luad_tcga_pan_can_atlas_2018_all&entrezGeneId=1956',
+            'gdc_project': 'https://api.gdc.cancer.gov/projects/TCGA-LUAD'
+          }
+          for name, url in endpoints.items():
+            print('SOURCE:', name, flush=True)
+            try:
+              req = urllib.request.Request(url, headers={'User-Agent':'open-cancer-research-probe/0.1','Accept':'application/json,text/tab-separated-values'})
+              with urllib.request.urlopen(req, timeout=35) as resp:
+                raw = resp.read(8_000_000)
+                print('status:', resp.status, 'bytes:', len(raw), 'content-type:', resp.headers.get('Content-Type'), flush=True)
+                if name == 'civic_evidence':
+                  txt=raw.decode('utf-8-sig')
+                  head=next(csv.reader(io.StringIO(txt),delimiter='\t'))
+                  print('columns:', repr(head), 'total_lines:', len(txt.splitlines()), flush=True)
+                else:
+                  obj=json.loads(raw)
+                  if isinstance(obj, dict):
+                    print('top_keys:',list(obj.keys()), 'data_keys:',list(obj.get('data',{}).keys()) if isinstance(obj.get('data'),dict) else None, flush=True)
+                  elif isinstance(obj,list):
+                    print('array_size:',len(obj), 'record_keys:', list(obj[0].keys()) if obj else [],flush=True)
+            except Exception as exc:
+              print('ERROR:', type(exc).__name__,str(exc), flush=True)
+          PY
