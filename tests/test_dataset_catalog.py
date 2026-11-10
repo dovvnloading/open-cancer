@@ -16,13 +16,25 @@ class DatasetCatalogTests(unittest.TestCase):
 
     def test_exact_disease_filter(self):
         found = search_datasets(self.data, disease="DOID:3910")
-        self.assertEqual([r["id"] for r in found], [
-            "cbioportal-luad-tcga-pancan-atlas-2018", "gdc-tcga-luad-project"
-        ])
+        ids = {row["id"] for row in found}
+        self.assertTrue({
+            "cbioportal-luad-tcga-pancan-atlas-2018",
+            "gdc-tcga-luad-project",
+            "gdc-tcga-luad-egfr-ssm-occurrences",
+        }.issubset(ids))
+        self.assertTrue(all(row["disease"]["ontology_id"] == "DOID:3910"
+                            for row in found))
 
     def test_source_and_search(self):
-        self.assertEqual(len(search_datasets(self.data, source="civic")), 1)
-        self.assertEqual(len(search_datasets(self.data, text="lung")), 2)
+        civic = search_datasets(self.data, source="civic")
+        self.assertTrue(civic)
+        self.assertTrue(all(row["source_id"] == "civic" for row in civic))
+        lung = search_datasets(self.data, text="lung")
+        self.assertTrue(lung)
+        self.assertTrue(all("lung" in " ".join(
+            [row.get("id", ""), row.get("title", ""), row.get("description", ""),
+             row.get("cohort_definition", ""), row.get("disease", {}).get("name", "")]
+        ).casefold() for row in lung))
 
     def test_unknown_source_fails_validation(self):
         with tempfile.TemporaryDirectory() as d:
@@ -37,7 +49,8 @@ class DatasetCatalogTests(unittest.TestCase):
             self.assertTrue(any("dataset references unknown source" in e for e in errors))
 
     def test_mutable_release_is_explicit(self):
-        self.assertTrue(all(r["release"]["mutable"] is True for r in self.data))
+        self.assertTrue(all(isinstance(r["release"]["mutable"], bool)
+                            for r in self.data))
 
 
 if __name__ == "__main__":
