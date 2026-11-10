@@ -1,0 +1,29 @@
+{
+  "id": "egfr-luad-evidence-coverage",
+  "title": "Map EGFR evidence coverage in lung adenocarcinoma",
+  "question": "Which EGFR alteration categories in lung adenocarcinoma are represented in CIViC evidence records and publicly accessible GDC and cBioPortal records, and where do their disease labels, variant definitions, or coverage differ?",
+  "status": "open",
+  "created_on": "2026-11-10",
+  "input_source_ids": [
+    "civic",
+    "gdc",
+    "cbioportal"
+  ],
+  "deliverables": [
+    "Machine-readable table of source, source record identifier, alteration term, disease term, and retrieval date.",
+    "Reproducible script and pinned query parameters describing filtering and normalization.",
+    "Short report distinguishing clinical evidence assertions from tumor cohort observations and documenting gaps.",
+    "Schema-valid results/<task-id>/<run-id>/manifest.json with checksums and evidence links."
+  ],
+  "quality_checks": [
+    "Use only public data and record retrieval dates and source versions when available.",
+    "Resolve or explicitly flag ambiguous gene, variant, and disease synonyms; do not silently merge cohorts.",
+    "Report missingness and distinguish record counts from patient counts.",
+    "Do not infer therapeutic benefit or make treatment recommendations from catalog coverage.",
+    "Every substantive claim must link to original source records, with explicit limitations."
+  ],
+  "non_goals": [
+    "Patient-level prediction or clinical treatment guidance.",
+    "Comparing raw prevalence estimates across non-equivalent cohorts."
+  ]
+}

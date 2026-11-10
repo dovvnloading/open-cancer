@@ -1,0 +1,23 @@
+{
+  "id": "cbioportal",
+  "name": "cBioPortal for Cancer Genomics",
+  "publisher": "cBioPortal community",
+  "summary": "Interactive cancer genomics studies with clinical and molecular context; offers a public REST API and machine interfaces.",
+  "homepage": "https://www.cbioportal.org/",
+  "data_url": "https://www.cbioportal.org/",
+  "documentation_url": "https://docs.cbioportal.org/web-api-and-clients/",
+  "api_url": "https://www.cbioportal.org/api/",
+  "access": "open",
+  "modalities": [
+    "genomics",
+    "clinical",
+    "transcriptomics"
+  ],
+  "reuse": {
+    "status": "verify-upstream",
+    "terms_url": "https://docs.cbioportal.org/user-guide/faq/",
+    "notes": "Study-level attribution and source dataset permissions should be checked before redistributing exports."
+  },
+  "provenance_url": "https://docs.cbioportal.org/web-api-and-clients/",
+  "reviewed_on": "2026-11-10"
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Open Cancer source catalog entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "summary",
+    "publisher",
+    "homepage",
+    "data_url",
+    "documentation_url",
+    "access",
+    "modalities",
+    "reuse",
+    "provenance_url",
+    "reviewed_on"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 3
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 40
+    },
+    "publisher": {
+      "type": "string",
+      "minLength": 3
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "data_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "documentation_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "api_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "provenance_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "access": {
+      "type": "string",
+      "enum": [
+        "open",
+        "mixed",
+        "controlled"
+      ]
+    },
+    "modalities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "genomics",
+          "transcriptomics",
+          "proteomics",
+          "clinical",
+          "clinical-trials",
+          "variant-evidence",
+          "cell-lines",
+          "functional-genomics",
+          "imaging"
+        ]
+      }
+    },
+    "reuse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "terms_url",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "verified-permissive",
+            "verify-upstream"
+          ]
+        },
+        "terms_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 20
+        },
+        "license_id": {
+          "type": "string",
+          "minLength": 3
+        }
+      }
+    },
+    "reviewed_on": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}

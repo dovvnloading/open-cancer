@@ -1,0 +1,21 @@
+{
+  "id": "geo",
+  "name": "NCBI Gene Expression Omnibus (GEO)",
+  "publisher": "U.S. National Center for Biotechnology Information",
+  "summary": "Public functional genomics repository with array- and sequence-based experiments and associated study metadata.",
+  "homepage": "https://www.ncbi.nlm.nih.gov/geo/",
+  "data_url": "https://www.ncbi.nlm.nih.gov/geo/",
+  "documentation_url": "https://www.ncbi.nlm.nih.gov/geo/info/geo_paccess.html",
+  "access": "open",
+  "modalities": [
+    "transcriptomics",
+    "functional-genomics"
+  ],
+  "reuse": {
+    "status": "verify-upstream",
+    "terms_url": "https://www.ncbi.nlm.nih.gov/geo/",
+    "notes": "Dataset records may include submitter-provided materials; confirm accession-specific reuse conditions and proper attribution."
+  },
+  "provenance_url": "https://www.ncbi.nlm.nih.gov/geo/",
+  "reviewed_on": "2026-11-10"
+}
