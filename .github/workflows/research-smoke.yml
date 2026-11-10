@@ -1,8 +1,11 @@
-name: Research data source smoke test
+name: EGFR-LUAD reproducible pilot (nonclinical)
 
 on:
   pull_request:
     paths:
+      - 'scripts/egfr_luad_pilot.py'
+      - 'results/egfr-luad-evidence-coverage/**'
+      - 'tests/test_egfr_luad_pilot.py'
       - '.github/workflows/research-smoke.yml'
   workflow_dispatch:
 
@@ -10,36 +13,31 @@ permissions:
   contents: read
 
 jobs:
-  inspect:
+  research-pilot:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect public endpoint response structure (no patient data)
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Offline scientific-data transformation tests
+        run: python -m unittest discover -s tests -v
+      - name: Retrieve source releases and derive public summary
         run: |
-          python - <<'PY'
-          import urllib.request, json, csv, io
-          endpoints = {
-            'civic_evidence': 'https://civicdb.org/downloads/nightly/nightly-ClinicalEvidenceSummaries.tsv',
-            'cbio_study': 'https://www.cbioportal.org/api/studies/luad_tcga_pan_can_atlas_2018',
-            'cbio_egfr': 'https://www.cbioportal.org/api/molecular-profiles/luad_tcga_pan_can_atlas_2018_mutations/mutations?sampleListId=luad_tcga_pan_can_atlas_2018_all&entrezGeneId=1956',
-            'gdc_project': 'https://api.gdc.cancer.gov/projects/TCGA-LUAD'
-          }
-          for name, url in endpoints.items():
-            print('SOURCE:', name, flush=True)
-            try:
-              req = urllib.request.Request(url, headers={'User-Agent':'open-cancer-research-probe/0.1','Accept':'application/json,text/tab-separated-values'})
-              with urllib.request.urlopen(req, timeout=35) as resp:
-                raw = resp.read(8_000_000)
-                print('status:', resp.status, 'bytes:', len(raw), 'content-type:', resp.headers.get('Content-Type'), flush=True)
-                if name == 'civic_evidence':
-                  txt=raw.decode('utf-8-sig')
-                  head=next(csv.reader(io.StringIO(txt),delimiter='\t'))
-                  print('columns:', repr(head), 'total_lines:', len(txt.splitlines()), flush=True)
-                else:
-                  obj=json.loads(raw)
-                  if isinstance(obj, dict):
-                    print('top_keys:',list(obj.keys()), 'data_keys:',list(obj.get('data',{}).keys()) if isinstance(obj.get('data'),dict) else None, flush=True)
-                  elif isinstance(obj,list):
-                    print('array_size:',len(obj), 'record_keys:', list(obj[0].keys()) if obj else [],flush=True)
-            except Exception as exc:
-              print('ERROR:', type(exc).__name__,str(exc), flush=True)
-          PY
+          python results/egfr-luad-evidence-coverage/pilot-20261110/analyze.py \
+            --out-dir results/egfr-luad-evidence-coverage/pilot-20261110 \
+            --run-id pilot-20261110 \
+            --emit-review-payload
+      - name: Check result manifest, source references, and artifact hashes
+        run: python scripts/validate.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: egfr-luad-pilot-unreviewed
+          path: |
+            results/egfr-luad-evidence-coverage/pilot-20261110/manifest.json
+            results/egfr-luad-evidence-coverage/pilot-20261110/coverage.json
+            results/egfr-luad-evidence-coverage/pilot-20261110/civic_evidence_ids.csv
+            results/egfr-luad-evidence-coverage/pilot-20261110/cbio_protein_changes.csv
+          retention-days: 30
