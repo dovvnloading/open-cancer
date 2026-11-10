@@ -1,0 +1,36 @@
+{
+  "id": "gdc-tcga-luad-egfr-ssm-occurrences",
+  "source_id": "gdc",
+  "accession": {
+    "namespace": "GDC public API project plus Ensembl gene filter",
+    "value": "TCGA-LUAD/ENSG00000146648"
+  },
+  "title": "EGFR simple somatic mutation occurrences in GDC TCGA-LUAD",
+  "description": "Bounded public GDC somatic-mutation occurrence query for the TCGA-LUAD project and EGFR Ensembl gene identifier, with case-level identifiers deduplicated only in volatile memory before producing aggregate counts.",
+  "landing_url": "https://portal.gdc.cancer.gov/projects/TCGA-LUAD",
+  "documentation_url": "https://docs.gdc.cancer.gov/API/Users_Guide/Data_Analysis/",
+  "retrieval_url": "https://api.gdc.cancer.gov/ssm_occurrences?filters=%7B%22content%22%3A%5B%7B%22content%22%3A%7B%22field%22%3A%22ssm.consequence.transcript.gene.gene_id%22%2C%22value%22%3A%5B%22ENSG00000146648%22%5D%7D%2C%22op%22%3A%22in%22%7D%2C%7B%22content%22%3A%7B%22field%22%3A%22case.project.project_id%22%2C%22value%22%3A%5B%22TCGA-LUAD%22%5D%7D%2C%22op%22%3A%22in%22%7D%5D%2C%22op%22%3A%22and%22%7D&fields=case.case_id%2Cssm.ssm_id&size=1000&from=0&format=json",
+  "disease": {
+    "name": "Lung adenocarcinoma",
+    "ontology_id": "DOID:3910"
+  },
+  "modalities": [
+    "genomics"
+  ],
+  "unit_of_observation": "GDC simple somatic mutation occurrence row, with separate count of distinct matching case UUIDs",
+  "cohort_definition": "GDC TCGA-LUAD project; SSM occurrence filters case.project.project_id=TCGA-LUAD and ssm.consequence.transcript.gene.gene_id=ENSG00000146648. Returns public mutation occurrences; does not define the cohort of fully profiled patients, clinical significance, prevalence, or driver status.",
+  "access": {
+    "level": "mixed",
+    "notes": "The specific public SSM occurrence metadata endpoint is accessible without a token; underlying project data may have controlled-access permissions."
+  },
+  "reuse": {
+    "status": "verify-upstream",
+    "terms_url": "https://gdc.cancer.gov/access-data/data-access-processes-and-tools",
+    "notes": "Do not mirror patient/case identifiers or controlled-access files. Only aggregate statistics are committed; retain upstream provenance and check data release terms."
+  },
+  "release": {
+    "label": "Live GDC API SSM occurrence index; not pinned to an immutable GDC release",
+    "mutable": true
+  },
+  "verified_on": "2026-11-10"
+}
