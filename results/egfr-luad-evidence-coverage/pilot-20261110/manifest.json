@@ -1,0 +1,58 @@
+{
+  "artifacts": [
+    {
+      "description": "Aggregated EGFR mutation-call rows; no sample identifiers",
+      "path": "cbio_protein_changes.csv",
+      "sha256": "078e8ff45209e599a42294ab2035569963eb4e1b4d7acbc6cf9c10ce5ea03140"
+    },
+    {
+      "description": "CIViC CC0 evidence identifiers and public record links",
+      "path": "civic_evidence_ids.csv",
+      "sha256": "8c0715d2f00a9a9e3708311b2c95c61236644023c5b48e6cee2e408714979ba6"
+    },
+    {
+      "description": "Source hashes, aggregate counts and interpretation limitations",
+      "path": "coverage.json",
+      "sha256": "da956273a565e27029534b44f8ccfe5589d840a988bf2430a33bbb39eff0de3e"
+    }
+  ],
+  "created_at": "2026-11-10T22:33:33.913171Z",
+  "execution": {
+    "code_path": "analyze.py",
+    "command": "python results/egfr-luad-evidence-coverage/pilot-20261110/analyze.py --out-dir results/egfr-luad-evidence-coverage/pilot-20261110 --run-id pilot-20261110",
+    "environment": "Python 3.12+ standard library with outbound HTTPS; repository root as current directory"
+  },
+  "findings": [],
+  "inputs": [
+    {
+      "accessed_on": "2026-11-10",
+      "query_or_filter": "Nightly full clinical evidence TSV; accepted; EGFR token; DOID:3910",
+      "source_id": "civic",
+      "source_release": "sha256:b6d9c7d527174c1afcb76bb4652b8b01fe6f180f7f10c67a5c2068386a5e37a4",
+      "url": "https://civicdb.org/downloads/nightly/nightly-ClinicalEvidenceSummaries.tsv"
+    },
+    {
+      "accessed_on": "2026-11-10",
+      "query_or_filter": "study=luad_tcga_pan_can_atlas_2018, mutation profile, sampleListId=luad_tcga_pan_can_atlas_2018_all, entrezGeneId=1956",
+      "source_id": "cbioportal",
+      "source_release": "sha256:45a34b6d23101c991dc64d839e1e8cccfc233fa962667084296119d0f8390b1b",
+      "url": "https://www.cbioportal.org/api/molecular-profiles/luad_tcga_pan_can_atlas_2018_mutations/mutations?sampleListId=luad_tcga_pan_can_atlas_2018_all&entrezGeneId=1956"
+    },
+    {
+      "accessed_on": "2026-11-10",
+      "query_or_filter": "Project TCGA-LUAD metadata only; format=json",
+      "source_id": "gdc",
+      "source_release": "sha256:7d5f5cb309211cd8dd82b7cde1a301c497ab40d3d4fefd4bb55787f5e0f2ef80",
+      "url": "https://api.gdc.cancer.gov/projects/TCGA-LUAD?format=json"
+    }
+  ],
+  "limitations": "Unreviewed descriptive source coverage; no clinical or causal conclusions. GDC EGFR mutation data not included.",
+  "run_id": "pilot-20261110",
+  "schema_version": 1,
+  "submitted_by": {
+    "model_or_tool": "Python standard library",
+    "name": "open-cancer-research-pilot",
+    "type": "agent"
+  },
+  "task_id": "egfr-luad-evidence-coverage"
+}

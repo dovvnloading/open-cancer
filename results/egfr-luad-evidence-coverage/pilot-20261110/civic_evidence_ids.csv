@@ -1,0 +1,57 @@
+source,record_id,molecular_profile,disease,doid,evidence_type,record_url
+civic,879,EGFR L858R,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/879
+civic,880,EGFR Exon 19 Deletion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/880
+civic,882,EGFR Exon 19 Deletion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/882
+civic,883,EGFR L858R,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/883
+civic,981,EGFR Exon 19 Deletion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/981
+civic,982,EGFR L858R,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/982
+civic,983,EGFR Exon 19 Deletion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/983
+civic,1391,EGFR T790M,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/1391
+civic,1394,EGFR S768I,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/1394
+civic,1395,EGFR S768I,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/1395
+civic,1396,EGFR T790M AND EGFR Exon 19 Deletion AND EGFR C797S,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/1396
+civic,1397,EGFR T790M AND EGFR Exon 19 Deletion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/1397
+civic,1701,EGFR Mutation,Lung Adenocarcinoma,DOID:3910,Prognostic,https://civicdb.org/links/evidence_items/1701
+civic,1780,EGFR G719,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/1780
+civic,1782,EGFR S720,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/1782
+civic,1786,EGFR K757R,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/1786
+civic,1787,EGFR E746G,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/1787
+civic,1799,EGFR V769_D770insASV,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/1799
+civic,1809,EGFR Exon 20 Insertion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/1809
+civic,2157,EGFR T790M,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/2157
+civic,2519,EGFR Exon 19 Deletion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/2519
+civic,2624,EGFR L858R,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/2624
+civic,2634,EGFR L858R,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/2634
+civic,3791,EGFR L858R OR EGFR Exon 19 Deletion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/3791
+civic,3792,EGFR Mutation,Lung Adenocarcinoma,DOID:3910,Prognostic,https://civicdb.org/links/evidence_items/3792
+civic,4209,EGFR E746_T751>I,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4209
+civic,4273,EGFR S768I,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4273
+civic,4290,EGFR L858R,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4290
+civic,4291,EGFR L858R,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4291
+civic,4292,EGFR L858R,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4292
+civic,4493,EGFR H773_V774insNPH,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4493
+civic,4494,EGFR D770_N771insGL,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4494
+civic,4643,EGFR D770_N771insGT,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4643
+civic,4650,EGFR Exon 20 Insertion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4650
+civic,4665,EGFR A767_V769dupASV,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4665
+civic,4667,EGFR L747_S752delinsQ,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4667
+civic,4766,EGFR Exon 19 Deletion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4766
+civic,4801,EGFR D770delinsGY,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4801
+civic,4803,EGFR P772_V774insPHV,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/4803
+civic,5909,EGFR::RAD51 Fusion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/5909
+civic,6183,EGFR L858R,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/6183
+civic,6184,EGFR Exon 19 Deletion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/6184
+civic,6186,EGFR Rare Mutation,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/6186
+civic,7314,EGFR::RAD51 Fusion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/7314
+civic,10895,EGFR T790M AND VOPP1::EGFR Fusion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/10895
+civic,10996,EGFR::PURB Fusion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/10996
+civic,11015,EGFR::RAD51 Fusion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/11015
+civic,11021,EGFR::RAD51 Fusion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/11021
+civic,11026,KIF5B::EGFR Fusion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/11026
+civic,11229,EGFR S768I OR EGFR G719A OR EGFR L861Q,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/11229
+civic,12369,EGFR::RAD51 e24::e4,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/12369
+civic,12370,EGFR::RAD51 Fusion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/12370
+civic,12372,EGFR::RAD51 Fusion,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/12372
+civic,12403,EGFR::USP42 Fusion,Lung Adenocarcinoma,DOID:3910,Oncogenic,https://civicdb.org/links/evidence_items/12403
+civic,12925,EGFR T790M,Lung Adenocarcinoma,DOID:3910,Oncogenic,https://civicdb.org/links/evidence_items/12925
+civic,12946,EGFR T790M AND EGFR Exon 19 del,Lung Adenocarcinoma,DOID:3910,Predictive,https://civicdb.org/links/evidence_items/12946
