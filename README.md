@@ -26,6 +26,15 @@ Open Cancer aims to make public cancer research easier to **discover, understand
 
 These are **source-directory entries**, not replicated datasets. Availability does **not** imply permission to redistribute every source file. Each record links to upstream documentation and distinguishes access from reuse. See [catalog instructions](catalog/README.md).
 
+## Explore specific studies and releases
+
+The [dataset catalog](catalog/datasets/README.md) now includes individually identified public releases and cohorts, beginning with [CIViC nightly clinical evidence](catalog/datasets/civic-nightly-clinical-evidence.json), [cBioPortal TCGA LUAD PanCancer Atlas](catalog/datasets/cbioportal-luad-tcga-pancan-atlas-2018.json), and [GDC TCGA-LUAD](catalog/datasets/gdc-tcga-luad-project.json). Each entry records its accession, retrieval URL, population definition, observation unit, reuse conditions, version mutability and verification date.
+
+```bash
+python scripts/search_catalog.py --disease DOID:3910
+python scripts/search_catalog.py --source civic --format json
+```
+
 ## Start contributing
 
 - **Add or improve a source:** submit `catalog/sources/<id>.json` using [schema](schemas/source.schema.json), citing official documentation.
