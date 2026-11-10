@@ -28,7 +28,7 @@ def validate_repository(root: Path = ROOT) -> list[str]:
     """Return all structural and local integrity errors (empty list means pass)."""
     errors: list[str] = []
     schemas = {}
-    for kind in ("source", "dataset", "task", "result"):
+    for kind in ("source", "dataset", "task", "result", "review"):
         schema_path = root / "schemas" / f"{kind}.schema.json"
         schema = load_json(schema_path, errors)
         if isinstance(schema, dict):
@@ -161,6 +161,39 @@ def validate_repository(root: Path = ROOT) -> list[str]:
             actual = hashlib.sha256(actual_path.read_bytes()).hexdigest()
             if actual != expected:
                 errors.append(f"{path}: SHA-256 mismatch for {actual_path.name}")
+
+    # Synthetic examples demonstrate the schema, not a real reviewer attestation.
+    for path in sorted((root / "examples" / "reviews").glob("*.json")):
+        obj = validate(path, "review")
+        if obj and obj.get("synthetic") is not True:
+            errors.append(f"{path}: example review must have synthetic=true")
+
+    # Bind every real review to exactly the result manifest bytes it evaluates.
+    for path in sorted((root / "reviews").glob("*/*/*.json")):
+        obj = validate(path, "review")
+        if not obj:
+            continue
+        if obj.get("synthetic") is not False:
+            errors.append(f"{path}: live reviews may not be synthetic")
+        if obj.get("id") != path.stem:
+            errors.append(f"{path}: review id must equal file stem")
+        if obj.get("task_id") != path.parent.parent.name or obj.get("run_id") != path.parent.name:
+            errors.append(f"{path}: review target does not match directory")
+        result_path = root / "results" / path.parent.parent.name / path.parent.name / "manifest.json"
+        if not result_path.is_file():
+            errors.append(f"{path}: no matching submitted result manifest")
+            continue
+        actual_sha = hashlib.sha256(result_path.read_bytes()).hexdigest()
+        if obj.get("reviewed_manifest_sha256") != actual_sha:
+            errors.append(f"{path}: stale or mismatched reviewed manifest SHA-256")
+        result_data = load_json(result_path, errors)
+        if not isinstance(result_data, dict):
+            continue
+        known_findings = {finding.get("id") for finding in result_data.get("findings", [])
+                          if isinstance(finding, dict)}
+        for finding_id in obj.get("reviewed_finding_ids", []):
+            if finding_id not in known_findings:
+                errors.append(f"{path}: unknown reviewed finding id {finding_id}")
 
     return sorted(errors)
 

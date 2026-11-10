@@ -1,0 +1,53 @@
+{
+  "id": "synthetic-methods-example",
+  "task_id": "fictional-task",
+  "run_id": "fictional-run",
+  "reviewed_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "reviewer": {
+    "name": "Fictional Method Reviewer",
+    "type": "human",
+    "expertise": "Synthetic example: programming and reproducibility expertise",
+    "conflicts": "Synthetic example; no real person or conflicts."
+  },
+  "reviewed_at": "2026-11-10T00:00:00Z",
+  "scope": "methods",
+  "decision": "methods-reproduced",
+  "reproduction": {
+    "status": "reproduced",
+    "command": "python synthetic_example.py",
+    "notes": "This is a fictional example; no command was actually run."
+  },
+  "checks": {
+    "source_provenance": {
+      "status": "passed",
+      "notes": "Synthetic record identifiers match the fictional fixture."
+    },
+    "data_permissions": {
+      "status": "not-assessed",
+      "notes": "No real data or legal permissions were examined."
+    },
+    "cohort_and_unit": {
+      "status": "not-assessed",
+      "notes": "No human cohort exists in this synthetic example."
+    },
+    "method_reproducibility": {
+      "status": "passed",
+      "notes": "Fictional program reported deterministic synthetic output."
+    },
+    "biological_interpretation": {
+      "status": "not-assessed",
+      "notes": "No biological interpretation was attempted here."
+    },
+    "uncertainty": {
+      "status": "passed",
+      "notes": "Synthetic methods review limits are described clearly."
+    }
+  },
+  "reviewed_finding_ids": [],
+  "rationale": "Fictional example of a structured method-only review. It describes a reproducibility judgment in a made-up test environment. It is not evidence that real cancer data were retrieved or that any biological conclusion is scientifically correct.",
+  "follow_up": [
+    "Replace synthetic examples with independent review of a version-bound real research manifest."
+  ],
+  "clinical_validity": "not-assessed",
+  "synthetic": true
+}
