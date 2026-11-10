@@ -78,6 +78,14 @@ class ResearchPilotTests(unittest.TestCase):
             "civic": civic_fixture(), "cbio_study": study,
             "cbio_mutations": muts,
             "gdc": json.dumps({"data": {"project_id": "TCGA-LUAD", "summary": {"case_count": 585}}}).encode(),
+            "gdc_gene": json.dumps({
+                "timed_out": False, "_shards": {"failed": 0},
+                "aggregations": {"projects": {"buckets": [{
+                    "key": "TCGA-LUAD", "doc_count": 12,
+                    "genes": {"my_genes": {"gene_id": {"buckets": [
+                        {"key": "ENSG00000146648", "doc_count": 12}]}}}
+                }]}}
+            }).encode(),
         }
         self.assertEqual(set(raw), set(SOURCE_URLS))
         with tempfile.TemporaryDirectory() as tmp:
@@ -86,6 +94,7 @@ class ResearchPilotTests(unittest.TestCase):
             snapshot = json.loads((run_dir / "coverage.json").read_text())
             manifest = json.loads((run_dir / "manifest.json").read_text())
             self.assertEqual(snapshot["status"], "unreviewed")
+            self.assertEqual(snapshot["gdc"]["egfr_gene_aggregate"]["reported_gene_associated_case_bucket_count"], 12)
             self.assertEqual(len(manifest["artifacts"]), 3)
             self.assertNotIn("PRIVATE-NOT-PUBLISHED", "".join(
                 p.read_text() for p in run_dir.glob("*.csv")))
