@@ -24,6 +24,45 @@ jobs:
         run: python -m pip install -r requirements-dev.txt
       - name: Offline scientific-data transformation tests
         run: python -m unittest discover -s tests -v
+      - name: Probe documented GDC occurrence alternative (metadata only)
+        run: |
+          python - <<'PY'
+          import json
+          from urllib.parse import urlencode
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError
+          checks = [
+            ("gene-id-and-project", "ssm_occurrences", [
+              ["ssm.consequence.transcript.gene.gene_id", "ENSG00000146648"],
+              ["case.project.project_id", "TCGA-LUAD"]], "case.case_id,ssm.ssm_id"),
+            ("gene-symbol-and-project", "ssm_occurrences", [
+              ["ssm.consequence.transcript.gene.symbol", "EGFR"],
+              ["case.project.project_id", "TCGA-LUAD"]], "case.case_id,ssm.ssm_id"),
+            ("gene-symbol-alone", "ssm_occurrences", [
+              ["ssm.consequence.transcript.gene.symbol", "EGFR"]], "case.case_id,ssm.ssm_id"),
+            ("gene-symbol-ssms", "ssms", [
+              ["consequence.transcript.gene.symbol", "EGFR"],
+              ["cases.project.project_id", "TCGA-LUAD"]], "ssm_id")
+          ]
+          for label, endpoint, clauses, fields in checks:
+              parts=[{"op":"in","content":{"field":field,"value":[value]}} for field,value in clauses]
+              filt=parts[0] if len(parts)==1 else {"op":"and","content":parts}
+              url="https://api.gdc.cancer.gov/"+endpoint+"?"+urlencode({"filters":json.dumps(filt,separators=(",",":")),"fields":fields,"size":2})
+              try:
+                  with urlopen(Request(url,headers={"User-Agent":"open-cancer-review/0.3","Accept":"application/json"}),timeout=25) as res:
+                      raw=res.read(400000)
+                  data=json.loads(raw)
+                  info=data.get("data",{})
+                  page=info.get("pagination",{})
+                  hits=info.get("hits",[])
+                  print("GDC_OCC_PROBE",label,"ok",True,"total",page.get("total"),
+                        "returned",len(hits),"fields",list(hits[0]) if hits else [],
+                        "case_fields",list((hits[0].get("case") or {})) if hits else [],
+                        "warnings_keys",list((data.get("warnings") or {}).keys()),flush=True)
+              except Exception as e:
+                  print("GDC_OCC_PROBE",label,"error",type(e).__name__,
+                        getattr(e,"code",str(e)) ,flush=True)
+          PY
       - name: Retrieve source releases and derive public summary
         run: |
           python results/egfr-luad-evidence-coverage/pilot-20261110/analyze.py \
