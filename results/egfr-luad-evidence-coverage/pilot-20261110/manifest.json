@@ -13,10 +13,10 @@
     {
       "description": "Source hashes, aggregate counts and interpretation limitations",
       "path": "coverage.json",
-      "sha256": "da956273a565e27029534b44f8ccfe5589d840a988bf2430a33bbb39eff0de3e"
+      "sha256": "9bcdca40c6a372abb886e2c60f9fb03dde9cd8e80970572e6ead2297012931ca"
     }
   ],
-  "created_at": "2026-11-10T22:33:33.913171Z",
+  "created_at": "2026-11-10T22:46:44.018948Z",
   "execution": {
     "code_path": "analyze.py",
     "command": "python results/egfr-luad-evidence-coverage/pilot-20261110/analyze.py --out-dir results/egfr-luad-evidence-coverage/pilot-20261110 --run-id pilot-20261110",
@@ -40,13 +40,13 @@
     },
     {
       "accessed_on": "2026-11-10",
-      "query_or_filter": "Project TCGA-LUAD metadata only; format=json",
+      "query_or_filter": "Project TCGA-LUAD metadata; format=json",
       "source_id": "gdc",
       "source_release": "sha256:7d5f5cb309211cd8dd82b7cde1a301c497ab40d3d4fefd4bb55787f5e0f2ef80",
       "url": "https://api.gdc.cancer.gov/projects/TCGA-LUAD?format=json"
     }
   ],
-  "limitations": "Unreviewed descriptive source coverage; no clinical or causal conclusions. GDC EGFR mutation data not included.",
+  "limitations": "Unreviewed descriptive source coverage; no clinical or causal conclusions. GDC EGFR case aggregates do not establish mutation pathogenicity or variant-level concordance.",
   "run_id": "pilot-20261110",
   "schema_version": 1,
   "submitted_by": {

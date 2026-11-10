@@ -32,19 +32,27 @@
     "filter": "EGFR token in molecular_profile; accepted status; DOID:3910 or exact LUAD label when DOID missing",
     "unit": "CIViC evidence item; not a patient, variant prevalence estimate, or independent publication"
   },
-  "created_at": "2026-11-10T22:33:33.913171Z",
+  "created_at": "2026-11-10T22:46:44.018948Z",
   "disease": {
     "doid": "DOID:3910",
     "name": "lung adenocarcinoma"
   },
   "gdc": {
     "case_count_reported": null,
+    "egfr_gene_aggregate": {
+      "error": "Upstream request failed for https://api.gdc.cancer.gov/analysis/top_cases_counts_by_genes?gene_ids=ENSG00000146648: HTTP Error 500: INTERNAL SERVER ERROR",
+      "interpretation": "A null value represents unavailable data, NOT zero EGFR-associated cases.",
+      "reported_gene_associated_case_bucket_count": null,
+      "status": "unavailable",
+      "unit": "GDC gene analysis endpoint project bucket doc_count"
+    },
     "name": "Lung Adenocarcinoma",
-    "note": "Project-level context only. No EGFR mutation calls were queried from GDC.",
+    "note": "Project-level metadata. EGFR summary is obtained separately via GDC's public aggregate endpoint.",
     "project_id": "TCGA-LUAD",
     "unit": "GDC project, not a gene-level observation"
   },
   "gene": {
+    "ensembl_id": "ENSG00000146648",
     "entrez_id": "1956",
     "symbol": "EGFR"
   },
@@ -53,12 +61,19 @@
     "CIViC DOID:3910 uses an exact ontology filter; broader non-small cell lung cancer evidence is excluded even when it might overlap LUAD.",
     "CIViC molecular profiles can be compound; matching the EGFR token does not imply an isolated EGFR alteration.",
     "cBioPortal counts reflect this specific study and assay/profiling coverage, not all lung cancers or prevalence.",
-    "GDC provides project context only; no GDC EGFR variants were fetched in this pilot.",
+    "GDC may report an EGFR gene-associated case bucket from its analysis endpoint, but variant-level records and assay filters were not queried. The count, if present, is not a driver-mutation prevalence estimate. An unavailable response is null, never zero.",
     "Nightly CIViC files and cBioPortal API results are mutable: match source hashes and dates before comparing reruns.",
     "No patient-level records are saved; result has not undergone scientific or clinical review."
   ],
   "schema_version": 1,
   "scope": "Descriptive EGFR/LUAD data coverage; not biomedical or therapeutic inference",
+  "source_availability": {
+    "cbio_mutations": "retrieved",
+    "cbio_study": "retrieved",
+    "civic": "retrieved",
+    "gdc": "retrieved",
+    "gdc_gene": "unavailable"
+  },
   "source_content_sha256": {
     "cbio_mutations": "45a34b6d23101c991dc64d839e1e8cccfc233fa962667084296119d0f8390b1b",
     "cbio_study": "ec074bdee0246a1d7ea7ef25307b831ad8d6f3910a6e6d13c4b7a8d69a559415",
@@ -69,7 +84,8 @@
     "cbio_mutations": "https://www.cbioportal.org/api/molecular-profiles/luad_tcga_pan_can_atlas_2018_mutations/mutations?sampleListId=luad_tcga_pan_can_atlas_2018_all&entrezGeneId=1956",
     "cbio_study": "https://www.cbioportal.org/api/studies/luad_tcga_pan_can_atlas_2018",
     "civic": "https://civicdb.org/downloads/nightly/nightly-ClinicalEvidenceSummaries.tsv",
-    "gdc": "https://api.gdc.cancer.gov/projects/TCGA-LUAD?format=json"
+    "gdc": "https://api.gdc.cancer.gov/projects/TCGA-LUAD?format=json",
+    "gdc_gene": "https://api.gdc.cancer.gov/analysis/top_cases_counts_by_genes?gene_ids=ENSG00000146648"
   },
   "status": "unreviewed"
 }
