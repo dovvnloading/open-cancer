@@ -1,0 +1,22 @@
+{
+  "id": "clinicaltrials",
+  "name": "ClinicalTrials.gov",
+  "publisher": "U.S. National Library of Medicine",
+  "summary": "Public registry of clinical studies and trial metadata, including study status, eligibility, and reported results where available.",
+  "homepage": "https://clinicaltrials.gov/",
+  "data_url": "https://clinicaltrials.gov/search",
+  "documentation_url": "https://clinicaltrials.gov/data-api/about-api",
+  "api_url": "https://clinicaltrials.gov/api/v2/studies",
+  "access": "open",
+  "modalities": [
+    "clinical-trials",
+    "clinical"
+  ],
+  "reuse": {
+    "status": "verify-upstream",
+    "terms_url": "https://clinicaltrials.gov/data-api/about-api",
+    "notes": "Review citation, usage guidance, registry updates, and any applicable third-party material restrictions before redistribution."
+  },
+  "provenance_url": "https://data.nih.gov/data-sources/clinicaltrialsgov-api",
+  "reviewed_on": "2026-11-10"
+}

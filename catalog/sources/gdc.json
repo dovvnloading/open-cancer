@@ -1,0 +1,23 @@
+{
+  "id": "gdc",
+  "name": "NCI Genomic Data Commons (GDC)",
+  "publisher": "U.S. National Cancer Institute",
+  "summary": "Harmonized cancer genomics, clinical and biospecimen data; access depends on the particular project and data type.",
+  "homepage": "https://gdc.cancer.gov/",
+  "data_url": "https://portal.gdc.cancer.gov/",
+  "documentation_url": "https://gdc.cancer.gov/access-data/data-access-processes-and-tools",
+  "api_url": "https://api.gdc.cancer.gov/",
+  "access": "mixed",
+  "modalities": [
+    "genomics",
+    "transcriptomics",
+    "clinical"
+  ],
+  "reuse": {
+    "status": "verify-upstream",
+    "terms_url": "https://gdc.cancer.gov/about-gdc/gdc-faqs",
+    "notes": "Open-access and controlled-access files have different reuse and attribution rules; check the specific study and authorization."
+  },
+  "provenance_url": "https://gdc.cancer.gov/access-data/data-access-processes-and-tools",
+  "reviewed_on": "2026-11-10"
+}

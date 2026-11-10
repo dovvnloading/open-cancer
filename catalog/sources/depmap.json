@@ -1,0 +1,23 @@
+{
+  "id": "depmap",
+  "name": "Cancer Dependency Map (DepMap)",
+  "publisher": "Broad Institute",
+  "summary": "Cancer cell-line molecular and functional dependency datasets, including gene perturbation screens and drug response data.",
+  "homepage": "https://depmap.org/portal/",
+  "data_url": "https://depmap.org/portal/data_page/",
+  "documentation_url": "https://depmap.org/portal/data_page/",
+  "access": "open",
+  "modalities": [
+    "cell-lines",
+    "functional-genomics",
+    "genomics",
+    "transcriptomics"
+  ],
+  "reuse": {
+    "status": "verify-upstream",
+    "terms_url": "https://depmap.org/portal/data_page/",
+    "notes": "DepMap requests release-specific citations and hosts third-party datasets; verify the individual release and reuse terms."
+  },
+  "provenance_url": "https://depmap.org/portal/data_page/",
+  "reviewed_on": "2026-11-10"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "civic",
+  "name": "Clinical Interpretation of Variants in Cancer (CIViC)",
+  "publisher": "CIViC community",
+  "summary": "Community-curated cancer variant interpretations and supporting evidence with an openly documented GraphQL API.",
+  "homepage": "https://civicdb.org/",
+  "data_url": "https://civicdb.org/",
+  "documentation_url": "https://docs.civicdb.org/en/latest/api.html",
+  "api_url": "https://civicdb.org/api/graphql",
+  "access": "open",
+  "modalities": [
+    "variant-evidence",
+    "clinical"
+  ],
+  "reuse": {
+    "status": "verified-permissive",
+    "terms_url": "https://docs.civicdb.org/en/latest/about.html",
+    "license_id": "CC0-1.0",
+    "notes": "CIViC documentation specifies CC0 1.0 for its curated data; retain source provenance and avoid clinical interpretations without review."
+  },
+  "provenance_url": "https://docs.civicdb.org/en/latest/about.html",
+  "reviewed_on": "2026-11-10"
+}
