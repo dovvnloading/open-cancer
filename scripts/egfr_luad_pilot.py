@@ -45,7 +45,7 @@ MAX_GDC_OCCURRENCES = 1000
 GDC_OCCURRENCES = "https://api.gdc.cancer.gov/ssm_occurrences?" + urlencode({
     "filters": json.dumps(GDC_OCCURRENCE_FILTER, separators=(",", ":"), sort_keys=True),
     "fields": "case.case_id,ssm.ssm_id",
-    "size": MAX_GDC_OCCURRENCES, "from": 0,
+    "size": MAX_GDC_OCCURRENCES, "from": 0, "format": "json",
 })
 SOURCE_URLS = {"civic": CIVIC, "cbio_study": CBIO_STUDY,
                "cbio_mutations": CBIO_MUTATIONS, "gdc": GDC,
@@ -62,7 +62,7 @@ def fetch(url: str, retries: int = 2) -> bytes:
     for attempt in range(retries + 1):
         try:
             req = Request(url, headers={"User-Agent": "open-cancer-pilot/0.2",
-                                        "Accept": "application/json,text/tab-separated-values"})
+                                        "Accept": "application/json"})
             with urlopen(req, timeout=40) as response:
                 data = response.read(MAX_SOURCE_BYTES + 1)
                 if len(data) > MAX_SOURCE_BYTES:
