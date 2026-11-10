@@ -28,7 +28,7 @@ def validate_repository(root: Path = ROOT) -> list[str]:
     """Return all structural and local integrity errors (empty list means pass)."""
     errors: list[str] = []
     schemas = {}
-    for kind in ("source", "task", "result"):
+    for kind in ("source", "dataset", "task", "result"):
         schema_path = root / "schemas" / f"{kind}.schema.json"
         schema = load_json(schema_path, errors)
         if isinstance(schema, dict):
@@ -52,9 +52,12 @@ def validate_repository(root: Path = ROOT) -> list[str]:
         return data
 
     source_paths = sorted((root / "catalog" / "sources").glob("*.json"))
+    dataset_paths = sorted((root / "catalog" / "datasets").glob("*.json"))
     task_paths = sorted((root / "tasks").glob("*.json"))
     if not source_paths:
         errors.append("catalog/sources/: no source records")
+    if not dataset_paths:
+        errors.append("catalog/datasets/: no dataset records")
     if not task_paths:
         errors.append("tasks/: no research tasks")
 
@@ -69,6 +72,22 @@ def validate_repository(root: Path = ROOT) -> list[str]:
                 errors.append(f"{path}: duplicate source id {key}")
             if isinstance(key, str):
                 sources[key] = obj
+
+
+    dataset_ids = set()
+    for path in dataset_paths:
+        obj = validate(path, "dataset")
+        if not obj:
+            continue
+        key = obj.get("id")
+        if key != path.stem:
+            errors.append(f"{path}: dataset id must equal file stem")
+        if key in dataset_ids:
+            errors.append(f"{path}: duplicate dataset id {key}")
+        if isinstance(key, str):
+            dataset_ids.add(key)
+        if obj.get("source_id") not in sources:
+            errors.append(f"{path}: dataset references unknown source {obj.get('source_id')}")
 
     tasks = {}
     for path in task_paths:

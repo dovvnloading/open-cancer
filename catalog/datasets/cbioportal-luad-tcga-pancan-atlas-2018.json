@@ -1,0 +1,37 @@
+{
+  "id": "cbioportal-luad-tcga-pancan-atlas-2018",
+  "source_id": "cbioportal",
+  "accession": {
+    "namespace": "cBioPortal study ID",
+    "value": "luad_tcga_pan_can_atlas_2018"
+  },
+  "title": "Lung Adenocarcinoma (TCGA, PanCancer Atlas) in cBioPortal",
+  "description": "TCGA lung adenocarcinoma cohort as represented by a public cBioPortal PanCancer Atlas study. Includes assay-specific genomic and clinical metadata.",
+  "landing_url": "https://www.cbioportal.org/study/summary?id=luad_tcga_pan_can_atlas_2018",
+  "documentation_url": "https://docs.cbioportal.org/web-api-and-clients/",
+  "retrieval_url": "https://www.cbioportal.org/api/studies/luad_tcga_pan_can_atlas_2018",
+  "disease": {
+    "name": "Lung adenocarcinoma",
+    "ontology_id": "DOID:3910"
+  },
+  "modalities": [
+    "genomics",
+    "clinical"
+  ],
+  "unit_of_observation": "Study cohort; individual API endpoints may count samples, patients, or mutation calls",
+  "cohort_definition": "TCGA LUAD PanCancer Atlas study accession luad_tcga_pan_can_atlas_2018; gene-specific coverage depends on profiling assay, profile ID, and sample-list selection.",
+  "access": {
+    "level": "open",
+    "notes": "Public study and API metadata can be queried without credentials; external underlying files and study-specific access/attribution may differ."
+  },
+  "reuse": {
+    "status": "verify-upstream",
+    "terms_url": "https://docs.cbioportal.org/user-guide/faq/",
+    "notes": "Public study access does not imply blanket permission to redistribute all underlying study data; confirm upstream attribution and terms."
+  },
+  "release": {
+    "label": "live study metadata; release not immutably pinned",
+    "mutable": true
+  },
+  "verified_on": "2026-11-10"
+}

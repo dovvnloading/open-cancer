@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Open Cancer dataset-level discovery record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "source_id",
+    "accession",
+    "title",
+    "description",
+    "landing_url",
+    "documentation_url",
+    "retrieval_url",
+    "disease",
+    "modalities",
+    "unit_of_observation",
+    "cohort_definition",
+    "access",
+    "reuse",
+    "release",
+    "verified_on"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "accession": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "namespace",
+        "value"
+      ],
+      "properties": {
+        "namespace": {
+          "type": "string",
+          "minLength": 3
+        },
+        "value": {
+          "type": "string",
+          "minLength": 3
+        }
+      }
+    },
+    "title": {
+      "type": "string",
+      "minLength": 10
+    },
+    "description": {
+      "type": "string",
+      "minLength": 50
+    },
+    "landing_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "documentation_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "retrieval_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "disease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 3
+        },
+        "ontology_id": {
+          "type": "string",
+          "pattern": "^(DOID|NCIT|EFO):[A-Za-z0-9]+$"
+        }
+      }
+    },
+    "modalities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "genomics",
+          "transcriptomics",
+          "clinical",
+          "clinical-trials",
+          "variant-evidence",
+          "cell-lines",
+          "functional-genomics",
+          "proteomics",
+          "imaging"
+        ]
+      }
+    },
+    "unit_of_observation": {
+      "type": "string",
+      "minLength": 10
+    },
+    "cohort_definition": {
+      "type": "string",
+      "minLength": 40
+    },
+    "access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level",
+        "notes"
+      ],
+      "properties": {
+        "level": {
+          "enum": [
+            "open",
+            "mixed",
+            "controlled"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 30
+        }
+      }
+    },
+    "reuse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "terms_url",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "verified-permissive",
+            "verify-upstream"
+          ]
+        },
+        "terms_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "license_id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 30
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "mutable"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 5
+        },
+        "mutable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "verified_on": {
+      "type": "string",
+      "format": "date"
+    }
+  }
+}
