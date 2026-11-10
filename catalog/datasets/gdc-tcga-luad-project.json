@@ -1,0 +1,38 @@
+{
+  "id": "gdc-tcga-luad-project",
+  "source_id": "gdc",
+  "accession": {
+    "namespace": "NCI GDC project ID",
+    "value": "TCGA-LUAD"
+  },
+  "title": "TCGA-LUAD project metadata in NCI Genomic Data Commons",
+  "description": "Authoritative GDC project-level metadata and data-discovery entry point for The Cancer Genome Atlas lung adenocarcinoma project; individual files have varied access controls.",
+  "landing_url": "https://portal.gdc.cancer.gov/projects/TCGA-LUAD",
+  "documentation_url": "https://docs.gdc.cancer.gov/API/Users_Guide/Search_and_Retrieval/",
+  "retrieval_url": "https://api.gdc.cancer.gov/projects/TCGA-LUAD?format=json",
+  "disease": {
+    "name": "Lung adenocarcinoma",
+    "ontology_id": "DOID:3910"
+  },
+  "modalities": [
+    "genomics",
+    "transcriptomics",
+    "clinical"
+  ],
+  "unit_of_observation": "GDC project metadata, not a patient-level or gene-level dataset",
+  "cohort_definition": "TCGA-LUAD project source context; project data includes heterogeneous modalities and access classes. Gene-level analyses require additional file, case and mutation filters.",
+  "access": {
+    "level": "mixed",
+    "notes": "Project metadata is open. Underlying GDC files can be open or controlled; controlled files require authorization, consent compliance, and tokens."
+  },
+  "reuse": {
+    "status": "verify-upstream",
+    "terms_url": "https://gdc.cancer.gov/access-data/data-access-processes-and-tools",
+    "notes": "GDC projects may mix publicly accessible metadata with restricted data and study-level reuse requirements; verify before redistribution."
+  },
+  "release": {
+    "label": "live GDC project metadata; mutable across releases",
+    "mutable": true
+  },
+  "verified_on": "2026-11-10"
+}

@@ -1,0 +1,385 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Open Cancer version-bound scientific review record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "task_id",
+    "run_id",
+    "reviewed_manifest_sha256",
+    "reviewer",
+    "reviewed_at",
+    "scope",
+    "decision",
+    "reproduction",
+    "checks",
+    "reviewed_finding_ids",
+    "rationale",
+    "follow_up",
+    "clinical_validity",
+    "synthetic"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "reviewed_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "type",
+        "expertise",
+        "conflicts"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 3
+        },
+        "type": {
+          "enum": [
+            "human",
+            "agent"
+          ]
+        },
+        "expertise": {
+          "type": "string",
+          "minLength": 15
+        },
+        "conflicts": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "enum": [
+        "metadata",
+        "methods",
+        "scientific-interpretation"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "needs-revision",
+        "methods-reproduced",
+        "scientific-assessment-completed",
+        "disputed"
+      ]
+    },
+    "reproduction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "command",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "not-attempted",
+            "reproduced",
+            "failed"
+          ]
+        },
+        "command": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 20
+        }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_provenance",
+        "data_permissions",
+        "cohort_and_unit",
+        "method_reproducibility",
+        "biological_interpretation",
+        "uncertainty"
+      ],
+      "properties": {
+        "source_provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "notes"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "passed",
+                "concern",
+                "not-assessed"
+              ]
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        },
+        "data_permissions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "notes"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "passed",
+                "concern",
+                "not-assessed"
+              ]
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        },
+        "cohort_and_unit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "notes"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "passed",
+                "concern",
+                "not-assessed"
+              ]
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        },
+        "method_reproducibility": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "notes"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "passed",
+                "concern",
+                "not-assessed"
+              ]
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        },
+        "biological_interpretation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "notes"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "passed",
+                "concern",
+                "not-assessed"
+              ]
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        },
+        "uncertainty": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "notes"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "passed",
+                "concern",
+                "not-assessed"
+              ]
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 20
+            }
+          }
+        }
+      }
+    },
+    "reviewed_finding_ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      }
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 80
+    },
+    "follow_up": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 20
+      }
+    },
+    "clinical_validity": {
+      "const": "not-assessed"
+    },
+    "synthetic": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "scope": {
+            "const": "scientific-interpretation"
+          }
+        },
+        "required": [
+          "scope"
+        ]
+      },
+      "then": {
+        "properties": {
+          "reviewer": {
+            "properties": {
+              "type": {
+                "const": "human"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "scientific-assessment-completed"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "scope": {
+            "const": "scientific-interpretation"
+          },
+          "reviewer": {
+            "properties": {
+              "type": {
+                "const": "human"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "methods-reproduced"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "properties": {
+          "reproduction": {
+            "properties": {
+              "status": {
+                "const": "reproduced"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "reproduction": {
+            "properties": {
+              "status": {
+                "const": "reproduced"
+              }
+            }
+          }
+        },
+        "required": [
+          "reproduction"
+        ]
+      },
+      "then": {
+        "properties": {
+          "reproduction": {
+            "properties": {
+              "command": {
+                "minLength": 4
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

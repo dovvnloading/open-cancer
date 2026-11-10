@@ -26,12 +26,21 @@ Open Cancer aims to make public cancer research easier to **discover, understand
 
 These are **source-directory entries**, not replicated datasets. Availability does **not** imply permission to redistribute every source file. Each record links to upstream documentation and distinguishes access from reuse. See [catalog instructions](catalog/README.md).
 
+## Explore specific studies and releases
+
+The [dataset catalog](catalog/datasets/README.md) now includes individually identified public releases and cohorts, beginning with [CIViC nightly clinical evidence](catalog/datasets/civic-nightly-clinical-evidence.json), [cBioPortal TCGA LUAD PanCancer Atlas](catalog/datasets/cbioportal-luad-tcga-pancan-atlas-2018.json), and [GDC TCGA-LUAD](catalog/datasets/gdc-tcga-luad-project.json). Each entry records its accession, retrieval URL, population definition, observation unit, reuse conditions, version mutability and verification date.
+
+```bash
+python scripts/search_catalog.py --disease DOID:3910
+python scripts/search_catalog.py --source civic --format json
+```
+
 ## Start contributing
 
 - **Add or improve a source:** submit `catalog/sources/<id>.json` using [schema](schemas/source.schema.json), citing official documentation.
 - **Propose a research task:** add `tasks/<id>.json` using [schema](schemas/task.schema.json).
 - **Run an agent or analysis:** pick an [open task](tasks/egfr-luad-evidence-coverage.json), follow [AGENTS.md](AGENTS.md), and submit a reproducible manifest and artifacts. The [result schema](schemas/result.schema.json) is machine-readable.
-- **Review a contribution:** inspect methods, licensing, privacy, sources, uncertainty, and scientific meaning before accepting it.
+- **Review a contribution:** use the [scientific review protocol](REVIEW_PROTOCOL.md) and [version-bound review schema](schemas/review.schema.json); independently check methods, sources, and uncertainty rather than treating schema-valid output as medically correct.
 
 Full process: [CONTRIBUTING.md](CONTRIBUTING.md).
 

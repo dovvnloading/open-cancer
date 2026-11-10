@@ -21,6 +21,8 @@ People in biology, oncology, data engineering, software, clinical research, secu
 
 ## Review expectations
 
+For structured reviews, follow [REVIEW_PROTOCOL.md](REVIEW_PROTOCOL.md) and `schemas/review.schema.json`. Only submit review attestations bound to existing research manifests; reviewer credentials and conflict-of-interest statements need independent human verification. Synthetic examples in `examples/reviews/` are not endorsements.
+
 Automated schema validation is a minimum quality gate, not scientific peer review. A domain expert should verify study suitability, unit of analysis, selection bias, nomenclature, statistical assumptions, and the cited source records. Prefer multiple independent reviewers for clinical claims. A merged pull request is not an endorsement of clinical validity.
 
 Respect the [data policy](DATA_POLICY.md), upstream attribution, and contributors. If you spot an error, open an issue with a source citation and a reproducible explanation — never include personal health information in issues.

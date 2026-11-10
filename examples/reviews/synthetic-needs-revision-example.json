@@ -1,0 +1,53 @@
+{
+  "id": "synthetic-needs-revision-example",
+  "task_id": "fictional-task",
+  "run_id": "fictional-run",
+  "reviewed_manifest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "reviewer": {
+    "name": "Fictional Skeptical Reviewer",
+    "type": "agent",
+    "expertise": "Synthetic example: automated data quality checks",
+    "conflicts": "Synthetic example; no actual agent run or conflict."
+  },
+  "reviewed_at": "2026-11-10T00:00:00Z",
+  "scope": "metadata",
+  "decision": "needs-revision",
+  "reproduction": {
+    "status": "not-attempted",
+    "command": "",
+    "notes": "No methods were executed in this fictional scenario."
+  },
+  "checks": {
+    "source_provenance": {
+      "status": "concern",
+      "notes": "Fictional source identifier is not reproducible or documented."
+    },
+    "data_permissions": {
+      "status": "not-assessed",
+      "notes": "No real data or legal permissions were examined."
+    },
+    "cohort_and_unit": {
+      "status": "concern",
+      "notes": "Made-up study mixes sample and patient denominators."
+    },
+    "method_reproducibility": {
+      "status": "concern",
+      "notes": "Missing script and environment; unable to reproduce computation."
+    },
+    "biological_interpretation": {
+      "status": "not-assessed",
+      "notes": "No biological interpretation was attempted here."
+    },
+    "uncertainty": {
+      "status": "concern",
+      "notes": "Fictional limitations omit important selection bias."
+    }
+  },
+  "reviewed_finding_ids": [],
+  "rationale": "Fictional negative-review example: apparent dataset coverage was calculated using incompatible sample and patient units and omitted essential provenance. This does not reference any real study and must never be cited as an observation.",
+  "follow_up": [
+    "Add explicit cohort criteria, denominator definitions and reproducible methods before submitting a real result."
+  ],
+  "clinical_validity": "not-assessed",
+  "synthetic": true
+}

@@ -1,0 +1,37 @@
+{
+  "id": "civic-nightly-clinical-evidence",
+  "source_id": "civic",
+  "accession": {
+    "namespace": "CIViC export filename",
+    "value": "nightly-ClinicalEvidenceSummaries.tsv"
+  },
+  "title": "CIViC nightly clinical evidence summary (all cancers)",
+  "description": "Public, community-curated molecular profile and clinical evidence summary table. Export includes evidence status, linked source, disease ontology, and evidence identifiers.",
+  "landing_url": "https://civicdb.org/releases",
+  "documentation_url": "https://docs.civicdb.org/en/latest/using/data_releases.html",
+  "retrieval_url": "https://civicdb.org/downloads/nightly/nightly-ClinicalEvidenceSummaries.tsv",
+  "disease": {
+    "name": "Multiple cancer types (pan-cancer)"
+  },
+  "modalities": [
+    "variant-evidence",
+    "clinical"
+  ],
+  "unit_of_observation": "One CIViC evidence item per row, not one patient or independent clinical trial",
+  "cohort_definition": "All evidence summary records in the nightly CIViC export; disease filters and acceptance status must be applied explicitly by consumers. This is not a patient cohort.",
+  "access": {
+    "level": "open",
+    "notes": "Nightly bulk TSV is publicly downloadable without authentication; content changes as CIViC editors update records."
+  },
+  "reuse": {
+    "status": "verified-permissive",
+    "license_id": "CC0-1.0",
+    "terms_url": "https://civicdb.org/releases/licensing",
+    "notes": "CIViC explicitly dedicates published data to the public domain under CC0; retain source/version citations for scientific provenance."
+  },
+  "release": {
+    "label": "nightly latest, mutable (archive exact bytes by SHA-256)",
+    "mutable": true
+  },
+  "verified_on": "2026-11-10"
+}
