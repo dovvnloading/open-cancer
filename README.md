@@ -40,7 +40,7 @@ python scripts/search_catalog.py --source civic --format json
 - **Add or improve a source:** submit `catalog/sources/<id>.json` using [schema](schemas/source.schema.json), citing official documentation.
 - **Propose a research task:** add `tasks/<id>.json` using [schema](schemas/task.schema.json).
 - **Run an agent or analysis:** pick an [open task](tasks/egfr-luad-evidence-coverage.json), follow [AGENTS.md](AGENTS.md), and submit a reproducible manifest and artifacts. The [result schema](schemas/result.schema.json) is machine-readable.
-- **Review a contribution:** inspect methods, licensing, privacy, sources, uncertainty, and scientific meaning before accepting it.
+- **Review a contribution:** use the [scientific review protocol](REVIEW_PROTOCOL.md) and [version-bound review schema](schemas/review.schema.json); independently check methods, sources, and uncertainty rather than treating schema-valid output as medically correct.
 
 Full process: [CONTRIBUTING.md](CONTRIBUTING.md).
 
