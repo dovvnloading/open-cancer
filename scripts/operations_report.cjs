@@ -48,8 +48,12 @@ function examine(input) {
   const deployStatus = deployJob?.conclusion || (deployJob?.status === "in_progress" ? "pending" : "unverified");
   const smokeStatus = smokeJob?.conclusion || (smokeJob?.status === "in_progress" ? "pending" : "unverified");
   const publicLedger = input.public_ledger;
+  const nowMs = Date.parse(generated);
+  const siteAgeMs = nowMs - Date.parse(publicLedger?.checked_at || "");
+  // A past green monitor becomes unknown again if daily checks stop.
   const publicCurrent = publicLedger?.passed === true &&
-    publicLedger.expected_revision === revision;
+    publicLedger.expected_revision === revision &&
+    Number.isFinite(siteAgeMs) && siteAgeMs >= 0 && siteAgeMs <= 2 * 86_400_000;
   const catalogLedger = input.catalog_ledger;
   const sources = catalogLedger?.sources;
   const sourceRows = sources && typeof sources === "object" ? Object.entries(sources) : [];
@@ -59,9 +63,11 @@ function examine(input) {
     healthy: row?.ok === true && !row?.terms_link_error,
     checked_at: row?.last_checked || null,
   }));
+  const catalogAgeMs = nowMs - Date.parse(catalogLedger?.checked_at || "");
   const catalogHealthy = sourceRows.length >= 3 &&
     observedCounts.every(source => source.healthy) &&
-    Array.isArray(catalogLedger.alerts) && catalogLedger.alerts.length === 0;
+    Array.isArray(catalogLedger.alerts) && catalogLedger.alerts.length === 0 &&
+    Number.isFinite(catalogAgeMs) && catalogAgeMs >= 0 && catalogAgeMs <= 10 * 86_400_000;
   const releases = Array.isArray(input.releases) ? input.releases : [];
   const kitRelease = releases.find(release =>
     /^reviewkit-egfr-luad-v1\./.test(release.tag_name || "") &&
