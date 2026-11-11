@@ -1,0 +1,70 @@
+name: Build and optionally deploy Open Cancer Explorer
+
+on:
+  pull_request:
+    paths:
+      - "explorer/**"
+      - "catalog/**"
+      - "results/**"
+      - "reviews/**"
+      - "tasks/**"
+      - "scripts/build_explorer.py"
+      - "schemas/**"
+      - ".github/workflows/explorer-release.yml"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: open-cancer-explorer-release
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Validate and build version-pinned static Explorer
+        run: |
+          python scripts/validate.py
+          python -m unittest discover -s tests -v
+          node --test tests/explorer.test.mjs
+          python scripts/build_explorer.py --output _site
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          index=json.loads(Path('_site/api/v1/index.json').read_text())
+          assert index['revision'] == os.environ['GITHUB_SHA'], 'site not pinned to workflow SHA'
+          assert len(index['datasets']) >= 69
+          print('Built', len(index['datasets']), 'source records at', index['revision'])
+          PY
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    # GitHub Pages must be enabled under Settings > Pages > Source: GitHub Actions.
+    # Then opt in with repo variable OPEN_CANCER_GITHUB_PAGES_ENABLED=true.
+    # Does not update the separate chatgpt.site address.
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.OPEN_CANCER_GITHUB_PAGES_ENABLED == 'true' }}
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Deploy pinned revision to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

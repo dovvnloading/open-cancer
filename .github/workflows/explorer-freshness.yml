@@ -1,0 +1,26 @@
+name: Monitor public Explorer release freshness
+
+on:
+  schedule:
+    - cron: "37 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compare-public-to-main:
+    runs-on: ubuntu-latest
+    env:
+      PUBLIC_INDEX_URL: ${{ vars.OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL || 'https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compare public index with the latest main revision
+        run: |
+          python scripts/check_explorer_freshness.py \
+            --url "$PUBLIC_INDEX_URL" \
+            --expected-revision "$GITHUB_SHA" \
+            --minimum-datasets 69
