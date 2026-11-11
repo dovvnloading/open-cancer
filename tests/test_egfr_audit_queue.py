@@ -69,7 +69,10 @@ class EGFRSourceAuditTests(unittest.TestCase):
         self.assertFalse(audit["independent_domain_review_completed"])
         self.assertFalse(audit["sources"]["civic"]["excluded_record_ids_available_in_original_artifact"])
         self.assertEqual(audit["sources"]["civic"]["upstream_item_verification"], "not-performed")
-        self.assertNotIn("case.case_id", data.decode("utf-8"))
+        # A GDC query may name the case.case_id *field*; it must not
+        # expose individual case UUID values in any reviewer artifact.
+        self.assertNotRegex(data.decode("utf-8"),
+                            r"(?i)\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b")
 
     def test_corruption_and_false_zero_rejected(self):
         bad = [dict(item) for item in self.civic]
