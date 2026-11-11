@@ -54,7 +54,7 @@ jobs:
     # GitHub Pages must be enabled under Settings > Pages > Source: GitHub Actions.
     # Then opt in with repo variable OPEN_CANCER_GITHUB_PAGES_ENABLED=true.
     # Does not update the separate chatgpt.site address.
-    if: ${{ github.event_name != 'pull_request' && vars.OPEN_CANCER_GITHUB_PAGES_ENABLED == 'true' }}
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.OPEN_CANCER_GITHUB_PAGES_ENABLED == 'true' }}
     needs: build
     runs-on: ubuntu-latest
     environment:
