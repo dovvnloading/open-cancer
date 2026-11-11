@@ -8,9 +8,11 @@ Open Cancer aims to make public cancer research easier to **discover, understand
 
 Search by accession, disease, or source. Open a dataset to inspect its unit of observation, cohort, access conditions, reuse terms, and retrieval link. The EGFR lung adenocarcinoma pilot connects its research question to the exact queries, code, and evidence tables behind the published snapshot.
 
-[Open the Explorer (historical public demo)](https://open-cancer-explorer.lagging.chatgpt.site/) · [Explore the EGFR pilot](https://open-cancer-explorer.lagging.chatgpt.site/?view=pilot) · [Download the demo JSON index](https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json) · [API and local build guide](docs/explorer-api.md)
+[Open the live Explorer (GitHub Pages)](https://dovvnloading.github.io/open-cancer/) · [Explore the EGFR pilot](https://dovvnloading.github.io/open-cancer/?view=pilot) · [Download the current JSON index](https://dovvnloading.github.io/open-cancer/api/v1/index.json) · [API and local build guide](docs/explorer-api.md)
 
-**Publication freshness warning:** The public demo was confirmed on November 11, 2026 to be serving an **older Git revision** than `main`. It should not be mistaken for the latest validated research index. Check the [automated live-release status](https://github.com/dovvnloading/open-cancer/issues/29) and [deployment instructions](docs/explorer-releases.md); until a current production deployment passes its smoke test, build the latest Explorer from a pinned source checkout. A passing repository build is not a live deployment.
+**Production verified:** On November 11, 2026, [the Pages deployment](https://github.com/dovvnloading/open-cancer/actions/runs/43041807429) completed its build, deployment, and **live** smoke test for commit `71c58b3302fd0bb339570a5d160ce115f8367d11`. The [public release monitor](https://github.com/dovvnloading/open-cancer/actions/runs/43041948889) independently confirmed the live JSON index matched that SHA. For newer commits, consult [live release health](https://github.com/dovvnloading/open-cancer/issues/29) and [release instructions](docs/explorer-releases.md); a successful build alone is not proof of a published site.
+
+The [older, separately hosted demonstration](https://open-cancer-explorer.lagging.chatgpt.site/) is **historical**, may remain stale, and is *not* updated by this repository's GitHub Pages deployment pipeline.
 
 ## Operations and research-integrity reporting
 
