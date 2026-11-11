@@ -1,0 +1,10 @@
+[
+  {
+    "task_id": "egfr-luad-evidence-coverage",
+    "run_id": "pilot-20261110",
+    "manifest_sha256": "9fce9beaaf873b5f0b0a14e338c3b372d8aa5d19c03be11b911ea1eb2b92931e",
+    "publication_status": "legacy-featured",
+    "recorded_on": "2026-11-10",
+    "rationale": "Preserves the previously public EGFR/LUAD demonstration as a fixed, nonclinical legacy pilot. This is a discoverability decision only: project methods reproduction is documented, while independent scientific interpretation, reviewer credentials, source rights adjudication, and clinical validity remain unverified."
+  }
+]
