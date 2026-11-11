@@ -28,6 +28,8 @@ jobs:
         run: node --test tests/catalog_ledger.test.cjs
       - name: Test public Explorer health alert formatting
         run: node --test tests/explorer_health_ledger.test.cjs
+      - name: Test weekly operations report evidence classification
+        run: node --test tests/operations_report.test.cjs
       - name: Build the Explorer and its JSON API
         run: python scripts/build_explorer.py --output _site
       - name: Save the Explorer for this revision
