@@ -1,0 +1,134 @@
+name: Publish weekly Open Cancer operations report
+
+on:
+  schedule:
+    # After Monday's upstream catalog and public-release monitors.
+    - cron: "17 12 * * 1"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/operations-report.yml"
+      - "scripts/operations_report.cjs"
+      - "tests/operations_report.test.cjs"
+      - "docs/reports/**"
+
+permissions:
+  contents: read
+  actions: read
+  issues: write
+
+concurrency:
+  group: open-cancer-weekly-operations-report
+  cancel-in-progress: false
+
+jobs:
+  reporting:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test conservative report classification offline
+        run: node --test tests/operations_report.test.cjs
+      - name: Gather current GitHub evidence and publish durable status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const {examine, render} =
+              require(process.env.GITHUB_WORKSPACE + '/scripts/operations_report.cjs');
+            const {decodeLedger} =
+              require(process.env.GITHUB_WORKSPACE + '/scripts/catalog_ledger.cjs');
+            const {parsePrevious} =
+              require(process.env.GITHUB_WORKSPACE + '/scripts/explorer_health_ledger.cjs');
+            const {owner, repo} = context.repo;
+            const branch = await github.rest.repos.getBranch({owner, repo, branch: 'main'});
+            const revision = branch.data.commit.sha;
+            const workflows = await github.rest.actions.listWorkflowRunsForRepo({
+              owner, repo, per_page: 100, branch: 'main',
+            });
+            const runs = workflows.data.workflow_runs || [];
+            const build = runs.find(run =>
+              run.name === 'Build and optionally deploy Open Cancer Explorer' &&
+              run.head_sha === revision && run.event === 'push');
+            let deploymentJobs = [];
+            if (build) {
+              const jobs = await github.rest.actions.listJobsForWorkflowRun({
+                owner, repo, run_id: build.id, per_page: 100,
+              });
+              deploymentJobs = jobs.data.jobs || [];
+            }
+            const releaseResponse = await github.rest.repos.listReleases({
+              owner, repo, per_page: 20,
+            });
+            const issues = await github.paginate(github.rest.issues.listForRepo,
+              {owner, repo, state: 'all', per_page: 100});
+            const issueRows = issues.filter(issue => !issue.pull_request);
+            const byTitle = title => issueRows.find(issue => issue.title === title);
+            let catalogHealth = null, publicHealth = null;
+            try {
+              catalogHealth = decodeLedger(
+                byTitle('Catalog metadata health ledger (automated)')?.body);
+            } catch (err) {
+              core.warning('Catalog observation ledger unavailable or invalid: ' + err.message);
+            }
+            try {
+              publicHealth = parsePrevious(
+                byTitle('Public Explorer release health (automated)')?.body);
+            } catch (err) {
+              core.warning('Public release ledger unavailable or invalid: ' + err.message);
+            }
+            const data = {
+              generated_at: new Date().toISOString(),
+              revision,
+              branch_protected: branch.data.protected === true,
+              workflow_runs: runs,
+              deploy_jobs: deploymentJobs,
+              releases: releaseResponse.data,
+              issue_states: issueRows.map(issue =>
+                ({number: issue.number, title: issue.title, state: issue.state})),
+              catalog_ledger: catalogHealth,
+              public_ledger: publicHealth,
+            };
+            const summary = examine(data);
+            const report = render(summary);
+            fs.writeFileSync('operations-report.md', report);
+            fs.writeFileSync('operations-report.json',
+              JSON.stringify(summary, null, 2) + '\n');
+            await core.summary.addRaw(report).write();
+            const title = 'Open Cancer weekly operations report (automated)';
+            const existing = byTitle(title);
+            const body = [
+              'This issue is an automated **status report**, not a scientific validation.',
+              'Reports are updated on Monday, after monitoring runs, and on explicit dispatch.',
+              'Individual reports are also downloadable from the Actions run artifacts.',
+              '',
+              report,
+            ].join('\n').slice(0, 30000);
+            let number;
+            if (existing) {
+              number = existing.number;
+              await github.rest.issues.update({
+                owner, repo, issue_number: number, body, state: 'open',
+              });
+              // Append a permanent dated summary, not a silent overwrite.
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: number,
+                body: report.slice(0, 15000),
+              });
+            } else {
+              const created = await github.rest.issues.create({
+                owner, repo, title, body,
+              });
+              number = created.data.number;
+            }
+            core.info('Updated durable operations report issue #' + number);
+      - name: Retain markdown and machine-readable operational snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: open-cancer-operations-report
+          path: |
+            operations-report.md
+            operations-report.json
+          retention-days: 90
+          if-no-files-found: error
