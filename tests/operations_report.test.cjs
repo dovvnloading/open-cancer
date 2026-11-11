@@ -46,7 +46,10 @@ function fixture() {
       {number: 14, state: "open", title: "Deployment"},
       {number: 18, state: "open", title: "Governance"},
       {number: 15, state: "closed", title: "Catalog monitoring"},
-      {number: 11, state: "open", title: "Independent review"},
+      {number: 11, state: "closed", title: "Archived reviewer invitation"},
+      {number: 34, state: "open", title: "CIViC evidence QA"},
+      {number: 35, state: "open", title: "GDC/cBioPortal QA"},
+      {number: 36, state: "open", title: "Independent human expert assessment"},
     ],
   };
 }
@@ -69,6 +72,10 @@ test("passing build is never promoted to deployed or scientifically validated", 
   assert.match(md, /scientific or clinical validation/i);
   assert.match(md, /#14/);
   assert.doesNotMatch(md, /#15\]\(/);
+  assert.doesNotMatch(md, /#11\]\(/);
+  assert.match(md, /#34\]\(/);
+  assert.match(md, /#35\]\(/);
+  assert.match(md, /#36\]\(/);
 });
 
 test("older or unrelated successful runs cannot override current-head checks", () => {
