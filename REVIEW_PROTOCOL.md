@@ -30,7 +30,7 @@ reviews/<task-id>/<run-id>/<review-id>.json
 
 matching [the review schema](schemas/review.schema.json). The record points to the **exact** SHA-256 of the result's `manifest.json`, the reviewed finding IDs, reproducibility command and outcomes, decision, typed checks, conflicts and outstanding work. The validator refuses stale review hashes, missing result manifests, mismatched IDs, or invented finding references.
 
-The review schema distinguishes `methods-reproduced` from `scientific-assessment-completed`; agents can identify concerns and reproduce methods but cannot mark a scientific interpretation assessment complete. Credentials are **self-declared** in the record and must be checked by project maintainers separately. A machine-valid review is **not** an identity check, a clinical endorsement, or a peer-reviewed publication.
+The review schema distinguishes `methods-reproduced` from `scientific-assessment-completed`; agents can identify concerns and reproduce methods but cannot mark a scientific interpretation assessment complete. Credentials are **self-declared** in the record and must be checked by project maintainers separately. Even a submitted `scientific-assessment-completed` record indicates that a human reports an assessment with substantive source/cohort/biological/uncertainty checks; it **does not prove verified identity, independence, clinical correctness, or endorsement**. A disputed or needs-revision assessment must remain visibly contested in the Explorer. A machine-valid review is **not** an identity check, a clinical endorsement, or a peer-reviewed publication.
 
 ## Outcomes
 

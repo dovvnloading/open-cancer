@@ -75,6 +75,7 @@ def validate_repository(root: Path = ROOT) -> list[str]:
 
 
     dataset_ids = set()
+    datasets_with_context = []
     for path in dataset_paths:
         obj = validate(path, "dataset")
         if not obj:
@@ -88,6 +89,8 @@ def validate_repository(root: Path = ROOT) -> list[str]:
             dataset_ids.add(key)
         if obj.get("source_id") not in sources:
             errors.append(f"{path}: dataset references unknown source {obj.get('source_id')}")
+        if obj.get("research_context"):
+            datasets_with_context.append((path, obj))
 
     tasks = {}
     for path in task_paths:
@@ -103,6 +106,30 @@ def validate_repository(root: Path = ROOT) -> list[str]:
             for source_id in obj.get("input_source_ids", []):
                 if source_id not in sources:
                     errors.append(f"{path}: unknown source id {source_id}")
+
+    # Research context is an explicit relationship to a particular submitted run,
+    # not an inferred claim that every item in the upstream dataset is gene-specific.
+    for dataset_path, record in datasets_with_context:
+        for relation in record.get("research_context", []):
+            task_id, run_id = relation.get("task_id"), relation.get("run_id")
+            if task_id not in tasks:
+                errors.append(f"{dataset_path}: research context references unknown task {task_id}")
+                continue
+            if not (isinstance(task_id, str) and isinstance(run_id, str)
+                    and task_id.replace("-", "").isalnum() and run_id.replace("-", "").isalnum()):
+                errors.append(f"{dataset_path}: research context has invalid task or run identifier")
+                continue
+            result_path = root / "results" / task_id / run_id / "manifest.json"
+            if not result_path.is_file():
+                errors.append(f"{dataset_path}: research context references missing result {task_id}/{run_id}")
+                continue
+            result_obj = load_json(result_path, errors)
+            if not isinstance(result_obj, dict) or (result_obj.get("task_id"), result_obj.get("run_id")) != (task_id, run_id):
+                errors.append(f"{dataset_path}: research context points to mismatched result")
+                continue
+            if record.get("source_id") not in [item.get("source_id") for item in result_obj.get("inputs", [])
+                                                 if isinstance(item, dict)]:
+                errors.append(f"{dataset_path}: linked research result did not use this source")
 
     for path in sorted((root / "results").glob("*/*/manifest.json")):
         obj = validate(path, "result")
