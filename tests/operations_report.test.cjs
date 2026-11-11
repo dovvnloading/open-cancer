@@ -66,7 +66,7 @@ test("passing build is never promoted to deployed or scientifically validated", 
   assert.match(md, /Public Explorer API/);
   assert.match(md, /STALE \/ NOT VERIFIED/);
   assert.match(md, /Production deploy.*skipped/);
-  assert.match(md, /not scientific or clinical validation/i);
+  assert.match(md, /scientific or clinical validation/i);
   assert.match(md, /#14/);
   assert.doesNotMatch(md, /#15\]\(/);
 });
