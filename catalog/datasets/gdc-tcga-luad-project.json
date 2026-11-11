@@ -34,5 +34,15 @@
     "label": "live GDC project metadata; mutable across releases",
     "mutable": true
   },
-  "verified_on": "2026-11-10"
+  "verified_on": "2026-11-10",
+  "research_context": [
+    {
+      "task_id": "egfr-luad-evidence-coverage",
+      "run_id": "pilot-20261110",
+      "gene_symbol": "EGFR",
+      "disease_label": "LUAD",
+      "relationship": "upstream-source",
+      "note": "The TCGA-LUAD GDC project metadata was consulted for the EGFR/LUAD pilot; inclusion does not mean that all project cases were EGFR-assayed or mutation-positive."
+    }
+  ]
 }

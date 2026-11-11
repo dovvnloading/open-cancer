@@ -10,7 +10,10 @@ export function permalink(params, key, value) {
 export function searchText(row, sourceName) {
   return [row.id, row.title, row.description, row.accession.namespace, row.accession.value,
     row.disease.name, row.disease.ontology_id, row.cohort_definition,
-    row.unit_of_observation, row.source_id, sourceName, ...row.modalities].join(" ").toLowerCase();
+    row.unit_of_observation, row.source_id, sourceName, ...row.modalities,
+    ...(row.research_context || []).flatMap(context =>
+      [context.gene_symbol, context.disease_label, context.task_id])
+  ].join(" ").toLowerCase();
 }
 
 export function filterDatasets(rows, searchable, {q, source, modality, access}) {
@@ -40,4 +43,30 @@ export function pilotMeasures(coverage) {
 export function reviewsFor(pilot, reviews) {
   return reviews.filter(review => !review.synthetic && review.task_id === pilot.task_id
     && review.run_id === pilot.run_id && review.reviewed_manifest_sha256 === pilot.manifest_sha256);
+}
+
+/** Publication of an assessment is not verification of expertise or independence. */
+export function scientificReviewSummary(reviews) {
+  const expert = reviews.filter(r => r.scope === "scientific-interpretation" && r.reviewer?.type === "human");
+  const disputed = expert.some(r => r.decision === "disputed");
+  const revision = expert.some(r => r.decision === "needs-revision");
+  const assessed = expert.some(r => r.decision === "scientific-assessment-completed"
+    && ["source_provenance", "cohort_and_unit", "biological_interpretation", "uncertainty"]
+      .every(key => ["passed", "concern"].includes(r.checks?.[key]?.status)));
+  if (disputed) return {
+    heading: "Scientific interpretation disputed",
+    explanation: "An expert review disputes the analysis. Independent scientific validity is not established; inspect the conflicting review and its evidence."
+  };
+  if (revision) return {
+    heading: "Scientific revisions requested",
+    explanation: "An expert reviewer requested corrections. Independent scientific validity remains unestablished; inspect the review and outstanding work."
+  };
+  if (assessed) return {
+    heading: "Scientific assessment submitted — verification pending",
+    explanation: "A human scientific assessment is on record, but Open Cancer does not independently verify reviewer credentials or independence in this API. This is not scientific endorsement or clinical validation."
+  };
+  return {
+    heading: "Independent scientific interpretation pending",
+    explanation: "No independently credential-verified scientific interpretation is established. A computational methods reproduction does not change this status."
+  };
 }

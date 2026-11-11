@@ -327,6 +327,50 @@
                 "const": "human"
               }
             }
+          },
+          "checks": {
+            "properties": {
+              "source_provenance": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "passed",
+                      "concern"
+                    ]
+                  }
+                }
+              },
+              "cohort_and_unit": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "passed",
+                      "concern"
+                    ]
+                  }
+                }
+              },
+              "biological_interpretation": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "passed",
+                      "concern"
+                    ]
+                  }
+                }
+              },
+              "uncertainty": {
+                "properties": {
+                  "status": {
+                    "enum": [
+                      "passed",
+                      "concern"
+                    ]
+                  }
+                }
+              }
+            }
           }
         }
       }

@@ -65,6 +65,14 @@ class ResearchPilotTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             cbio_analysis(study, json.dumps(changed).encode())
 
+    def test_gdc_metadata_references_occurrences_not_legacy_aggregate(self):
+        metadata = gdc_analysis(json.dumps({
+            "data": {"project_id": "TCGA-LUAD", "summary": {}}
+        }).encode())
+        self.assertIn("/ssm_occurrences", metadata["note"])
+        self.assertNotIn("aggregate endpoint", metadata["note"])
+        self.assertIn("denominator", metadata["note"])
+
     def test_gdc_requires_project_id(self):
         with self.assertRaises(ValueError):
             gdc_analysis(json.dumps({"data": {"project_id": "TCGA-BRCA"}}).encode())

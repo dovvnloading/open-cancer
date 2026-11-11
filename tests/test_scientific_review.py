@@ -34,10 +34,23 @@ class ReviewContractTests(unittest.TestCase):
         item["reproduction"]["command"] = ""
         self.assertTrue(list(Draft202012Validator(self.schema).iter_errors(item)))
 
+    def test_completed_scientific_assessment_requires_substantive_checks(self):
+        example = json.loads((ROOT / "examples/reviews/synthetic-methods-example.json").read_text())
+        example["scope"] = "scientific-interpretation"
+        example["decision"] = "scientific-assessment-completed"
+        example["reviewer"]["type"] = "human"
+        validator = Draft202012Validator(self.schema, format_checker=FormatChecker())
+        for item in example["checks"].values():
+            item["status"] = "not-assessed"
+        self.assertTrue(list(validator.iter_errors(example)))
+        for key in ("source_provenance", "cohort_and_unit", "biological_interpretation", "uncertainty"):
+            example["checks"][key]["status"] = "concern"
+        self.assertEqual([], list(validator.iter_errors(example)))
+
     def test_review_does_not_apply_to_changed_result_manifest(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            for dirname in ("schemas", "catalog", "tasks", "examples"):
+            for dirname in ("schemas", "catalog", "tasks", "examples", "results"):
                 shutil.copytree(ROOT / dirname, root / dirname)
             name = "synthetic-check"
             result_dir = root / "results/egfr-luad-evidence-coverage" / name

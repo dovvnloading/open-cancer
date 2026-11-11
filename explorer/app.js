@@ -1,4 +1,4 @@
-import {filterDatasets, pageFor, permalink, pilotMeasures, reviewsFor, searchText} from "./catalog.mjs";
+import {filterDatasets, pageFor, permalink, pilotMeasures, reviewsFor, scientificReviewSummary, searchText} from "./catalog.mjs";
 
 const main = document.querySelector("main");
 const params = new URLSearchParams(location.search);
@@ -143,6 +143,7 @@ function catalog() {
     body.replaceChildren();
     for (const row of matches.slice(start, end)) {
       const title = group("td", "", link(row.title, permalink(params, "dataset", row.id)), el("code", row.accession.value, "accession"));
+      if (row.research_context?.length) title.append(el("span", "Linked via research pilot · not cohort matched", "research-link"));
       body.append(group("tr", "", title, el("td", sourceName(row.source_id)), el("td", row.disease.name),
         group("td", "", el("span", titleCase(row.access.level), "access " + row.access.level))));
     }
@@ -218,8 +219,11 @@ function dataset(id) {
     link("Retrieval endpoint", row.retrieval_url), link("Reuse terms", row.reuse.terms_url), link("Catalog record", row.record_url)];
   if (row.citation_url) links.push(link("Study citation", row.citation_url));
   const aside = group("aside", "side", el("h2", "Source links"), list(links));
-  if (pilotDatasets.includes(id)) {
-    aside.append(section("Related research", link("EGFR lung adenocarcinoma pilot", "?view=pilot")));
+  if (row.research_context?.length) {
+    aside.append(section("Related research",
+      ...row.research_context.map(context => group("div", "research-context",
+        el("p", context.note),
+        link("EGFR lung adenocarcinoma pilot", "?view=pilot")))));
   }
   main.replaceChildren(pageHead(row.title, row.description, sourceName(row.source_id) + "  /  " + row.accession.value),
     group("div", "wrap page-body", summary, aside));
@@ -249,9 +253,10 @@ function renderPilot() {
     el("p", "Each source counts a different kind of record. The cohorts and units do not support pooling these counts or estimating prevalence or treatment effects.", "lead-note"),
     measures);
   const reviewState = section("Review record", reviewInfo);
-  if (!reviews.some(r => r.scope === "scientific-interpretation")) {
-    reviewState.append(el("p", "Independent scientific interpretation is pending."));
-  }
+  const scientificStatus = scientificReviewSummary(reviews);
+  reviewState.append(group("div", "review-summary",
+    el("strong", scientificStatus.heading),
+    el("p", scientificStatus.explanation)));
   reviewState.append(link("Scientific review protocol", project + "/blob/main/REVIEW_PROTOCOL.md"));
   const content = group("div", "", observed, section("Interpretation limits", list(coverage.limitations, "notes")), reviewState);
   const sourceLinks = pilot.artifacts.map(a => link(a.path, a.url));
@@ -277,6 +282,11 @@ async function start() {
       throw Error("Unrecognized index");
     }
     sources = new Map(index.sources.map(row => [row.id, row]));
+    const revision = index.revision;
+    if (/^[0-9a-f]{40}$/.test(revision)) {
+      document.querySelector("footer .footer-inner").append(
+        link("Catalog revision " + revision.slice(0, 12), project + "/commit/" + revision, "revision"));
+    }
     if (params.has("dataset")) dataset(params.get("dataset"));
     else if (params.get("view") === "pilot") renderPilot();
     else catalog();
