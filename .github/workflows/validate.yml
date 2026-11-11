@@ -40,3 +40,51 @@ jobs:
           name: open-cancer-explorer-${{ github.sha }}
           path: _site/
           if-no-files-found: error
+
+
+  publication-review:
+    # PR-only defense in depth. Source the evaluator from the trusted base SHA,
+    # not from files submitted in the PR being checked.
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+      - name: Require independent current-head approval for editorial registry changes
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {touchesRegistry, evaluateEditorialReview} =
+              require(process.env.GITHUB_WORKSPACE + '/scripts/publication_pr_gate.cjs');
+            const {owner, repo} = context.repo;
+            const request = context.payload.pull_request;
+            if (!request) {
+              core.setFailed('Publication review check requires a real pull request event');
+              return;
+            }
+            const number = request.number;
+            const files = await github.paginate(github.rest.pulls.listFiles,
+              {owner, repo, pull_number: number, per_page: 100});
+            if (!touchesRegistry(files)) {
+              core.info('Publication registry unchanged: separate editorial approval not required');
+              return;
+            }
+            const reviews = await github.paginate(github.rest.pulls.listReviews,
+              {owner, repo, pull_number: number, per_page: 100});
+            const verdict = evaluateEditorialReview({
+              files,
+              reviews,
+              author: request.user.login,
+              headSha: request.head.sha,
+            });
+            if (!verdict.ok) {
+              core.setFailed(verdict.reason + ' (not scientific or clinical validation).');
+              return;
+            }
+            core.info('Editorial registry approved on exact head by ' +
+              verdict.reviewer + '; independently verify data rights and science.');
