@@ -4,7 +4,7 @@ The Explorer serves a read-only snapshot under `api/v1/` relative to the site's 
 
 | Endpoint | JSON value |
 | --- | --- |
-| `api/v1/index.json` | Object containing `version` (1), `repository`, `revision` (full Git commit SHA), and all five collections below |
+| `api/v1/index.json` | Object containing `version` (1), `repository`, `revision` (full Git commit SHA), and all six collections below |
 | `api/v1/datasets.json` | Array of accession records with disease, modality, observation unit, cohort, access, reuse, release and verification date |
 | `api/v1/sources.json` | Array of source-directory records with publisher and upstream documentation |
 | `api/v1/questions.json` | Array of research tasks with question, input source IDs, status and requested deliverables |
@@ -42,7 +42,7 @@ Open the server's root URL for the Explorer or append an endpoint path for JSON.
 
 ## Publication and review boundaries
 
-Passing JSON Schema checks, validating artifact hashes, or appearing in an API is **not** scientific verification. `catalog/publication-decisions.json` is a separate editorial registry. Each featured pilot must be bound to the exact original manifest SHA-256 and approved through an explicit maintainer review. Protect this registry with CODEOWNERS-required review and branch protection; a tracked file alone cannot authenticate a human curator.
+Passing JSON Schema checks, validating artifact hashes, or appearing in an API is **not** scientific verification. `catalog/publication-decisions.json` is a separate editorial registry. Each featured pilot must be bound to the exact original manifest SHA-256 and approved through an explicit maintainer review. Protect this registry with CODEOWNERS-required review and branch protection; a tracked file alone cannot authenticate a human curator. See the [step-by-step governance and second-maintainer setup](publication-governance.md).
 
 The EGFR/LUAD pilot has a narrowly scoped `legacy-featured` decision so its existing public view remains accessible. This decision is **not** a retrospective independent scientific assessment or clinical endorsement. New results without explicit curation belong in `experimental_results`, not `pilots`; no evidence, disagreement, or negative finding is deleted. The Explorer pilot view only consumes featured pilots.
 

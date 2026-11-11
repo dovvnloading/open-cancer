@@ -1,2 +1,4 @@
-# Protect editorial publication decisions with a required maintainer review.
+# Ownership routing only; enforcement requires active branch rules/protected main.
+# A separate trusted maintainer is required to approve owner-authored PRs.
+# The author cannot independently approve their own research publication decision.
 /catalog/publication-decisions.json @dovvnloading

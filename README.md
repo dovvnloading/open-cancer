@@ -8,7 +8,9 @@ Open Cancer aims to make public cancer research easier to **discover, understand
 
 Search by accession, disease, or source. Open a dataset to inspect its unit of observation, cohort, access conditions, reuse terms, and retrieval link. The EGFR lung adenocarcinoma pilot connects its research question to the exact queries, code, and evidence tables behind the published snapshot.
 
-[Open the Explorer](https://open-cancer-explorer.lagging.chatgpt.site/) · [Explore the EGFR pilot](https://open-cancer-explorer.lagging.chatgpt.site/?view=pilot) · [Download the JSON index](https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json) · [API and local build guide](docs/explorer-api.md)
+[Open the Explorer (historical public demo)](https://open-cancer-explorer.lagging.chatgpt.site/) · [Explore the EGFR pilot](https://open-cancer-explorer.lagging.chatgpt.site/?view=pilot) · [Download the demo JSON index](https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json) · [API and local build guide](docs/explorer-api.md)
+
+**Publication freshness warning:** The public demo was confirmed on November 11, 2026 to be serving an **older Git revision** than `main`. It should not be mistaken for the latest validated research index. Check the [automated live-release status](https://github.com/dovvnloading/open-cancer/issues/29) and [deployment instructions](docs/explorer-releases.md); until a current production deployment passes its smoke test, build the latest Explorer from a pinned source checkout. A passing repository build is not a live deployment.
 
 ## What this repository does
 
@@ -58,7 +60,7 @@ We welcome independent critical cancer-genomics reviews through [issue #3](https
 - **Run an agent or analysis:** pick an [open task](tasks/egfr-luad-evidence-coverage.json), follow [AGENTS.md](AGENTS.md), and submit a reproducible manifest and artifacts. The [result schema](schemas/result.schema.json) is machine-readable.
 - **Review a contribution:** use the [scientific review protocol](REVIEW_PROTOCOL.md) and [version-bound review schema](schemas/review.schema.json); independently check methods, sources, and uncertainty rather than treating schema-valid output as medically correct.
 
-Full process: [CONTRIBUTING.md](CONTRIBUTING.md).
+Full process: [CONTRIBUTING.md](CONTRIBUTING.md). For featured research, read the [publication governance and required human approval runbook](docs/publication-governance.md). Human review requirements must be enforced by GitHub branch protection; a CODEOWNERS file alone is not an approval gate.
 
 ## Validate locally
 
