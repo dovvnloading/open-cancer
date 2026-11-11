@@ -28,7 +28,7 @@ def validate_repository(root: Path = ROOT) -> list[str]:
     """Return all structural and local integrity errors (empty list means pass)."""
     errors: list[str] = []
     schemas = {}
-    for kind in ("source", "dataset", "task", "result", "review"):
+    for kind in ("source", "dataset", "task", "result", "review", "publication"):
         schema_path = root / "schemas" / f"{kind}.schema.json"
         schema = load_json(schema_path, errors)
         if isinstance(schema, dict):
@@ -188,6 +188,38 @@ def validate_repository(root: Path = ROOT) -> list[str]:
             actual = hashlib.sha256(actual_path.read_bytes()).hexdigest()
             if actual != expected:
                 errors.append(f"{path}: SHA-256 mismatch for {actual_path.name}")
+
+    # Only an auditable, SHA-pinned editorial decision can feature a submitted result.
+    publication_path = root / "catalog" / "publication-decisions.json"
+    decisions = load_json(publication_path, errors)
+    if not isinstance(decisions, list):
+        errors.append(f"{publication_path}: expected an array of publication decisions")
+    else:
+        seen = set()
+        for index, decision in enumerate(decisions):
+            if not isinstance(decision, dict):
+                errors.append(f"{publication_path}[{index}]: expected a publication decision object")
+                continue
+            validator = schemas.get("publication")
+            if validator:
+                for err in validator.iter_errors(decision):
+                    errors.append(f"{publication_path}[{index}]: {err.message}")
+            task_id, run_id = decision.get("task_id"), decision.get("run_id")
+            pair = (task_id, run_id)
+            if pair in seen:
+                errors.append(f"{publication_path}: duplicate publication decision {pair}")
+            seen.add(pair)
+            if (decision.get("publication_status") == "legacy-featured"
+                    and pair != ("egfr-luad-evidence-coverage", "pilot-20261110")):
+                errors.append(f"{publication_path}: legacy status is reserved for the original EGFR/LUAD pilot")
+            if not all(isinstance(part, str) for part in pair):
+                continue
+            manifest = root / "results" / task_id / run_id / "manifest.json"
+            if not manifest.is_file():
+                errors.append(f"{publication_path}: missing manifest for publication decision {pair}")
+                continue
+            if hashlib.sha256(manifest.read_bytes()).hexdigest() != decision.get("manifest_sha256"):
+                errors.append(f"{publication_path}: stale publication pin for {pair}")
 
     # Synthetic examples demonstrate the schema, not a real reviewer attestation.
     for path in sorted((root / "examples" / "reviews").glob("*.json")):
