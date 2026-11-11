@@ -36,6 +36,12 @@ Package contents: the original manifest, coverage summary, CIViC evidence ID tab
 
 The manifest SHA-256 identifies the **exact original reviewed snapshot**, even when the public portal's live release changes. The bundle and ZIP are deterministic across identical checkouts. The builder makes **no external network calls**.
 
+## Durable release and provenance status
+
+The 90-day CI packet artifact is for build inspection, **not permanent distribution**. Versioned, checksum-verified public releases are managed by the [reviewer release runbook](../../docs/reviewer-release.md). No release is claimed to exist merely because a workflow or candidate URL exists. A maintainer must publish an explicitly reviewed tag, and set the pinned-release monitor variables after successful verification.
+
+`packet-index.json` now records every original upstream input URL, query/filter, accessed date, response hash and source identifier, plus separate `method_reproduction`, `source_version_drift` and `exact_input_replay` statuses. GDC and cBioPortal accessions and CIViC nightly export names are **not** asserted to be immutable raw-data releases. Original raw source bytes are not bundled, so exact input replay cannot be guaranteed. The original review-bound snapshot and manifest are left untouched.
+
 ## Independently rerun the computation
 
 Run from the full repository checkout, with outbound access to the documented public source APIs. Do **not** overwrite the original, review-bound run:
