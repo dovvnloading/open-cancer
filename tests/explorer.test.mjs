@@ -15,7 +15,7 @@ const runDirectory = "results/egfr-luad-evidence-coverage/pilot-20261110/";
 
 test("accession, ontology and source-name tokens combine with exact filters", () => {
   assert.deepEqual(filterDatasets(rows, searchable, {q: "doid:3910 ENSG00000146648 nci", source: "gdc", modality: "genomics", access: "mixed"}), [gdc]);
-  assert.deepEqual(filterDatasets(rows, searchable, {q: "egfr", access: "open"}), []);
+  assert.deepEqual(filterDatasets(rows, searchable, {q: "egfr", access: "open"}), [civic]);
   assert.deepEqual(filterDatasets(rows, searchable, {q: "", source: "unknown-source"}), []);
   assert.deepEqual(filterDatasets(rows, searchable, {q: "", access: "open", modality: "variant-evidence"}), [civic]);
 });
