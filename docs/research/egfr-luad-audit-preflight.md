@@ -57,3 +57,8 @@ python scripts/egfr_live_source_audit.py --output-dir /tmp/egfr-live-public-audi
 ~~~
 
 Any changed source metadata needs a domain expert to inspect the original CIViC record, cited source and disease/variant context before interpretation. This workflow does not satisfy the human-reviewed acceptance criteria of #34, #35 or #36.
+
+
+## Follow-up: namespace-equivalent DOIDs are not upstream changes
+
+A first live run on 2026-11-11 reported all 56 historical selected CIViC IDs as changed solely because the original derived CSV recorded `DOID:3910` while the upstream TSV uses `3910`. These strings encode the **same Disease Ontology term**, not a changed cancer type. The audit now normalizes the optional `DOID:` prefix **only for field-change comparison**, retaining the raw original and current values for provenance. Differing DOID numbers and lost strict-LUAD inclusion remain observable. The original source content hash changing still indicates different source **bytes**, not necessarily any changed selected evidence item. An unchanged selected-label comparison cannot establish upstream statement/primary-study correctness or source-wide identity.
