@@ -2,3 +2,8 @@
 # A separate trusted maintainer is required to approve owner-authored PRs.
 # The author cannot independently approve their own research publication decision.
 /catalog/publication-decisions.json @dovvnloading
+
+# Route changes to the editorial gate to the owner; require a separate
+# maintainer reviewer when the author is the owner (using branch rulesets).
+/scripts/publication_pr_gate.cjs @dovvnloading
+/.github/workflows/validate.yml @dovvnloading

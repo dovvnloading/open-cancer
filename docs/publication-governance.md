@@ -6,7 +6,8 @@ The public Open Cancer API contains externally citable research metadata. **JSON
 
 - The source tree records featured pilot decisions separately from submitted results in [catalog/publication-decisions.json](../catalog/publication-decisions.json). Each publication entry is pinned to the **exact original result-manifest SHA-256**. Unpinned submissions remain in the separate experimental collection.
 - [schemas/publication.schema.json](../schemas/publication.schema.json) and [scripts/validate.py](../scripts/validate.py) check decision structure, uniqueness and digest freshness. A curated decision requires a self-declared curator name. Neither the schema nor the CI process authenticates that person's identity.
-- [.github/CODEOWNERS](../.github/CODEOWNERS) routes changes to the repository owner, but **CODEOWNERS does not itself require approval**. As of the November 11, 2026 operations review, GitHub reported the main branch as **unprotected**. Human publication approval is not yet an enforceable repository requirement.
+- [.github/CODEOWNERS](../.github/CODEOWNERS) routes registry, gate and CI changes to the owner, but **CODEOWNERS does not itself require approval**. As of the November 11, 2026 operations review, GitHub reported the main branch as **unprotected**. Human publication approval is not yet a fully enforceable repository requirement.
+- The validation workflow also performs a **PR-only independent GitHub review gate** on changes to the publication-decision registry, using the evaluator checked out from the exact trusted **base SHA** (not the PR-submitted evaluator). It requires an `APPROVED` review for the **current head commit** by a separate human GitHub owner/member/collaborator. This authenticates GitHub account and review state, **not** scientific credentials, independent biomedical judgment or source rights. A malicious direct push or unauthorized workflow change can bypass it until branch ruleset checks are required.
 - The original EGFR/LUAD demo is marked legacy-featured for continuity only. Its scientific interpretation has **not** been independently adjudicated, and it is not a clinical asset.
 
 ## Configure mandatory independent change review (repository owner)
@@ -22,5 +23,12 @@ The public Open Cancer API contains externally citable research metadata. **JSON
 Before setting a new result to curated-featured, the maintainer should separately inspect: the original manifest SHA-256 and reproducibility method; source links and observed versions; source reuse/attribution restrictions and absence of patient-identifiable data; scientific limitations, negative evidence, and conflicts; and any existing independent expert reviews. Confirm any human credentials off-platform, rather than trusting the self-declared reviewer name. Only then record an auditable rationale, decision date and curator in a reviewed PR.
 
 A curated publication is **discoverable**, not medically endorsed. An independent scientific assessment and clinical validation are different stages and are never implied by inclusion in the public API.
+
+
+## When the publication-review job fails
+
+If a PR modifies `catalog/publication-decisions.json` without fresh, independent authorized GitHub approval, the PR-only `publication-review` check fails **closed**. A separate trusted human collaborator must inspect the exact manifest digest, source-rights evidence and scientific caveats, approve the current PR head, and then rerun the failed Actions check (or use the host's approved re-evaluation workflow). Editing a self-declared `curator` JSON field, asking a bot, or approving your own PR does not satisfy the gate. An approver may reasonably submit `CHANGES_REQUESTED` or `DISMISSED`, which invalidates earlier approvals.
+
+The gate is **defense in depth**. To make it enforceable, configure `publication-review` as a required PR status check together with the main `validate` job using GitHub rulesets/branch protection, enforce author-independent CODEOWNERS approval, and block direct pushes and bypasses. Without that owner-controlled configuration, a direct push to an unprotected branch can still avoid PR review altogether.
 
 Do not close [issue #18](https://github.com/dovvnloading/open-cancer/issues/18) until the branch/ruleset reviewer gate has been enabled and tested. Publication policy must be enforced by the repository host in addition to application-level validation.
