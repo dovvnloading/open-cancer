@@ -205,6 +205,10 @@ def validate_repository(root: Path = ROOT) -> list[str]:
                 for err in validator.iter_errors(decision):
                     errors.append(f"{publication_path}[{index}]: {err.message}")
             task_id, run_id = decision.get("task_id"), decision.get("run_id")
+            # Schema errors must be reported, not turned into an unhashable-value
+            # exception by malformed JSON. Never use unvalidated IDs in paths.
+            if not isinstance(task_id, str) or not isinstance(run_id, str):
+                continue
             pair = (task_id, run_id)
             if pair in seen:
                 errors.append(f"{publication_path}: duplicate publication decision {pair}")
@@ -212,8 +216,6 @@ def validate_repository(root: Path = ROOT) -> list[str]:
             if (decision.get("publication_status") == "legacy-featured"
                     and pair != ("egfr-luad-evidence-coverage", "pilot-20261110")):
                 errors.append(f"{publication_path}: legacy status is reserved for the original EGFR/LUAD pilot")
-            if not all(isinstance(part, str) for part in pair):
-                continue
             manifest = root / "results" / task_id / run_id / "manifest.json"
             if not manifest.is_file():
                 errors.append(f"{publication_path}: missing manifest for publication decision {pair}")
