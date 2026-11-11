@@ -9,6 +9,8 @@ on:
     branches: [main]
     paths:
       - "scripts/monitor_catalog.py"
+      - "scripts/catalog_ledger.cjs"
+      - "tests/catalog_ledger.test.cjs"
       - "scripts/refresh_catalog.py"
       - "catalog/sources/**"
       - ".github/workflows/catalog-monitor.yml"
@@ -28,21 +30,26 @@ jobs:
           python-version: "3.12"
       - name: Test metadata drift and failure handling without network
         run: python -m unittest discover -s tests -p test_catalog_monitor.py -v
+      - name: Test durable issue ledger encoding without network
+        run: node --test tests/catalog_ledger.test.cjs
       - name: Retrieve previous source observations from the durable issue ledger
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
+            const {decodeLedger} = require(process.env.GITHUB_WORKSPACE + '/scripts/catalog_ledger.cjs');
             const {owner, repo} = context.repo;
             const issues = await github.paginate(github.rest.issues.listForRepo,
               {owner, repo, state: 'all', per_page: 100});
             const ledger = issues.find(x => !x.pull_request &&
               x.title === 'Catalog metadata health ledger (automated)');
-            const marker = ledger?.body?.match(/<!-- catalog-health-json\n([\s\S]*?)\n-->/);
-            if (marker) {
-              try { fs.writeFileSync('catalog-health-previous.json',
-                JSON.stringify(JSON.parse(marker[1]))); }
-              catch (err) { core.warning('Prior ledger could not be parsed; initializing baseline.'); }
+            try {
+              const previous = decodeLedger(ledger?.body);
+              if (previous) {
+                fs.writeFileSync('catalog-health-previous.json', JSON.stringify(previous));
+              }
+            } catch (err) {
+              core.warning('Prior ledger is malformed; new scan will establish a fresh baseline.');
             }
       - name: Scan public metadata and source reuse links
         run: |
@@ -64,17 +71,15 @@ jobs:
           script: |
             const fs = require('fs');
             const report = JSON.parse(fs.readFileSync('catalog-health-report.json', 'utf8'));
+            const {decodeLedger, encodeLedger} = require(process.env.GITHUB_WORKSPACE + '/scripts/catalog_ledger.cjs');
             const {owner, repo} = context.repo;
             const title = 'Catalog metadata health ledger (automated)';
             const issues = await github.paginate(github.rest.issues.listForRepo,
               {owner, repo, state: 'all', per_page: 100});
             const ledger = issues.find(x => !x.pull_request && x.title === title);
             let previous = {};
-            const marker = ledger?.body?.match(/<!-- catalog-health-json\n([\s\S]*?)\n-->/);
-            if (marker) {
-              try { previous = JSON.parse(marker[1]); }
-              catch (err) { core.warning('Prior health ledger is not parseable'); }
-            }
+            try { previous = decodeLedger(ledger?.body) || {}; }
+            catch (err) { core.warning('Prior health ledger is not parseable'); }
             const alerts = [];
             const health = [];
             for (const [name, row] of Object.entries(report.sources)) {
@@ -84,6 +89,9 @@ jobs:
               // Keep the last successful connector projection if the source is down.
               // This allows comparison on recovery rather than losing the baseline.
               if (!row.ok && prior.observations) row.observations = prior.observations;
+              // Retain the last successful link headers through temporary outages.
+              const previousLink = prior.last_verified_terms_link || prior.terms_link || {};
+              row.last_verified_terms_link = row.terms_link || previousLink;
               health.push('- ' + name + ': last checked ' + row.last_checked +
                 '; last healthy ' + (row.last_healthy || 'unknown'));
               if (!row.ok) alerts.push(name + ' endpoint failure: ' + row.error);
@@ -97,7 +105,7 @@ jobs:
                   ', changed fields ' + JSON.stringify(drift.changed_fields || {}));
               }
               const nowLink = row.terms_link || {};
-              const oldLink = prior.terms_link || {};
+              const oldLink = previousLink;
               for (const field of ['etag', 'last_modified']) {
                 if (nowLink[field] && oldLink[field] && nowLink[field] !== oldLink[field]) {
                   alerts.push(name + ' source-terms ' + field + ' changed; review reuse rights');
@@ -105,6 +113,19 @@ jobs:
               }
             }
             report.alerts = alerts;
+            let machineLedger = encodeLedger(report);
+            // Always leave room in GitHub's 65,536-character issue body. On
+            // unexpected future scale-ups, keep the actionable issue instead
+            // of failing with HTTP 422; full details stay in the Actions artifact.
+            if (machineLedger.length > 45000) {
+              alerts.push('Observation history exceeds the durable-issue size budget; review the Actions report artifact. A new baseline will be needed.');
+              report.alerts = alerts;
+              const compact = structuredClone(report);
+              for (const row of Object.values(compact.sources)) delete row.observations;
+              machineLedger = encodeLedger(compact);
+            }
+            const shown = alerts.slice(0, 25).map(a => '- ' + a.slice(0, 450));
+            if (alerts.length > shown.length) shown.push('- Further alerts: see the workflow report artifact.');
             const body = [
               'Automated checks cover **public metadata only**. Neither a healthy result nor a passing CI run verifies science, source licensing, consent or clinical suitability.',
               '',
@@ -114,12 +135,13 @@ jobs:
               '### Source health', ...health,
               '',
               '### Actionable changes and outages',
-              ...(alerts.length ? alerts.map(a => '- ' + a) : ['- None detected by these bounded checks.']),
+              ...(shown.length ? shown : ['- None detected by these bounded checks.']),
               '',
               'Review changed upstream accessions, releases, cohorts and source terms before any editorial PR. No monitoring job overwrites the catalog.',
               'Changed ETag or Last-Modified is a warning to check terms; unchanged headers are not proof rights stayed the same.',
+              'Detailed, lossless machine-readable public-metadata observations are compressed below to stay within GitHub issue size limits.',
               '',
-              '<!-- catalog-health-json', JSON.stringify(report, null, 2), '-->'
+              machineLedger
             ].join('\n');
             const state = alerts.length ? 'open' : 'closed';
             let number;
@@ -136,7 +158,7 @@ jobs:
             if (alerts.length && alerts.join('\n') !== (previous.alerts || []).join('\n')) {
               await github.rest.issues.createComment({owner, repo, issue_number: number,
                 body: 'New or changed source-health alert at ' + report.checked_at + ':\n\n' +
-                  alerts.map(a => '- ' + a).join('\n')});
+                  shown.join('\n') + '\n\nComplete changes are in the monitoring Actions artifact.'});
             }
             core.info('Catalog health issue #' + number + ' updated (' + state + ')');
             if (alerts.length) core.setFailed('Catalog drift/outage requires human review: issue #' + number);

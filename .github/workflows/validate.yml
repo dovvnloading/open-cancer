@@ -24,6 +24,8 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Test Explorer search, navigation and review states
         run: node --test tests/explorer.test.mjs
+      - name: Test durable catalog issue ledger size and decoding
+        run: node --test tests/catalog_ledger.test.cjs
       - name: Build the Explorer and its JSON API
         run: python scripts/build_explorer.py --output _site
       - name: Save the Explorer for this revision
