@@ -1,0 +1,85 @@
+name: Publish and verify versioned independent reviewer kit
+
+on:
+  push:
+    tags:
+      - "reviewkit-egfr-luad-v1.*"
+  workflow_dispatch:
+  schedule:
+    - cron: "47 10 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: reviewer-release
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate and build non-sensitive reviewer archive at exact tag
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python scripts/validate.py
+          python -m unittest discover -s tests -p test_review_packet.py -v
+          python scripts/build_review_packet.py \
+            --output "$RUNNER_TEMP/egfr-review" \
+            --archive "$RUNNER_TEMP/egfr-luad-review-kit.zip"
+          (cd "$RUNNER_TEMP/egfr-review" && sha256sum --check SHA256SUMS)
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          index=json.loads((Path(os.environ["RUNNER_TEMP"])/"egfr-review/packet-index.json").read_text())
+          assert index["source_revision"] == os.environ["GITHUB_SHA"]
+          assert index["reproducibility_status"]["exact_input_replay"].startswith("not-guaranteed")
+          print("Original manifest SHA:", index["original_manifest_sha256"])
+          PY
+      - name: Record archive SHA-256
+        run: |
+          cd "$RUNNER_TEMP"
+          sha256sum egfr-luad-review-kit.zip > egfr-luad-review-kit.zip.sha256
+      - name: Publish tag-bound release without replacing any existing assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            "$RUNNER_TEMP/egfr-luad-review-kit.zip" \
+            "$RUNNER_TEMP/egfr-luad-review-kit.zip.sha256" \
+            --verify-tag \
+            --title "EGFR/LUAD independent reviewer kit ($GITHUB_REF_NAME)" \
+            --notes "Nonclinical EGFR/LUAD evidence-coverage reviewer kit. Source commit: $GITHUB_SHA. The original manifest SHA-256, source response fingerprints and raw-input replay limitations are recorded in packet-index.json. No patient-level or raw third-party source material is included."
+      - name: Verify public release link and downloaded archive digest
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/release-verification"
+          gh release view "$GITHUB_REF_NAME" --json url --jq .url
+          gh release download "$GITHUB_REF_NAME" --pattern 'egfr-luad-review-kit.zip*' --dir "$RUNNER_TEMP/release-verification"
+          cd "$RUNNER_TEMP/release-verification"
+          test -s egfr-luad-review-kit.zip
+          sha256sum --check egfr-luad-review-kit.zip.sha256
+
+  monitor-pinned-release:
+    if: github.event_name != 'push' && vars.OPEN_CANCER_REVIEW_KIT_TAG != '' && vars.OPEN_CANCER_REVIEW_KIT_SHA256 != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Detect missing release download and independent digest mismatch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ vars.OPEN_CANCER_REVIEW_KIT_TAG }}
+          EXPECTED_SHA: ${{ vars.OPEN_CANCER_REVIEW_KIT_SHA256 }}
+        run: |
+          echo "$EXPECTED_SHA" | grep -Eq '^[a-f0-9]{64}$'
+          mkdir -p "$RUNNER_TEMP/review-pin"
+          gh release view "$RELEASE_TAG" --json url --jq .url
+          gh release download "$RELEASE_TAG" --pattern 'egfr-luad-review-kit.zip' --dir "$RUNNER_TEMP/review-pin"
+          cd "$RUNNER_TEMP/review-pin"
+          echo "$EXPECTED_SHA  egfr-luad-review-kit.zip" | sha256sum --check -
