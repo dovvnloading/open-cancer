@@ -12,6 +12,10 @@ Search by accession, disease, or source. Open a dataset to inspect its unit of o
 
 **Publication freshness warning:** The public demo was confirmed on November 11, 2026 to be serving an **older Git revision** than `main`. It should not be mistaken for the latest validated research index. Check the [automated live-release status](https://github.com/dovvnloading/open-cancer/issues/29) and [deployment instructions](docs/explorer-releases.md); until a current production deployment passes its smoke test, build the latest Explorer from a pinned source checkout. A passing repository build is not a live deployment.
 
+## Operations and research-integrity reporting
+
+The [November 11, 2026 operations status report](docs/reports/2026-11-11-operational-status.md) records the verified Git revision, CI and deployed-site checks, upstream catalog health, publication governance gaps, reviewer-kit release status, and remaining human-approval requirements. It is a dated snapshot, **not** independent scientific review. The [weekly operations report workflow](.github/workflows/operations-report.yml) maintains a separate evidence-linked GitHub issue and downloadable run artifact after the source-health and site-freshness checks. Its results never automatically merge research contributions or approve clinical interpretations.
+
 ## What this repository does
 
 1. **Discover:** a curated, machine-readable directory of upstream cancer resources, with access conditions and attribution guidance.
