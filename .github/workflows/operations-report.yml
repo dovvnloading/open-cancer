@@ -108,8 +108,10 @@ jobs:
             let number;
             if (existing) {
               number = existing.number;
+              // Preserve the report as a closed, commentable historical ledger.
+              // Closing it does not close any operational or scientific blockers.
               await github.rest.issues.update({
-                owner, repo, issue_number: number, body, state: 'open',
+                owner, repo, issue_number: number, body, state: 'closed',
               });
               // Append a permanent dated summary, not a silent overwrite.
               await github.rest.issues.createComment({
@@ -121,8 +123,13 @@ jobs:
                 owner, repo, title, body,
               });
               number = created.data.number;
+              // This is a published report, not an unresolved action item.
+              // Keep actionable release/governance incidents open separately.
+              await github.rest.issues.update({
+                owner, repo, issue_number: number, state: 'closed',
+              });
             }
-            core.info('Updated durable operations report issue #' + number);
+            core.info('Archived completed operations report issue #' + number);
       - name: Retain markdown and machine-readable operational snapshot
         uses: actions/upload-artifact@v4
         with:

@@ -14,7 +14,7 @@ Search by accession, disease, or source. Open a dataset to inspect its unit of o
 
 ## Operations and research-integrity reporting
 
-The [November 11, 2026 operations status report](docs/reports/2026-11-11-operational-status.md) records the verified Git revision, CI and deployed-site checks, upstream catalog health, publication governance gaps, reviewer-kit release status, and remaining human-approval requirements. It is a dated snapshot, **not** independent scientific review. The [weekly operations report workflow](.github/workflows/operations-report.yml) maintains a separate evidence-linked GitHub issue and downloadable run artifact after the source-health and site-freshness checks. Its results never automatically merge research contributions or approve clinical interpretations.
+The [November 11, 2026 operations status report](docs/reports/2026-11-11-operational-status.md) records the verified Git revision, CI and deployed-site checks, upstream catalog health, publication governance gaps, reviewer-kit release status, and remaining human-approval requirements. It is a dated snapshot, **not** independent scientific review. The [weekly operations report workflow](.github/workflows/operations-report.yml) maintains an **archived, closed report issue** with dated comments and downloadable run artifacts after the source-health and site-freshness checks. Unresolved work stays in separate **open** deployment, governance and scientific-review issues. Reporting never automatically merges research contributions or approves clinical interpretations.
 
 ## What this repository does
 
