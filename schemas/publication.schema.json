@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Open Cancer editorial publication decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "run_id",
+    "manifest_sha256",
+    "publication_status",
+    "rationale",
+    "recorded_on"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "publication_status": {
+      "enum": [
+        "legacy-featured",
+        "curated-featured"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 100
+    },
+    "recorded_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "curator": {
+      "type": "string",
+      "minLength": 3
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "publication_status": {
+            "const": "curated-featured"
+          }
+        },
+        "required": [
+          "publication_status"
+        ]
+      },
+      "then": {
+        "required": [
+          "curator"
+        ]
+      }
+    }
+  ]
+}

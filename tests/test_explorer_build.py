@@ -63,9 +63,10 @@ class ExplorerBuildTests(unittest.TestCase):
         index = json.loads((api / "index.json").read_bytes())
         self.assertEqual(1, index["version"])
         self.assertEqual(REVISION, index["revision"])
-        for name in ("datasets", "sources", "questions", "reviews", "pilots"):
+        for name in ("datasets", "sources", "questions", "reviews", "pilots", "experimental_results"):
             self.assertEqual(index[name], json.loads((api / f"{name}.json").read_bytes()))
         self.assertEqual([], index["reviews"])  # synthetic schema examples stay outside the API
+        self.assertEqual([], index["experimental_results"])  # current pilot is pinned
         native_paths = sorted((self.root / "catalog/datasets").glob("*.json"))
         self.assertEqual([p.stem for p in native_paths], [r["id"] for r in index["datasets"]])
         for path, row in zip(native_paths, index["datasets"]):
@@ -93,6 +94,11 @@ class ExplorerBuildTests(unittest.TestCase):
         pilot = next(p for p in index["pilots"] if (p["task_id"], p["run_id"]) == (task, run))
         self.assertEqual(index["reviews"][0]["reviewed_manifest_sha256"], pilot["manifest_sha256"])
         self.assertEqual(digest, pilot["manifest_sha256"])
+        self.assertEqual("legacy-featured", pilot["publication_status"])
+        self.assertEqual("methods-reproduced", pilot["review_status"])
+        self.assertFalse(pilot["independent_reviewer_credentials_verified"])
+        self.assertEqual("not-assessed", pilot["clinical_validation_status"])
+        self.assertEqual("requires-human-review", pilot["source_rights"]["adjudication"])
         self.assertEqual(json.loads((result_dir / "coverage.json").read_bytes()), pilot["coverage"])
         self.assertTrue(pilot["code_url"].endswith(f"/{run}/analyze.py"))
         for artifact in pilot["artifacts"]:
@@ -115,10 +121,65 @@ class ExplorerBuildTests(unittest.TestCase):
         manifest = json.loads(manifest_path.read_bytes())
         manifest["artifacts"] = [a for a in manifest["artifacts"] if a["path"] != "coverage.json"]
         manifest_path.write_text(json.dumps(manifest))
+        # Without a matching publication pin, the edited manifest stays discoverable only
+        # as an experimental submission, and its coverage cannot be featured.
+        (self.root / "catalog/publication-decisions.json").write_text("[]\n")
         index = make_index(self.root, REPOSITORY, REVISION)
-        pilot = next(p for p in index["pilots"] if p["task_id"] == manifest["task_id"]
+        pilot = next(p for p in index["experimental_results"] if p["task_id"] == manifest["task_id"]
                      and p["run_id"] == manifest["run_id"])
         self.assertIsNone(pilot["coverage"])
+
+
+    def test_schema_valid_new_run_stays_experimental(self):
+        source = self.root / "results/egfr-luad-evidence-coverage/pilot-20261110"
+        target = source.parent / "new-unreviewed-run"
+        shutil.copytree(source, target)
+        manifest_path = target / "manifest.json"
+        manifest = json.loads(manifest_path.read_bytes())
+        manifest["run_id"] = "new-unreviewed-run"
+        manifest_path.write_text(json.dumps(manifest))
+        index = make_index(self.root, REPOSITORY, REVISION)
+        self.assertEqual(1, len(index["pilots"]))
+        item, = index["experimental_results"]
+        self.assertEqual("new-unreviewed-run", item["run_id"])
+        self.assertEqual("experimental", item["publication_status"])
+        self.assertIsNone(item["publication_decision_url"])
+        self.assertEqual("unreviewed", item["review_status"])
+        self.assertFalse(item["independent_reviewer_credentials_verified"])
+        self.assertEqual("not-assessed", item["clinical_validation_status"])
+        self.assertEqual("requires-human-review", item["source_rights"]["adjudication"])
+        self.assertTrue(all(row["terms_url"] for row in item["source_rights"]["sources"]))
+        self.assertIsNone(item["coverage"])
+        self.assertEqual(hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
+                         item["manifest_sha256"])
+
+    def test_malformed_publication_id_fails_validation_without_crashing(self):
+        decision_path = self.root / "catalog/publication-decisions.json"
+        decisions = json.loads(decision_path.read_text())
+        decisions[0]["task_id"] = {"invalid": ["unhashable"]}
+        decision_path.write_text(json.dumps(decisions))
+        with self.assertRaisesRegex(ValueError, "not of type 'string'"):
+            make_index(self.root, REPOSITORY, REVISION)
+
+    def test_publication_pin_validation(self):
+        decision_path = self.root / "catalog/publication-decisions.json"
+        decisions = json.loads(decision_path.read_text())
+        decisions.append({**decisions[0], "run_id": "not-an-existing-run"})
+        decision_path.write_text(json.dumps(decisions))
+        with self.assertRaisesRegex(ValueError, "missing manifest"):
+            make_index(self.root, REPOSITORY, REVISION)
+        decisions.pop()
+        decisions[0]["manifest_sha256"] = "0" * 64
+        decision_path.write_text(json.dumps(decisions))
+        with self.assertRaisesRegex(ValueError, "stale publication pin"):
+            make_index(self.root, REPOSITORY, REVISION)
+        decisions[0]["publication_status"] = "curated-featured"
+        decisions[0]["manifest_sha256"] = hashlib.sha256(
+            (self.root / "results/egfr-luad-evidence-coverage/pilot-20261110/manifest.json").read_bytes()
+        ).hexdigest()
+        decision_path.write_text(json.dumps(decisions))
+        with self.assertRaisesRegex(ValueError, "'curator' is a required property"):
+            make_index(self.root, REPOSITORY, REVISION)
 
 
 if __name__ == "__main__":
