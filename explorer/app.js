@@ -284,8 +284,23 @@ async function start() {
     sources = new Map(index.sources.map(row => [row.id, row]));
     const revision = index.revision;
     if (/^[0-9a-f]{40}$/.test(revision)) {
-      document.querySelector("footer .footer-inner").append(
-        link("Catalog revision " + revision.slice(0, 12), project + "/commit/" + revision, "revision"));
+      const footer = document.querySelector("footer .footer-inner");
+      footer.append(link("Catalog revision " + revision.slice(0, 12),
+        project + "/commit/" + revision, "revision"));
+      // Release timestamps are build metadata, not scientific review dates.
+      // Older deployments may not provide this optional endpoint.
+      try {
+        const response = await fetch("./api/v1/release.json");
+        if (response.ok) {
+          const metadata = await response.json();
+          const date = new Date(metadata.built_at);
+          if (metadata.revision === revision && !Number.isNaN(date.getTime())) {
+            footer.append(el("span", "Build: " + date.toISOString().slice(0, 16) + " UTC", "revision"));
+          }
+        }
+      } catch {
+        // Revision link remains visible when build metadata is unavailable.
+      }
     }
     if (params.has("dataset")) dataset(params.get("dataset"));
     else if (params.get("view") === "pilot") renderPilot();
