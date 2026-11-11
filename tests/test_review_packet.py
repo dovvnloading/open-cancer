@@ -83,7 +83,7 @@ class ReviewPacketTests(unittest.TestCase):
 
     def test_new_evidence_types_require_explicit_review(self):
         sample = [{"record_id": "42", "evidence_type": "Other",
-                   "record_url": "https://civicdb.org/links/evidence_items/42/summary"}]
+                   "record_url": "https://civicdb.org/links/evidence_items/42"}]
         with self.assertRaisesRegex(ValueError, "Evidence types changed"):
             review_sample(sample, "a" * 64)
 
