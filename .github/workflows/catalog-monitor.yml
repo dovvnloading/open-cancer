@@ -4,6 +4,14 @@ on:
   schedule:
     - cron: "23 9 * * 1"
   workflow_dispatch:
+  # Also bootstrap the ledger on a reviewed monitor change; do not wait for Monday.
+  push:
+    branches: [main]
+    paths:
+      - "scripts/monitor_catalog.py"
+      - "scripts/refresh_catalog.py"
+      - "catalog/sources/**"
+      - ".github/workflows/catalog-monitor.yml"
 
 permissions:
   contents: read
@@ -20,8 +28,30 @@ jobs:
           python-version: "3.12"
       - name: Test metadata drift and failure handling without network
         run: python -m unittest discover -s tests -p test_catalog_monitor.py -v
+      - name: Retrieve previous source observations from the durable issue ledger
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const {owner, repo} = context.repo;
+            const issues = await github.paginate(github.rest.issues.listForRepo,
+              {owner, repo, state: 'all', per_page: 100});
+            const ledger = issues.find(x => !x.pull_request &&
+              x.title === 'Catalog metadata health ledger (automated)');
+            const marker = ledger?.body?.match(/<!-- catalog-health-json\n([\s\S]*?)\n-->/);
+            if (marker) {
+              try { fs.writeFileSync('catalog-health-previous.json',
+                JSON.stringify(JSON.parse(marker[1]))); }
+              catch (err) { core.warning('Prior ledger could not be parsed; initializing baseline.'); }
+            }
       - name: Scan public metadata and source reuse links
-        run: python scripts/monitor_catalog.py --output catalog-health-report.json
+        run: |
+          if [ -f catalog-health-previous.json ]; then
+            python scripts/monitor_catalog.py --output catalog-health-report.json \
+              --previous-report catalog-health-previous.json
+          else
+            python scripts/monitor_catalog.py --output catalog-health-report.json
+          fi
       - uses: actions/upload-artifact@v4
         with:
           name: catalog-health-report
@@ -49,7 +79,11 @@ jobs:
             const health = [];
             for (const [name, row] of Object.entries(report.sources)) {
               const prior = previous.sources?.[name] || {};
-              row.last_healthy = row.ok ? report.checked_at : (prior.last_healthy || null);
+              row.last_healthy = (row.ok && !row.terms_link_error) ?
+                report.checked_at : (prior.last_healthy || null);
+              // Keep the last successful connector projection if the source is down.
+              // This allows comparison on recovery rather than losing the baseline.
+              if (!row.ok && prior.observations) row.observations = prior.observations;
               health.push('- ' + name + ': last checked ' + row.last_checked +
                 '; last healthy ' + (row.last_healthy || 'unknown'));
               if (!row.ok) alerts.push(name + ' endpoint failure: ' + row.error);
