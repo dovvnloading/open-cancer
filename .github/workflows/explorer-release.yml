@@ -9,6 +9,8 @@ on:
       - "reviews/**"
       - "tasks/**"
       - "scripts/build_explorer.py"
+      - "scripts/smoke_explorer_release.py"
+      - "tests/test_explorer_smoke.py"
       - "schemas/**"
       - ".github/workflows/explorer-release.yml"
   push:
@@ -46,6 +48,25 @@ jobs:
           assert len(index['datasets']) >= 69
           print('Built', len(index['datasets']), 'source records at', index['revision'])
           PY
+      - name: Record build timestamp alongside the reproducible source index
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          info = {
+              "version": 1,
+              "repository": os.environ["GITHUB_REPOSITORY"],
+              "revision": os.environ["GITHUB_SHA"],
+              "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
+              "workflow_run_id": os.environ["GITHUB_RUN_ID"],
+          }
+          Path("_site/api/v1/release.json").write_text(json.dumps(info, sort_keys=True, indent=2) + "\n")
+          PY
+      - name: Smoke test versioned API, EGFR crosswalk, pilot and review links
+        run: |
+          python scripts/smoke_explorer_release.py \
+            --site _site --expected-revision "$GITHUB_SHA" --require-build-info
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
@@ -57,6 +78,8 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.OPEN_CANCER_GITHUB_PAGES_ENABLED == 'true' }}
     needs: build
     runs-on: ubuntu-latest
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -68,3 +91,24 @@ jobs:
       - name: Deploy pinned revision to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  smoke-deployed:
+    # Do not report a successful deployment until the public JSON and UI are fetched.
+    needs: deploy
+    if: ${{ needs.deploy.result == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify public Pages release and pinned research links
+        env:
+          DEPLOYED_URL: ${{ needs.deploy.outputs.page_url }}
+        run: |
+          python scripts/smoke_explorer_release.py \
+            --url "$DEPLOYED_URL" \
+            --expected-revision "$GITHUB_SHA" \
+            --require-build-info
