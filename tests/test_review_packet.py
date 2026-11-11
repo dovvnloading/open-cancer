@@ -45,7 +45,7 @@ class ReviewPacketTests(unittest.TestCase):
         self.assertEqual(len({row["record_id"] for row in sample}), 12)
         self.assertEqual(Counter(row["evidence_type"] for row in sample),
                          {"Predictive": 8, "Prognostic": 2, "Oncogenic": 2})
-        self.assertTrue(all(row["record_url"].startswith("https://civicdb.org/evidence/")
+        self.assertTrue(all(row["record_url"].startswith("https://civicdb.org/links/evidence_items/")
                             for row in sample))
 
     def test_zip_determinism_and_file_allowlist(self):
@@ -83,7 +83,7 @@ class ReviewPacketTests(unittest.TestCase):
 
     def test_new_evidence_types_require_explicit_review(self):
         sample = [{"record_id": "42", "evidence_type": "Other",
-                   "record_url": "https://civicdb.org/evidence/42/summary"}]
+                   "record_url": "https://civicdb.org/links/evidence_items/42/summary"}]
         with self.assertRaisesRegex(ValueError, "Evidence types changed"):
             review_sample(sample, "a" * 64)
 

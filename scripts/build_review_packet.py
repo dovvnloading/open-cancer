@@ -59,8 +59,10 @@ def review_sample(rows: list[dict], manifest_sha: str) -> bytes:
     for record in rows:
         if not record["record_id"].isdigit():
             raise ValueError("Unexpected CIViC evidence ID")
-        if not record["record_url"].startswith("https://civicdb.org/evidence/"):
-            raise ValueError("Unexpected CIViC record URL")
+        url_prefix = "https://civicdb.org/links/evidence_items/"
+        if (not record["record_url"].startswith(url_prefix)
+                or record["record_url"][len(url_prefix):] != record["record_id"]):
+            raise ValueError("Unexpected CIViC record URL or ID mismatch")
         groups[record["evidence_type"]].append(record)
     quotas = {"Predictive": 8, "Prognostic": 2, "Oncogenic": 2}
     if set(groups) != set(quotas):
