@@ -25,6 +25,7 @@ class ReviewPacketTests(unittest.TestCase):
             "manifest.json", "coverage.json", "civic_evidence_ids.csv",
             "cbio_protein_changes.csv", "analyze.py", "README.md",
             "SCIENTIFIC_CHECKLIST.md", "evidence_review_sample.csv",
+            "civic_profile_triage.csv", "cross_source_units.json",
             "packet-index.json", "SHA256SUMS",
         })
         index = json.loads(packet["packet-index.json"])
@@ -45,6 +46,9 @@ class ReviewPacketTests(unittest.TestCase):
                          "reproduced-within-project-external-review-pending")
         self.assertIn("not-guaranteed",
                       index["reproducibility_status"]["exact_input_replay"])
+        self.assertEqual(index["audit_queues"]["all_selected_civic_evidence_items"], 56)
+        self.assertFalse(index["audit_queues"]["upstream_record_links_individually_checked"])
+        self.assertFalse(index["audit_queues"]["external_domain_interpretation_completed"])
         self.assertEqual(json.loads(packet["manifest.json"])["findings"], [])
         self.assertEqual(json.loads(packet["coverage.json"])["status"], "unreviewed")
         for line in packet["SHA256SUMS"].decode().splitlines():
