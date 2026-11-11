@@ -28,6 +28,20 @@ RECORDS = {
 }
 
 
+def result_review_status(reviews: list[dict]) -> str:
+    """Summarize review decisions; this does not independently establish credentials."""
+    decisions = {review["decision"] for review in reviews}
+    for decision, state in (
+        ("disputed", "disputed"),
+        ("needs-revision", "needs-revision"),
+        ("scientific-assessment-completed", "assessment-submitted-unverified"),
+        ("methods-reproduced", "methods-reproduced"),
+    ):
+        if decision in decisions:
+            return state
+    return "unreviewed"
+
+
 def make_index(root: Path, repository: str, revision: str) -> dict:
     if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
         raise ValueError("Expected a GitHub repository in owner/name form.")
@@ -50,24 +64,62 @@ def make_index(root: Path, repository: str, revision: str) -> dict:
             records.append(record)
         index[collection] = records
 
+    # An explicit version-bound editorial decision is required to feature a result.
+    decisions_path = root / "catalog" / "publication-decisions.json"
+    decisions = {
+        (item["task_id"], item["run_id"]): item
+        for item in json.loads(decisions_path.read_text(encoding="utf-8"))
+    }
+    sources_by_id = {source["id"]: source for source in index["sources"]}
+    reviews_by_result = {}
+    for review in index["reviews"]:
+        key = (review["task_id"], review["run_id"], review["reviewed_manifest_sha256"])
+        reviews_by_result.setdefault(key, []).append(review)
+
     pilots = []
+    experimental_results = []
     for path in sorted(root.glob("results/*/*/manifest.json")):
         data = path.read_bytes()
         pilot = json.loads(data)
-        pilot.update(manifest_sha256=hashlib.sha256(data).hexdigest(),
+        digest = hashlib.sha256(data).hexdigest()
+        decision = decisions.get((pilot["task_id"], pilot["run_id"]))
+        reviews = reviews_by_result.get((pilot["task_id"], pilot["run_id"], digest), [])
+        rights = []
+        for source_id in sorted({item["source_id"] for item in pilot["inputs"]}):
+            source = sources_by_id[source_id]
+            reuse = source.get("reuse", {})
+            rights.append({
+                "source_id": source_id,
+                "reuse_status": reuse.get("status", "verify-upstream"),
+                "terms_url": reuse.get("terms_url"),
+                "license_id": reuse.get("license_id"),
+                "caveat": reuse.get("notes", "Verify source-specific redistribution terms."),
+            })
+        pilot.update(manifest_sha256=digest,
                      manifest_url=source_url(path),
                      code_url=source_url(path.parent / pilot["execution"]["code_path"]),
+                     publication_status=decision["publication_status"] if decision else "experimental",
+                     publication_decision_url=source_url(decisions_path) if decision else None,
+                     review_status=result_review_status(reviews),
+                     independent_reviewer_credentials_verified=False,
+                     clinical_validation_status="not-assessed",
+                     source_rights={"adjudication": "requires-human-review", "sources": rights},
                      coverage=None)
         for artifact in pilot["artifacts"]:
             artifact_path = path.parent / artifact["path"]
             artifact["url"] = source_url(artifact_path)
-            if (pilot["task_id"] == "egfr-luad-evidence-coverage"
+            if (decision is not None
+                    and pilot["task_id"] == "egfr-luad-evidence-coverage"
                     and artifact["path"] == "coverage.json"):
                 coverage = json.loads(artifact_path.read_text(encoding="utf-8"))
                 if isinstance(coverage, dict) and coverage.get("schema_version") == 1:
                     pilot["coverage"] = coverage
-        pilots.append(pilot)
+        if decision is None:
+            experimental_results.append(pilot)
+        else:
+            pilots.append(pilot)
     index["pilots"] = pilots
+    index["experimental_results"] = experimental_results
     return index
 
 
@@ -95,7 +147,7 @@ def build(root: Path, output: Path, repository: str, revision: str) -> None:
         api = site / "api" / "v1"
         api.mkdir(parents=True)
         exports = {"index": index}
-        exports.update({name: index[name] for name in (*RECORDS, "pilots")})
+        exports.update({name: index[name] for name in (*RECORDS, "pilots", "experimental_results")})
         for name, payload in exports.items():
             content = json.dumps(payload, sort_keys=True, ensure_ascii=False,
                                  indent=2, allow_nan=False)
