@@ -30,6 +30,8 @@ jobs:
         run: node --test tests/explorer_health_ledger.test.cjs
       - name: Test weekly operations report evidence classification
         run: node --test tests/operations_report.test.cjs
+      - name: Test publication registry GitHub review authorization
+        run: node --test tests/publication_pr_gate.test.cjs
       - name: Build the Explorer and its JSON API
         run: python scripts/build_explorer.py --output _site
       - name: Save the Explorer for this revision

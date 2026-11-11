@@ -171,7 +171,7 @@ function render(summary) {
     "## Issue triage",
     "",
     ...summary.open_issues
-      .filter(issue => [3, 11, 14, 17, 18, 29].includes(issue.number))
+      .filter(issue => [3, 14, 17, 18, 29, 34, 35, 36].includes(issue.number))
       .sort((a, b) => a.number - b.number)
       .map(issue => "- [#" + issue.number + "](" + ISSUE + issue.number +
         "): " + issue.title),
@@ -181,7 +181,7 @@ function render(summary) {
     "1. **Production:** configure the actual hosting target and pass live API, revision and smoke checks before closing #14 or #29.",
     "2. **Governance:** activate main branch rules, required checks and author-independent CODEOWNERS approval before closing #18.",
     "3. **Reproducibility:** publish a rights-safe, tagged review archive and verify its independently pinned SHA before closing #17.",
-    "4. **Scientific:** obtain a version-bound external qualified cancer-genomics assessment; do not infer approval from agent methods reproduction (#3/#11).",
+    "4. **Scientific:** complete the CIViC QA (#34), GDC/cBioPortal cohort QA (#35), and an independently verified version-bound expert assessment (#36), tracked under milestone #3. The archived reviewer invitation #11 is not a scientific deliverable.",
     "",
     "### Auditability",
     "",
