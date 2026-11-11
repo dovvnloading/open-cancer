@@ -80,15 +80,17 @@ jobs:
           # A scheduled check without a configured release must fail, not appear green.
           test -n "$RELEASE_TAG" || { echo "::error::OPEN_CANCER_REVIEW_KIT_TAG is not configured"; exit 1; }
           test -n "$EXPECTED_SHA" || { echo "::error::OPEN_CANCER_REVIEW_KIT_SHA256 is not configured"; exit 1; }
-          echo "$EXPECTED_SHA" | grep -Eq '^[a-f0-9]{64}
+          printf '%s\n' "$EXPECTED_SHA" | grep -Eq '^[a-f0-9]{64}$' || {
+            echo "::error::Expected a lowercase 64-hex-character SHA-256 digest";
+            exit 1;
+          }
+          case "$RELEASE_TAG" in
+            reviewkit-egfr-luad-v1.*) ;;
+            *) echo "::error::Unexpected reviewer release tag"; exit 1 ;;
+          esac
           mkdir -p "$RUNNER_TEMP/review-pin"
           gh release view "$RELEASE_TAG" --json url --jq .url
           gh release download "$RELEASE_TAG" --pattern 'egfr-luad-review-kit.zip' --dir "$RUNNER_TEMP/review-pin"
           cd "$RUNNER_TEMP/review-pin"
-          echo "$EXPECTED_SHA  egfr-luad-review-kit.zip" | sha256sum --check -
-
-          mkdir -p "$RUNNER_TEMP/review-pin"
-          gh release view "$RELEASE_TAG" --json url --jq .url
-          gh release download "$RELEASE_TAG" --pattern 'egfr-luad-review-kit.zip' --dir "$RUNNER_TEMP/review-pin"
-          cd "$RUNNER_TEMP/review-pin"
-          echo "$EXPECTED_SHA  egfr-luad-review-kit.zip" | sha256sum --check -
+          test -s egfr-luad-review-kit.zip
+          printf '%s  %s\n' "$EXPECTED_SHA" "egfr-luad-review-kit.zip" | sha256sum --check -
