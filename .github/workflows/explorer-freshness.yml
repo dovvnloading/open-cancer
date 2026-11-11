@@ -11,6 +11,8 @@ permissions:
 jobs:
   compare-public-to-main:
     runs-on: ubuntu-latest
+    env:
+      PUBLIC_INDEX_URL: ${{ vars.OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL || 'https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -19,6 +21,6 @@ jobs:
       - name: Compare public index with the latest main revision
         run: |
           python scripts/check_explorer_freshness.py \
-            --url "https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json" \
+            --url "$PUBLIC_INDEX_URL" \
             --expected-revision "$GITHUB_SHA" \
             --minimum-datasets 69

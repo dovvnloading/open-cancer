@@ -10,8 +10,9 @@ The Explorer currently has **two distinct publication surfaces**:
 1. In [repository Settings → Pages](https://github.com/dovvnloading/open-cancer/settings/pages), set **Source: GitHub Actions**.
 2. In **Settings → Secrets and variables → Actions → Variables**, create the repository variable `OPEN_CANCER_GITHUB_PAGES_ENABLED` with value `true`.
 3. Run **Build and optionally deploy Open Cancer Explorer** in the GitHub Actions tab, or merge a reviewed change into main. Inspect the `github-pages` environment and the deployment URL. The usual GitHub Pages project URL is `https://dovvnloading.github.io/open-cancer/` unless custom settings override it.
-4. Open the deployed `api/v1/index.json` and verify its `revision` matches the published Git commit. Confirm catalog counts are nonempty, provenance links work and the pilot is correctly labeled unreviewed.
-5. Keep an earlier, validated commit/artifact available for rollback. Never modify historical review-bound research snapshots when rolling back the site.
+4. To monitor the new GitHub Pages deployment as production, also set repository variable `OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL` to its exact HTTPS `api/v1/index.json` URL. If unset, the monitor continues checking the original chatgpt.site demonstration, which might remain stale.
+5. Open the deployed `api/v1/index.json` and verify its `revision` matches the published Git commit. Confirm catalog counts are nonempty, provenance links work and the pilot is correctly labeled unreviewed.
+6. Keep an earlier, validated commit/artifact available for rollback. Never modify historical review-bound research snapshots when rolling back the site.
 
 GitHub's documentation requires a one-time Pages source selection in Settings. This repository's connector cannot perform that account-level activation; the workflow intentionally skips deployment until explicit opt-in. Pages uses GitHub Actions short-lived ID tokens, not repository-stored deployment secrets.
 
