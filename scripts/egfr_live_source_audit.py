@@ -54,8 +54,16 @@ def _csv(rows: list[dict], fields: tuple[str, ...]) -> bytes:
     return stream.getvalue().encode("utf-8")
 
 
+def canonical_doid(raw: object) -> str:
+    """Normalize optional DOID namespace prefixes without erasing identifiers."""
+    value = str(raw or "").strip()
+    if value.upper().startswith("DOID:"):
+        value = value[5:].strip()
+    return value
+
+
 def is_strict_luad(row: dict) -> bool:
-    doid = str(row.get("doid") or "").strip().upper().removeprefix("DOID:")
+    doid = canonical_doid(row.get("doid"))
     disease = str(row.get("disease") or "").strip().casefold()
     return doid == "3910" or (not doid and disease in {
         "lung adenocarcinoma", "adenocarcinoma of the lung", "adenocarcinoma of lung"
@@ -100,8 +108,14 @@ def compare_civic(original_rows: list[dict], current: dict):
         seen.add(evidence_id)
         row = current["all_by_id"].get(evidence_id)
         fields = ("molecular_profile", "disease", "doid", "evidence_type")
-        changed = [field for field in fields if row is None or
-                   str(row.get(field) or "").strip() != str(original[field]).strip()]
+        changed = [
+            field for field in fields
+            if row is None or (
+                canonical_doid(row.get(field)) != canonical_doid(original.get(field))
+                if field == "doid"
+                else str(row.get(field) or "").strip() != str(original[field]).strip()
+            )
+        ]
         status = str(row.get("evidence_status") or "").strip() if row else "not-present"
         if not row or status.casefold() != "accepted" or not is_strict_luad(row):
             changed.append("current_inclusion")
