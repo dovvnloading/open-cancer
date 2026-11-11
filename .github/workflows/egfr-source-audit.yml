@@ -1,0 +1,41 @@
+name: Audit public EGFR/LUAD source metadata drift (nonclinical)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/egfr_live_source_audit.py"
+      - "tests/test_egfr_live_source_audit.py"
+      - ".github/workflows/egfr-source-audit.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  public-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install offline validator dependency
+        run: python -m pip install -r requirements-dev.txt
+      - name: Verify source-audit fixtures and original immutable pilot
+        run: |
+          python scripts/validate.py
+          python -m unittest discover -s tests -p test_egfr_live_source_audit.py -v
+      - name: Retrieve only public CIViC evidence summaries and study/project metadata
+        run: |
+          python scripts/egfr_live_source_audit.py \
+            --output-dir "$RUNNER_TEMP/egfr-live-source-audit"
+          (cd "$RUNNER_TEMP/egfr-live-source-audit" && sha256sum --check SHA256SUMS)
+      - name: Retain reviewable metadata and version-drift queue
+        uses: actions/upload-artifact@v4
+        with:
+          name: egfr-public-source-audit
+          path: ${{ runner.temp }}/egfr-live-source-audit/
+          retention-days: 90
+          if-no-files-found: error
