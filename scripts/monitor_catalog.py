@@ -19,11 +19,17 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ("gdc", "cbioportal", "civic")
-FIELDS = (
-    "accession", "source_id", "title", "description", "disease", "modalities",
-    "cohort_definition", "unit_of_observation", "release", "reuse", "access",
-    "retrieval_url", "landing_url", "documentation_url",
+# Only compare connector-observed metadata with the same connector's *previous*
+# observations. Curated descriptions, ontology mappings and rights statements
+# are editorial and must not be treated as source-native upstream changes.
+OBSERVED_FIELDS = (
+    "accession", "title", "disease", "modalities", "release",
+    "citation_url", "retrieval_url", "landing_url",
 )
+
+
+def observation(record):
+    return {field: record[field] for field in OBSERVED_FIELDS if field in record}
 
 
 def managed(source, key):
@@ -44,7 +50,7 @@ def baseline(directory):
     return result
 
 
-def compare(source, old_rows, new_rows):
+def compare(source, old_rows, new_rows, *, previous_observations=None):
     if not new_rows:
         raise ValueError(f"{source}: zero upstream records")
     ids = [row.get("id") for row in new_rows]
@@ -52,17 +58,27 @@ def compare(source, old_rows, new_rows):
         raise ValueError(f"{source}: duplicate or invalid upstream identifiers")
     if any(row.get("source_id") != source or not managed(source, row["id"]) for row in new_rows):
         raise ValueError(f"{source}: unexpected upstream source or identifier")
-    old = {row["id"]: row for row in old_rows}
-    new = {row["id"]: row for row in new_rows}
-    changed = {key: [field for field in FIELDS if old[key].get(field) != new[key].get(field)]
-               for key in sorted(old.keys() & new.keys())}
+    committed_ids = {row["id"] for row in old_rows}
+    observed = {row["id"]: observation(row) for row in new_rows}
+    if previous_observations is not None and not isinstance(previous_observations, dict):
+        raise ValueError(f"{source}: corrupt previous observation ledger")
+    changes = {}
+    for key in sorted(observed.keys() & (previous_observations or {}).keys()):
+        old = previous_observations[key]
+        if not isinstance(old, dict):
+            raise ValueError(f"{source}: invalid previous observation for {key}")
+        fields = [name for name in OBSERVED_FIELDS if old.get(name) != observed[key].get(name)]
+        if fields:
+            changes[key] = fields
     return {
-        "committed_count": len(old),
-        "upstream_count": len(new),
-        "unexpected_shrinkage": len(new) < len(old),
-        "added": sorted(new.keys() - old.keys()),
-        "removed": sorted(old.keys() - new.keys()),
-        "changed_fields": {key: fields for key, fields in changed.items() if fields},
+        "committed_count": len(committed_ids),
+        "upstream_count": len(observed),
+        "unexpected_shrinkage": len(observed) < len(committed_ids),
+        "added": sorted(observed.keys() - committed_ids),
+        "removed": sorted(committed_ids - observed.keys()),
+        "changed_fields": changes,
+        "baseline_established": previous_observations is not None,
+        "observations": observed,
     }
 
 
@@ -94,16 +110,22 @@ def probe_terms(url):
                 "last_modified": response.headers.get("Last-Modified")}
 
 
-def scan(*, current, discover, terms_urls=None, probe=probe_terms, checked_at=None, sleep=time.sleep):
+def scan(*, current, discover, terms_urls=None, probe=probe_terms, checked_at=None,
+         previous_report=None, sleep=time.sleep):
     now = checked_at or datetime.now(timezone.utc).isoformat(timespec="seconds")
     report = {"schema_version": 1, "checked_at": now, "sources": {}}
     for source in SOURCES:
         row = {"last_checked": now, "ok": False}
+        previous = ((previous_report or {}).get("sources") or {}).get(source, {})
+        old_observations = previous.get("observations") if isinstance(previous, dict) else None
         try:
             items = retry(lambda: discover(source), sleep=sleep)
             if isinstance(items, dict):
                 items = list(items.values())
-            row["drift"] = compare(source, current[source], items)
+            diff = compare(source, current[source], items,
+                           previous_observations=old_observations)
+            row["observations"] = diff.pop("observations")
+            row["drift"] = diff
             row["ok"] = True
         except (HTTPError, URLError, TimeoutError, socket.timeout, HTTPException,
                 ValueError, KeyError, OSError, TypeError) as exc:
@@ -121,13 +143,19 @@ def scan(*, current, discover, terms_urls=None, probe=probe_terms, checked_at=No
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--previous-report", type=Path,
+                        help="Last durable health ledger report; never an upstream data source")
     args = parser.parse_args()
+    previous = None
+    if args.previous_report and args.previous_report.is_file():
+        previous = json.loads(args.previous_report.read_text(encoding="utf-8"))
     terms = {
         name: json.loads((ROOT / "catalog" / "sources" / f"{name}.json").read_text())["reuse"]["terms_url"]
         for name in SOURCES
     }
     report = scan(current=baseline(ROOT / "catalog" / "datasets"),
-                  discover=refresh_catalog.discover, terms_urls=terms)
+                  discover=refresh_catalog.discover, terms_urls=terms,
+                  previous_report=previous)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, sort_keys=True, indent=2) + "\n", encoding="utf-8")
     for name, row in report["sources"].items():
