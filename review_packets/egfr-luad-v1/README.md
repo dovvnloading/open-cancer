@@ -1,8 +1,8 @@
 # Independent reviewer package: EGFR / lung adenocarcinoma
 
-**Purpose:** invite reproducible critique of the Open Cancer public-data pilot. **Status: not independently scientifically or clinically validated.**
+**Purpose:** support reproducible critique of the Open Cancer public-data pilot. [Public independent reviewer invitation](../../docs/community/independent-reviewers.md) · [focused research review tasks](../../docs/community/README.md). **Status: not independently scientifically or clinically validated.**
 
-[Explorer pilot](https://open-cancer-explorer.lagging.chatgpt.site/?view=pilot) · [research task](../../tasks/egfr-luad-evidence-coverage.json) · [original run](../../results/egfr-luad-evidence-coverage/pilot-20261110/README.md) · [review protocol](../../REVIEW_PROTOCOL.md) · [issue #3](https://github.com/dovvnloading/open-cancer/issues/3)
+[Historical Explorer demo — may be stale](https://open-cancer-explorer.lagging.chatgpt.site/?view=pilot) · [research task](../../tasks/egfr-luad-evidence-coverage.json) · [original run](../../results/egfr-luad-evidence-coverage/pilot-20261110/README.md) · [review protocol](../../REVIEW_PROTOCOL.md) · [issue #3](https://github.com/dovvnloading/open-cancer/issues/3)
 
 ## Recorded values (November 10, 2026)
 
@@ -73,4 +73,4 @@ Compare `source_content_sha256` from the new run with the original. If upstream 
 - Public source releases are mutable. The source fingerprints are recorded but complete raw third-party responses are not archived here.
 - **Known documentation inconsistency:** the original immutable `coverage.gdc.note` mentions a legacy "aggregate endpoint". The actual recorded retrieval uses `/ssm_occurrences`. Treat the `manifest.inputs[]` URLs and reproducibility code as authoritative; do not silently modify the review-bound snapshot.
 
-**Completion:** at least one genuinely external qualified cancer genomics expert submits a version-bound, evidence-specific review, including flaws/limitations; ideally a second reviews before promoting scientific interpretations. This is a request for critique, not an endorsement.
+**Completion:** at least one genuinely external qualified cancer genomics expert submits a version-bound, evidence-specific review, including flaws/limitations; ideally a second reviews before promoting scientific interpretations. Track its formal acceptance in [scientific assessment #36](https://github.com/dovvnloading/open-cancer/issues/36), not as a permanent recruitment issue. The [public invitation](../../docs/community/independent-reviewers.md) is a request for critique, not an endorsement.

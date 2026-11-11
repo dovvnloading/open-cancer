@@ -55,7 +55,7 @@ The first EGFR/lung adenocarcinoma pilot now has an [independent reviewer kit](r
 python scripts/build_review_packet.py --output /tmp/egfr-review --archive /tmp/egfr-review.zip
 ~~~
 
-We welcome independent critical cancer-genomics reviews through [issue #3](https://github.com/dovvnloading/open-cancer/issues/3). The computational method has been reproduced by project contributors, but the scientific interpretation is **not independently validated** and the analysis is not suitable for clinical care.
+**Independent reviewers:** the [public reviewer invitation and participation guide](docs/community/independent-reviewers.md) explains how to help. The [EGFR/LUAD research workstream #3](https://github.com/dovvnloading/open-cancer/issues/3) tracks three **concrete, independently verifiable tasks**: [CIViC evidence/ontology QA #34](https://github.com/dovvnloading/open-cancer/issues/34), [GDC/cBioPortal cohort and denominator QA #35](https://github.com/dovvnloading/open-cancer/issues/35), and [a version-bound independent expert assessment #36](https://github.com/dovvnloading/open-cancer/issues/36). The computational method has been reproduced within the project, but scientific interpretation is **not independently validated**, and the analysis is not suitable for clinical care. General invitations live in documentation, not the engineering issue backlog.
 
 ## Start contributing
 
@@ -64,7 +64,7 @@ We welcome independent critical cancer-genomics reviews through [issue #3](https
 - **Run an agent or analysis:** pick an [open task](tasks/egfr-luad-evidence-coverage.json), follow [AGENTS.md](AGENTS.md), and submit a reproducible manifest and artifacts. The [result schema](schemas/result.schema.json) is machine-readable.
 - **Review a contribution:** use the [scientific review protocol](REVIEW_PROTOCOL.md) and [version-bound review schema](schemas/review.schema.json); independently check methods, sources, and uncertainty rather than treating schema-valid output as medically correct.
 
-Full process: [CONTRIBUTING.md](CONTRIBUTING.md). For featured research, read the [publication governance and required human approval runbook](docs/publication-governance.md). Human review requirements must be enforced by GitHub branch protection; a CODEOWNERS file alone is not an approval gate.
+Contribution routing (Issues versus community participation): [community guide](docs/community/README.md). Full process: [CONTRIBUTING.md](CONTRIBUTING.md). For featured research, read the [publication governance and required human approval runbook](docs/publication-governance.md). Human review requirements must be enforced by GitHub branch protection; a CODEOWNERS file alone is not an approval gate.
 
 ## Validate locally
 
