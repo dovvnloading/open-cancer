@@ -2,7 +2,7 @@
 import unittest
 from urllib.error import HTTPError, URLError
 
-from scripts.monitor_catalog import SOURCES, compare, managed, retry, scan
+from scripts.monitor_catalog import SOURCES, compare, managed, observation, retry, scan
 
 
 KEYS = {"gdc": "gdc-tcga-luad-project",
@@ -22,12 +22,54 @@ class CatalogMonitorTests(unittest.TestCase):
         new = [sample("gdc", release="v2", rights="restricted"),
                sample("gdc", "gdc-tcga-coad-project")]
         new[0]["cohort_definition"] = "different cohort"
-        diff = compare("gdc", old, new)
+        # Baseline comes from earlier connector observations, not manually
+        # curated descriptions, which are expected to differ.
+        previous = {row["id"]: observation(row) for row in old}
+        diff = compare("gdc", old, new, previous_observations=previous)
         self.assertEqual(diff["added"], ["gdc-tcga-coad-project"])
         self.assertEqual(diff["removed"], ["gdc-tcga-brca-project"])
-        self.assertEqual(diff["changed_fields"][KEYS["gdc"]],
-                         ["cohort_definition", "release", "reuse"])
+        self.assertEqual(diff["changed_fields"][KEYS["gdc"]], ["release"])
+        self.assertTrue(diff["baseline_established"])
         self.assertFalse(diff["unexpected_shrinkage"])
+
+    def test_initial_baseline_does_not_treat_curated_text_as_upstream_drift(self):
+        curated = [sample("gdc")]
+        curated[0]["title"] = "Editorial name intentionally differs"
+        incoming = [sample("gdc")]
+        incoming[0]["title"] = "Official upstream project name"
+        first = compare("gdc", curated, incoming)
+        self.assertEqual(first["added"], [])
+        self.assertEqual(first["changed_fields"], {})
+        self.assertFalse(first["baseline_established"])
+        second = compare("gdc", curated, incoming,
+                         previous_observations=first["observations"])
+        self.assertEqual(second["changed_fields"], {})
+        self.assertTrue(second["baseline_established"])
+        altered = [dict(incoming[0], title="New upstream project name")]
+        third = compare("gdc", curated, altered,
+                        previous_observations=first["observations"])
+        self.assertEqual(third["changed_fields"][KEYS["gdc"]], ["title"])
+
+    def test_outage_preserves_previous_observations_after_recovery(self):
+        current = {source: [sample(source)] for source in SOURCES}
+        first = scan(current=current, discover=lambda source: [sample(source)],
+                     checked_at="2026-11-10T00:00:00+00:00", sleep=lambda _: None)
+        def discover(source):
+            if source == "gdc":
+                raise URLError("temporary outage")
+            return [sample(source)]
+        second = scan(current=current, discover=discover, previous_report=first,
+                      checked_at="2026-11-11T00:00:00+00:00", sleep=lambda _: None)
+        self.assertFalse(second["sources"]["gdc"]["ok"])
+        self.assertNotIn("observations", second["sources"]["gdc"])
+        # The workflow retains the last good observations in the durable ledger.
+        second["sources"]["gdc"]["observations"] = first["sources"]["gdc"]["observations"]
+        third = scan(current=current,
+                     discover=lambda source: [sample(source, release="v2" if source == "gdc" else "v1")],
+                     previous_report=second,
+                     checked_at="2026-11-12T00:00:00+00:00", sleep=lambda _: None)
+        self.assertEqual(third["sources"]["gdc"]["drift"]["changed_fields"][KEYS["gdc"]],
+                         ["release"])
 
     def test_empty_duplicates_and_wrong_identifiers_fail_closed(self):
         with self.assertRaisesRegex(ValueError, "zero upstream"):
@@ -83,7 +125,11 @@ class CatalogMonitorTests(unittest.TestCase):
                       checked_at="2026-11-10T00:00:00+00:00", sleep=lambda _: None)
         self.assertTrue(report["sources"]["civic"]["ok"])
         self.assertIn("terms offline", report["sources"]["civic"]["terms_link_error"])
-        self.assertEqual(report["sources"]["civic"]["drift"]["changed_fields"][KEYS["civic"]],
+        self.assertFalse(report["sources"]["civic"]["drift"]["baseline_established"])
+        later = scan(current=current, discover=lambda name: [sample(name, release="v3")],
+                     previous_report=report,
+                     checked_at="2026-11-11T00:00:00+00:00", sleep=lambda _: None)
+        self.assertEqual(later["sources"]["civic"]["drift"]["changed_fields"][KEYS["civic"]],
                          ["release"])
 
 
