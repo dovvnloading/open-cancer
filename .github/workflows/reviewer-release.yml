@@ -65,7 +65,7 @@ jobs:
           sha256sum --check egfr-luad-review-kit.zip.sha256
 
   monitor-pinned-release:
-    if: github.event_name != 'push' && vars.OPEN_CANCER_REVIEW_KIT_TAG != '' && vars.OPEN_CANCER_REVIEW_KIT_SHA256 != ''
+    if: github.event_name != 'push'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
@@ -77,7 +77,16 @@ jobs:
           RELEASE_TAG: ${{ vars.OPEN_CANCER_REVIEW_KIT_TAG }}
           EXPECTED_SHA: ${{ vars.OPEN_CANCER_REVIEW_KIT_SHA256 }}
         run: |
-          echo "$EXPECTED_SHA" | grep -Eq '^[a-f0-9]{64}$'
+          # A scheduled check without a configured release must fail, not appear green.
+          test -n "$RELEASE_TAG" || { echo "::error::OPEN_CANCER_REVIEW_KIT_TAG is not configured"; exit 1; }
+          test -n "$EXPECTED_SHA" || { echo "::error::OPEN_CANCER_REVIEW_KIT_SHA256 is not configured"; exit 1; }
+          echo "$EXPECTED_SHA" | grep -Eq '^[a-f0-9]{64}
+          mkdir -p "$RUNNER_TEMP/review-pin"
+          gh release view "$RELEASE_TAG" --json url --jq .url
+          gh release download "$RELEASE_TAG" --pattern 'egfr-luad-review-kit.zip' --dir "$RUNNER_TEMP/review-pin"
+          cd "$RUNNER_TEMP/review-pin"
+          echo "$EXPECTED_SHA  egfr-luad-review-kit.zip" | sha256sum --check -
+
           mkdir -p "$RUNNER_TEMP/review-pin"
           gh release view "$RELEASE_TAG" --json url --jq .url
           gh release download "$RELEASE_TAG" --pattern 'egfr-luad-review-kit.zip' --dir "$RUNNER_TEMP/review-pin"
