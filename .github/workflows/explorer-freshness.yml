@@ -4,7 +4,12 @@ on:
   schedule:
     - cron: "37 11 * * *"
   workflow_dispatch:
-  push:
+  # Check only after the source build/deployment workflow finishes.
+  # A concurrent push-triggered check races Pages propagation and
+  # temporarily reopens incidents during otherwise successful releases.
+  workflow_run:
+    workflows: ["Build and optionally deploy Open Cancer Explorer"]
+    types: [completed]
     branches: [main]
 
 permissions:
@@ -17,10 +22,13 @@ concurrency:
 
 jobs:
   compare-public-to-desired-release:
+    # Never run a privileged workflow_run check for untrusted PR workflow
+    # results; skip superseded runs when main has already advanced.
+    if: ${{ github.event_name != 'workflow_run' || (github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.event != 'pull_request' && github.event.workflow_run.head_sha == github.sha) }}
     runs-on: ubuntu-latest
     timeout-minutes: 8
     env:
-      PUBLIC_INDEX_URL: ${{ vars.OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL || 'https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json' }}
+      PUBLIC_INDEX_URL: ${{ vars.OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL || 'https://dovvnloading.github.io/open-cancer/api/v1/index.json' }}
       EXPECTED_REVISION: ${{ vars.OPEN_CANCER_EXPLORER_DESIRED_SHA || github.sha }}
     steps:
       - uses: actions/checkout@v4
@@ -44,7 +52,7 @@ jobs:
       - name: Record a durable public-release incident or healthy check
         uses: actions/github-script@v7
         env:
-          PUBLIC_INDEX_URL: ${{ vars.OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL || 'https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json' }}
+          PUBLIC_INDEX_URL: ${{ vars.OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL || 'https://dovvnloading.github.io/open-cancer/api/v1/index.json' }}
           EXPECTED_REVISION: ${{ vars.OPEN_CANCER_EXPLORER_DESIRED_SHA || github.sha }}
           CHECK_EXIT_CODE: ${{ steps.check.outputs.exit_code }}
         with:

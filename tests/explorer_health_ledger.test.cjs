@@ -37,3 +37,16 @@ test("malformed history and injection-like output fail safely", () => {
   const body = renderHealth({...status, output: "~~~text\nfaked block"});
   assert.doesNotMatch(body, /~~~text\nfaked block/);
 });
+
+test("freshness monitoring waits for the completed Pages release rather than racing on push", () => {
+  const fs = require("node:fs");
+  const path = require("node:path");
+  const workflow = fs.readFileSync(
+    path.join(__dirname, "../.github/workflows/explorer-freshness.yml"), "utf8");
+  assert.match(workflow, /workflow_run:\s*\n\s*workflows:\s*\["Build and optionally deploy Open Cancer Explorer"\]/);
+  assert.match(workflow, /types:\s*\[completed\]/);
+  assert.doesNotMatch(workflow, /^  push:/m);
+  assert.match(workflow, /github\.event\.workflow_run\.event != 'pull_request'/);
+  assert.match(workflow, /github\.event\.workflow_run\.head_sha == github\.sha/);
+  assert.match(workflow, /https:\/\/dovvnloading\.github\.io\/open-cancer\/api\/v1\/index\.json/);
+});
