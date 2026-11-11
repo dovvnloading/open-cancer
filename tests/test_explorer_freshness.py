@@ -14,7 +14,7 @@ def index():
     return {
         "version": 1, "repository": REPO, "revision": REV,
         "datasets": [{"id": "one"}, {"id": "two"}], "sources": [],
-        "questions": [], "pilots": [], "reviews": [],
+        "questions": [], "pilots": [], "reviews": [], "experimental_results": [],
     }
 
 
@@ -39,6 +39,10 @@ class FreshnessTests(unittest.TestCase):
                             validate_index(data, revision=REV, repository=REPO,
                                            minimum_datasets=1)))
         self.assertTrue(validate_index([], revision=REV, repository=REPO))
+        data = index()
+        data.pop("experimental_results")
+        self.assertTrue(any("experimental_results" in error for error in
+                            validate_index(data, revision=REV, repository=REPO)))
 
     def test_https_and_bounded_response(self):
         request_url = "https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json"

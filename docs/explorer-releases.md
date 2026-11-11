@@ -11,7 +11,7 @@ The Explorer currently has **two distinct publication surfaces**:
 2. In **Settings → Secrets and variables → Actions → Variables**, create the repository variable `OPEN_CANCER_GITHUB_PAGES_ENABLED` with value `true`.
 3. Run **Build and optionally deploy Open Cancer Explorer** in the GitHub Actions tab, or merge a reviewed change into main. Inspect the `github-pages` environment and the deployment URL. The usual GitHub Pages project URL is `https://dovvnloading.github.io/open-cancer/` unless custom settings override it.
 4. To monitor the new GitHub Pages deployment as production, also set repository variable `OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL` to its exact HTTPS `api/v1/index.json` URL. If unset, the monitor continues checking the original chatgpt.site demonstration, which might remain stale.
-5. Open the deployed `api/v1/index.json` and verify its `revision` matches the published Git commit. Confirm catalog counts are nonempty, provenance links work and the pilot is correctly labeled unreviewed.
+5. Open the deployed `api/v1/index.json` and verify its `revision` matches the published Git commit. Inspect `api/v1/release.json` for the **actual artifact build timestamp** (not a scientific verification date). The footer shows both revision and build time when this metadata is available. After deployment the `smoke-deployed` job must succeed, checking the live index, separate collections, EGFR/LUAD crosswalk, pilot and version-pinned review links.
 6. Keep an earlier, validated commit/artifact available for rollback. Never modify historical review-bound research snapshots when rolling back the site.
 
 GitHub's documentation requires a one-time Pages source selection in Settings. This repository's connector cannot perform that account-level activation; the workflow intentionally skips deployment until explicit opt-in. Pages uses GitHub Actions short-lived ID tokens, not repository-stored deployment secrets.
@@ -29,3 +29,23 @@ python scripts/check_explorer_freshness.py \
 An API with a different revision is **STALE**, not silently treated as updated. After the next published site build, the footer will show the exact catalog revision. A green monitor proves only that the API revision and basic collections match, **not** that the scientific data or clinical interpretations are valid.
 
 **Follow-up:** keep [QA issue #14](https://github.com/dovvnloading/open-cancer/issues/14) open until a production target is demonstrably current and its freshness monitor passes. Automated deployment to the current chatgpt.site host requires that host's deployment controls and is not implemented here.
+
+
+## Post-deployment smoke checks and rollback
+
+The build workflow writes `api/v1/release.json` with `built_at` in UTC, source revision and GitHub Actions run ID. This file is emitted **after** the deterministic source build, so `python scripts/build_explorer.py` remains bit-for-bit reproducible. The timestamp is when the artifact was built, not necessarily when the host served it. The original experimental evidence and reviewed research manifests are never rewritten.
+
+Before upload, `scripts/smoke_explorer_release.py` checks the local output. After an opt-in Pages deployment succeeds, the same command fetches the **public** site and verifies the same SHA in the index and build metadata, cross-collection JSON roundtrips, discoverable GDC/cBioPortal/CIViC EGFR links, the unreviewed pilot, and manifest/review URLs bound to that Git revision. These checks validate public release consistency, **not** biology or clinical validity. They do not guarantee every upstream external website remains online.
+
+For a manual smoke test:
+
+~~~sh
+python scripts/smoke_explorer_release.py \
+  --url https://dovvnloading.github.io/open-cancer/ \
+  --expected-revision "$(git rev-parse HEAD)" \
+  --require-build-info
+~~~
+
+If the live Pages deploy fails or becomes stale, inspect its Actions `deploy` and `smoke-deployed` jobs and the published SHA. A maintainer can restore an earlier verified static revision by rerunning that successful tagged/commit-bound release workflow or by publishing the previously retained signed-off artifact through the approved Pages deployment process. Verify the reverted public API reports the **rollback revision**, not current `main`, and temporarily pin freshness expectations to the designated production revision if required. Never label a rollback as a new scientific result.
+
+At present the Pages `deploy` job may be **skipped** by design until the repository owner enables Pages and `OPEN_CANCER_GITHUB_PAGES_ENABLED=true`. A green build does not imply a live production deployment. The separate chatgpt.site demonstration remains outside this workflow's publication control.

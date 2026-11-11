@@ -26,7 +26,7 @@ def validate_index(index: object, *, revision: str, repository: str, minimum_dat
     observed = index.get("revision")
     if observed != revision:
         errors.append(f"STALE Explorer: deployed revision {observed!r}, expected {revision!r}")
-    for key in ("datasets", "sources", "questions", "pilots", "reviews"):
+    for key in ("datasets", "sources", "questions", "pilots", "reviews", "experimental_results"):
         if not isinstance(index.get(key), list):
             errors.append(f"Missing or malformed collection: {key}")
     if isinstance(index.get("datasets"), list) and len(index["datasets"]) < minimum_datasets:
