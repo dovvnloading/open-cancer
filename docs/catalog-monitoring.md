@@ -18,3 +18,10 @@ Online manual run: \`python scripts/monitor_catalog.py --output catalog-health-r
 
 
 The connector inherits source access/rights descriptions from editorial templates. Therefore monitoring **cannot** infer that source reuse terms have legally changed from their regenerated metadata; it only highlights URL availability and HTTP ETag/Last-Modified changes when present. A human must review official source terms, consent conditions, and source-version changes independently. An upstream field change is not a request to overwrite editorial text automatically.
+
+
+## Durable ledger storage limits
+
+The first real live scan found that embedding full, pretty-printed source observations directly in a GitHub issue exceeded the 65,536-character issue-body limit. The workflow now stores a **losslessly compressed, base64-encoded JSON ledger** in a machine-readable HTML comment of the issue, while keeping concise human-readable source health and alerts visible. The original readable scan report remains a downloadable GitHub Actions artifact for 90 days. Compression stores only public study/export metadata, never patient rows or raw upstream source responses.
+
+The decoder supports both the compressed and original uncompressed ledger formats. Invalid or oversized state fails open **only for baseline initialization**: the runner emits an explicit warning and reestablishes a new observation baseline; it does not claim historical comparisons were performed. If the compressed ledger ever grows too large for GitHub's issue limit, the workflow preserves a concise actionable alert and artifact rather than silently swallowing a `422` API error. Machine-codec behavior is covered by `node --test tests/catalog_ledger.test.cjs`.
