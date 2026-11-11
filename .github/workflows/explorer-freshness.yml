@@ -4,23 +4,95 @@ on:
   schedule:
     - cron: "37 11 * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
 
 permissions:
   contents: read
+  issues: write
+
+concurrency:
+  group: open-cancer-public-explorer-health
+  cancel-in-progress: false
 
 jobs:
-  compare-public-to-main:
+  compare-public-to-desired-release:
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     env:
       PUBLIC_INDEX_URL: ${{ vars.OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL || 'https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json' }}
+      EXPECTED_REVISION: ${{ vars.OPEN_CANCER_EXPLORER_DESIRED_SHA || github.sha }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Compare public index with the latest main revision
+      - name: Test production alert formatting and transition logic offline
+        run: node --test tests/explorer_health_ledger.test.cjs
+      - name: Check public API against desired production revision
+        id: check
+        shell: bash
         run: |
+          set +e
           python scripts/check_explorer_freshness.py \
             --url "$PUBLIC_INDEX_URL" \
-            --expected-revision "$GITHUB_SHA" \
-            --minimum-datasets 69
+            --expected-revision "$EXPECTED_REVISION" \
+            --minimum-datasets 69 2>&1 | tee explorer-health.txt
+          result=${PIPESTATUS[0]}
+          echo "exit_code=$result" >> "$GITHUB_OUTPUT"
+          exit 0
+      - name: Record a durable public-release incident or healthy check
+        uses: actions/github-script@v7
+        env:
+          PUBLIC_INDEX_URL: ${{ vars.OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL || 'https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json' }}
+          EXPECTED_REVISION: ${{ vars.OPEN_CANCER_EXPLORER_DESIRED_SHA || github.sha }}
+          CHECK_EXIT_CODE: ${{ steps.check.outputs.exit_code }}
+        with:
+          script: |
+            const fs = require('fs');
+            const {parsePrevious, renderHealth, shouldRecordTransition} =
+              require(process.env.GITHUB_WORKSPACE + '/scripts/explorer_health_ledger.cjs');
+            const {owner, repo} = context.repo;
+            const title = 'Public Explorer release health (automated)';
+            const issues = await github.paginate(github.rest.issues.listForRepo,
+              {owner, repo, state: 'all', per_page: 100});
+            const ledger = issues.find(x => !x.pull_request && x.title === title);
+            let previous = null;
+            try { previous = parsePrevious(ledger?.body); }
+            catch (error) { core.warning('Prior deployment ledger malformed, replacing status.'); }
+            const current = {
+              checked_at: new Date().toISOString(),
+              public_index_url: process.env.PUBLIC_INDEX_URL,
+              expected_revision: process.env.EXPECTED_REVISION,
+              passed: process.env.CHECK_EXIT_CODE === '0',
+              output: fs.readFileSync('explorer-health.txt', 'utf8'),
+            };
+            const state = current.passed ? 'closed' : 'open';
+            const body = renderHealth(current);
+            let number;
+            if (ledger) {
+              number = ledger.number;
+              await github.rest.issues.update({owner, repo, issue_number: number, state, body});
+            } else {
+              const result = await github.rest.issues.create({owner, repo, title, body});
+              number = result.data.number;
+              if (state === 'closed') {
+                await github.rest.issues.update({owner, repo, issue_number: number, state});
+              }
+            }
+            if (ledger && shouldRecordTransition(previous, current)) {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: number,
+                body: 'New deployment health state on ' + current.checked_at + ':\n\n' +
+                  (current.passed ? '**Current**' : '**Stale or unreachable**') +
+                  '\nExpected: ' + current.expected_revision +
+                  '\nPublic index: ' + current.public_index_url +
+                  '\n\n' + current.output.slice(0, 1500),
+              });
+            }
+            core.info('Public Explorer release health issue #' + number + ': ' + state);
+      - name: Mark stale or unavailable deployment as failure
+        if: steps.check.outputs.exit_code != '0'
+        run: |
+          echo "::error::Public Explorer is stale or unavailable. See the durable release-health issue."
+          exit 1
