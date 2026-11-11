@@ -5,6 +5,7 @@ on:
     paths:
       - 'scripts/egfr_luad_pilot.py'
       - 'results/egfr-luad-evidence-coverage/**'
+      - 'reviews/egfr-luad-evidence-coverage/**'
       - 'tests/test_egfr_luad_pilot.py'
       - '.github/workflows/research-smoke.yml'
   workflow_dispatch:
@@ -15,6 +16,9 @@ permissions:
 jobs:
   research-pilot:
     runs-on: ubuntu-latest
+    env:
+      RUN_ID: ci-${{ github.run_id }}-${{ github.run_attempt }}
+      RUN_DIR: results/egfr-luad-evidence-coverage/ci-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,18 +30,13 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Retrieve source releases and derive public summary
         run: |
-          python results/egfr-luad-evidence-coverage/pilot-20261110/analyze.py \
-            --out-dir results/egfr-luad-evidence-coverage/pilot-20261110 \
-            --run-id pilot-20261110 \
-            --emit-review-payload
+          mkdir "$RUN_DIR"
+          cp results/egfr-luad-evidence-coverage/pilot-20261110/analyze.py "$RUN_DIR/"
+          python "$RUN_DIR/analyze.py" --out-dir "$RUN_DIR" --run-id "$RUN_ID" --emit-review-payload
       - name: Check result manifest, source references, and artifact hashes
         run: python scripts/validate.py
       - uses: actions/upload-artifact@v4
         with:
           name: egfr-luad-pilot-unreviewed
-          path: |
-            results/egfr-luad-evidence-coverage/pilot-20261110/manifest.json
-            results/egfr-luad-evidence-coverage/pilot-20261110/coverage.json
-            results/egfr-luad-evidence-coverage/pilot-20261110/civic_evidence_ids.csv
-            results/egfr-luad-evidence-coverage/pilot-20261110/cbio_protein_changes.csv
+          path: ${{ env.RUN_DIR }}/
           retention-days: 30

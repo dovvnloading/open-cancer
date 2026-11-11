@@ -33,5 +33,6 @@
     "label": "live study metadata; release not immutably pinned",
     "mutable": true
   },
-  "verified_on": "2026-11-10"
+  "verified_on": "2026-11-10",
+  "citation_url": "https://pubmed.ncbi.nlm.nih.gov/?term=29625048%5Buid%5D+OR+29596782%5Buid%5D+OR+29622463%5Buid%5D+OR+29617662%5Buid%5D+OR+29625055%5Buid%5D+OR+29625050%5Buid%5D+OR+30643250%5Buid%5D+OR+32214244%5Buid%5D+OR+29625049%5Buid%5D+OR+29850653%5Buid%5D+OR+36334560%5Buid%5D"
 }

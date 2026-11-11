@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b3a">
+  <meta name="description" content="Explore public cancer research datasets, trace their provenance and inspect the EGFR lung adenocarcinoma coverage pilot.">
+  <title>Open Cancer Explorer</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead">
+    <div class="wrap header-inner">
+      <a class="brand" href="?" aria-label="Open Cancer Explorer home"><span class="mark" aria-hidden="true"></span>Open Cancer</a>
+      <nav aria-label="Main navigation">
+        <a id="catalog-nav" href="?">Dataset catalog</a>
+        <a id="pilot-nav" href="?view=pilot">Research pilot</a>
+        <a href="./api/v1/index.json">JSON API <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1" aria-busy="true">
+    <div class="wrap loading"><h1>Open Cancer Explorer</h1><p id="loading-message" role="status">Loading the dataset catalog…</p>
+      <noscript><p>Enable JavaScript to search here, or <a href="https://github.com/dovvnloading/open-cancer/tree/main/catalog/datasets">browse dataset records on GitHub</a>.</p></noscript>
+    </div>
+  </main>
+  <footer><div class="wrap footer-inner">
+    <span class="footer-brand">Open Cancer</span>
+    <a href="https://github.com/dovvnloading/open-cancer/blob/main/docs/explorer-api.md">API reference</a>
+    <a href="https://github.com/dovvnloading/open-cancer/blob/main/CONTRIBUTING.md">Contribute</a>
+    <a href="https://github.com/dovvnloading/open-cancer">GitHub <span aria-hidden="true">↗</span></a>
+  </div></footer>
+</body>
+</html>

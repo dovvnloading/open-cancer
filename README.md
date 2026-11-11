@@ -4,6 +4,12 @@
 
 Open Cancer aims to make public cancer research easier to **discover, understand, verify, and build on** — for people and AI agents. The long-term aspiration is to accelerate research, not to suggest that a catalog alone will cure cancer.
 
+## Open Cancer Explorer
+
+Search by accession, disease, or source. Open a dataset to inspect its unit of observation, cohort, access conditions, reuse terms, and retrieval link. The EGFR lung adenocarcinoma pilot connects its research question to the exact queries, code, and evidence tables behind the published snapshot.
+
+[Open the Explorer](https://open-cancer-explorer.lagging.chatgpt.site/) · [Explore the EGFR pilot](https://open-cancer-explorer.lagging.chatgpt.site/?view=pilot) · [Download the JSON index](https://open-cancer-explorer.lagging.chatgpt.site/api/v1/index.json) · [API and local build guide](docs/explorer-api.md)
+
 ## What this repository does
 
 1. **Discover:** a curated, machine-readable directory of upstream cancer resources, with access conditions and attribution guidance.

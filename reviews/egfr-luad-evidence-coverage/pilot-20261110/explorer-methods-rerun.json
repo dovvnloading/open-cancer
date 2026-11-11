@@ -1,0 +1,54 @@
+{
+  "id": "explorer-methods-rerun",
+  "task_id": "egfr-luad-evidence-coverage",
+  "run_id": "pilot-20261110",
+  "reviewed_manifest_sha256": "9fce9beaaf873b5f0b0a14e338c3b372d8aa5d19c03be11b911ea1eb2b92931e",
+  "reviewer": {
+    "name": "Open Cancer Explorer development session (ChatGPT)",
+    "type": "agent",
+    "expertise": "Software execution, data provenance and checksum comparison.",
+    "conflicts": "The reviewer contributed to the Explorer that presents this pilot and participated in the project. An external research group has yet to replicate the analysis."
+  },
+  "reviewed_at": "2026-11-10T23:55:58Z",
+  "scope": "methods",
+  "decision": "methods-reproduced",
+  "reproduction": {
+    "status": "reproduced",
+    "command": "python results/egfr-luad-evidence-coverage/pilot-20261110/analyze.py --out-dir results/egfr-luad-evidence-coverage/pilot-20261110 --run-id pilot-20261110 && python scripts/validate.py && git diff -- results/egfr-luad-evidence-coverage/pilot-20261110",
+    "notes": "Executed with Python 3.12.14 in a fresh worktree at commit 4a7212b4159645eb71b48831b3bc559c7d5dfafe. All five upstream response hashes matched the original coverage file. Both CSVs were byte-identical. The only differences in coverage.json and manifest.json were the run timestamps and the resulting coverage.json checksum."
+  },
+  "checks": {
+    "source_provenance": {
+      "status": "passed",
+      "notes": "Downloaded the five source responses through the original URLs and verified their SHA-256 values against the recorded snapshot."
+    },
+    "data_permissions": {
+      "status": "not-assessed",
+      "notes": "The rerun used the existing public endpoints. This methods check did not reassess third-party licensing or consent."
+    },
+    "cohort_and_unit": {
+      "status": "passed",
+      "notes": "The rerun yielded 93 GDC occurrence rows and 78 distinct matching case IDs, 86 cBioPortal mutation-call rows, and 56 accepted CIViC evidence items under the pilot filters. The units describe separate source selections."
+    },
+    "method_reproducibility": {
+      "status": "passed",
+      "notes": "The documented command ran to completion with all source responses available. Repository validation passed on the newly generated artifacts."
+    },
+    "biological_interpretation": {
+      "status": "not-assessed",
+      "notes": "The original manifest records no scientific findings. This review evaluated the computation only."
+    },
+    "uncertainty": {
+      "status": "concern",
+      "notes": "Upstream snapshots are mutable. A future change in response bytes requires checking the selections and output tables again. The cohorts lack a common denominator."
+    }
+  },
+  "reviewed_finding_ids": [],
+  "rationale": "Running the recorded implementation in a separate checkout reproduced the source bytes, export tables and source-specific summary values. A second agent contributing to the Explorer wrote a separate calculation without importing the pilot. It also matched the five source hashes, all 56 selected CIViC evidence IDs, cBioPortal mutation-type and protein-change counts, and both GDC counts. Both checks were performed within the project team.",
+  "follow_up": [
+    "Seek replication by an external research group with independently documented source versions.",
+    "Ask a qualified cancer genomics reviewer to assess the disease and alteration definitions before drawing biological conclusions."
+  ],
+  "clinical_validity": "not-assessed",
+  "synthetic": false
+}

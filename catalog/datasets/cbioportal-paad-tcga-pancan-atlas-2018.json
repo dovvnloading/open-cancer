@@ -1,0 +1,38 @@
+{
+  "source_id": "cbioportal",
+  "documentation_url": "https://docs.cbioportal.org/web-api-and-clients/",
+  "access": {
+    "level": "open",
+    "notes": "Public study and API metadata can be queried without credentials; external underlying files and study-specific access/attribution may differ."
+  },
+  "reuse": {
+    "status": "verify-upstream",
+    "terms_url": "https://docs.cbioportal.org/user-guide/faq/",
+    "notes": "Public study access does not imply blanket permission to redistribute all underlying study data; confirm upstream attribution and terms."
+  },
+  "release": {
+    "label": "TCGA PanCancer Atlas study, portal import 2026-06-04 19:31:35",
+    "mutable": true
+  },
+  "verified_on": "2026-11-10",
+  "id": "cbioportal-paad-tcga-pancan-atlas-2018",
+  "accession": {
+    "namespace": "cBioPortal study ID",
+    "value": "paad_tcga_pan_can_atlas_2018"
+  },
+  "title": "Pancreatic Adenocarcinoma (TCGA, PanCancer Atlas) in cBioPortal",
+  "description": "Public study metadata for Pancreatic Adenocarcinoma (TCGA, PanCancer Atlas). Modality tags reflect assays with a positive profiled-sample count in the study summary.",
+  "landing_url": "https://www.cbioportal.org/study/summary?id=paad_tcga_pan_can_atlas_2018",
+  "retrieval_url": "https://www.cbioportal.org/api/studies/paad_tcga_pan_can_atlas_2018?projection=DETAILED",
+  "disease": {
+    "name": "Pancreatic Adenocarcinoma"
+  },
+  "modalities": [
+    "genomics",
+    "transcriptomics",
+    "proteomics"
+  ],
+  "unit_of_observation": "One cBioPortal study",
+  "cohort_definition": "Samples included by cBioPortal in paad_tcga_pan_can_atlas_2018. Each molecular profile has its own set of assayed samples.",
+  "citation_url": "https://pubmed.ncbi.nlm.nih.gov/?term=29625048%5Buid%5D+OR+29596782%5Buid%5D+OR+29622463%5Buid%5D+OR+29617662%5Buid%5D+OR+29625055%5Buid%5D+OR+29625050%5Buid%5D+OR+30643250%5Buid%5D+OR+32214244%5Buid%5D+OR+29625049%5Buid%5D+OR+29850653%5Buid%5D+OR+36334560%5Buid%5D"
+}

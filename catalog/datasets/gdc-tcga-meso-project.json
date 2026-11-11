@@ -1,0 +1,38 @@
+{
+  "source_id": "gdc",
+  "documentation_url": "https://docs.gdc.cancer.gov/API/Users_Guide/Search_and_Retrieval/",
+  "access": {
+    "level": "mixed",
+    "notes": "Project metadata is open. Underlying GDC files can be open or controlled; controlled files require authorization, consent compliance, and tokens."
+  },
+  "reuse": {
+    "status": "verify-upstream",
+    "terms_url": "https://gdc.cancer.gov/access-data/data-access-processes-and-tools",
+    "notes": "GDC projects may mix publicly accessible metadata with restricted data and study-level reuse requirements; verify before redistribution."
+  },
+  "release": {
+    "label": "Data Release 46.0 - August 10, 2026 at retrieval; live GDC project metadata",
+    "mutable": true
+  },
+  "verified_on": "2026-11-10",
+  "id": "gdc-tcga-meso-project",
+  "accession": {
+    "namespace": "NCI GDC project ID",
+    "value": "TCGA-MESO"
+  },
+  "title": "Mesothelioma (TCGA-MESO) in NCI Genomic Data Commons",
+  "description": "GDC project metadata for Mesothelioma in The Cancer Genome Atlas. The project summary identifies the available data categories.",
+  "landing_url": "https://portal.gdc.cancer.gov/projects/TCGA-MESO",
+  "retrieval_url": "https://api.gdc.cancer.gov/projects/TCGA-MESO?fields=project_id%2Cname%2Cprogram.name%2Csummary.data_categories.data_category",
+  "disease": {
+    "name": "Mesothelioma"
+  },
+  "modalities": [
+    "genomics",
+    "clinical",
+    "transcriptomics",
+    "proteomics"
+  ],
+  "unit_of_observation": "One GDC project",
+  "cohort_definition": "All data indexed under GDC project TCGA-MESO. File access and assay coverage vary within the project."
+}

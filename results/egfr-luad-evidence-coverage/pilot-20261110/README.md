@@ -7,12 +7,14 @@ This run attempts five public endpoints covering three sources; an optional GDC 
 - cBioPortal TCGA PanCancer Atlas LUAD study + mutation calls for NCBI Entrez 1956 (EGFR); aggregate by protein change entirely in memory. **No sample/patient records are saved.**
 - NCI GDC TCGA-LUAD project metadata **and a bounded, public SSM occurrence query** for EGFR (ENSG00000146648) and TCGA-LUAD. We count mutation occurrence rows and deduplicate case UUIDs strictly in memory. No case UUIDs or raw mutation records are saved.
 
-Run (Python 3.12+ standard library) from repository root:
+Run with Python 3.12+ from the repository root. Give each rerun its own directory so the original manifest and the reviews bound to it stay verifiable.
 
 ```bash
-python results/egfr-luad-evidence-coverage/pilot-20261110/analyze.py \
-  --out-dir results/egfr-luad-evidence-coverage/pilot-20261110 \
-  --run-id pilot-20261110
+pilot=results/egfr-luad-evidence-coverage
+run_id="rerun-$(date -u +%Y%m%d%H%M%S)"
+mkdir "$pilot/$run_id"
+cp "$pilot/pilot-20261110/analyze.py" "$pilot/$run_id/"
+python "$pilot/$run_id/analyze.py" --out-dir "$pilot/$run_id" --run-id "$run_id"
 python scripts/validate.py
 ```
 
