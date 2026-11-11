@@ -153,6 +153,29 @@ def make_packet(root: Path, revision: str) -> dict[str, bytes]:
         "source_revision": revision,
         "original_manifest_sha256": sha(packet["manifest.json"]),
         "source_response_sha256": coverage["source_content_sha256"],
+        "upstream_inputs": [
+            {
+                **record,
+                "source_is_mutable": True,
+                # A response hash is not a stable raw-input download or release accession.
+                "immutable_release_url": None,
+            }
+            for record in manifest["inputs"]
+        ],
+        "upstream_identifiers": {
+            "gdc_project_id": coverage["gdc"]["project_id"],
+            "gdc_egfr_gene_id": coverage["gdc"]["egfr_occurrences"]["gene_id"],
+            "cbioportal_study_id": coverage["cbioportal"]["study_id"],
+            "civic_export_filename": next(
+                record["url"].rsplit("/", 1)[-1] for record in manifest["inputs"]
+                if record["source_id"] == "civic"
+            ),
+        },
+        "reproducibility_status": {
+            "method_reproduction": "reproduced-within-project-external-review-pending",
+            "source_version_drift": "must-compare-response-sha256-on-requery",
+            "exact_input_replay": "not-guaranteed-original-source-bytes-not-archived",
+        },
         "qa_sample": {
             "selection": "SHA256 ordering of original manifest hash plus evidence ID; 8 predictive, 2 prognostic, 2 oncogenic; nonrepresentative",
             "size": 12,
