@@ -32,6 +32,19 @@ class ReviewPacketTests(unittest.TestCase):
         self.assertEqual(index["original_manifest_sha256"], hashlib.sha256(
             (ROOT / RESULT / "manifest.json").read_bytes()).hexdigest())
         self.assertEqual(len(index["files"]), len(packet) - 2)
+        original = json.loads(packet["manifest.json"])
+        self.assertEqual(len(index["upstream_inputs"]), len(original["inputs"]))
+        self.assertEqual([x["source_release"] for x in index["upstream_inputs"]],
+                         [x["source_release"] for x in original["inputs"]])
+        self.assertTrue(all(x["source_is_mutable"] and x["immutable_release_url"] is None
+                            for x in index["upstream_inputs"]))
+        self.assertEqual(index["upstream_identifiers"]["gdc_project_id"], "TCGA-LUAD")
+        self.assertEqual(index["upstream_identifiers"]["cbioportal_study_id"],
+                         "luad_tcga_pan_can_atlas_2018")
+        self.assertEqual(index["reproducibility_status"]["method_reproduction"],
+                         "reproduced-within-project-external-review-pending")
+        self.assertIn("not-guaranteed",
+                      index["reproducibility_status"]["exact_input_replay"])
         self.assertEqual(json.loads(packet["manifest.json"])["findings"], [])
         self.assertEqual(json.loads(packet["coverage.json"])["status"], "unreviewed")
         for line in packet["SHA256SUMS"].decode().splitlines():
