@@ -2,6 +2,12 @@
 
 People in biology, oncology, data engineering, software, clinical research, security, and open science are welcome. Small, auditable submissions are more useful than unsourced bulk dumps.
 
+## Where to participate
+
+**General introductions and reviewer invitations are not bugs.** See the [community channel guide](docs/community/README.md) and [public reviewer invitation](docs/community/independent-reviewers.md). GitHub Discussions is **currently disabled**, so we maintain the invitation in version-controlled documentation instead of leaving a recruitment issue permanently open. If Discussions is enabled later, maintainers can link to an actual thread.
+
+Use [GitHub Issues](https://github.com/dovvnloading/open-cancer/issues) for **specific deliverables**, reproducible bugs, documented evidence discrepancies and incidents, with objective acceptance criteria. The EGFR/LUAD research workstream is [#3](https://github.com/dovvnloading/open-cancer/issues/3); focused work belongs in [CIViC audit #34](https://github.com/dovvnloading/open-cancer/issues/34), [GDC/cBioPortal cohort audit #35](https://github.com/dovvnloading/open-cancer/issues/35) or [independent expert assessment #36](https://github.com/dovvnloading/open-cancer/issues/36). A comment saying someone may volunteer is not proof of an independent scientific review. Formal findings should be submitted through a review-bound PR.
+
 ## Ways to contribute
 
 **1. Improve the source catalog.** Add one JSON file in `catalog/sources/` matching `schemas/source.schema.json`. Provide an official provenance URL, access conditions, source modalities, a review date, and reuse details. If the redistribution license is not confirmed, use `verify-upstream`. Never treat a publicly readable website as a blanket open-data license.
