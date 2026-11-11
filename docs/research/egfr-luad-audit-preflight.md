@@ -36,3 +36,24 @@ All CIViC queue rows are marked **`upstream_record_checked=no`** and **`scientif
 The preflight is deterministic from the historical, immutable manifest and saved public derived outputs, and its fields are validated by offline tests. It intentionally **does not fetch new upstream data**, so a green test or identical ZIP does not imply that an original source URL is still live, source reuse rights have been adjudicated, or that scientific conclusions were independently reproduced. All original result files, their checksums, and linked reviews are unchanged.
 
 **Do not close #34, #35 or #36 solely because these machine-generated aids exist.**
+
+
+## Optional bounded live public metadata drift audit
+
+The [source metadata audit workflow](../../.github/workflows/egfr-source-audit.yml) runs once after a reviewed update to its source code or via manual Actions dispatch. It is not a source of original biological claims. It **retrieves only** the openly published CIViC nightly clinical evidence summary TSV (under CIViC's stated CC0 reuse terms), the public cBioPortal study metadata response and the public GDC TCGA-LUAD project metadata response. It never calls the cBioPortal mutations API, GDC SSM occurrence endpoint, patient/case/sample endpoints or controlled-data downloads.
+
+The [read-only audit script](../../scripts/egfr_live_source_audit.py) checks the original immutable manifest, writes a separate timestamped artifact, and captures current upstream source-response SHA-256 fingerprints:
+
+- `civic-selected-record-drift.csv`: one row per **originally selected** CIViC EID (56), comparing current public TSV fields with the historical selected row, highlighting missing IDs, changed acceptance status, disease/DOID, molecular-profile labels or evidence types. This is **metadata drift**, not expert validation of each evidence statement or medical interpretation.
+- `civic-broader-lung-candidates.csv`: current live **accepted EGFR-token records** with broader lung-disease labels omitted by the exact-LUAD rule. These are candidates to inspect, not a finding that the original filter was wrong. The original 161 excluded EIDs were not individually preserved, so today's live count cannot be retroactively treated as the original excluded set.
+- `public-source-metadata-summary.json`: original-versus-live selected counts, source SHA fingerprint drift, current cBioPortal study-level sequenced sample count **if reported**, GDC project-level case count **if reported**, both with explicit warnings that neither is the EGFR-assayed denominator, and **no scientific or clinical validation**.
+- `SHA256SUMS`: verification of the derived public audit artifact.
+
+The workflow publishes the output as a **90-day Actions artifact**, not into the trusted Explorer API and not as a permanent scientific result. Fetch or schema errors fail the job rather than silently returning zero. To run locally on a clean checkout (with public outbound HTTPS):
+
+~~~bash
+python scripts/egfr_live_source_audit.py --output-dir /tmp/egfr-live-public-audit
+(cd /tmp/egfr-live-public-audit && sha256sum --check SHA256SUMS)
+~~~
+
+Any changed source metadata needs a domain expert to inspect the original CIViC record, cited source and disease/variant context before interpretation. This workflow does not satisfy the human-reviewed acceptance criteria of #34, #35 or #36.
