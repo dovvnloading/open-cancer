@@ -1,0 +1,108 @@
+name: Monitor catalog freshness and upstream source health
+
+on:
+  schedule:
+    - cron: "23 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  catalog-health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test metadata drift and failure handling without network
+        run: python -m unittest discover -s tests -p test_catalog_monitor.py -v
+      - name: Scan public metadata and source reuse links
+        run: python scripts/monitor_catalog.py --output catalog-health-report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: catalog-health-report
+          path: catalog-health-report.json
+          retention-days: 90
+          if-no-files-found: error
+      - name: Upsert durable source-health ledger and alert on drift
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('catalog-health-report.json', 'utf8'));
+            const {owner, repo} = context.repo;
+            const title = 'Catalog metadata health ledger (automated)';
+            const issues = await github.paginate(github.rest.issues.listForRepo,
+              {owner, repo, state: 'all', per_page: 100});
+            const ledger = issues.find(x => !x.pull_request && x.title === title);
+            let previous = {};
+            const marker = ledger?.body?.match(/<!-- catalog-health-json\n([\s\S]*?)\n-->/);
+            if (marker) {
+              try { previous = JSON.parse(marker[1]); }
+              catch (err) { core.warning('Prior health ledger is not parseable'); }
+            }
+            const alerts = [];
+            const health = [];
+            for (const [name, row] of Object.entries(report.sources)) {
+              const prior = previous.sources?.[name] || {};
+              row.last_healthy = row.ok ? report.checked_at : (prior.last_healthy || null);
+              health.push('- ' + name + ': last checked ' + row.last_checked +
+                '; last healthy ' + (row.last_healthy || 'unknown'));
+              if (!row.ok) alerts.push(name + ' endpoint failure: ' + row.error);
+              if (row.terms_link_error) alerts.push(name + ' source-rights link issue: ' + row.terms_link_error);
+              const drift = row.drift || {};
+              if (drift.unexpected_shrinkage) alerts.push(name + ' unexpected source-count shrinkage');
+              if ((drift.added || []).length || (drift.removed || []).length ||
+                  Object.keys(drift.changed_fields || {}).length) {
+                alerts.push(name + ' metadata drift: additions ' + JSON.stringify(drift.added || []) +
+                  ', removals ' + JSON.stringify(drift.removed || []) +
+                  ', changed fields ' + JSON.stringify(drift.changed_fields || {}));
+              }
+              const nowLink = row.terms_link || {};
+              const oldLink = prior.terms_link || {};
+              for (const field of ['etag', 'last_modified']) {
+                if (nowLink[field] && oldLink[field] && nowLink[field] !== oldLink[field]) {
+                  alerts.push(name + ' source-terms ' + field + ' changed; review reuse rights');
+                }
+              }
+            }
+            report.alerts = alerts;
+            const body = [
+              'Automated checks cover **public metadata only**. Neither a healthy result nor a passing CI run verifies science, source licensing, consent or clinical suitability.',
+              '',
+              'Last check: ' + report.checked_at,
+              'State: ' + (alerts.length ? '**REVIEW REQUIRED**' : 'no detected monitored drift'),
+              '',
+              '### Source health', ...health,
+              '',
+              '### Actionable changes and outages',
+              ...(alerts.length ? alerts.map(a => '- ' + a) : ['- None detected by these bounded checks.']),
+              '',
+              'Review changed upstream accessions, releases, cohorts and source terms before any editorial PR. No monitoring job overwrites the catalog.',
+              'Changed ETag or Last-Modified is a warning to check terms; unchanged headers are not proof rights stayed the same.',
+              '',
+              '<!-- catalog-health-json', JSON.stringify(report, null, 2), '-->'
+            ].join('\n');
+            const state = alerts.length ? 'open' : 'closed';
+            let number;
+            if (ledger) {
+              number = ledger.number;
+              await github.rest.issues.update({owner, repo, issue_number: number, state, body});
+            } else {
+              const created = await github.rest.issues.create({owner, repo, title, body});
+              number = created.data.number;
+              if (state === 'closed') {
+                await github.rest.issues.update({owner, repo, issue_number: number, state});
+              }
+            }
+            if (alerts.length && alerts.join('\n') !== (previous.alerts || []).join('\n')) {
+              await github.rest.issues.createComment({owner, repo, issue_number: number,
+                body: 'New or changed source-health alert at ' + report.checked_at + ':\n\n' +
+                  alerts.map(a => '- ' + a).join('\n')});
+            }
+            core.info('Catalog health issue #' + number + ' updated (' + state + ')');
+            if (alerts.length) core.setFailed('Catalog drift/outage requires human review: issue #' + number);
