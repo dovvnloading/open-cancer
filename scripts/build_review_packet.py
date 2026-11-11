@@ -19,8 +19,10 @@ import zipfile
 
 try:
     from .validate import ROOT, validate_repository, MAX_ARTIFACT_BYTES
+    from .egfr_audit_queue import make_civic_triage, make_cross_source_units
 except ImportError:
     from validate import ROOT, validate_repository, MAX_ARTIFACT_BYTES
+    from egfr_audit_queue import make_civic_triage, make_cross_source_units
 
 TASK = "egfr-luad-evidence-coverage"
 RUN = "pilot-20261110"
@@ -90,7 +92,8 @@ def git_revision(root: Path) -> str:
     head = subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
     inputs = ["catalog", "tasks", "results", "reviews", "schemas",
-              "review_packets", "scripts/build_review_packet.py", "scripts/validate.py"]
+              "review_packets", "scripts/build_review_packet.py",
+              "scripts/egfr_audit_queue.py", "scripts/validate.py"]
     dirty = subprocess.check_output(
         ["git", "status", "--porcelain", "--untracked-files=all", "--", *inputs],
         cwd=root, text=True).strip()
@@ -143,6 +146,14 @@ def make_packet(root: Path, revision: str) -> dict[str, bytes]:
         if not (type(count) is int and type(distinct) is int and 0 < distinct <= count <= gdc["limit"]):
             raise ValueError("GDC summary has inconsistent occurrence and case totals")
     packet["evidence_review_sample.csv"] = review_sample(civic, sha(packet["manifest.json"]))
+    # Public evidence-ID labels only; these queues are NOT scientific assessments.
+    queue_bytes, type_counts = make_civic_triage(civic)
+    if type_counts != coverage["civic"]["evidence_type_counts_exact_luad"]:
+        raise ValueError("CIViC triage evidence-type totals differ from original snapshot")
+    packet["civic_profile_triage.csv"] = queue_bytes
+    packet["cross_source_units.json"] = make_cross_source_units(
+        coverage, packet["manifest.json"], len(civic),
+        sum(int(row["mutation_call_rows"]) for row in cbio))
     file_index = [{"name": name, "bytes": len(data), "sha256": sha(data)}
                   for name, data in sorted(packet.items())]
     meta = {
@@ -179,6 +190,13 @@ def make_packet(root: Path, revision: str) -> dict[str, bytes]:
         "qa_sample": {
             "selection": "SHA256 ordering of original manifest hash plus evidence ID; 8 predictive, 2 prognostic, 2 oncogenic; nonrepresentative",
             "size": 12,
+        },
+        "audit_queues": {
+            "all_selected_civic_evidence_items": len(civic),
+            "profile_text_flags": "heuristic-only-not-evidence-of-curation-errors",
+            "cohort_unit_comparison": "offline-arithmetic-and-metadata-only",
+            "upstream_record_links_individually_checked": False,
+            "external_domain_interpretation_completed": False,
         },
         "files": file_index,
     }
