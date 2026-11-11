@@ -12,7 +12,7 @@ import unittest
 
 from scripts.egfr_live_source_audit import (
     ROOT, RESULT, parse_civic_snapshot, compare_civic, make_live_report,
-    is_strict_luad,
+    is_strict_luad, canonical_doid,
 )
 
 HEADERS = ("evidence_id", "molecular_profile", "evidence_status",
@@ -43,6 +43,26 @@ class LiveCIViCAuditTests(unittest.TestCase):
         cls.manifest = (RESULT / "manifest.json").read_bytes()
         cls.original_csv = (RESULT / "civic_evidence_ids.csv").read_bytes()
         cls.coverage = json.loads((RESULT / "coverage.json").read_bytes())
+
+    def test_canonical_doid_namespace_does_not_create_fabricated_drift(self):
+        self.assertEqual(canonical_doid("DOID:3910"), "3910")
+        self.assertEqual(canonical_doid("doid: 3910"), "3910")
+        self.assertEqual(canonical_doid("3910"), "3910")
+        self.assertNotEqual(canonical_doid("3908"), canonical_doid("DOID:3910"))
+        current = parse_civic_snapshot(fake_tsv())
+        original = list(csv.DictReader(io.StringIO(self.original_csv.decode())))
+        selected, _ = compare_civic(original, current)
+        original_879 = next(x for x in selected if x["record_id"] == "879")
+        self.assertEqual(original_879["original_doid"], "DOID:3910")
+        self.assertEqual(original_879["current_doid"], "DOID:3910")
+        self.assertEqual(original_879["changed_metadata_fields"], "none")
+        # A genuinely different ontology term must still trigger review.
+        amended = parse_civic_snapshot(fake_tsv())
+        amended["all_by_id"]["879"]["doid"] = "DOID:3908"
+        revised, _ = compare_civic(original, amended)
+        updated = next(x for x in revised if x["record_id"] == "879")
+        self.assertIn("doid", updated["changed_metadata_fields"])
+        self.assertIn("current_inclusion", updated["changed_metadata_fields"])
 
     def test_disease_selectors_distinguish_exact_from_broad(self):
         self.assertTrue(is_strict_luad({"doid": "DOID:3910", "disease": "Lung Adenocarcinoma"}))
