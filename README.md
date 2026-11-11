@@ -41,6 +41,16 @@ python scripts/search_catalog.py --disease DOID:3910
 python scripts/search_catalog.py --source civic --format json
 ```
 
+## Scientific validation challenge
+
+The first EGFR/lung adenocarcinoma pilot now has an [independent reviewer kit](review_packets/egfr-luad-v1/README.md), a [domain-expert checklist](review_packets/egfr-luad-v1/SCIENTIFIC_CHECKLIST.md), and an [outreach shortlist](review_packets/egfr-luad-v1/REVIEWER_TARGETS.md). A checksum-verified review bundle can be generated with:
+
+~~~bash
+python scripts/build_review_packet.py --output /tmp/egfr-review --archive /tmp/egfr-review.zip
+~~~
+
+We welcome independent critical cancer-genomics reviews through [issue #3](https://github.com/dovvnloading/open-cancer/issues/3). The computational method has been reproduced by project contributors, but the scientific interpretation is **not independently validated** and the analysis is not suitable for clinical care.
+
 ## Start contributing
 
 - **Add or improve a source:** submit `catalog/sources/<id>.json` using [schema](schemas/source.schema.json), citing official documentation.
