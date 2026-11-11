@@ -80,8 +80,7 @@ jobs:
           # A scheduled check without a configured release must fail, not appear green.
           test -n "$RELEASE_TAG" || { echo "::error::OPEN_CANCER_REVIEW_KIT_TAG is not configured"; exit 1; }
           test -n "$EXPECTED_SHA" || { echo "::error::OPEN_CANCER_REVIEW_KIT_SHA256 is not configured"; exit 1; }
-          printf '%s\n' "$EXPECTED_SHA" | grep -Eq '^[a-f0-9]{64}
- || {
+          printf '%s\n' "$EXPECTED_SHA" | grep -Eq '^[a-f0-9]{64}$' || {
             echo "::error::Expected a lowercase 64-hex-character SHA-256 digest";
             exit 1;
           }
