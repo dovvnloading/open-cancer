@@ -26,6 +26,8 @@ jobs:
         run: node --test tests/explorer.test.mjs
       - name: Test durable catalog issue ledger size and decoding
         run: node --test tests/catalog_ledger.test.cjs
+      - name: Test public Explorer health alert formatting
+        run: node --test tests/explorer_health_ledger.test.cjs
       - name: Build the Explorer and its JSON API
         run: python scripts/build_explorer.py --output _site
       - name: Save the Explorer for this revision
