@@ -5,14 +5,18 @@ on:
     paths:
       - "review_packets/**"
       - "scripts/build_review_packet.py"
+      - "scripts/egfr_audit_queue.py"
       - "tests/test_review_packet.py"
+      - "tests/test_egfr_audit_queue.py"
       - ".github/workflows/reviewer-packet.yml"
   push:
     branches: [main]
     paths:
       - "review_packets/**"
       - "scripts/build_review_packet.py"
+      - "scripts/egfr_audit_queue.py"
       - "tests/test_review_packet.py"
+      - "tests/test_egfr_audit_queue.py"
   workflow_dispatch:
 
 permissions:
