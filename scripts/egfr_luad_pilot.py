@@ -207,7 +207,7 @@ def gdc_analysis(raw: bytes):
         "project_id": data["project_id"],
         "name": data.get("name"),
         "case_count_reported": summary.get("case_count"),
-        "note": "Project-level metadata. EGFR summary is obtained separately via GDC's public aggregate endpoint.",
+        "note": "Project metadata only. EGFR counts come from the separately filtered GDC /ssm_occurrences endpoint; case IDs are deduplicated only in memory, without a profiled denominator.",
         "unit": "GDC project, not a gene-level observation",
     }
 

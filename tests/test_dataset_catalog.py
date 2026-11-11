@@ -48,6 +48,28 @@ class DatasetCatalogTests(unittest.TestCase):
             errors = validate_repository(root)
             self.assertTrue(any("dataset references unknown source" in e for e in errors))
 
+    def test_pilot_research_links_have_provenance_and_do_not_generalize(self):
+        linked = [row for row in self.data if row.get("research_context")]
+        self.assertEqual(len(linked), 4)
+        self.assertEqual({row["source_id"] for row in linked}, {"gdc", "cbioportal", "civic"})
+        for row in linked:
+            context = row["research_context"][0]
+            self.assertEqual(context["task_id"], "egfr-luad-evidence-coverage")
+            self.assertEqual(context["run_id"], "pilot-20261110")
+            self.assertEqual(context["gene_symbol"], "EGFR")
+            self.assertEqual(context["disease_label"], "LUAD")
+            self.assertGreater(len(context["note"]), 65)
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            for name in ("schemas", "catalog", "tasks", "results"):
+                shutil.copytree(ROOT / name, root / name)
+            path = root / "catalog/datasets/civic-nightly-clinical-evidence.json"
+            item = json.loads(path.read_text())
+            item["research_context"][0]["run_id"] = "invented-run"
+            path.write_text(json.dumps(item))
+            self.assertTrue(any("research context references missing result" in err
+                                for err in validate_repository(root)))
+
     def test_mutable_release_is_explicit(self):
         self.assertTrue(all(isinstance(r["release"]["mutable"], bool)
                             for r in self.data))

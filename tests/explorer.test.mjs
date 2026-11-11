@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import test from "node:test";
-import {filterDatasets, pageFor, permalink, pilotMeasures, reviewsFor, searchText} from "../explorer/catalog.mjs";
+import {filterDatasets, pageFor, permalink, pilotMeasures, reviewsFor, scientificReviewSummary, searchText} from "../explorer/catalog.mjs";
 
 function json(path) {
   return JSON.parse(readFileSync(new URL("../" + path, import.meta.url), "utf8"));
@@ -54,4 +54,38 @@ test("review display includes adverse decisions and excludes examples and stale 
   const pilot = {task_id: "test-task", run_id: "test-run", manifest_sha256: "a".repeat(64)};
   const disputed = {task_id: "test-task", run_id: "test-run", reviewed_manifest_sha256: pilot.manifest_sha256, synthetic: false, decision: "disputed"};
   assert.deepEqual(reviewsFor(pilot, [disputed, {...disputed, synthetic: true}, {...disputed, run_id: "other"}, {...disputed, reviewed_manifest_sha256: "b".repeat(64)}]), [disputed]);
+});
+
+// The pilot crosswalk is a curated link, not an inference that all source rows
+// match EGFR or even describe LUAD in pan-cancer resources.
+test("EGFR LUAD search discovers all four specifically linked source records", () => {
+  const ids = [
+    "gdc-tcga-luad-egfr-ssm-occurrences", "gdc-tcga-luad-project",
+    "cbioportal-luad-tcga-pancan-atlas-2018", "civic-nightly-clinical-evidence"
+  ];
+  const records = ids.map(id => json("catalog/datasets/" + id + ".json"));
+  const unrelated = json("catalog/datasets/gdc-tcga-kirc-project.json");
+  const all = [...records, unrelated];
+  const lookup = new Map(all.map(r => [r.id, searchText(r, r.source_id)]));
+  assert.deepEqual(
+    new Set(filterDatasets(all, lookup, {q:"EGFR LUAD"}).map(r=>r.id)),
+    new Set(ids)
+  );
+  assert.equal(records[3].research_context[0].relationship, "upstream-source");
+  assert.match(records[3].research_context[0].note, /pan-cancer/i);
+});
+
+test("critical scientific review never signals independent verification", () => {
+  const base = {scope:"scientific-interpretation", reviewer:{type:"human"},
+    checks:Object.fromEntries(["source_provenance","cohort_and_unit","biological_interpretation","uncertainty"]
+      .map(k=>[k,{status:"passed"}]))};
+  assert.match(scientificReviewSummary([]).heading, /pending/i);
+  assert.match(scientificReviewSummary([{...base,decision:"needs-revision"}]).heading, /revisions requested/i);
+  assert.match(scientificReviewSummary([{...base,decision:"disputed"}]).heading, /disputed/i);
+  assert.match(scientificReviewSummary([{...base,decision:"scientific-assessment-completed"}]).heading, /verification pending/i);
+  assert.match(scientificReviewSummary([{...base,reviewer:{type:"agent"},decision:"scientific-assessment-completed"}]).heading, /pending/i);
+  assert.match(scientificReviewSummary([{...base,decision:"scientific-assessment-completed",
+    checks: {biological_interpretation:{status:"not-assessed"}}}]).heading, /pending/i);
+  assert.match(scientificReviewSummary([{...base,decision:"scientific-assessment-completed"},
+    {...base,decision:"disputed"}]).heading, /disputed/i);
 });
