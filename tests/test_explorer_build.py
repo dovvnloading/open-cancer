@@ -153,6 +153,14 @@ class ExplorerBuildTests(unittest.TestCase):
         self.assertEqual(hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
                          item["manifest_sha256"])
 
+    def test_malformed_publication_id_fails_validation_without_crashing(self):
+        decision_path = self.root / "catalog/publication-decisions.json"
+        decisions = json.loads(decision_path.read_text())
+        decisions[0]["task_id"] = {"invalid": ["unhashable"]}
+        decision_path.write_text(json.dumps(decisions))
+        with self.assertRaisesRegex(ValueError, "not of type 'string'"):
+            make_index(self.root, REPOSITORY, REVISION)
+
     def test_publication_pin_validation(self):
         decision_path = self.root / "catalog/publication-decisions.json"
         decisions = json.loads(decision_path.read_text())
