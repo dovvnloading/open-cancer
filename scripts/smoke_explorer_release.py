@@ -70,7 +70,7 @@ def check_snapshot(fetch, revision, *, minimum_datasets=69, require_build_info=F
         if pilot is None:
             errors.append("Featured EGFR/LUAD pilot missing")
         else:
-            if pilot.get("coverage", {}).get("status") != "unreviewed":
+            if (pilot.get("coverage") or {}).get("status") != "unreviewed":
                 errors.append("Original EGFR/LUAD snapshot not marked unreviewed")
             if pilot.get("clinical_validation_status") != "not-assessed":
                 errors.append("Clinical nonvalidation disclaimer missing")
@@ -103,7 +103,7 @@ def check_snapshot(fetch, revision, *, minimum_datasets=69, require_build_info=F
                     raise ValueError("timestamp missing timezone or in future")
             except (AttributeError, TypeError, ValueError):
                 errors.append("Missing/invalid UTC build timestamp")
-    except (OSError, ValueError, UnicodeError, KeyError, TypeError) as exc:
+    except (OSError, ValueError, UnicodeError, KeyError, TypeError, AttributeError) as exc:
         errors.append(f"Missing or malformed published asset: {exc}")
     return errors
 
