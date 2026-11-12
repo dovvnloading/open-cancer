@@ -20,6 +20,7 @@ def evaluate(report: dict, previous: dict | None = None) -> dict:
         raise ValueError("Catalog health report has unexpected or missing sources")
     previous_sources = previous.get("sources", {}) if isinstance(previous, dict) else {}
     alerts = []
+    warnings = []
     for name in SOURCES:
         row = report["sources"][name]
         if not isinstance(row, dict):
@@ -44,10 +45,25 @@ def evaluate(report: dict, previous: dict | None = None) -> dict:
             )
         now_terms = row.get("terms_link") or {}
         old_terms = old.get("last_verified_terms_link") or old.get("terms_link") or {}
-        for field in ("etag", "last_modified"):
-            if now_terms.get(field) and old_terms.get(field) and now_terms[field] != old_terms[field]:
-                alerts.append(f"{name}: source-terms {field} changed; review reuse rights")
+        pending = row.get("pending_terms_review")
+        if pending is None:
+            # Compatibility with reports that predate the durable review flag.
+            changed = [
+                field for field in ("url", "etag", "last_modified")
+                if now_terms.get(field) and old_terms.get(field)
+                and now_terms[field] != old_terms[field]
+            ]
+        else:
+            if (not isinstance(pending, list)
+                    or any(field not in ("url", "etag", "last_modified") for field in pending)):
+                raise ValueError(f"Invalid terms review fields: {name}")
+            changed = sorted(set(pending))
+        for field in changed:
+            # HTTP validators can change without a legal terms change.
+            # Keep these visible for manual review, but do not fail CI.
+            warnings.append(f"{name}: source-terms {field} changed; review reuse rights")
     report["alerts"] = alerts
+    report["warnings"] = warnings
     report["previous_monitor_artifact_used"] = previous is not None
     return report
 
@@ -58,7 +74,7 @@ def render(report: dict) -> str:
         f"Checked: {report['checked_at']}",
         "**Scope:** public metadata only; no patient records, scientific review or reuse-rights adjudication.",
         "",
-        f"**Outcome:** {'ACTIONABLE DRIFT / FAILURE' if report['alerts'] else 'no detected alerts'}",
+        f"**Outcome:** {'ACTIONABLE DRIFT / FAILURE' if report['alerts'] else 'no actionable technical failures'}",
         f"**Historical comparison:** {'previous Actions report' if report.get('previous_monitor_artifact_used') else 'unavailable — initial/new baseline; past drift not assessed'}",
         "",
         "## Source checks", "",
@@ -76,7 +92,14 @@ def render(report: dict) -> str:
     lines.extend("- " + line.replace("\n", " ")[:600] for line in report["alerts"])
     if not report["alerts"]:
         lines.append("- None from these bounded checks.")
+    lines += ["", "## Advisory source-terms metadata reviews", ""]
+    lines.extend("- " + line.replace("\n", " ")[:600] for line in report.get("warnings", []))
+    if not report.get("warnings"):
+        lines.append("- None.")
     lines += [
+        "", "HTTP ETag and Last-Modified changes are not proof of a legal terms change. "
+        "Review the source's actual reuse conditions and update its `reviewed_on` "
+        "date in `catalog/sources/` once reviewed; these notices do not fail CI.",
         "", "See the attached `catalog-health-report.json` artifact for exact "
         "public-source observations, query drift and terms-URL metadata. "
         "An artifact expires after 90 days; absence of an older artifact "
@@ -112,7 +135,8 @@ def main() -> int:
     args.report.write_text(json.dumps(report, sort_keys=True, indent=2) + "\n", encoding="utf-8")
     if args.summary:
         args.summary.write_text(render(report), encoding="utf-8")
-    print(f"Catalog monitoring summary: {len(report['alerts'])} alerts; "
+    print(f"Catalog monitoring summary: {len(report['alerts'])} alerts, "
+          f"{len(report['warnings'])} advisory reviews; "
           f"prior artifact {'available' if previous is not None else 'missing'}")
     return 0
 
