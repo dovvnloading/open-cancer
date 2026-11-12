@@ -119,6 +119,65 @@ class CatalogMonitorTests(unittest.TestCase):
                 HTTPError("https://example.org", 404, "gone", {}, None)),
                 sleep=lambda _: self.fail("404 must not retry"))
 
+    def test_terms_review_warning_persists_until_human_review_date_advances(self):
+        current = {source: [sample(source)] for source in SOURCES}
+        terms = {"gdc": "https://example.org/terms"}
+        reviewed = {"gdc": "2026-11-10"}
+
+        def run(headers, prior=None, review_stamp=reviewed):
+            return scan(
+                current=current, discover=lambda source: [sample(source)],
+                terms_urls=terms, probe=lambda url: {"url": url, **headers},
+                previous_report=prior, rights_reviewed_on=review_stamp,
+                checked_at="2026-11-12T00:00:00+00:00", sleep=lambda _: None,
+            )
+
+        first = run({"etag": "v1", "last_modified": "day-1"})
+        self.assertEqual(first["sources"]["gdc"]["pending_terms_review"], [])
+        changed = run({"etag": "v2", "last_modified": "day-2"}, prior=first)
+        self.assertEqual(changed["sources"]["gdc"]["pending_terms_review"],
+                         ["etag", "last_modified"])
+        unchanged = run({"etag": "v2", "last_modified": "day-2"}, prior=changed)
+        self.assertEqual(unchanged["sources"]["gdc"]["pending_terms_review"],
+                         ["etag", "last_modified"])
+        reviewed_now = run({"etag": "v2", "last_modified": "day-2"}, prior=unchanged,
+                           review_stamp={"gdc": "2026-11-13"})
+        self.assertEqual(reviewed_now["sources"]["gdc"]["pending_terms_review"], [])
+
+    def test_previous_failed_run_terms_alerts_migrate_to_advisory_review(self):
+        current = {source: [sample(source)] for source in SOURCES}
+        prior = scan(
+            current=current, discover=lambda source: [sample(source)],
+            terms_urls={"gdc": "https://example.org/terms"},
+            probe=lambda url: {"url": url, "etag": "v2"},
+            rights_reviewed_on={"gdc": "2026-11-10"},
+            checked_at="2026-11-11T00:00:00+00:00",
+        )
+        prior["alerts"] = ["gdc: source-terms etag changed; review reuse rights"]
+        followup = scan(
+            current=current, discover=lambda source: [sample(source)],
+            terms_urls={"gdc": "https://example.org/terms"},
+            probe=lambda url: {"url": url, "etag": "v2"},
+            rights_reviewed_on={"gdc": "2026-11-10"},
+            previous_report=prior, checked_at="2026-11-12T00:00:00+00:00",
+        )
+        self.assertEqual(followup["sources"]["gdc"]["pending_terms_review"], ["etag"])
+
+    def test_changed_terms_url_is_reviewed_even_without_http_validators(self):
+        current = {source: [sample(source)] for source in SOURCES}
+        def run(url, previous=None):
+            return scan(
+                current=current, discover=lambda source: [sample(source)],
+                terms_urls={"gdc": url},
+                probe=lambda url: {"url": url, "http_status": 200},
+                previous_report=previous,
+                rights_reviewed_on={"gdc": "2026-11-10"},
+                checked_at="2026-11-12T00:00:00+00:00",
+            )
+        first = run("https://example.org/terms-v1")
+        second = run("https://example.org/terms-v2", first)
+        self.assertEqual(second["sources"]["gdc"]["pending_terms_review"], ["url"])
+
     def test_link_outage_and_drift_both_reported(self):
         current = {name: [sample(name)] for name in SOURCES}
         report = scan(current=current,
