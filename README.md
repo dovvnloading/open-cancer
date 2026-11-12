@@ -16,7 +16,7 @@ The [older, separately hosted demonstration](https://open-cancer-explorer.laggin
 
 ## Operations and research-integrity reporting
 
-The [November 11, 2026 operations status report](docs/reports/2026-11-11-operational-status.md) records the verified Git revision, CI and deployed-site checks, upstream catalog health, publication governance gaps, reviewer-kit release status, and remaining human-approval requirements. It is a dated snapshot, **not** independent scientific review. The [weekly operations report workflow](.github/workflows/operations-report.yml) publishes dated **Actions summaries and downloadable report artifacts**, not status-only GitHub Issues. Public-site and catalog monitors also store their observations in Actions. Only verifiable engineering defects, deployment incidents and bounded research/scientific QA work belong in Issues. Reporting never automatically merges research contributions or approves clinical interpretations.
+The [November 11, 2026 operations status report](docs/reports/2026-11-11-operational-status.md) records the verified Git revision, CI and deployed-site checks, upstream catalog health, publication governance gaps, reviewer-kit release status, and remaining human-approval requirements. It is a dated snapshot, **not** independent scientific review. The [weekly operations report workflow](.github/workflows/operations-report.yml) publishes dated **Actions summaries and downloadable report artifacts**, not status-only GitHub Issues. Public-site and catalog monitors also store their observations in Actions. Only actionable engineering defects, code changes, infrastructure and technical incidents belong in Issues. Research coordination and independent review work live in version-controlled research documentation and research/review PRs. Reporting never automatically merges research contributions or approves clinical interpretations.
 
 ## What this repository does
 
@@ -57,7 +57,16 @@ The first EGFR/lung adenocarcinoma pilot now has an [independent reviewer kit](r
 python scripts/build_review_packet.py --output /tmp/egfr-review --archive /tmp/egfr-review.zip
 ~~~
 
-**Independent reviewers:** the [public reviewer invitation and participation guide](docs/community/independent-reviewers.md) explains how to help. The [EGFR/LUAD research workstream #3](https://github.com/dovvnloading/open-cancer/issues/3) tracks three **concrete, independently verifiable tasks**: [CIViC evidence/ontology QA #34](https://github.com/dovvnloading/open-cancer/issues/34), [GDC/cBioPortal cohort and denominator QA #35](https://github.com/dovvnloading/open-cancer/issues/35), and [a version-bound independent expert assessment #36](https://github.com/dovvnloading/open-cancer/issues/36). The computational method has been reproduced within the project, but scientific interpretation is **not independently validated**, and the analysis is not suitable for clinical care. General invitations and questions live in community documentation (or Discussions if enabled), not the engineering and research issue backlog. A [bounded public source-metadata drift workflow](.github/workflows/egfr-source-audit.yml) can generate dated CIViC acceptance/label comparisons and GDC/cBioPortal project/study metadata candidates without touching patient-level records; it is not independent scientific review.
+**Independent reviewers:** The [participation guide](docs/community/independent-reviewers.md)
+and the [version-controlled EGFR/LUAD research work page](docs/research/egfr-luad-open-work.md)
+record open scientific QA, cohort verification and human review work. Research
+coordination is **not tracked in GitHub Issues**, and closure of the former
+research coordination tickets does not mean the studies have been reviewed.
+The computational method has been reproduced internally, but interpretation
+has **not been independently scientifically validated** and is not suitable
+for clinical care. The [public source-metadata drift workflow](.github/workflows/egfr-source-audit.yml)
+generates technical evidence without fetching patient-level records; it is
+not independent scientific review.
 
 ## Start contributing
 
@@ -66,7 +75,7 @@ python scripts/build_review_packet.py --output /tmp/egfr-review --archive /tmp/e
 - **Run an agent or analysis:** pick an [open task](tasks/egfr-luad-evidence-coverage.json), follow [AGENTS.md](AGENTS.md), and submit a reproducible manifest and artifacts. The [result schema](schemas/result.schema.json) is machine-readable.
 - **Review a contribution:** use the [scientific review protocol](REVIEW_PROTOCOL.md) and [version-bound review schema](schemas/review.schema.json); independently check methods, sources, and uncertainty rather than treating schema-valid output as medically correct.
 
-**Issues are strictly for actionable engineering, code, infrastructure, data QA and reproducible research deliverables.** Open-ended discussions, invitations and routine health reports belong elsewhere. The [technical issue forms](.github/ISSUE_TEMPLATE/) enforce a clear starting format; contribution routing: [community guide](docs/community/README.md). Full process: [CONTRIBUTING.md](CONTRIBUTING.md). For featured research, read the [publication governance and required human approval runbook](docs/publication-governance.md). Human review requirements must be enforced by GitHub branch protection; a CODEOWNERS file alone is not an approval gate.
+**GitHub Issues are for actionable engineering defects, code changes, infrastructure, security and technical incidents only.** Research tasks, expert reviews, milestones, general discussion, invitations and status reports belong elsewhere. The [technical issue forms](.github/ISSUE_TEMPLATE/) enforce a clear starting format; contribution routing: [community guide](docs/community/README.md). Full process: [CONTRIBUTING.md](CONTRIBUTING.md). For featured research, read the [publication governance and required human approval runbook](docs/publication-governance.md). Human review requirements must be enforced by GitHub branch protection; a CODEOWNERS file alone is not an approval gate.
 
 ## Validate locally
 
