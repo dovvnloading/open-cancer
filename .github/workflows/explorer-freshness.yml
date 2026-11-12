@@ -45,7 +45,8 @@ jobs:
           python scripts/check_explorer_freshness.py \
             --url "$PUBLIC_INDEX_URL" \
             --expected-revision "$EXPECTED_REVISION" \
-            --minimum-datasets 69 2>&1 | tee explorer-health.txt
+            --minimum-datasets 69 \
+            --wait-seconds 90 2>&1 | tee explorer-health.txt
           result=${PIPESTATUS[0]}
           echo "exit_code=$result" >> "$GITHUB_OUTPUT"
           exit 0

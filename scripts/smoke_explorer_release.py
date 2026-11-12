@@ -7,8 +7,14 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
+import sys
 from urllib.parse import urljoin, urlsplit
 from urllib.request import Request, urlopen
+
+if __package__:
+    from .release_polling import wait_for_healthy_release
+else:
+    from release_polling import wait_for_healthy_release
 
 MAX_RESPONSE = 4 * 1024 * 1024
 EXPECTED_DATASET_IDS = {
@@ -130,8 +136,11 @@ def remote_fetch(site_url, opener=urlopen):
         request = Request(urljoin(base, path), headers={
             "Accept": "application/json, text/html, text/javascript",
             "User-Agent": "open-cancer-explorer-smoke/1"})
-        with opener(request, timeout=20) as response:
-            return response.read(MAX_RESPONSE + 1)
+        try:
+            with opener(request, timeout=20) as response:
+                return response.read(MAX_RESPONSE + 1)
+        except OSError as exc:
+            raise OSError(f"{path}: {exc}") from exc
     return fetch
 
 
@@ -143,14 +152,28 @@ def main():
     parser.add_argument("--expected-revision", required=True)
     parser.add_argument("--minimum-datasets", type=int, default=69)
     parser.add_argument("--require-build-info", action="store_true")
+    parser.add_argument("--wait-seconds", type=int, default=0,
+                        help="For HTTPS verification, retry the full check for up to N seconds")
     args = parser.parse_args()
     if args.minimum_datasets < 1:
         parser.error("Expected a positive dataset count")
+    if args.wait_seconds < 0 or (args.site and args.wait_seconds):
+        parser.error("Use a nonnegative --wait-seconds only with --url")
     try:
         fetch = local_fetch(args.site) if args.site else remote_fetch(args.url)
-        errors = check_snapshot(fetch, args.expected_revision,
-                                minimum_datasets=args.minimum_datasets,
-                                require_build_info=args.require_build_info)
+        def check():
+            return check_snapshot(fetch, args.expected_revision,
+                                  minimum_datasets=args.minimum_datasets,
+                                  require_build_info=args.require_build_info)
+
+        if args.url:
+            def report_retry(errors, delay):
+                print(f"RETRY: {errors[0]}. Rechecking all published assets in {delay:g}s.",
+                      file=sys.stderr)
+            errors = wait_for_healthy_release(check, wait_seconds=args.wait_seconds,
+                                              on_retry=report_retry)
+        else:
+            errors = check()
     except ValueError as exc:
         errors = [str(exc)]
     if errors:

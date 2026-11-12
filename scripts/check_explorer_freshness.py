@@ -9,8 +9,14 @@ import argparse
 import json
 import re
 import subprocess
+import sys
 from urllib.parse import urlsplit
 from urllib.request import Request, urlopen
+
+if __package__:
+    from .release_polling import wait_for_healthy_release
+else:
+    from release_polling import wait_for_healthy_release
 
 MAX_INDEX_BYTES = 4 * 1024 * 1024
 
@@ -57,16 +63,26 @@ def main() -> int:
     parser.add_argument("--expected-revision", help="Full Git commit SHA; defaults to current checkout")
     parser.add_argument("--repository", default="dovvnloading/open-cancer")
     parser.add_argument("--minimum-datasets", type=int, default=69)
+    parser.add_argument("--wait-seconds", type=int, default=0,
+                        help="Retry the full live API check for up to N seconds")
     args = parser.parse_args()
     try:
         revision = args.expected_revision or subprocess.check_output(
             ["git", "rev-parse", "HEAD"], text=True).strip()
     except (OSError, subprocess.CalledProcessError) as exc:
         parser.exit(1, f"Could not determine source revision: {exc}\n")
-    if not re.fullmatch(r"[0-9a-f]{40}", revision) or args.minimum_datasets < 1:
-        parser.exit(2, "Expected full SHA-1 Git revision and positive dataset minimum\n")
-    errors = check_remote(args.url, revision=revision, repository=args.repository,
-                          minimum_datasets=args.minimum_datasets)
+    if not re.fullmatch(r"[0-9a-f]{40}", revision) or args.minimum_datasets < 1 or args.wait_seconds < 0:
+        parser.exit(2, "Expected full SHA-1 Git revision, positive dataset minimum and nonnegative retry window\n")
+
+    def check():
+        return check_remote(args.url, revision=revision, repository=args.repository,
+                            minimum_datasets=args.minimum_datasets)
+
+    def report_retry(errors, delay):
+        print(f"RETRY: {errors[0]}. Rechecking public index in {delay:g}s.", file=sys.stderr)
+
+    errors = wait_for_healthy_release(check, wait_seconds=args.wait_seconds,
+                                      on_retry=report_retry)
     for error in errors:
         print(f"FAIL: {error}")
     if errors:
