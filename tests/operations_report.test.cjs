@@ -67,6 +67,9 @@ test("passing build is never promoted to deployed or scientifically validated", 
   assert.deepEqual(summary.catalog.sources.map(x => x.count).sort((a, b) => a-b), [3,32,33]);
   const md = render(summary);
   assert.match(md, /Public Explorer API/);
+  assert.match(md, /actions\/workflows\/explorer-freshness.yml/);
+  assert.match(md, /actions\/workflows\/catalog-monitor.yml/);
+  assert.doesNotMatch(md, /issues\/29|issues\/27|archived status ledgers/);
   assert.match(md, /STALE \/ NOT VERIFIED/);
   assert.match(md, /Production deploy.*skipped/);
   assert.match(md, /scientific or clinical validation/i);
@@ -104,7 +107,7 @@ test("stale or absent catalog ledger cannot be represented as healthy", () => {
   assert.equal(examine(r).catalog.healthy, false);
   r.catalog_ledger = null;
   assert.equal(examine(r).catalog.healthy, false);
-  assert.match(render(examine(r)), /No durable source observations/);
+  assert.match(render(examine(r)), /No retained source-monitor observations/);
 });
 
 test("release existence never certifies immutable inputs or scientific review", () => {

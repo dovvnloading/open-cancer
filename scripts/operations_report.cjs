@@ -83,7 +83,7 @@ function examine(input) {
   }
   if (input.branch_protected !== true) blockers.push("Main branch is not protected");
   if (!kitRelease) blockers.push("No verified durable reviewer-kit GitHub Release found");
-  if (!catalogHealthy) blockers.push("Catalog health ledger is unavailable or has alerts");
+  if (!catalogHealthy) blockers.push("Catalog monitoring artifact is missing or has alerts");
   // Never infer clinical/scientific endorsement from GitHub issue state.
   blockers.push("Independent scientific interpretation and reviewer credentials require external human verification");
   return {
@@ -119,7 +119,7 @@ function render(summary) {
     summary.catalog.sources.map(row => row.source + ": " +
       (row.count == null ? "unknown" : row.count) + " (" +
       (row.healthy ? "healthy check" : "needs attention") + ")").join("; ") :
-    "No durable source observations";
+    "No retained source-monitor observations";
   const siteStatus = summary.public.current ? "CURRENT — monitored match" :
     "STALE / NOT VERIFIED — investigate incident";
   const kitStatus = summary.releases.review_kit_present ?
@@ -142,18 +142,18 @@ function render(summary) {
     "| Explorer artifact build | **" + summary.runs.explorer.state + "** | " + toRun("explorer") + " |",
     "| Production deploy | **" + summary.deployment.deploy + "** | " + toRun("explorer") + " |",
     "| Live post-deploy smoke | **" + summary.deployment.live_smoke + "** | " + toRun("explorer") + " |",
-    "| Public Explorer API | **" + siteStatus + "** | [Release incident #29](" + ISSUE + "29) |",
+    "| Public Explorer API | **" + siteStatus + "** | [Public-site monitor](https://github.com/" + REPO + "/actions/workflows/explorer-freshness.yml) |",
     "| GitHub main protection | **" + (summary.branch_protected ? "protected" : "not protected") + "** | [Governance issue #18](" + ISSUE + "18) |",
     "| Reviewer-kit release | **" + kitStatus + "** | [Issue #17](" + ISSUE + "17) |",
     "",
     "## Upstream catalog health",
     "",
     "**Status:** " + (summary.catalog.healthy ? "Healthy bounded metadata check" :
-      "Not verified healthy — investigate ledger") + ".",
+      "Not verified healthy — inspect Actions") + ".",
     "**Last reported check:** " + (summary.catalog.checked_at || "not available") + ".",
     "**Source listings:** " + catalogCounts + ".",
     "Source health checks do **not** validate scientific claims, patient consent or redistribution rights.",
-    "Full observation history: [catalog health ledger #27](" + ISSUE + "27).",
+    "Source observations: [catalog monitoring Actions](https://github.com/" + REPO + "/actions/workflows/catalog-monitor.yml) (artifacts retained 90 days).",
     "",
     "## Production API evidence",
     "",
@@ -171,21 +171,21 @@ function render(summary) {
     "## Issue triage",
     "",
     ...summary.open_issues
-      .filter(issue => [3, 14, 17, 18, 29, 34, 35, 36].includes(issue.number))
+      .filter(issue => [3, 14, 17, 18, 34, 35, 36].includes(issue.number))
       .sort((a, b) => a.number - b.number)
       .map(issue => "- [#" + issue.number + "](" + ISSUE + issue.number +
         "): " + issue.title),
     "",
     "### Acceptance gates",
     "",
-    "1. **Production:** configure the actual hosting target and pass live API, revision and smoke checks before closing #14 or #29.",
+    "1. **Production:** configure the actual hosting target and pass live API, revision and smoke checks before closing any reproducible deployment defect.",
     "2. **Governance:** activate main branch rules, required checks and author-independent CODEOWNERS approval before closing #18.",
     "3. **Reproducibility:** publish a rights-safe, tagged review archive and verify its independently pinned SHA before closing #17.",
     "4. **Scientific:** complete the CIViC QA (#34), GDC/cBioPortal cohort QA (#35), and an independently verified version-bound expert assessment (#36), tracked under milestone #3. The archived reviewer invitation #11 is not a scientific deliverable.",
     "",
     "### Auditability",
     "",
-    "This is an automated snapshot of GitHub records and archived status ledgers, not a real-time medical or legal determination. It does not edit research results or catalog mappings. Each scheduled report adds a dated record; negative, disputed and pending findings remain visible.",
+    "This is an automated snapshot of GitHub records and retained GitHub Actions monitor artifacts, not a real-time medical or legal determination. It does not edit research results or catalog mappings. Each scheduled report is available as an Actions summary and 90-day artifact, not a status-only Issue; negative, disputed and pending findings remain visible.",
     "",
   ].join("\n");
 }
