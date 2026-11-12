@@ -2,7 +2,9 @@
 import io
 import json
 import unittest
+from urllib.error import HTTPError
 
+from scripts.release_polling import wait_for_healthy_release
 from scripts.check_explorer_freshness import check_remote, validate_index
 
 
@@ -60,6 +62,28 @@ class FreshnessTests(unittest.TestCase):
                                      opener=lambda request, timeout: io.BytesIO(b"<html>wrong</html>")))
         self.assertTrue(check_remote(request_url, revision=REV, repository=REPO,
                                      opener=lambda request, timeout: io.BytesIO(b"X" * (4*1024*1024 + 1))))
+
+    def test_short_lived_503_does_not_trigger_a_false_freshness_alarm(self):
+        attempted = [0]
+        clock = [0.0]
+
+        def flaky(request, timeout):
+            attempted[0] += 1
+            if attempted[0] == 1:
+                raise HTTPError(request.full_url, 503, "Service Unavailable", {}, None)
+            return io.BytesIO(json.dumps(index()).encode())
+
+        def advance(delay):
+            clock[0] += delay
+
+        errors = wait_for_healthy_release(
+            lambda: check_remote("https://example.invalid/api/v1/index.json",
+                                 revision=REV, repository=REPO, minimum_datasets=2,
+                                 opener=flaky),
+            wait_seconds=3, interval_seconds=1,
+            clock=lambda: clock[0], sleep=advance)
+        self.assertEqual([], errors)
+        self.assertEqual(attempted[0], 2)
 
 
 if __name__ == "__main__":

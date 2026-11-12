@@ -53,6 +53,23 @@ If the live Pages deploy fails or becomes stale, inspect its Actions `deploy` an
 The Pages `deploy` job **passed** in [the first production workflow](https://github.com/dovvnloading/open-cancer/actions/runs/43041807429), along with its `smoke-deployed` job; earlier runs had skipped both while hosting was disabled. If the owner removes `OPEN_CANCER_GITHUB_PAGES_ENABLED=true`, future builds may succeed without deployment and the public freshness monitor must not misrepresent them as published. The separate chatgpt.site demonstration remains outside this workflow's publication control.
 
 
+### Transient Pages responses and release verification
+
+GitHub Pages may briefly return a 503 or serve an earlier revision while a deployment
+propagates, even after the deploy action reports success. The **live** `smoke-deployed`
+job now retries the **entire** published API/UI verification for up to 180 seconds
+(5-second intervals) and reports which asset failed. A valid, matching index, all
+separate collections, the research crosswalk, the version-pinned review links and
+the build metadata must pass **together** in one attempt. An HTTP 200 response alone
+is not success. After the deadline, stale, malformed, missing or unavailable assets
+still fail the job. Local builds remain immediately checked without network retries.
+
+The independent production-health monitor similarly allows up to 90 seconds for
+temporary Pages errors or propagation before opening an incident. It never changes
+the expected production SHA, accepts mismatched JSON or suppresses a continuing
+outage. These delays are intentional: the health ledger records durable release
+problems rather than a single transient failed request.
+
 ## Durable public-site freshness incidents
 
 The [public Explorer freshness workflow](../.github/workflows/explorer-freshness.yml) checks the selected public JSON index **after each completed Explorer release workflow** (for a non-PR `main` run), daily at 11:37 UTC, and when manually dispatched. Checking after deployment avoids false stale alarms caused by probing the previous Pages revision while a new release is still building. It does not silently accept a failed deployment; genuine live mismatches still fail and update the incident ledger. It does **not** publish a site. If the live index is unreachable, malformed, points to the wrong Git repository or reports an unexpected revision/collection, the workflow fails and opens/reopens the durable GitHub issue **Public Explorer release health (automated)**. On a successful check, the ledger issue is closed with the checked SHA and time. Changes in expected production revision, endpoint URL or health state are recorded as issue comments, avoiding a flood of identical daily alerts.

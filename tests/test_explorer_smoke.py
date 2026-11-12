@@ -4,7 +4,9 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from urllib.error import HTTPError
 
+from scripts.release_polling import wait_for_healthy_release
 from scripts.smoke_explorer_release import (
     EXPECTED_DATASET_IDS, check_snapshot, local_fetch, remote_fetch,
 )
@@ -125,6 +127,59 @@ class ExplorerSmokeTests(unittest.TestCase):
             self.assertEqual(local_fetch(root)("index.html"), b"test")
             with self.assertRaisesRegex(ValueError, "missing local"):
                 local_fetch(root)("../outside.txt")
+
+    def test_published_snapshot_recovers_from_late_503_with_full_recheck(self):
+        files = assets()
+        seen = []
+        clock = [0.0]
+
+        def flaky(path):
+            seen.append(path)
+            if path == "api/v1/release.json" and seen.count(path) == 1:
+                raise OSError("api/v1/release.json: HTTP Error 503: Service Unavailable")
+            return files[path]
+
+        def advance(delay):
+            clock[0] += delay
+
+        errors = wait_for_healthy_release(
+            lambda: check_snapshot(flaky, REV, minimum_datasets=4, require_build_info=True),
+            wait_seconds=3, interval_seconds=1,
+            clock=lambda: clock[0], sleep=advance)
+        self.assertEqual([], errors)
+        self.assertEqual(seen.count("api/v1/index.json"), 2)
+        self.assertEqual(seen.count("api/v1/release.json"), 2)
+
+    def test_persistent_outage_and_stale_revision_fail_after_deadline(self):
+        clock = [0.0]
+        attempts = [0]
+
+        def unavailable():
+            attempts[0] += 1
+            return ["api/v1/index.json: HTTP Error 503: Service Unavailable"]
+
+        def advance(delay):
+            clock[0] += delay
+
+        errors = wait_for_healthy_release(
+            unavailable, wait_seconds=2, interval_seconds=1,
+            clock=lambda: clock[0], sleep=advance)
+        self.assertIn("503", errors[0])
+        self.assertEqual(attempts[0], 3)
+        clock[0] = 0.0
+        errors = wait_for_healthy_release(
+            lambda: check_snapshot(reader(assets()), "b" * 40, minimum_datasets=4),
+            wait_seconds=2, interval_seconds=1,
+            clock=lambda: clock[0], sleep=advance)
+        self.assertTrue(any("revision differs" in error for error in errors))
+
+    def test_public_http_failure_identifies_the_unavailable_asset(self):
+        def unavailable(request, timeout):
+            raise HTTPError(request.full_url, 503, "Service Unavailable", {}, None)
+
+        with self.assertRaisesRegex(OSError, r"api/v1/index\.json: HTTP Error 503"):
+            remote_fetch("https://example.invalid/open-cancer/", opener=unavailable)(
+                "api/v1/index.json")
 
 
 if __name__ == "__main__":
