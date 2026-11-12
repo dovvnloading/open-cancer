@@ -267,7 +267,7 @@ def main() -> int:
             print(f" - {err}")
         return 1
     print("OK: source catalog, tasks, and submission integrity checks passed.")
-    print("Note: scientific claims and upstream rights still require human review.")
+    print("Note: structural validation does not prove source truth, biomedical accuracy, or clinical suitability.")
     return 0
 
 

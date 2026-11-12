@@ -1,3 +1,5 @@
+> **Optional historical review format.** Running the AI compute pipeline does not require external scientific reviewers, research recruitment, laboratories or review attestations. AI output remains unverified regardless of this protocol.
+
 # Scientific review and correction protocol
 
 Open Cancer keeps a **separation of duties** between automated validation, data engineering, and biomedical interpretation.

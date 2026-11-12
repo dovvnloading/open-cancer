@@ -1,3 +1,5 @@
+> **Historical invitation only.** Open Cancer now operates as a compute-first AI software project; no recruitment or external reviewer participation is required or assumed. This page is retained for archival context, not as an active project milestone.
+
 # Invitation: independent EGFR/lung adenocarcinoma reviewers
 
 Open Cancer welcomes independent, critical scientific evaluation of its public-data **EGFR/lung adenocarcinoma evidence-coverage pilot**. **This is an invitation, not an unresolved engineering issue, a claim that anyone has accepted, or an endorsement.**

@@ -1,3 +1,5 @@
+> **Legacy optional artifact instructions.** Not required for AI compute investigations. No scheduled reviewer-release monitoring is part of the compute-first workflow.
+
 # Durable EGFR/LUAD independent reviewer kit releases
 
 The original [review packet workflow](../.github/workflows/reviewer-packet.yml) creates temporary GitHub Actions artifacts (retained up to 90 days). The separate [reviewer release workflow](../.github/workflows/reviewer-release.yml) publishes a versioned **GitHub Release** containing only the deterministic non-sensitive reviewer ZIP and its SHA-256 file. Releases have no 90-day Actions artifact expiration, but repository owners can still delete them, and public availability depends on GitHub hosting.
