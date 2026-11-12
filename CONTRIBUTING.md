@@ -6,7 +6,28 @@ People in biology, oncology, data engineering, software, clinical research, secu
 
 **General introductions and reviewer invitations are not bugs.** See the [community channel guide](docs/community/README.md) and [public reviewer invitation](docs/community/independent-reviewers.md). GitHub Discussions is **currently disabled**, so we maintain the invitation in version-controlled documentation instead of leaving a recruitment issue permanently open. If Discussions is enabled later, maintainers can link to an actual thread.
 
-**GitHub Issues are exclusively for actionable engineering, code, infrastructure, security, technical QA or reproducible research work.** Every issue must name a technical/research problem, evidence or reproduction method, a concrete deliverable, and objective acceptance criteria. The issue chooser offers required [engineering](.github/ISSUE_TEMPLATE/engineering.yml) and [research](.github/ISSUE_TEMPLATE/research.yml) forms rather than blank issues. **Do not create issues** for announcements, recruitment, introductions, general questions, broad discussion, routine monitoring output or status updates. Direct those to the [community guide](docs/community/README.md), [reviewer invitation](docs/community/independent-reviewers.md) or GitHub Actions reports. GitHub Discussions is currently disabled; no Discussion is implied to exist. Maintainers should redirect and close any non-actionable issue as not planned while keeping real research deliverables open. The EGFR/LUAD research workstream is [#3](https://github.com/dovvnloading/open-cancer/issues/3); focused work belongs in [CIViC audit #34](https://github.com/dovvnloading/open-cancer/issues/34), [GDC/cBioPortal cohort audit #35](https://github.com/dovvnloading/open-cancer/issues/35) or [independent expert assessment #36](https://github.com/dovvnloading/open-cancer/issues/36). A comment saying someone may volunteer is not proof of an independent scientific review. Formal findings should be submitted through a review-bound PR.
+**GitHub Issues are reserved for actionable engineering work:** reproducible
+software defects, code/implementation changes, CI, infrastructure, security,
+data-pipeline failures and technical production incidents. Each ticket needs
+the affected component, reproducible evidence or a precise implementation gap,
+and verifiable acceptance criteria. The issue chooser has an
+[engineering-only form](.github/ISSUE_TEMPLATE/engineering.yml) and disables
+blank issues.
+
+**Do not file GitHub Issues for research coordination, scientific audits
+without a specific code defect, independent expert reviews, research
+milestones, invitations, general questions, announcements or status reports.**
+These belong in [version-controlled research work](docs/research/egfr-luad-open-work.md),
+the [reviewer guide](docs/community/independent-reviewers.md), research
+result/review PRs, or [community guidance](docs/community/README.md).
+Routine checks belong in GitHub Actions. GitHub Discussions is currently
+disabled; do not claim a Discussions thread exists.
+
+If scientific work identifies an actual reproducible code defect, open
+an **engineering issue about that defect** with reproduction and expected fix,
+not an issue to coordinate the research itself. Former coordination issues
+#3/#34/#35/#36 are historical, closed trackers; their research has not been
+declared complete.
 
 ## Ways to contribute
 
