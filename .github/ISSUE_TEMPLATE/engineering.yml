@@ -1,0 +1,42 @@
+name: Engineering bug or technical work
+description: A reproducible code, infrastructure, data-pipeline, deployment, security, or QA task with a concrete deliverable.
+title: "[Engineering] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues track actionable engineering and code tasks. For announcements, questions,
+        recruitment, or routine status reports use the community guide or GitHub Actions.
+        Never include identifying patient data, credentials, or restricted records.
+  - type: input
+    id: component
+    attributes:
+      label: Affected component
+      description: File, package, endpoint, workflow, or deployed service.
+      placeholder: scripts/validate.py or .github/workflows/validate.yml
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Reproducible problem or change requested
+      description: Describe actual vs expected behavior, and the technical impact.
+      placeholder: What breaks? What specifically needs implementing?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps or technical evidence
+      description: Exact steps, failing tests, relevant source links, error output, or logs. For proposals, include measurable evidence or a concrete design gap.
+      placeholder: Commands, URLs, observed error and relevant revision.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Engineering acceptance criteria
+      description: How can a maintainer verify completion?
+      placeholder: Tests, code changes, deployment checks, or demonstrated recovery.
+    validations:
+      required: true
