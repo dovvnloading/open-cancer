@@ -1,16 +1,37 @@
 # Community and contribution channels
 
-Open Cancer separates **collaboration invitations** from **trackable engineering and scientific work**. A public invitation is not an unresolved software defect.
+**GitHub Issues are an engineering backlog, not a research queue or a forum.**
+Use Issues only for reproducible code defects, implementation changes,
+infrastructure/security work and technical incidents with a specific component,
+technical evidence, and verifiable completion criteria. The issue chooser
+offers [one engineering form](../../.github/ISSUE_TEMPLATE/engineering.yml);
+blank Issues are disabled.
 
-| Activity | Where it belongs | How completion is assessed |
+| Activity | Correct channel | What counts as completion |
 | --- | --- | --- |
-| General invitation, introductions, interest in collaborating or reviewing | [Independent reviewer invitation](independent-reviewers.md) and contributor documentation; optional GitHub Discussions **if a maintainer enables it** | A publication or announcement stays available and is not a permanent open issue |
-| Reproducible bug, broken data link, unsafe public claim, deployment incident | [GitHub Issues](https://github.com/dovvnloading/open-cancer/issues) | Steps to reproduce, specific fix, tests or demonstrated recovery |
-| Bounded research audit and provenance discrepancy | GitHub Issues with exact source IDs, method, expected deliverables, limitations and acceptance criteria | Evidence-backed deliverable, independently inspectable |
-| Broad research question or multi-stage project | A parent milestone/workstream issue (currently [EGFR/LUAD #3](https://github.com/dovvnloading/open-cancer/issues/3)) | Separate concrete tasks with recorded outcomes; parent closes only after its scope is completed |
-| Qualified independent scientific review | [Reviewer guide](independent-reviewers.md) for entry, followed by a specific [review-deliverable issue #36](https://github.com/dovvnloading/open-cancer/issues/36) and a version-bound review pull request | Real human domain expertise and evidence-specific, independent review recorded and maintainers verify credentials |
-| Routine status, monitoring output, weekly reports | [GitHub Actions](https://github.com/dovvnloading/open-cancer/actions) summaries and downloadable JSON/Markdown artifacts; dated docs when lasting history is needed | No status-only Issue is created or reopened; verified technical failures may be filed as separate actionable issues |
+| Code defects, tests, security, deployment, technical infrastructure or data-pipeline failures | [Engineering Issues](https://github.com/dovvnloading/open-cancer/issues) and code PRs | Verified code/technical fix and checks |
+| Scientific research questions, source evidence interpretation, independent review, and research milestones | [Version-controlled EGFR/LUAD research work](../research/egfr-luad-open-work.md), research results and review PRs | Evidence-linked scientific deliverables, not Issue closure |
+| General introductions, announcements, collaboration invitations or reviewer recruitment | [Independent reviewer guide](independent-reviewers.md) and community documentation; GitHub Discussions if enabled | Available invitation or discussion, not an engineering ticket |
+| Routine release/catalog monitoring, status reports, healthy checks | [GitHub Actions](https://github.com/dovvnloading/open-cancer/actions) summaries and artifacts | Published report; open an engineering Issue only for a specific reproducible defect |
 
-**Only bounded technical or research deliverables belong in Issues.** An issue needs a component or source accession, evidence/reproduction or a testable method, the required implementation/audit, and clear completion criteria. General questions, promotional updates, reviewer recruitment and routine health ledgers are explicitly excluded. Use the technical [engineering](../../.github/ISSUE_TEMPLATE/engineering.yml) or [research](../../.github/ISSUE_TEMPLATE/research.yml) issue form instead of a blank ticket. Historical announcements and automated status-only issues remain closed, but workflows must not recreate them.\n\n**GitHub Discussions is currently disabled for this repository.** The review invitation therefore lives in version-controlled documentation, not in a pseudo-discussion Issue. If Discussions is enabled later, maintainers can create a discussion for open-ended engagement and link it from these pages. No discussion, outreach response, or external endorsement is claimed to exist now.
+The historical research coordination tickets
+[#3](https://github.com/dovvnloading/open-cancer/issues/3),
+[#34](https://github.com/dovvnloading/open-cancer/issues/34),
+[#35](https://github.com/dovvnloading/open-cancer/issues/35) and
+[#36](https://github.com/dovvnloading/open-cancer/issues/36)
+are **archived, not completed**. Their actionable research questions,
+limits and criteria were migrated to
+[the research work page](../research/egfr-luad-open-work.md).
+Closing them is a tracker migration, not an independent scientific review or
+clinical endorsement. Research contributions belong in versioned result and
+review pull requests; any *identified code defect* can get its own engineering
+Issue with reproduction and a concrete proposed fix.
 
-For a source-scoped problem, open a new actionable issue with a minimal reproducible example; do not create an "invitation to help" issue. Use the [contribution guide](../../CONTRIBUTING.md), [review protocol](../../REVIEW_PROTOCOL.md) and [data policy](../../DATA_POLICY.md) for submissions. Do not post patient-level, potentially identifying, access-restricted or private credential information. AI-derived calculations are not independent biomedical interpretation.
+**GitHub Discussions is currently disabled.** We do not claim there is
+already a discussion thread. Use documentation and PRs until enabled.
+
+Follow [CONTRIBUTING.md](../../CONTRIBUTING.md),
+[REVIEW_PROTOCOL.md](../../REVIEW_PROTOCOL.md) and
+[DATA_POLICY.md](../../DATA_POLICY.md). Do not post patient-level,
+potentially identifying or access-restricted records or private credentials.
+An AI-produced methods check is not an independent biomedical assessment.
