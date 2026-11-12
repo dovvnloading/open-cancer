@@ -111,7 +111,7 @@ def probe_terms(url):
 
 
 def scan(*, current, discover, terms_urls=None, probe=probe_terms, checked_at=None,
-         previous_report=None, sleep=time.sleep):
+         previous_report=None, rights_reviewed_on=None, sleep=time.sleep):
     now = checked_at or datetime.now(timezone.utc).isoformat(timespec="seconds")
     report = {"schema_version": 1, "checked_at": now, "sources": {}}
     for source in SOURCES:
@@ -136,6 +136,31 @@ def scan(*, current, discover, terms_urls=None, probe=probe_terms, checked_at=No
             except (HTTPError, URLError, TimeoutError, socket.timeout, HTTPException,
                     ValueError, KeyError, OSError, TypeError) as exc:
                 row["terms_link_error"] = f"{type(exc).__name__}: {exc}"[:400]
+        # A changed HTTP validator is not evidence of a licensing change.
+        # Carry review reminders across artifact rotations, including historical
+        # failures from before this warning-only behavior was introduced.
+        old_terms = (
+            previous.get("last_verified_terms_link") or previous.get("terms_link") or {}
+        ) if isinstance(previous, dict) else {}
+        new_terms = row.get("terms_link") or {}
+        stamp = (rights_reviewed_on or {}).get(source)
+        previous_stamp = previous.get("rights_reviewed_on") if isinstance(previous, dict) else None
+        review_acknowledged = bool(stamp and previous_stamp and stamp != previous_stamp)
+        pending = set()
+        if not review_acknowledged:
+            if isinstance(previous, dict):
+                pending.update(previous.get("pending_terms_review") or [])
+            for field in ("url", "etag", "last_modified"):
+                if (old_terms.get(field) and new_terms.get(field)
+                        and old_terms[field] != new_terms[field]):
+                    pending.add(field)
+                if any(
+                    item.startswith(f"{source}: source-terms {field} changed;")
+                    for item in (previous_report or {}).get("alerts", [])
+                ):
+                    pending.add(field)
+        row["pending_terms_review"] = sorted(pending)
+        row["rights_reviewed_on"] = stamp or previous_stamp
         # Artifact-backed history: preserve the last successful public
         # metadata observation and last good source/terms checks across outages.
         # Missing history is unknown, never silently interpreted as no drift.
@@ -151,6 +176,8 @@ def scan(*, current, discover, terms_urls=None, probe=probe_terms, checked_at=No
         previous_terms = (
             previous.get("last_verified_terms_link") or previous.get("terms_link")
         ) if isinstance(previous, dict) else None
+        # This is the last successfully probed URL/header observation, NOT a
+        # human rights approval; pending_terms_review stays set until reviewed_on advances.
         row["last_verified_terms_link"] = row.get("terms_link") or previous_terms or None
         report["sources"][source] = row
     report["previous_monitor_artifact_used"] = previous_report is not None
@@ -166,13 +193,17 @@ def main():
     previous = None
     if args.previous_report and args.previous_report.is_file():
         previous = json.loads(args.previous_report.read_text(encoding="utf-8"))
-    terms = {
-        name: json.loads((ROOT / "catalog" / "sources" / f"{name}.json").read_text())["reuse"]["terms_url"]
+    source_configs = {
+        name: json.loads((ROOT / "catalog" / "sources" / f"{name}.json").read_text())
         for name in SOURCES
+    }
+    terms = {name: item["reuse"]["terms_url"] for name, item in source_configs.items()}
+    rights_reviewed_on = {
+        name: item.get("reviewed_on") for name, item in source_configs.items()
     }
     report = scan(current=baseline(ROOT / "catalog" / "datasets"),
                   discover=refresh_catalog.discover, terms_urls=terms,
-                  previous_report=previous)
+                  rights_reviewed_on=rights_reviewed_on, previous_report=previous)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report, sort_keys=True, indent=2) + "\n", encoding="utf-8")
     for name, row in report["sources"].items():
