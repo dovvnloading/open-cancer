@@ -61,9 +61,12 @@ class CatalogMonitorTests(unittest.TestCase):
         second = scan(current=current, discover=discover, previous_report=first,
                       checked_at="2026-11-11T00:00:00+00:00", sleep=lambda _: None)
         self.assertFalse(second["sources"]["gdc"]["ok"])
-        self.assertNotIn("observations", second["sources"]["gdc"])
-        # The workflow retains the last good observations in the durable ledger.
-        second["sources"]["gdc"]["observations"] = first["sources"]["gdc"]["observations"]
+        # The scanner now preserves last-good observations in the Actions
+        # report itself, without relying on a status-only Issue ledger.
+        self.assertEqual(second["sources"]["gdc"]["observations"],
+                         first["sources"]["gdc"]["observations"])
+        self.assertEqual(second["sources"]["gdc"]["last_healthy"],
+                         "2026-11-10T00:00:00+00:00")
         third = scan(current=current,
                      discover=lambda source: [sample(source, release="v2" if source == "gdc" else "v1")],
                      previous_report=second,
