@@ -65,15 +65,39 @@ is not success. After the deadline, stale, malformed, missing or unavailable ass
 still fail the job. Local builds remain immediately checked without network retries.
 
 The independent production-health monitor similarly allows up to 90 seconds for
-temporary Pages errors or propagation before opening an incident. It never changes
+temporary Pages errors or propagation before reporting a failed Actions run. It never changes
 the expected production SHA, accepts mismatched JSON or suppresses a continuing
-outage. These delays are intentional: the health ledger records durable release
-problems rather than a single transient failed request.
+outage. These delays prevent a transient request failure from masquerading as a
+persistent technical incident.
 
-## Durable public-site freshness incidents
+## Public-site freshness: Actions checks, not status Issues
 
-The [public Explorer freshness workflow](../.github/workflows/explorer-freshness.yml) checks the selected public JSON index **after each completed Explorer release workflow** (for a non-PR `main` run), daily at 11:37 UTC, and when manually dispatched. Checking after deployment avoids false stale alarms caused by probing the previous Pages revision while a new release is still building. It does not silently accept a failed deployment; genuine live mismatches still fail and update the incident ledger. It does **not** publish a site. If the live index is unreachable, malformed, points to the wrong Git repository or reports an unexpected revision/collection, the workflow fails and opens/reopens the durable GitHub issue **Public Explorer release health (automated)**. On a successful check, the ledger issue is closed with the checked SHA and time. Changes in expected production revision, endpoint URL or health state are recorded as issue comments, avoiding a flood of identical daily alerts.
+The [public Explorer freshness workflow](../.github/workflows/explorer-freshness.yml)
+checks the selected public JSON index after a completed non-PR `main` release,
+daily at 11:37 UTC, and on manual dispatch. Checking after deployment avoids
+false stale alarms caused by probing a previous Pages revision while a new
+release is still building. The monitor retries during temporary propagation
+errors for up to 90 seconds and then **fails** on a genuine live revision,
+endpoint or collection mismatch; it never alters the desired SHA to conceal
+an outage.
 
-The monitor defaults to comparing the **GitHub Pages production API** to the latest `main` SHA: `https://dovvnloading.github.io/open-cancer/api/v1/index.json`. The repository variable `OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL` can override this for a verified replacement production address; do not point it to the known-stale historical demo unless intentionally auditing that separate host. For an intentional rollback, an operator may set `OPEN_CANCER_EXPLORER_DESIRED_SHA` to the known-good deployed full 40-character SHA, then restore it to match `main` once the replacement is deployed. Never set a desired SHA just to mask an unexplained stale site.
+Each run publishes an **Actions summary and a 90-day
+`explorer-health-report` artifact** containing the expected Git SHA, checked
+public URL, observed output, checked timestamp and pass/fail status. It neither
+creates nor reopens a GitHub Issue for routine health checks. The historical
+closed automated health ticket #29 is a legacy record, not a live status
+source. For sustained reproducible failure, file a separate technical incident
+with steps, logs, checked/expected revisions, and acceptance criteria.
 
-The issue records deployment **health**, not biomedical validation, scientific review, or legal permission. The release workflow separately distinguishes a successful build from a skipped Pages deployment. A green source-build workflow cannot close a stale public-site incident unless the live public index responds with the expected revision and required data collections.
+The default production API is
+`https://dovvnloading.github.io/open-cancer/api/v1/index.json`. The
+repository variable `OPEN_CANCER_EXPLORER_PUBLIC_INDEX_URL` can override
+the URL for a verified replacement target. For an intentional rollback, an
+operator may set `OPEN_CANCER_EXPLORER_DESIRED_SHA` to a known-good deployed
+40-character SHA and restore the `main` revision once rolled forward. Never
+set the desired SHA merely to suppress an unexplained stale deployment.
+
+Green workflow status demonstrates a narrow public deployment health check,
+not biomedical accuracy, source reuse rights, clinical validity or independent
+scientific review. A green **build** without a live Pages deployment is
+not evidence of an updated production website.
