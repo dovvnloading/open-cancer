@@ -1,3 +1,5 @@
+> **Legacy/optional editorial workflow.** This is not a requirement for the AI compute pipeline. Issue #18 was closed as not planned. Compute results remain unreviewed and unpublished by default; no reviewer recruitment is assumed.
+
 # Publication governance and branch protection runbook
 
 The public Open Cancer API contains externally citable research metadata. **JSON Schema validity, artifact checksums, a green workflow, and a GitHub merge do not prove scientific accuracy, redistribution rights, independent expert review, or clinical safety.**
@@ -31,4 +33,4 @@ If a PR modifies `catalog/publication-decisions.json` without fresh, independent
 
 The gate is **defense in depth**. To make it enforceable, configure `publication-review` as a required PR status check together with the main `validate` job using GitHub rulesets/branch protection, enforce author-independent CODEOWNERS approval, and block direct pushes and bypasses. Without that owner-controlled configuration, a direct push to an unprotected branch can still avoid PR review altogether.
 
-Do not close [issue #18](https://github.com/dovvnloading/open-cancer/issues/18) until the branch/ruleset reviewer gate has been enabled and tested. Publication policy must be enforced by the repository host in addition to application-level validation.
+Issue #18 was closed as not planned. This optional host-side promotion policy was not enabled or tested. Publication policy must be enforced by the repository host in addition to application-level validation.

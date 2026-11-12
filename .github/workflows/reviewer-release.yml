@@ -5,8 +5,7 @@ on:
     tags:
       - "reviewkit-egfr-luad-v1.*"
   workflow_dispatch:
-  schedule:
-    - cron: "47 10 * * 1"
+  # Legacy reviewer-release workflow is manual or explicit tag only; no recurring gate.
 
 permissions:
   contents: write

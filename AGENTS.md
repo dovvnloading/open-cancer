@@ -1,31 +1,19 @@
-# Agent contribution contract (v0)
+# AI compute contract
 
-AI agents can help locate, normalize, and analyze data, but their outputs need the same verification as any research contribution. No agent is automatically a scientific reviewer.
+Open Cancer's engine assumes access to substantial AI compute, **not** labs, recruited scientists, reviewer committees or physical experiments. The runnable coordinator is `scripts/compute_fanout.py` and its protocol is documented in [docs/compute.md](docs/compute.md).
 
-## Required loop
+## Agent execution
 
-1. Read `README.md`, `DATA_POLICY.md`, and the target `tasks/<task-id>.json`.
-2. Use only allowed, accessible upstream resources. Track source ID, source URL, exact query/filter, release if stated, and access date. Honor rate limits.
-3. Write reproducible code and small permitted artifacts in `results/<task-id>/<run-id>/`. The run ID should be stable and unique (for example, `agent-20261110-a`).
-4. Create `manifest.json` conforming to `schemas/result.schema.json`: input provenance, execution command/environment, artifact paths and SHA-256, findings with record-level evidence, uncertainty, limitations.
-5. Mark **every finding** `review_status: "unreviewed"`. Distinguish observations from hypotheses. Include contradicting evidence if discovered; never fabricate missing values, citations, or computational results.
-6. Run `python scripts/validate.py` and unit tests. Open a pull request for human and, where appropriate, domain-expert review. **Never auto-merge scientific outputs.**
+1. Read `DATA_POLICY.md`, the target `tasks/<task-id>.json`, and the relevant catalog source records.
+2. Use `compute_fanout.py plan` to expand a bounded, deterministic workload; use distinct `--shard-index` values across machines. Plans contain questions, never asserted outcomes.
+3. Supply a separate `--investigator` and `--critic` CLI adapter. Both read a protocol JSON request on stdin and emit one JSON response on stdout; run workers on your own compute. The demo adapter is **synthetic**, while `scripts/openai_compatible_worker.py` can call your local or remote OpenAI-compatible inference endpoint using environment-only credentials. The built-in adapter receives source-directory metadata, not source record bodies.
+4. Every investigator candidate needs linked public evidence/context, limitations and an explicit `synthetic` flag. Critics report internal inconsistencies or insufficient evidence; agreement between AI models is not independent biological validation.
+5. Keep job checkpoints, failed attempts and summaries in an untracked `.compute/` directory. `--resume` checks plan, worker configuration and checkpoint SHA-256. Never treat a checkpoint as a checked-in or publicly promoted result.
+6. If a candidate is useful, independently reproduce its computational method, verify source provenance and reuse permissions, then **explicitly** package any permitted derived outputs under `results/<task-id>/<run-id>/` with `schemas/result.schema.json`. Findings remain `review_status: "unreviewed"` and must not imply patient treatment advice.
+7. Run `python scripts/validate.py`, `python -m unittest discover -s tests -v` and relevant CI before merging code changes.
 
-## Minimal file layout
+## Non-negotiable boundaries
 
-```text
-results/
-  egfr-luad-evidence-coverage/
-    agent-20261110-a/
-      manifest.json
-      analyze.py
-      records.csv
-```
+No patient-level data, controlled-access records, private tokens, re-identification, prohibited scraping, invented citations, or fabricated experimental results. Preserve negative outcomes, disputed interpretations and uncertainty. External scientific review can happen separately if someone chooses to do it, but **no external reviewer is needed to run the AI compute pipeline.**
 
-All paths inside `manifest.json` are relative to its directory. The validator checks local files and artifact SHA-256 digests. Commands and environment descriptions should be sufficient for a second contributor to reproduce the result.
-
-## What agents must not do
-
-Do not use patient-level datasets, evade consent or authorization, publish private data or credentials, issue clinical treatment recommendations, or turn absence of a database record into evidence of biological absence.
-
-A valid JSON manifest only demonstrates **structural** compliance. It is not evidence that its citations, code, claims, or methodology are scientifically correct.
+A reproducible script, cryptographic hash, AI critique or passed CI check proves neither source truth nor clinical validity. Do not use ``verified``, ``clinical``, or ``approved`` labels for unassessed AI hypotheses.

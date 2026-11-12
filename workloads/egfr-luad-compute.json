@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "task_id": "egfr-luad-evidence-coverage",
+  "question": "Investigate public record-level EGFR/LUAD evidence coverage, source terminology conflicts, missing denominators and contradictory observations without inferring clinical efficacy.",
+  "source_ids": ["civic", "gdc", "cbioportal"],
+  "axes": {
+    "alteration": ["EGFR L858R", "EGFR exon 19 deletion", "EGFR exon 20 insertion"],
+    "check": ["conflicting source terminology", "missing denominators", "negative or contradictory evidence"]
+  }
+}

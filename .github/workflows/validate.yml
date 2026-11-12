@@ -32,6 +32,13 @@ jobs:
         run: node --test tests/operations_report.test.cjs
       - name: Test publication registry GitHub review authorization
         run: node --test tests/publication_pr_gate.test.cjs
+      - name: Smoke test AI compute fan-out (synthetic, no external AI or source API)
+        run: |
+          python scripts/compute_fanout.py plan --spec workloads/egfr-luad-compute.json --output "$RUNNER_TEMP/ai-jobs.jsonl" --max-jobs 100
+          python scripts/compute_fanout.py run --jobs "$RUNNER_TEMP/ai-jobs.jsonl" --output "$RUNNER_TEMP/ai-demo" \
+            --investigator "python scripts/demo_compute_worker.py" \
+            --critic "python scripts/demo_compute_worker.py" --workers 4 --max-jobs 100
+          python -c "import json, os; from pathlib import Path; s=json.loads((Path(os.environ['RUNNER_TEMP'])/'ai-demo/summary.json').read_text()); assert s['completed'] == 9 and s['failed'] == 0 and s['triage'] == {'synthetic': 9}"
       - name: Build the Explorer and its JSON API
         run: python scripts/build_explorer.py --output _site
       - name: Save the Explorer for this revision
