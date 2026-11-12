@@ -24,6 +24,16 @@ The demo worker **does not call a model, retrieve source records, or produce sci
 
 The coordinator is intentionally model- and infrastructure-agnostic. A worker is any executable that reads one JSON object from stdin and prints one JSON object to stdout; it may call local inference engines, a GPU service or a remote endpoint. Credentials belong in secure environment variables/secrets, **never in job JSON, command arguments, logs or Git**. Run separate models/prompts for investigation and criticism when possible. Enforce source API terms and rate limits inside adapters.
 
+A working OpenAI-compatible inference adapter is included as `scripts/openai_compatible_worker.py`. Point it at your inference server with `OPEN_CANCER_LLM_URL` (full `/v1/chat/completions` endpoint), and set `OPEN_CANCER_LLM_MODEL`, optionally `OPEN_CANCER_INVESTIGATOR_MODEL`, `OPEN_CANCER_CRITIC_MODEL`, `OPEN_CANCER_LLM_KEY`, `OPEN_CANCER_LLM_TIMEOUT` and `OPEN_CANCER_MAX_TOKENS`. Plain HTTP is allowed for local loopback services; use HTTPS remotely. Its inputs contain **only checked-in source-directory metadata**, not validated evidence records. It asks the model for source-scoped research leads and forces critiques to `insufficient-evidence` in the absence of records. It cannot establish biological findings. For example:
+
+```sh
+export OPEN_CANCER_LLM_URL='http://127.0.0.1:8000/v1/chat/completions'
+export OPEN_CANCER_LLM_MODEL='your-local-model-id'
+python scripts/compute_fanout.py run --jobs .compute/jobs.jsonl \
+  --output .compute/live --investigator 'python scripts/openai_compatible_worker.py' \
+  --critic 'python scripts/openai_compatible_worker.py' --workers 8 --max-jobs 100
+```
+
 For N machines or partitions, copy the **same immutable jobs.jsonl** to each, use the same worker commands/options, and run each with `--shard-count N --shard-index 0..N-1`, storing each shard in its own output directory. IDs are content-addressed and partitioned by a stable hash, so shards do not overlap. Use `--workers` to limit concurrent subprocesses per machine; `--max-jobs` bounds selected jobs, and `--timeout` and `--retries` limit worker spending. There is no central cluster scheduler or built-in GPU allocator. `--resume` skips completed checkpoints only when the plan and worker configuration match and the checkpoint SHA-256 is intact; failed jobs are retried.
 
 Example for one shard (replace both adapter commands with executables you actually operate):
@@ -69,4 +79,4 @@ None of these files is automatically added to the Explorer or public API. A sepa
 
 ## What to build next
 
-Real provider adapters, source-specific retrieval caches with permission checks, compute/cost/throughput metrics, automated recomputation of *numeric* claims from pinned permitted inputs, and comparison benchmarks belong in engineering PRs—not recruitment or governance tickets. The initial pipeline supplies job orchestration and provenance, not those integrations yet.
+Permission-aware record retrieval for the supplied model adapter, source-specific retrieval caches with permission checks, compute/cost/throughput metrics, automated recomputation of *numeric* claims from pinned permitted inputs, and comparison benchmarks belong in engineering PRs—not recruitment or governance tickets. The initial pipeline supplies job orchestration and provenance, not those integrations yet.

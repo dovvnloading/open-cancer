@@ -24,7 +24,18 @@ python scripts/compute_fanout.py run \
   --workers 4 --max-jobs 100
 ```
 
-**For real AI compute:** replace both demo commands with your own worker adapters (local GPU models, remote inference, or cluster entrypoints). The investigator accepts a JSON request and returns a candidate with source links; the separate critic attempts to falsify it. Split a stable plan into `--shard-count N` and run each `--shard-index` with its own output directory on different machines. Every completed job remains `unreviewed`, `not-published`, and `not-assessed` for clinical validation, regardless of AI critique outcome. The coordinator does **not** include a model provider or provision hardware. See [compute protocol, sharding, resume and failure handling](docs/compute.md).
+**For real AI compute:** use the included [OpenAI-compatible endpoint adapter](scripts/openai_compatible_worker.py) with your own inference server, or replace both commands with your own worker adapters (local GPU models, remote inference, or cluster entrypoints). Example:
+
+```sh
+export OPEN_CANCER_LLM_URL='http://127.0.0.1:8000/v1/chat/completions'
+export OPEN_CANCER_LLM_MODEL='your-local-model-id'
+# Optionally choose a different critic model: OPEN_CANCER_CRITIC_MODEL
+python scripts/compute_fanout.py run --jobs .compute/jobs.jsonl \
+  --output .compute/live --investigator 'python scripts/openai_compatible_worker.py' \
+  --critic 'python scripts/openai_compatible_worker.py' --workers 8 --max-jobs 100
+```
+
+The bundled model adapter currently sees **source directory metadata only**, not retrieved source records. It produces unverified research questions/data-quality leads and fails closed on invented record-level evidence; implement permission-aware source retrieval before treating it as a source-level investigation. The investigator accepts a JSON request and returns a candidate with source links; the separate critic attempts to falsify it. Split a stable plan into `--shard-count N` and run each `--shard-index` with its own output directory on different machines. Every completed job remains `unreviewed`, `not-published`, and `not-assessed` for clinical validation, regardless of AI critique outcome. The coordinator does **not** include a model provider or provision hardware. See [compute protocol, sharding, resume and failure handling](docs/compute.md).
 
 ## What the project actually does
 
