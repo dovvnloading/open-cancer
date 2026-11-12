@@ -15,12 +15,19 @@ import io
 import json
 from pathlib import Path
 import tempfile
+from urllib.parse import parse_qs, urlsplit
 
 try:
-    from .egfr_luad_pilot import fetch, SOURCE_URLS, REQUIRED_CIVIC, GENE_PATTERN
+    from .egfr_luad_pilot import (
+        fetch, SOURCE_URLS, REQUIRED_CIVIC, GENE_PATTERN, CBIO_STUDY_ID,
+        GDC_OCCURRENCE_FILTER, MAX_GDC_OCCURRENCES,
+    )
     from .validate import ROOT, validate_repository
 except ImportError:
-    from egfr_luad_pilot import fetch, SOURCE_URLS, REQUIRED_CIVIC, GENE_PATTERN
+    from egfr_luad_pilot import (
+        fetch, SOURCE_URLS, REQUIRED_CIVIC, GENE_PATTERN, CBIO_STUDY_ID,
+        GDC_OCCURRENCE_FILTER, MAX_GDC_OCCURRENCES,
+    )
     from validate import ROOT, validate_repository
 
 RESULT = ROOT / "results/egfr-luad-evidence-coverage/pilot-20261110"
@@ -148,11 +155,109 @@ def compare_civic(original_rows: list[dict], current: dict):
     return selected, broader
 
 
+
+def audit_historical_source_queries(manifest_bytes: bytes, coverage: dict) -> dict:
+    """Bind baseline source URLs, response fingerprints and exact observation units.
+
+    This is an OFFLINE audit of the historical requests, not a live rerun of
+    mutation calls or a claim that the source responses are immutable.
+    """
+    if _sha(manifest_bytes) != ORIGINAL_MANIFEST_SHA:
+        raise ValueError("Original version-bound scientific manifest has changed")
+    manifest = json.loads(manifest_bytes)
+    urls = coverage.get("source_urls", {})
+    fingerprints = coverage.get("source_content_sha256", {})
+    if urls != SOURCE_URLS or set(fingerprints) != set(SOURCE_URLS):
+        raise ValueError("Historical source URLs or fingerprint keys differ from the pinned pilot")
+    # Study metadata was fetched by the original code, but only mutation-call
+    # requests were entered as cBioPortal inputs in the frozen manifest.
+    expected_inputs = {
+        "civic": "civic",
+        "cbio_mutations": "cbioportal",
+        "gdc": "gdc",
+        "gdc_occurrences": "gdc",
+    }
+    inputs = manifest.get("inputs", [])
+    if not isinstance(inputs, list) or len(inputs) != len(expected_inputs):
+        raise ValueError("Historical manifest inputs do not match expected requests")
+    by_url = {entry.get("url"): entry for entry in inputs if isinstance(entry, dict)}
+    if len(by_url) != len(expected_inputs):
+        raise ValueError("Historical manifest has missing or duplicate input URLs")
+    for source_key, source_id in expected_inputs.items():
+        item = by_url.get(urls[source_key])
+        if not item or item.get("source_id") != source_id:
+            raise ValueError(f"Historical manifest missing {source_key} input")
+        if item.get("source_release") != "sha256:" + fingerprints[source_key]:
+            raise ValueError(f"Historical manifest/coverage fingerprint mismatch for {source_key}")
+
+    cbio_url = urlsplit(urls["cbio_mutations"])
+    cbio_profile = f"{CBIO_STUDY_ID}_mutations"
+    cbio_list = f"{CBIO_STUDY_ID}_all"
+    if (cbio_url.scheme != "https" or cbio_url.netloc != "www.cbioportal.org"
+            or cbio_url.path != f"/api/molecular-profiles/{cbio_profile}/mutations"
+            or parse_qs(cbio_url.query, strict_parsing=True) != {
+                "sampleListId": [cbio_list], "entrezGeneId": ["1956"]
+            }):
+        raise ValueError("Historical cBioPortal mutation selection is unexpected")
+
+    gdc_url = urlsplit(urls["gdc_occurrences"])
+    gdc_params = parse_qs(gdc_url.query, strict_parsing=True)
+    if (gdc_url.scheme != "https" or gdc_url.netloc != "api.gdc.cancer.gov"
+            or gdc_url.path != "/ssm_occurrences"
+            or set(gdc_params) != {"filters", "fields", "size", "from", "format"}
+            or gdc_params["fields"] != ["case.case_id,ssm.ssm_id"]
+            or gdc_params["size"] != [str(MAX_GDC_OCCURRENCES)]
+            or gdc_params["from"] != ["0"] or gdc_params["format"] != ["json"]
+            or json.loads(gdc_params["filters"][0]) != GDC_OCCURRENCE_FILTER
+            or len(gdc_params["filters"]) != 1):
+        raise ValueError("Historical GDC occurrence filter or pagination is unexpected")
+
+    return {
+        "audit_type": "historical-query-provenance-only-not-new-row-retrieval",
+        "original_access_dates": sorted({item["accessed_on"] for item in inputs}),
+        "source_fingerprints_are_immutable_releases": False,
+        "cbioportal": {
+            "study_id": CBIO_STUDY_ID,
+            "molecular_profile_id": cbio_profile,
+            "sample_list_id": cbio_list,
+            "sample_list_scope": "all-study-samples-not-mutation-assayed-denominator",
+            "entrez_gene_id": 1956,
+            "request_url": urls["cbio_mutations"],
+            "historical_mutation_call_rows": coverage["cbioportal"]["egfr_mutation_call_rows"],
+            "original_mutation_response_sha256": fingerprints["cbio_mutations"],
+            "profile_and_assay_coverage_verified": False,
+            "egfr_profiled_sample_denominator": None,
+            "observation_unit": "mutation-call API row, not unique sample or case",
+        },
+        "gdc": {
+            "project_id": "TCGA-LUAD",
+            "ensembl_gene_id": "ENSG00000146648",
+            "request_url": urls["gdc_occurrences"],
+            "filters": GDC_OCCURRENCE_FILTER,
+            "requested_fields": gdc_params["fields"][0].split(","),
+            "requested_from": 0,
+            "requested_page_size": MAX_GDC_OCCURRENCES,
+            "consequence_type_filter_applied": False,
+            "original_occurrence_response_sha256": fingerprints["gdc_occurrences"],
+            "historical_occurrence_rows": coverage["gdc"]["egfr_occurrences"]["somatic_mutation_occurrence_rows"],
+            "historical_distinct_case_ids_with_occurrence":
+                coverage["gdc"]["egfr_occurrences"]["distinct_case_ids_with_recorded_occurrence"],
+            "historical_completeness_rule":
+                "require pagination.from=0, len(hits)=pagination.total, 0<total<=1000",
+            "completeness_reverified_live": False,
+            "egfr_profiled_case_denominator": None,
+            "observation_unit": "SSM occurrence row; cases deduplicated in memory only",
+        },
+        "comparability": "not-cohort-harmonized; no EGFR prevalence can be inferred",
+    }
+
+
 def make_live_report(*, civic_raw: bytes, cbio_study_raw: bytes, gdc_project_raw: bytes,
                      original_csv: bytes, manifest_bytes: bytes, coverage: dict,
                      checked_at: str) -> dict[str, bytes]:
     if _sha(manifest_bytes) != ORIGINAL_MANIFEST_SHA:
         raise ValueError("Original version-bound scientific manifest has changed")
+    query_provenance = audit_historical_source_queries(manifest_bytes, coverage)
     snapshot = parse_civic_snapshot(civic_raw)
     original = list(csv.DictReader(io.StringIO(original_csv.decode("utf-8-sig"))))
     selected, broader = compare_civic(original, snapshot)
@@ -178,6 +283,12 @@ def make_live_report(*, civic_raw: bytes, cbio_study_raw: bytes, gdc_project_raw
             "civic": _sha(civic_raw),
             "cbio_study_metadata": _sha(cbio_study_raw),
             "gdc_project_metadata": _sha(gdc_project_raw),
+        },
+        "historical_query_provenance": query_provenance,
+        "metadata_response_byte_identity_with_original": {
+            "civic": _sha(civic_raw) == coverage["source_content_sha256"]["civic"],
+            "cbio_study_metadata": _sha(cbio_study_raw) == coverage["source_content_sha256"]["cbio_study"],
+            "gdc_project_metadata": _sha(gdc_project_raw) == coverage["source_content_sha256"]["gdc"],
         },
         "source_urls": {
             "civic": SOURCE_URLS["civic"],
@@ -221,6 +332,8 @@ def make_live_report(*, civic_raw: bytes, cbio_study_raw: bytes, gdc_project_raw
             "cBioPortal study-level sequenced samples are not necessarily an EGFR-mutation-profile assay denominator.",
             "GDC project cases are not a denominator for filtered gene-specific SSM occurrences.",
             "No patient/sample/case-level records or mutation API rows were fetched for this report.",
+            "Historical cBioPortal _all selects study samples, not necessarily the _sequenced or EGFR-assayed samples; gene-panel missingness is unassessed.",
+            "Historical GDC page completeness was checked in the original pilot; this metadata-only rerun does not re-fetch SSM occurrence rows.",
             "No biomedical efficacy, prevalence or clinical conclusion can be calculated or endorsed.",
         ],
     }

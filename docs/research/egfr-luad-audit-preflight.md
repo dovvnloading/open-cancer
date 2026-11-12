@@ -62,3 +62,49 @@ Any changed source metadata needs a domain expert to inspect the original CIViC 
 ## Follow-up: namespace-equivalent DOIDs are not upstream changes
 
 A first live run on 2026-11-11 reported all 56 historical selected CIViC IDs as changed solely because the original derived CSV recorded `DOID:3910` while the upstream TSV uses `3910`. These strings encode the **same Disease Ontology term**, not a changed cancer type. The audit now normalizes the optional `DOID:` prefix **only for field-change comparison**, retaining the raw original and current values for provenance. Differing DOID numbers and lost strict-LUAD inclusion remain observable. The original source content hash changing still indicates different source **bytes**, not necessarily any changed selected evidence item. An unchanged selected-label comparison cannot establish upstream statement/primary-study correctness or source-wide identity.
+
+## Historical cBioPortal/GDC query provenance and metadata drift (#35)
+
+The live audit's `public-source-metadata-summary.json` now includes
+`historical_query_provenance`. It is generated **offline** from the original
+November 10, 2026 manifest and coverage file, checks that four manifest input
+URLs and response fingerprints match the original source selection, and
+**fails closed** if the recorded mutation URL, GDC filters, or requested page
+shape differ. It does not contact any mutation, case or sample endpoint.
+
+| Original request | Selection and observation unit | What is still unknown |
+| --- | --- | --- |
+| cBioPortal `luad_tcga_pan_can_atlas_2018_mutations/mutations` | `sampleListId=luad_tcga_pan_can_atlas_2018_all`, `entrezGeneId=1956`, **86 mutation-call rows** | Unique affected samples/patients, EGFR-assayed denominator, gene-panel missingness, mutation-profile coverage |
+| GDC `/ssm_occurrences` | `case.project.project_id=TCGA-LUAD` AND `ssm.consequence.transcript.gene.gene_id=ENSG00000146648`; request `case.case_id,ssm.ssm_id`, `from=0`, `size=1000`; **93 occurrence rows**, **78 distinct case IDs in those rows** | Full assayed cohort denominator, variant-consequence inclusion, project/pipeline overlap with cBioPortal, and any new live occurrence counts |
+
+The cBioPortal `_all` list covers the study's samples, whereas the separately
+defined `_sequenced` list describes samples with mutation data; even that
+list alone does **not** prove every sample was assayed for EGFR across gene
+panels. See [cBioPortal case-list and gene-panel formats](https://docs.cbioportal.org/file-formats/)
+and the [cBioPortal API guide](https://docs.cbioportal.org/web-api-and-clients/).
+The [GDC data-analysis reference](https://docs.gdc.cancer.gov/API/Users_Guide/Data_Analysis/)
+defines an SSM *occurrence* as a mutation applied to a case, not the number
+of assayed cases. The **historical** code checked that the one requested GDC
+page's `pagination.from=0`, `len(hits)=pagination.total`, and
+`total<=1000`; the metadata-only audit does **not** repeat that row-level
+check and explicitly reports `completeness_reverified_live=false`.
+There was **no consequence-type filter** in the original SSM request.
+
+The summary separately provides `metadata_response_byte_identity_with_original`
+for CIViC TSV, cBioPortal study metadata, and GDC project metadata. These
+booleans mean *only* that the current raw response hash matched the stored
+historical SHA-256 at this retrieval; they do **not** establish immutable
+upstream releases, scientific agreement, or unchanged unqueried records.
+The original November 10 cBioPortal mutation-call and GDC occurrence response
+bytes are not archived, and this live metadata audit never pretends to
+replay them. Both EGFR-assayed denominators remain `null`, and cross-source
+prevalence remains uncomputable. The frozen original `coverage.gdc.note`
+mentions an "aggregate endpoint" in error; the version-bound manifest
+inputs and analysis code identify the actual `/ssm_occurrences` request.
+Do not edit the original checksum-bound pilot to correct that historical
+wording.
+
+These assertions have synthetic offline regression tests; an independent
+study/profile, sample-list, consequence, coverage and cohort-overlap assessment
+by a qualified human specialist remains outstanding under
+[issue #35](https://github.com/dovvnloading/open-cancer/issues/35).
