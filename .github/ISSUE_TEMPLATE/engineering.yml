@@ -1,12 +1,14 @@
-name: Engineering bug or technical work
-description: A reproducible code, infrastructure, data-pipeline, deployment, security, or QA task with a concrete deliverable.
+name: Engineering bug, code change or infrastructure incident
+description: Reproducible software defects, implementation changes, CI/infrastructure and technical incidents only.
 title: "[Engineering] "
 body:
   - type: markdown
     attributes:
       value: |
-        Issues track actionable engineering and code tasks. For announcements, questions,
-        recruitment, or routine status reports use the community guide or GitHub Actions.
+        GitHub Issues are only for actionable code, engineering, infrastructure or technical
+        incidents with clear acceptance criteria. Do not file research coordination,
+        scientific audits or expert review requests here. Those belong in the
+        research work page; announcements and conversations belong in community docs.
         Never include identifying patient data, credentials, or restricted records.
   - type: input
     id: component
