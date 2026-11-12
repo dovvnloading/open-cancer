@@ -16,7 +16,6 @@ on:
 permissions:
   contents: read
   actions: read
-  issues: write
 
 concurrency:
   group: open-cancer-weekly-operations-report
@@ -30,17 +29,54 @@ jobs:
       - uses: actions/checkout@v4
       - name: Test conservative report classification offline
         run: node --test tests/operations_report.test.cjs
-      - name: Gather current GitHub evidence and publish durable status
+      - name: Find latest retained monitoring artifacts
+        id: monitor
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {owner, repo} = context.repo;
+            for (const item of [
+              {key: 'catalog', workflow: 'catalog-monitor.yml', artifact: 'catalog-health-report'},
+              {key: 'public', workflow: 'explorer-freshness.yml', artifact: 'explorer-health-report'},
+            ]) {
+              const runs = await github.rest.actions.listWorkflowRuns({
+                owner, repo, workflow_id: item.workflow, branch: 'main', per_page: 50,
+              });
+              for (const run of runs.data.workflow_runs || []) {
+                if (run.status !== 'completed') continue;
+                const available = await github.rest.actions.listWorkflowRunArtifacts({
+                  owner, repo, run_id: run.id, per_page: 100,
+                });
+                if ((available.data.artifacts || []).some(artifact =>
+                    artifact.name === item.artifact && !artifact.expired)) {
+                  core.setOutput(item.key + '_run_id', String(run.id));
+                  break;
+                }
+              }
+            }
+      - name: Download catalog metadata health report
+        if: steps.monitor.outputs.catalog_run_id != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: catalog-health-report
+          run-id: ${{ steps.monitor.outputs.catalog_run_id }}
+          github-token: ${{ github.token }}
+          path: .monitor/catalog
+      - name: Download Explorer deployment freshness report
+        if: steps.monitor.outputs.public_run_id != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: explorer-health-report
+          run-id: ${{ steps.monitor.outputs.public_run_id }}
+          github-token: ${{ github.token }}
+          path: .monitor/public
+      - name: Gather evidence and publish the Actions report
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
             const {examine, render} =
               require(process.env.GITHUB_WORKSPACE + '/scripts/operations_report.cjs');
-            const {decodeLedger} =
-              require(process.env.GITHUB_WORKSPACE + '/scripts/catalog_ledger.cjs');
-            const {parsePrevious} =
-              require(process.env.GITHUB_WORKSPACE + '/scripts/explorer_health_ledger.cjs');
             const {owner, repo} = context.repo;
             const branch = await github.rest.repos.getBranch({owner, repo, branch: 'main'});
             const revision = branch.data.commit.sha;
@@ -65,19 +101,16 @@ jobs:
               {owner, repo, state: 'all', per_page: 100});
             const issueRows = issues.filter(issue => !issue.pull_request);
             const byTitle = title => issueRows.find(issue => issue.title === title);
-            let catalogHealth = null, publicHealth = null;
-            try {
-              catalogHealth = decodeLedger(
-                byTitle('Catalog metadata health ledger (automated)')?.body);
-            } catch (err) {
-              core.warning('Catalog observation ledger unavailable or invalid: ' + err.message);
-            }
-            try {
-              publicHealth = parsePrevious(
-                byTitle('Public Explorer release health (automated)')?.body);
-            } catch (err) {
-              core.warning('Public release ledger unavailable or invalid: ' + err.message);
-            }
+            const readMonitorReport = path => {
+              if (!fs.existsSync(path)) return null;
+              try { return JSON.parse(fs.readFileSync(path, 'utf8')); }
+              catch (error) {
+                core.warning('Could not decode monitoring artifact ' + path + ': ' + error.message);
+                return null;
+              }
+            };
+            const catalogHealth = readMonitorReport('.monitor/catalog/catalog-health-report.json');
+            const publicHealth = readMonitorReport('.monitor/public/explorer-health.json');
             const data = {
               generated_at: new Date().toISOString(),
               revision,
@@ -96,40 +129,7 @@ jobs:
             fs.writeFileSync('operations-report.json',
               JSON.stringify(summary, null, 2) + '\n');
             await core.summary.addRaw(report).write();
-            const title = 'Open Cancer weekly operations report (automated)';
-            const existing = byTitle(title);
-            const body = [
-              'This issue is an automated **status report**, not a scientific validation.',
-              'Reports are updated on Monday, after monitoring runs, and on explicit dispatch.',
-              'Individual reports are also downloadable from the Actions run artifacts.',
-              '',
-              report,
-            ].join('\n').slice(0, 30000);
-            let number;
-            if (existing) {
-              number = existing.number;
-              // Preserve the report as a closed, commentable historical ledger.
-              // Closing it does not close any operational or scientific blockers.
-              await github.rest.issues.update({
-                owner, repo, issue_number: number, body, state: 'closed',
-              });
-              // Append a permanent dated summary, not a silent overwrite.
-              await github.rest.issues.createComment({
-                owner, repo, issue_number: number,
-                body: report.slice(0, 15000),
-              });
-            } else {
-              const created = await github.rest.issues.create({
-                owner, repo, title, body,
-              });
-              number = created.data.number;
-              // This is a published report, not an unresolved action item.
-              // Keep actionable release/governance incidents open separately.
-              await github.rest.issues.update({
-                owner, repo, issue_number: number, state: 'closed',
-              });
-            }
-            core.info('Archived completed operations report issue #' + number);
+            core.info('Published operational report to Actions run summary and artifact; no Issue created.');
       - name: Retain markdown and machine-readable operational snapshot
         uses: actions/upload-artifact@v4
         with:
