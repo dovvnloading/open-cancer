@@ -35,7 +35,7 @@ All CIViC queue rows are marked **`upstream_record_checked=no`** and **`scientif
 
 The preflight is deterministic from the historical, immutable manifest and saved public derived outputs, and its fields are validated by offline tests. It intentionally **does not fetch new upstream data**, so a green test or identical ZIP does not imply that an original source URL is still live, source reuse rights have been adjudicated, or that scientific conclusions were independently reproduced. All original result files, their checksums, and linked reviews are unchanged.
 
-**Do not close #34, #35 or #36 solely because these machine-generated aids exist.**
+**Do not mark these scientific research deliverables complete solely because the machine-generated aids exist. Their archived Issues were closed to clean up tracker routing, not because scientific work was completed.**
 
 
 ## Optional bounded live public metadata drift audit
@@ -56,14 +56,14 @@ python scripts/egfr_live_source_audit.py --output-dir /tmp/egfr-live-public-audi
 (cd /tmp/egfr-live-public-audit && sha256sum --check SHA256SUMS)
 ~~~
 
-Any changed source metadata needs a domain expert to inspect the original CIViC record, cited source and disease/variant context before interpretation. This workflow does not satisfy the human-reviewed acceptance criteria of #34, #35 or #36.
+Any changed source metadata needs a domain expert to inspect the original CIViC record, cited source and disease/variant context before interpretation. This workflow does not satisfy the human-reviewed research acceptance criteria on the [work page](./egfr-luad-open-work.md).
 
 
 ## Follow-up: namespace-equivalent DOIDs are not upstream changes
 
 A first live run on 2026-11-11 reported all 56 historical selected CIViC IDs as changed solely because the original derived CSV recorded `DOID:3910` while the upstream TSV uses `3910`. These strings encode the **same Disease Ontology term**, not a changed cancer type. The audit now normalizes the optional `DOID:` prefix **only for field-change comparison**, retaining the raw original and current values for provenance. Differing DOID numbers and lost strict-LUAD inclusion remain observable. The original source content hash changing still indicates different source **bytes**, not necessarily any changed selected evidence item. An unchanged selected-label comparison cannot establish upstream statement/primary-study correctness or source-wide identity.
 
-## Historical cBioPortal/GDC query provenance and metadata drift (#35)
+## Historical cBioPortal/GDC query provenance and metadata drift
 
 The live audit's `public-source-metadata-summary.json` now includes
 `historical_query_provenance`. It is generated **offline** from the original
