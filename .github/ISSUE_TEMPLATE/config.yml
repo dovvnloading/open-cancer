@@ -1,0 +1,13 @@
+# Only technical/research work belongs in Issues.
+# Community participation lives in docs until the repository enables Discussions.
+blank_issues_enabled: false
+contact_links:
+  - name: General discussion, introductions, collaboration, or announcements
+    url: https://github.com/dovvnloading/open-cancer/blob/main/docs/community/README.md
+    about: These are not issue tickets. Use the community guide; GitHub Discussions may be enabled later.
+  - name: Become an independent scientific reviewer
+    url: https://github.com/dovvnloading/open-cancer/blob/main/docs/community/independent-reviewers.md
+    about: Reviewer recruitment and general interest go here, not in Issues. Specific research deliverables do belong in Issues.
+  - name: Operational status and scheduled monitoring reports
+    url: https://github.com/dovvnloading/open-cancer/actions
+    about: Read GitHub Actions summaries/artifacts. Open an issue only for a specific, reproducible technical failure.
