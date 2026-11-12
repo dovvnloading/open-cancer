@@ -26,7 +26,7 @@ Open Cancer is building a reproducible public cancer-data research platform. We 
 
 The first analysis is computationally reproducible within the project, but remains **unreviewed for scientific interpretation**. We need help checking the exact disease filter, compound molecular profiles, mutation-call/SSM units, the relevance of missing assay denominators and the limits of cross-source comparisons.
 
-The self-contained reviewer guide, original manifest, source links, QA sample and checklist are published at https://github.com/dovvnloading/open-cancer/tree/main/review_packets/egfr-luad-v1 . The open research workstream is https://github.com/dovvnloading/open-cancer/issues/3 ; the evidence-specific expert assessment is tracked at https://github.com/dovvnloading/open-cancer/issues/36 .
+The self-contained reviewer guide, original manifest, source links, QA sample and checklist are published at https://github.com/dovvnloading/open-cancer/tree/main/review_packets/egfr-luad-v1 . The open research work and evidence-specific expert assessment are tracked at https://github.com/dovvnloading/open-cancer/blob/main/docs/research/egfr-luad-open-work.md , not as GitHub Issues.
 
 This is *not* a claim of a new discovery or treatment recommendation. Critical findings, problems with reproduction and limitations are welcome. If the scope matches your expertise, please consider a version-bound review PR or suggest a more suitable specialist.
 
