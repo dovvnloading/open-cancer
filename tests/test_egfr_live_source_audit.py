@@ -12,7 +12,7 @@ import unittest
 
 from scripts.egfr_live_source_audit import (
     ROOT, RESULT, parse_civic_snapshot, compare_civic, make_live_report,
-    is_strict_luad, canonical_doid,
+    is_strict_luad, canonical_doid, audit_historical_source_queries,
 )
 
 HEADERS = ("evidence_id", "molecular_profile", "evidence_status",
@@ -140,6 +140,73 @@ class LiveCIViCAuditTests(unittest.TestCase):
         args["manifest_bytes"] = self.manifest + b" "
         with self.assertRaisesRegex(ValueError, "manifest has changed"):
             make_live_report(**args)
+
+
+    def test_historical_cancer_source_query_provenance_is_exact_and_nonclinical(self):
+        record = audit_historical_source_queries(self.manifest, self.coverage)
+        self.assertEqual(record["original_access_dates"], ["2026-11-10"])
+        self.assertFalse(record["source_fingerprints_are_immutable_releases"])
+        cbio = record["cbioportal"]
+        self.assertEqual(cbio["study_id"], "luad_tcga_pan_can_atlas_2018")
+        self.assertEqual(cbio["molecular_profile_id"], "luad_tcga_pan_can_atlas_2018_mutations")
+        self.assertEqual(cbio["sample_list_id"], "luad_tcga_pan_can_atlas_2018_all")
+        self.assertEqual(cbio["entrez_gene_id"], 1956)
+        self.assertEqual(cbio["historical_mutation_call_rows"], 86)
+        self.assertIsNone(cbio["egfr_profiled_sample_denominator"])
+        self.assertFalse(cbio["profile_and_assay_coverage_verified"])
+        self.assertIn("not-mutation-assayed-denominator", cbio["sample_list_scope"])
+        gdc = record["gdc"]
+        self.assertEqual(gdc["ensembl_gene_id"], "ENSG00000146648")
+        self.assertEqual(gdc["historical_occurrence_rows"], 93)
+        self.assertEqual(gdc["historical_distinct_case_ids_with_occurrence"], 78)
+        self.assertEqual(gdc["requested_fields"], ["case.case_id", "ssm.ssm_id"])
+        self.assertEqual(gdc["requested_from"], 0)
+        self.assertEqual(gdc["requested_page_size"], 1000)
+        self.assertFalse(gdc["consequence_type_filter_applied"])
+        self.assertFalse(gdc["completeness_reverified_live"])
+        self.assertIsNone(gdc["egfr_profiled_case_denominator"])
+        self.assertEqual(gdc["filters"], {"op": "and", "content": [
+            {"op": "in", "content": {"field": "ssm.consequence.transcript.gene.gene_id",
+                                      "value": ["ENSG00000146648"]}},
+            {"op": "in", "content": {"field": "case.project.project_id",
+                                      "value": ["TCGA-LUAD"]}},
+        ]})
+
+    def test_historical_query_pin_rejects_tampered_filter_or_source_digest(self):
+        altered = json.loads(json.dumps(self.coverage))
+        altered["source_urls"]["gdc_occurrences"] = altered["source_urls"]["gdc_occurrences"].replace(
+            "size=1000", "size=1"
+        )
+        with self.assertRaisesRegex(ValueError, "Historical source URLs"):
+            audit_historical_source_queries(self.manifest, altered)
+        altered = json.loads(json.dumps(self.coverage))
+        altered["source_content_sha256"]["cbio_mutations"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "fingerprint mismatch"):
+            audit_historical_source_queries(self.manifest, altered)
+        with self.assertRaisesRegex(ValueError, "manifest has changed"):
+            audit_historical_source_queries(self.manifest + b" ", self.coverage)
+
+    def test_metadata_fingerprint_comparison_does_not_expose_sample_identifiers(self):
+        cbio = b'{"studyId":"luad_tcga_pan_can_atlas_2018","sampleIds":["NEVER_OUTPUT_ID"]}'
+        gdc = b'{"data":{"project_id":"TCGA-LUAD","case_ids":["NEVER_OUTPUT_GDC_ID"]}}'
+        fixture = json.loads(json.dumps(self.coverage))
+        fixture["source_content_sha256"]["cbio_study"] = hashlib.sha256(cbio).hexdigest()
+        results = make_live_report(
+            civic_raw=fake_tsv(), cbio_study_raw=cbio, gdc_project_raw=gdc,
+            original_csv=self.original_csv, manifest_bytes=self.manifest,
+            coverage=fixture, checked_at="2026-11-11T13:00:00Z",
+        )
+        summary = results["public-source-metadata-summary.json"]
+        data = json.loads(summary)
+        matches = data["metadata_response_byte_identity_with_original"]
+        self.assertTrue(matches["cbio_study_metadata"])
+        self.assertFalse(matches["gdc_project_metadata"])
+        self.assertFalse(matches["civic"])
+        self.assertEqual(data["historical_query_provenance"]["audit_type"],
+                         "historical-query-provenance-only-not-new-row-retrieval")
+        self.assertNotIn(b"NEVER_OUTPUT_ID", summary)
+        self.assertNotIn(b"NEVER_OUTPUT_GDC_ID", summary)
+
 
 
 if __name__ == "__main__":
