@@ -136,7 +136,24 @@ def scan(*, current, discover, terms_urls=None, probe=probe_terms, checked_at=No
             except (HTTPError, URLError, TimeoutError, socket.timeout, HTTPException,
                     ValueError, KeyError, OSError, TypeError) as exc:
                 row["terms_link_error"] = f"{type(exc).__name__}: {exc}"[:400]
+        # Artifact-backed history: preserve the last successful public
+        # metadata observation and last good source/terms checks across outages.
+        # Missing history is unknown, never silently interpreted as no drift.
+        if not row["ok"] and isinstance(previous, dict) and isinstance(previous.get("observations"), dict):
+            row["observations"] = previous["observations"]
+        previous_healthy = (
+            previous.get("last_healthy")
+            or (previous.get("last_checked")
+                if previous.get("ok") and not previous.get("terms_link_error") else None)
+        ) if isinstance(previous, dict) else None
+        row["last_healthy"] = (now if row["ok"] and not row.get("terms_link_error")
+                               else previous_healthy)
+        previous_terms = (
+            previous.get("last_verified_terms_link") or previous.get("terms_link")
+        ) if isinstance(previous, dict) else None
+        row["last_verified_terms_link"] = row.get("terms_link") or previous_terms or None
         report["sources"][source] = row
+    report["previous_monitor_artifact_used"] = previous_report is not None
     return report
 
 
@@ -144,7 +161,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--previous-report", type=Path,
-                        help="Last durable health ledger report; never an upstream data source")
+                        help="Previous Actions monitor artifact; never an upstream data source")
     args = parser.parse_args()
     previous = None
     if args.previous_report and args.previous_report.is_file():
