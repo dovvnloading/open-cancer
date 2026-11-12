@@ -35,7 +35,7 @@ class ArtifactBackedCatalogHealthTests(unittest.TestCase):
                       render(report).lower().replace("past drift not assessed",
                                                       "historical metadata drift is not assessed"))
 
-    def test_drift_outages_and_terms_change_are_actionable_technical_failures(self):
+    def test_drift_and_outages_fail_but_terms_headers_only_warn(self):
         report = healthy_report()
         report["sources"]["gdc"]["ok"] = False
         report["sources"]["gdc"]["error"] = "HTTP 503"
@@ -47,8 +47,38 @@ class ArtifactBackedCatalogHealthTests(unittest.TestCase):
         self.assertTrue(result["previous_monitor_artifact_used"])
         self.assertTrue(any("gdc: endpoint failure" in item for item in result["alerts"]))
         self.assertTrue(any("civic: metadata drift" in item for item in result["alerts"]))
-        self.assertTrue(any("source-terms etag changed" in item for item in result["alerts"]))
+        self.assertTrue(any("source-terms etag changed" in item for item in result["warnings"]))
+        self.assertFalse(any("source-terms" in item for item in result["alerts"]))
         self.assertIn("ACTIONABLE DRIFT / FAILURE", render(result))
+
+    def test_header_changes_alone_warn_without_failing_ci(self):
+        previous = healthy_report()
+        previous["sources"]["gdc"]["terms_link"] = {
+            "url": "https://example.org/terms", "etag": "old", "last_modified": "day-1"
+        }
+        report = healthy_report()
+        report["sources"]["gdc"]["terms_link"] = {
+            "url": "https://example.org/terms", "etag": "new", "last_modified": "day-2"
+        }
+        result = evaluate(report, previous)
+        self.assertEqual(result["alerts"], [])
+        self.assertEqual(len(result["warnings"]), 2)
+        self.assertTrue(all("gdc: source-terms" in w for w in result["warnings"]))
+        self.assertIn("Advisory source-terms metadata reviews", render(result))
+
+    def test_pending_review_does_not_hide_actionable_terms_link_outage(self):
+        report = healthy_report()
+        report["sources"]["cbioportal"]["pending_terms_review"] = ["etag"]
+        report["sources"]["cbioportal"]["terms_link_error"] = "HTTP 404"
+        result = evaluate(report)
+        self.assertTrue(any("source-rights link issue" in a for a in result["alerts"]))
+        self.assertEqual(len(result["warnings"]), 1)
+
+    def test_invalid_pending_review_is_not_accepted(self):
+        report = healthy_report()
+        report["sources"]["gdc"]["pending_terms_review"] = ["unrecognized"]
+        with self.assertRaisesRegex(ValueError, "Invalid terms review"):
+            evaluate(report)
 
     def test_failed_source_keeps_last_non_sensitive_observation_for_recovery(self):
         prior = {
