@@ -69,7 +69,7 @@ jobs:
                 fs.readFileSync('explorer-health.txt', 'utf8') :
                 'Check did not complete; inspect this Actions run',
             };
-            fs.writeFileSync('explorer-health.json', JSON.stringify(result, null, 2) + '\\n');
+            fs.writeFileSync('explorer-health.json', JSON.stringify(result, null, 2) + '\n');
             await core.summary.addRaw([
               '# Public Explorer release health',
               '',
@@ -84,7 +84,7 @@ jobs:
               '~~~text',
               result.output.slice(0, 4000).replaceAll('~~~', ''),
               '~~~',
-            ].join('\\n')).write();
+            ].join('\n')).write();
       - name: Save public-site revision check outside of Issues
         if: always()
         uses: actions/upload-artifact@v4
