@@ -5,16 +5,22 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timezone
 import hashlib
 import itertools
 import json
+import os
 from pathlib import Path
 import re
 import shlex
 import subprocess
 import sys
 import tempfile
+
+if __package__:
+    from . import civic_evidence, grounded_claims
+else:
+    import civic_evidence
+    import grounded_claims
 
 ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL = "open-cancer-compute-v1"
@@ -163,9 +169,25 @@ def check_response(stage: str, payload: object, job: dict) -> dict:
     return payload
 
 
+def check_directory_response(stage: str, payload: object, job: dict, root: Path = ROOT) -> dict:
+    answer = check_response(stage, payload, job)
+    if stage == "investigate":
+        for item in answer["evidence"]:
+            source = read_json(root / "catalog/sources" / (item["source_id"] + ".json"))
+            if item["relation"] != "context" or item["url"] not in {
+                    source.get("homepage"), source.get("documentation_url")}:
+                raise ValueError("Source directory only: cite a contextual catalog URL")
+    elif answer["verdict"] == "no-internal-issues-found":
+        return {"verdict": "insufficient-evidence", "issues": [
+            "Source directory metadata cannot validate record-level or biological claims.", *answer["issues"][:39]]}
+    return answer
+
+
 def invoke(stage: str, command: list[str], job: dict, candidate: dict | None,
-           timeout: int, retries: int) -> tuple[dict, int]:
+           timeout: int, retries: int, bundle: dict | None = None) -> tuple[dict, int]:
     request = {"protocol": PROTOCOL, "stage": stage, "job": job}
+    if bundle is not None:
+        request.update(protocol=grounded_claims.GROUNDED_PROTOCOL, evidence_bundle=bundle)
     if candidate is not None:
         request["candidate"] = candidate
     last_error = "unknown-error"
@@ -180,8 +202,13 @@ def invoke(stage: str, command: list[str], job: dict, candidate: dict | None,
                 last_error = "response-too-large"
                 continue
             try:
-                response = check_response(stage, json.loads(process.stdout), job)
-            except (ValueError, TypeError, KeyError, UnicodeError):
+                payload = json.loads(process.stdout)
+                if bundle is None:
+                    response = check_directory_response(stage, payload, job)
+                else:
+                    response = grounded_claims.check_grounded_response(stage, payload, bundle,
+                                                                       job, candidate)
+            except (ValueError, TypeError, KeyError, OSError, RecursionError):
                 last_error = "invalid-worker-response"
                 continue
             return response, attempt
@@ -192,7 +219,7 @@ def invoke(stage: str, command: list[str], job: dict, candidate: dict | None,
     raise RuntimeError(f"{stage}: {last_error} after {retries + 1} attempts")
 
 
-def atomic_json(path: Path, value: object) -> None:
+def atomic_json(path: Path, value: object, *, exclusive: bool = False) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile("w", dir=path.parent, prefix=".tmp-", suffix=".json",
                                      encoding="utf-8", delete=False) as output:
@@ -204,7 +231,13 @@ def atomic_json(path: Path, value: object) -> None:
         except BaseException:
             temp_path.unlink(missing_ok=True)
             raise
-    temp_path.replace(path)
+    try:
+        if exclusive:
+            os.link(temp_path, path)  # Publish only a complete file, without replacing another run.
+        else:
+            temp_path.replace(path)
+    finally:
+        temp_path.unlink(missing_ok=True)
 
 
 def envelope(body: dict) -> dict:
@@ -219,31 +252,68 @@ def read_envelope(path: Path) -> dict:
     return saved["body"]
 
 
-def run_one(job: dict, out: Path, commands: dict, opts: dict, config_sha: str) -> dict:
-    try:
+def investigate(job: dict, commands: dict, opts: dict, bundle: dict | None) -> dict:
+    if bundle is not None and not civic_evidence.records_for_job(bundle, job):
+        candidate = grounded_claims.insufficient_response("investigate", bundle)
+        critique = grounded_claims.insufficient_response("critique", bundle)
+        attempts_i = attempts_c = 0
+    else:
         candidate, attempts_i = invoke("investigate", commands["investigate"], job, None,
-                                       opts["timeout"], opts["retries"])
+                                       opts["timeout"], opts["retries"], bundle)
         critique, attempts_c = invoke("critique", commands["critique"], job, candidate,
-                                      opts["timeout"], opts["retries"])
-        triage = ("synthetic" if candidate["synthetic"] else
-                  "candidate-unverified" if critique["verdict"] == "no-internal-issues-found" else
-                  "needs-investigation")
-        result = {"status": "completed", "triage": triage, "candidate": candidate,
-                  "critique": critique, "attempts": {"investigate": attempts_i,
-                                                   "critique": attempts_c}}
+                                      opts["timeout"], opts["retries"], bundle)
+    if bundle is not None and critique["verdict"] == "insufficient-evidence":
+        triage = "insufficient-evidence"
+    elif candidate["synthetic"]:
+        triage = "synthetic"
+    elif critique["verdict"] == "no-internal-issues-found":
+        triage = "candidate-unverified"
+    else:
+        triage = "needs-investigation"
+    return {"status": "completed", "triage": triage, "candidate": candidate,
+            "critique": critique, "attempts": {"investigate": attempts_i, "critique": attempts_c}}
+
+
+def run_one(job: dict, out: Path, commands: dict, opts: dict, config_sha: str,
+            bundle: dict | None = None) -> dict:
+    try:
+        result = investigate(job, commands, opts, bundle)
     except RuntimeError as exc:
         result = {"status": "failed", "triage": "failed", "error": str(exc)}
-    body = {"protocol": PROTOCOL, "job": job, "job_sha256": digest(job),
-            "config_sha256": config_sha, "review_status": "unreviewed",
-            "clinical_validation_status": "not-assessed", "publication_status": "not-published",
-            **result}
+    body = {"protocol": grounded_claims.GROUNDED_PROTOCOL if bundle is not None else PROTOCOL,
+            "job": job, "job_sha256": digest(job), "config_sha256": config_sha,
+            "review_status": "unreviewed", "clinical_validation_status": "not-assessed",
+            "publication_status": "not-published", **result}
+    if bundle is not None:
+        body["evidence_sha256"] = bundle["sha256"]
     atomic_json(out / "records" / (job["id"] + ".json"), envelope(body))
     return body
 
 
+def civic_catalog() -> dict:
+    return read_json(ROOT / "catalog/sources/civic.json")
+
+
+def private_output(path: Path) -> None:
+    resolved = path.resolve()
+    require(not resolved.is_relative_to(ROOT) or resolved.is_relative_to(ROOT / ".compute"),
+            "Keep evidence snapshots and grounded runs under .compute/ or outside the repository")
+
+
+def load_evidence(path: Path) -> dict:
+    with path.open("rb") as source:
+        raw = source.read(2_097_153)
+    require(len(raw) <= 2_097_152, "Evidence snapshot exceeds the input limit")
+    try:
+        bundle = json.loads(raw)
+    except (ValueError, RecursionError) as exc:
+        raise ValueError("Malformed evidence snapshot") from exc
+    return civic_evidence.validate_bundle(bundle, civic_catalog())
+
+
 def run_batch(jobs: list[dict], out: Path, investigator: str, critic: str,
               workers: int, timeout: int, retries: int, max_jobs: int,
-              shard_index: int, shard_count: int, resume: bool) -> dict:
+              shard_index: int, shard_count: int, resume: bool, evidence: Path | None = None) -> dict:
     require(workers >= 1 and timeout >= 1 and retries >= 0 and max_jobs >= 1,
             "workers, timeout and max-jobs must be positive; retries >= 0")
     require(shard_count >= 1 and 0 <= shard_index < shard_count,
@@ -256,6 +326,19 @@ def run_batch(jobs: list[dict], out: Path, investigator: str, critic: str,
     configuration = {"protocol": PROTOCOL, "plan_sha256": digest(jobs),
                      "worker_fingerprint": digest(commands), "timeout": timeout,
                      "retries": retries, "shard_index": shard_index, "shard_count": shard_count}
+    bundle = None
+    if evidence is not None:
+        private_output(out)
+        for job in selected:
+            require(civic_evidence.supports_job(job), "Job outside the CIViC EGFR/LUAD scope")
+        bundle = load_evidence(evidence)
+        configuration.update(protocol=grounded_claims.GROUNDED_PROTOCOL,
+                             evidence_bundle=bundle, evidence_sha256=bundle["sha256"])
+        # Distinguish model settings across resumes without storing endpoint URLs or keys.
+        settings = {k: os.environ.get("OPEN_CANCER_" + k) for k in (
+            "LLM_URL", "LLM_MODEL", "INVESTIGATOR_MODEL", "CRITIC_MODEL",
+            "LLM_TIMEOUT", "MAX_TOKENS")}
+        configuration["inference_config_sha256"] = digest(settings)
     config_sha = digest(configuration)
     meta = out / "run-config.json"
     if meta.exists():
@@ -263,7 +346,7 @@ def run_batch(jobs: list[dict], out: Path, investigator: str, critic: str,
         require(read_json(meta) == configuration, "Resume configuration differs from checkpoint")
     else:
         require(not out.exists() or not any(out.iterdir()), "Output directory must be empty")
-        atomic_json(meta, configuration)
+        atomic_json(meta, configuration, exclusive=True)
     bodies = {}
     pending = []
     for job in selected:
@@ -273,18 +356,29 @@ def run_batch(jobs: list[dict], out: Path, investigator: str, critic: str,
             require(saved.get("job") == job and saved.get("config_sha256") == config_sha,
                     "Checkpoint does not match job or worker configuration")
             if saved.get("status") == "completed":
+                if bundle is not None:
+                    require(saved.get("evidence_sha256") == configuration["evidence_sha256"],
+                            "Checkpoint evidence differs from the pinned snapshot")
+                    candidate = grounded_claims.check_grounded_response(
+                        "investigate", saved.get("candidate"), bundle, job)
+                    grounded_claims.check_grounded_response(
+                        "critique", saved.get("critique"), bundle, job, candidate)
+                else:
+                    check_directory_response("investigate", saved.get("candidate"), job)
+                    require(check_directory_response("critique", saved.get("critique"), job)
+                            == saved.get("critique"), "Legacy checkpoint lacks record evidence")
                 bodies[job["id"]] = saved
                 continue
         pending.append(job)
     opts = {"timeout": timeout, "retries": retries}
     with ThreadPoolExecutor(max_workers=workers) as pool:
-        futures = {pool.submit(run_one, job, out, commands, opts, config_sha): job["id"]
+        futures = {pool.submit(run_one, job, out, commands, opts, config_sha, bundle): job["id"]
                    for job in pending}
         for future in as_completed(futures):
             bodies[futures[future]] = future.result()
     counts = Counter(body["status"] for body in bodies.values())
     triage_counts = Counter(body["triage"] for body in bodies.values())
-    summary = {"protocol": PROTOCOL, "plan_sha256": configuration["plan_sha256"],
+    summary = {"protocol": configuration["protocol"], "plan_sha256": configuration["plan_sha256"],
                "config_sha256": config_sha, "shard_index": shard_index,
                "shard_count": shard_count, "selected_jobs": len(selected),
                "completed": counts["completed"], "failed": counts["failed"],
@@ -303,9 +397,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--spec", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
     p.add_argument("--max-jobs", type=int, default=256)
+    fetch = sub.add_parser("retrieve", help="Snapshot permitted CIViC EGFR/LUAD evidence")
+    fetch.add_argument("--source", choices=["civic"], required=True)
+    fetch.add_argument("--output", type=Path, required=True)
+    fetch.add_argument("--fixture", action="store_true", help="Replay the labeled offline fixture")
+    fetch.add_argument("--max-pages", type=int, help="Live page budget (default 4, maximum 8)")
+    fetch.add_argument("--page-size", type=int, default=20, help="Items per page (maximum 25)")
     r = sub.add_parser("run", help="Fan out to subprocess worker adapters")
     r.add_argument("--jobs", type=Path, required=True)
     r.add_argument("--output", type=Path, required=True)
+    r.add_argument("--evidence", type=Path, help="Snapshot created by the retrieve command")
     r.add_argument("--investigator", required=True, help="Subprocess command, reads JSON stdin")
     r.add_argument("--critic", required=True, help="Separate subprocess command, reads JSON stdin")
     r.add_argument("--workers", type=int, default=4)
@@ -325,10 +426,28 @@ def main(argv: list[str] | None = None) -> int:
             args.output.write_text("".join(json.dumps(j, sort_keys=True) + "\n" for j in jobs),
                                    encoding="utf-8")
             print(f"Planned {len(jobs)} content-addressed jobs: {args.output}")
+        elif args.command == "retrieve":
+            private_output(args.output)
+            require(not args.output.exists(), "Refusing to overwrite existing evidence snapshot")
+            catalog = civic_catalog()
+            if args.fixture:
+                require(args.max_pages in (None, 1) and args.page_size == 20,
+                        "Fixture replay uses its recorded page budget")
+                bundle = civic_evidence.retrieve_fixture(catalog)
+            else:
+                bundle = civic_evidence.retrieve(catalog, max_pages=4 if args.max_pages is None else args.max_pages,
+                                                 page_size=args.page_size)
+            civic_evidence.validate_bundle(bundle, catalog)
+            atomic_json(args.output, bundle, exclusive=True)
+            print(json.dumps({"status": bundle["status"], "synthetic": bundle["synthetic"],
+                              "records": len(bundle["records"]), "sha256": bundle["sha256"]},
+                             sort_keys=True))
+            return 1 if bundle["status"] == "unavailable" else 0
         else:
             summary = run_batch(load_jobs(args.jobs), args.output, args.investigator,
                                 args.critic, args.workers, args.timeout, args.retries,
-                                args.max_jobs, args.shard_index, args.shard_count, args.resume)
+                                args.max_jobs, args.shard_index, args.shard_count, args.resume,
+                                args.evidence)
             print(json.dumps({k: summary[k] for k in ("selected_jobs", "completed", "failed", "triage")},
                              sort_keys=True))
             return 1 if summary["failed"] else 0

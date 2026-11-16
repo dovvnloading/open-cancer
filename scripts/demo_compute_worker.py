@@ -3,17 +3,25 @@
 import json
 import sys
 
+if __package__:
+    from . import grounded_claims
+else:
+    import grounded_claims
+
 SOURCE_URLS = {
     "cbioportal": "https://www.cbioportal.org/",
     "civic": "https://civicdb.org/",
-    "gdc": "https://portal.gdc.cancer.gov/",
+    "gdc": "https://gdc.cancer.gov/",
 }
 
 
 def main() -> None:
     request = json.load(sys.stdin)
     job = request["job"]
-    if request["stage"] == "investigate":
+    if request["protocol"] == grounded_claims.GROUNDED_PROTOCOL:
+        response = grounded_claims.fixture_response(request["stage"], request["evidence_bundle"],
+                                                  job, request.get("candidate"))
+    elif request["stage"] == "investigate":
         source = job["source_ids"][0]
         response = {
             "summary": "Synthetic execution fixture only; no source records were fetched or analyzed.",
