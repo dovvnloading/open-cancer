@@ -1,0 +1,67 @@
+{
+  "data": {
+    "evidenceItems": {
+      "totalCount": 3,
+      "nodes": [
+        {
+          "id": 2000000001,
+          "status": "ACCEPTED",
+          "flagged": false,
+          "evidenceType": "PREDICTIVE",
+          "evidenceLevel": "B",
+          "evidenceDirection": "SUPPORTS",
+          "significance": "RESISTANCE",
+          "molecularProfile": {
+            "name": "EGFR L858R",
+            "deprecated": false
+          },
+          "disease": {
+            "name": "Lung Adenocarcinoma",
+            "doid": "3910",
+            "deprecated": false
+          }
+        },
+        {
+          "id": 2000000002,
+          "status": "ACCEPTED",
+          "flagged": false,
+          "evidenceType": "PREDICTIVE",
+          "evidenceLevel": "C",
+          "evidenceDirection": "DOES_NOT_SUPPORT",
+          "significance": "RESISTANCE",
+          "molecularProfile": {
+            "name": "EGFR L858R",
+            "deprecated": false
+          },
+          "disease": {
+            "name": "Lung Adenocarcinoma",
+            "doid": "3910",
+            "deprecated": false
+          }
+        },
+        {
+          "id": 2000000003,
+          "status": "ACCEPTED",
+          "flagged": false,
+          "evidenceType": "PREDICTIVE",
+          "evidenceLevel": "B",
+          "evidenceDirection": "SUPPORTS",
+          "significance": "SENSITIVITYRESPONSE",
+          "molecularProfile": {
+            "name": "EGFR Exon 19 Deletion",
+            "deprecated": false
+          },
+          "disease": {
+            "name": "Lung Adenocarcinoma",
+            "doid": "3910",
+            "deprecated": false
+          }
+        }
+      ],
+      "pageInfo": {
+        "hasNextPage": false,
+        "endCursor": "Mw"
+      }
+    }
+  }
+}

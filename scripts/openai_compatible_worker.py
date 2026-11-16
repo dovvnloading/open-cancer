@@ -1,26 +1,37 @@
 #!/usr/bin/env python3
 """Optional worker adapter for an operator-controlled OpenAI-compatible inference endpoint.
 
-This worker receives only checked-in source DIRECTORY metadata, never source
-record bodies. It can propose hypotheses but cannot verify cancer data or claims.
-Secrets are read exclusively from environment variables, not command arguments.
+The v1 protocol supplies source directory metadata. The v2 protocol supplies
+validated, permission-checked CIViC record projections pinned by the coordinator.
+Credentials are read exclusively from the environment.
 """
 from __future__ import annotations
 
+from http.client import HTTPException
 import json
 import os
 from pathlib import Path
 import sys
-from urllib.error import HTTPError, URLError
+from urllib.error import HTTPError
 from urllib.parse import urlsplit
-from urllib.request import Request, urlopen
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 if __package__:
-    from .compute_fanout import PROTOCOL, ROOT, check_response, validate_job
+    from . import civic_evidence, grounded_claims
+    from .compute_fanout import PROTOCOL, ROOT, check_directory_response, validate_job
 else:
-    from compute_fanout import PROTOCOL, ROOT, check_response, validate_job
+    import civic_evidence
+    import grounded_claims
+    from compute_fanout import PROTOCOL, ROOT, check_directory_response, validate_job
 
 MAX_HTTP_BYTES = 1_048_576
+
+
+class NoRedirect(HTTPRedirectHandler):
+    """Keep the inference input and bearer credential on the configured endpoint."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
 
 
 def source_context(job: dict, root: Path = ROOT) -> list[dict]:
@@ -90,16 +101,7 @@ def extract_response(payload: object) -> dict:
     return answer
 
 
-def work(request: object, env: dict[str, str] | None = None, root: Path = ROOT,
-         opener=urlopen) -> dict:
-    env = os.environ if env is None else env
-    if not isinstance(request, dict) or request.get("protocol") != PROTOCOL or \
-            request.get("stage") not in {"investigate", "critique"}:
-        raise ValueError("Unsupported worker request")
-    job = validate_job(request.get("job"))
-    stage = request["stage"]
-    if stage == "critique" and not isinstance(request.get("candidate"), dict):
-        raise ValueError("Critique requires an investigator candidate")
+def infer(stage: str, messages: list[dict], env: dict[str, str], opener) -> dict:
     endpoint = env.get("OPEN_CANCER_LLM_URL", "")
     validate_endpoint(endpoint)
     model = (env.get("OPEN_CANCER_INVESTIGATOR_MODEL") if stage == "investigate" else
@@ -110,35 +112,73 @@ def work(request: object, env: dict[str, str] | None = None, root: Path = ROOT,
     max_tokens = int(env.get("OPEN_CANCER_MAX_TOKENS", "1200"))
     if not 1 <= timeout <= 3600 or not 128 <= max_tokens <= 32768:
         raise ValueError("Invalid timeout/token budget")
-    sources = source_context(job, root)
-    body = json.dumps({"model": model, "messages": prompt(request, sources),
+    body = json.dumps({"model": model, "messages": messages,
                        "temperature": 0, "max_tokens": max_tokens}).encode("utf-8")
     headers = {"Content-Type": "application/json"}
     if env.get("OPEN_CANCER_LLM_KEY"):
         headers["Authorization"] = "Bearer " + env["OPEN_CANCER_LLM_KEY"]
     http_request = Request(endpoint, data=body, headers=headers, method="POST")
     try:
-        with opener(http_request, timeout=timeout) as response:
+        open_request = build_opener(NoRedirect).open if opener is None else opener
+        with open_request(http_request, timeout=timeout) as response:
             raw = response.read(MAX_HTTP_BYTES + 1)
-    except (HTTPError, URLError, TimeoutError, OSError) as exc:
-        # Never echo URLs, response bodies, credentials, or source payloads to logs.
-        raise RuntimeError("Inference endpoint request failed") from exc
+    except HTTPError as exc:
+        exc.close()
+        raise RuntimeError("Inference endpoint request failed") from None
+    except (HTTPException, OSError):
+        # Server status lines can include untrusted text.
+        raise RuntimeError("Inference endpoint request failed") from None
     if len(raw) > MAX_HTTP_BYTES:
         raise ValueError("Inference response exceeds size limit")
-    candidate = extract_response(json.loads(raw))
-    answer = check_response(stage, candidate, job)
-    if stage == "investigate":
-        allowed = {(entry["id"], entry[key]) for entry in sources
-                   for key in ("homepage", "documentation_url") if key in entry}
-        if answer["synthetic"] or any(x["relation"] != "context" or
-                                     (x["source_id"], x["url"]) not in allowed
-                                     for x in answer["evidence"]):
-            raise ValueError("Source directory only: cite contextual catalog URLs, no claims of checked evidence")
-    else:
-        # The adapter has no record-level inputs. Never treat AI agreement as verification.
-        if answer["verdict"] != "insufficient-evidence":
-            answer = {"verdict": "insufficient-evidence", "issues": [
-                "Source directory metadata cannot validate record-level or biological claims."]}
+    return extract_response(json.loads(raw))
+
+
+def grounded_work(request: dict, job: dict, env: dict[str, str], root: Path, opener) -> dict:
+    stage = request["stage"]
+    fields = {"protocol", "stage", "job", "evidence_bundle"}
+    if stage == "critique":
+        fields.add("candidate")
+    if set(request) != fields or not civic_evidence.supports_job(job):
+        raise ValueError("Unsupported grounded worker request")
+    catalog = json.loads((root / "catalog/sources/civic.json").read_text(encoding="utf-8"))
+    bundle = request["evidence_bundle"]
+    civic_evidence.validate_bundle(bundle, catalog)
+    records = civic_evidence.records_for_job(bundle, job)
+    candidate = request.get("candidate")
+    if stage == "critique":
+        grounded_claims.check_grounded_response("investigate", candidate, bundle, job)
+    if not records or (stage == "critique" and candidate["outcome"] == "insufficient-evidence"):
+        return grounded_claims.insufficient_response(stage, bundle)
+
+    context = {"question": job["question"], "dimensions": job["dimensions"],
+               "retrieval_status": bundle["status"], "retrieved_at": bundle["retrieved_at"],
+               "synthetic": bundle["synthetic"], "records": records}
+    if stage == "critique":
+        context["candidate"] = candidate
+    messages = [{"role": "system", "content": grounded_claims.stage_instruction(stage)},
+                {"role": "user", "content": json.dumps(context, sort_keys=True)}]
+    answer = infer(stage, messages, env, opener)
+    return grounded_claims.check_grounded_response(stage, answer, bundle, job, candidate)
+
+
+def work(request: object, env: dict[str, str] | None = None, root: Path = ROOT,
+         opener=None) -> dict:
+    env = os.environ if env is None else env
+    if not isinstance(request, dict) or request.get("stage") not in {"investigate", "critique"}:
+        raise ValueError("Unsupported worker request")
+    job = validate_job(request.get("job"))
+    if request.get("protocol") == grounded_claims.GROUNDED_PROTOCOL:
+        return grounded_work(request, job, env, root, opener)
+    if request.get("protocol") != PROTOCOL or "evidence_bundle" in request:
+        raise ValueError("Unsupported worker request")
+    stage = request["stage"]
+    if stage == "critique" and not isinstance(request.get("candidate"), dict):
+        raise ValueError("Critique requires an investigator candidate")
+    sources = source_context(job, root)
+    answer = check_directory_response(stage, infer(stage, prompt(request, sources), env, opener),
+                                      job, root)
+    if stage == "investigate" and answer["synthetic"]:
+        raise ValueError("Source directory model output must set synthetic=false")
     return answer
 
 

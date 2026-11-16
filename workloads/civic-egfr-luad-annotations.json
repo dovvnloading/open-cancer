@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "task_id": "egfr-luad-evidence-coverage",
+  "question": "Within the retrieved accepted CIViC evidence items for this exact EGFR alteration and lung adenocarcinoma, test whether items of a selected evidence type agree on an annotation. Cite a witness and challenge the proposed pattern with any counterexample.",
+  "source_ids": ["civic"],
+  "axes": {
+    "alteration": ["EGFR L858R", "EGFR exon 19 deletion", "EGFR exon 20 insertion"]
+  }
+}

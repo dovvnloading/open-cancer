@@ -24,18 +24,21 @@ python scripts/compute_fanout.py run \
   --workers 4 --max-jobs 100
 ```
 
-**For real AI compute:** use the included [OpenAI-compatible endpoint adapter](scripts/openai_compatible_worker.py) with your own inference server, or replace both commands with your own worker adapters (local GPU models, remote inference, or cluster entrypoints). Example:
+**For record-backed AI compute**, retrieve accepted CIViC annotations once, plan the single-source EGFR/LUAD workload, and give both model stages the resulting snapshot.
 
 ```sh
+python scripts/compute_fanout.py retrieve --source civic --output .compute/civic-live.json
+python scripts/compute_fanout.py plan --spec workloads/civic-egfr-luad-annotations.json \
+  --output .compute/civic-jobs.jsonl
 export OPEN_CANCER_LLM_URL='http://127.0.0.1:8000/v1/chat/completions'
 export OPEN_CANCER_LLM_MODEL='your-local-model-id'
-# Optionally choose a different critic model: OPEN_CANCER_CRITIC_MODEL
-python scripts/compute_fanout.py run --jobs .compute/jobs.jsonl \
-  --output .compute/live --investigator 'python scripts/openai_compatible_worker.py' \
-  --critic 'python scripts/openai_compatible_worker.py' --workers 8 --max-jobs 100
+python scripts/compute_fanout.py run --jobs .compute/civic-jobs.jsonl \
+  --evidence .compute/civic-live.json --output .compute/civic-run \
+  --investigator 'python scripts/openai_compatible_worker.py' \
+  --critic 'python scripts/openai_compatible_worker.py' --workers 2
 ```
 
-The bundled model adapter currently sees **source directory metadata only**, not retrieved source records. It produces unverified research questions/data-quality leads and fails closed on invented record-level evidence; implement permission-aware source retrieval before treating it as a source-level investigation. The investigator accepts a JSON request and returns a candidate with source links; the separate critic attempts to falsify it. Split a stable plan into `--shard-count N` and run each `--shard-index` with its own output directory on different machines. Every completed job remains `unreviewed`, `not-published`, and `not-assessed` for clinical validation, regardless of AI critique outcome. The coordinator does **not** include a model provider or provision hardware. See [compute protocol, sharding, resume and failure handling](docs/compute.md).
+The investigator proposes a comparison of curated annotations. The critic checks the same retrieved items for counterexamples. Each citation resolves to a specific evidence item, permanent CIViC link, query, retrieval time and fingerprint. Empty scopes produce `insufficient-evidence`. Checkpoints remain unreviewed and private to the run. A complete offline example, the exact scope and the checkpoint protocol are in the [compute guide](docs/compute.md).
 
 ## What the project actually does
 
@@ -64,7 +67,7 @@ The codebase includes legacy manifests and publication metadata for backward com
 
 ## Near-term engineering priorities
 
-- Connect real AI inference backends through the worker JSON protocol.
+- Expand record-backed investigations to additional permitted sources and comparisons.
 - Scale bounded job execution across available machines using deterministic sharding and resume.
 - Add source-specific, rights-respecting retrieval tools, frozen input snapshots where permitted, and testable computational comparisons.
 - Measure throughput, cost, failure rates, duplication, and reproducibility before increasing parallelism.
