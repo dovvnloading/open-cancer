@@ -1,0 +1,8 @@
+evidence_id	molecular_profile	evidence_status	disease	doid	evidence_type	evidence_direction	evidence_level	significance	therapies	therapy_interaction_type	source_type	citation_id	is_flagged	evidence_civic_url
+91	EGFR L858R	accepted	Lung Adenocarcinoma	DOID:3910	Predictive	Supports	B	Fixture label A	Fixture agent		Fixture publication	S1	FALSE	https://fixture.invalid/civic/91
+92	EGFR L858R	accepted	Lung Adenocarcinoma	DOID:3910	Predictive	Does Not Support	B	Fixture label A	Fixture agent		Fixture publication	S2	FALSE	https://fixture.invalid/civic/92
+93	EGFR Exon 19 Deletion	accepted	Lung Adenocarcinoma	3910	Predictive	Supports	C	Fixture label B	Fixture agent		Fixture publication	S3	FALSE	https://fixture.invalid/civic/93
+94	EGFR Exon 20 Insertion	accepted	Lung Adenocarcinoma	3910	Predictive	Supports	C	Fixture label B	Fixture agent		Fixture publication	S4	FALSE	https://fixture.invalid/civic/94
+95	EGFR L858R	accepted	Non-Small Cell Lung Cancer	DOID:3908	Predictive	Supports	C	Fixture label B	Fixture agent		Fixture publication	S5	FALSE	https://fixture.invalid/civic/95
+96	EGFR L858R AND EGFR T790M	accepted	Lung Adenocarcinoma	DOID:3910	Predictive	Supports	C	Fixture label C	Fixture agent		Fixture publication	S6	FALSE	https://fixture.invalid/civic/96
+97	EGFR Exon 20 Insertion	submitted	Lung Adenocarcinoma	3910	Predictive	Supports	C	Fixture label D	Fixture agent		Fixture publication	S7	FALSE	https://fixture.invalid/civic/97
