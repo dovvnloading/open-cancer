@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Optional worker adapter for an operator-controlled OpenAI-compatible inference endpoint.
 
-The v1 protocol supplies source directory metadata. The v2 protocol supplies
-validated, permission-checked CIViC record projections pinned by the coordinator.
-Credentials are read exclusively from the environment.
+The v1 CLI receives source directory metadata. The v2 CLI receives validated CIViC
+record projections pinned by the coordinator. The EGFR pilot shares the transport
+and options below. Credentials are read exclusively from the environment.
 """
 from __future__ import annotations
 
@@ -76,14 +76,75 @@ def prompt(request: dict, sources: list[dict]) -> list[dict]:
 
 
 def validate_endpoint(endpoint: str) -> None:
-    parsed = urlsplit(endpoint)
-    if parsed.scheme not in {"http", "https"} or not parsed.hostname or parsed.username or \
-            parsed.password or parsed.query or parsed.fragment:
+    if not isinstance(endpoint, str) or any(c.isspace() or not c.isprintable() for c in endpoint):
+        raise ValueError("Invalid inference endpoint")
+    try:
+        parsed = urlsplit(endpoint)
+        port = parsed.port
+    except ValueError:
+        raise ValueError("Invalid inference endpoint") from None
+    if parsed.scheme not in {"http", "https"} or not parsed.hostname or port == 0 or \
+            parsed.username is not None or parsed.password is not None or parsed.query or parsed.fragment:
         raise ValueError("OPEN_CANCER_LLM_URL must be a clean HTTP(S) inference endpoint")
     if parsed.scheme == "http" and parsed.hostname not in {"localhost", "127.0.0.1", "::1"}:
         raise ValueError("Non-local inference endpoints must use HTTPS")
     if not parsed.path.endswith("/chat/completions"):
         raise ValueError("Endpoint must end with /chat/completions")
+
+
+def inference_options(stage: str, env, default_max_tokens: int = 1200) -> dict:
+    role = {"investigate": "INVESTIGATOR", "critique": "CRITIC"}[stage]
+    endpoint = env.get(f"OPEN_CANCER_{role}_URL") or env.get("OPEN_CANCER_LLM_URL", "")
+    if not endpoint:
+        raise ValueError(f"Set OPEN_CANCER_{role}_URL or OPEN_CANCER_LLM_URL")
+    validate_endpoint(endpoint)
+    model = env.get(f"OPEN_CANCER_{role}_MODEL") or env.get("OPEN_CANCER_LLM_MODEL", "")
+    if not model.strip() or len(model) > 256 or not model.isprintable():
+        raise ValueError("Set a valid OPEN_CANCER_LLM_MODEL or role-specific model ID")
+    try:
+        timeout = int(env.get("OPEN_CANCER_LLM_TIMEOUT", "120"))
+        max_tokens = int(env.get("OPEN_CANCER_MAX_TOKENS", default_max_tokens))
+    except ValueError:
+        raise ValueError("Invalid timeout/token budget") from None
+    if not 1 <= timeout <= 3600 or not 128 <= max_tokens <= 32768:
+        raise ValueError("Invalid timeout/token budget")
+    return {"endpoint": endpoint, "model": model, "temperature": 0,
+            "timeout": timeout, "max_tokens": max_tokens}
+
+
+def request_body(settings: dict, messages: list[dict]) -> dict:
+    return {key: settings[key] for key in ("model", "temperature", "max_tokens")} | {
+        "messages": messages}
+
+
+def request_completion(stage: str, settings: dict, body: dict, env, opener=None) -> object:
+    """Perform one non-redirecting request. Never put credentials in reports or errors."""
+    role = {"investigate": "INVESTIGATOR", "critique": "CRITIC"}[stage]
+    key = env.get(f"OPEN_CANCER_{role}_KEY")
+    # Only the explicitly named shared endpoint may receive the shared credential.
+    if key is None and settings["endpoint"] == env.get("OPEN_CANCER_LLM_URL"):
+        key = env.get("OPEN_CANCER_LLM_KEY")
+    headers = {"Content-Type": "application/json"}
+    if key:
+        headers["Authorization"] = "Bearer " + key
+    req = Request(settings["endpoint"], data=json.dumps(body, allow_nan=False).encode("utf-8"),
+                  headers=headers, method="POST")
+    if opener is None:
+        opener = build_opener(NoRedirect()).open
+    try:
+        with opener(req, timeout=settings["timeout"]) as response:
+            raw = response.read(MAX_HTTP_BYTES + 1)
+    except HTTPError as exc:
+        exc.close()
+        raise RuntimeError(f"Inference endpoint HTTP {exc.code}") from None
+    except (HTTPException, OSError):
+        raise RuntimeError("Inference endpoint request failed") from None
+    if len(raw) > MAX_HTTP_BYTES:
+        raise ValueError("Inference response exceeds size limit")
+    try:
+        return json.loads(raw)
+    except (UnicodeError, ValueError, RecursionError):
+        raise ValueError("Inference response is invalid JSON") from None
 
 
 def extract_response(payload: object) -> dict:
@@ -102,35 +163,9 @@ def extract_response(payload: object) -> dict:
 
 
 def infer(stage: str, messages: list[dict], env: dict[str, str], opener) -> dict:
-    endpoint = env.get("OPEN_CANCER_LLM_URL", "")
-    validate_endpoint(endpoint)
-    model = (env.get("OPEN_CANCER_INVESTIGATOR_MODEL") if stage == "investigate" else
-             env.get("OPEN_CANCER_CRITIC_MODEL")) or env.get("OPEN_CANCER_LLM_MODEL", "")
-    if not model:
-        raise ValueError("Set OPEN_CANCER_LLM_MODEL (or stage-specific model names)")
-    timeout = int(env.get("OPEN_CANCER_LLM_TIMEOUT", "120"))
-    max_tokens = int(env.get("OPEN_CANCER_MAX_TOKENS", "1200"))
-    if not 1 <= timeout <= 3600 or not 128 <= max_tokens <= 32768:
-        raise ValueError("Invalid timeout/token budget")
-    body = json.dumps({"model": model, "messages": messages,
-                       "temperature": 0, "max_tokens": max_tokens}).encode("utf-8")
-    headers = {"Content-Type": "application/json"}
-    if env.get("OPEN_CANCER_LLM_KEY"):
-        headers["Authorization"] = "Bearer " + env["OPEN_CANCER_LLM_KEY"]
-    http_request = Request(endpoint, data=body, headers=headers, method="POST")
-    try:
-        open_request = build_opener(NoRedirect).open if opener is None else opener
-        with open_request(http_request, timeout=timeout) as response:
-            raw = response.read(MAX_HTTP_BYTES + 1)
-    except HTTPError as exc:
-        exc.close()
-        raise RuntimeError("Inference endpoint request failed") from None
-    except (HTTPException, OSError):
-        # Server status lines can include untrusted text.
-        raise RuntimeError("Inference endpoint request failed") from None
-    if len(raw) > MAX_HTTP_BYTES:
-        raise ValueError("Inference response exceeds size limit")
-    return extract_response(json.loads(raw))
+    settings = inference_options(stage, env)
+    payload = request_completion(stage, settings, request_body(settings, messages), env, opener)
+    return extract_response(payload)
 
 
 def grounded_work(request: dict, job: dict, env: dict[str, str], root: Path, opener) -> dict:

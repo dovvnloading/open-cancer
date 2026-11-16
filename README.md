@@ -8,7 +8,7 @@ The goal is useful computational research leads and tools—not claims of cures,
 
 ## Run the compute engine
 
-Requires Python 3.11+. The coordinator uses only the standard library; existing repository validation also uses `requirements-dev.txt`.
+Requires Python 3.11+. The fan-out coordinator uses the standard library. The nine-job benchmark and repository validation also use `requirements-dev.txt`.
 
 ```bash
 # Plan nine source-scoped questions deterministically; no model calls.
@@ -24,21 +24,25 @@ python scripts/compute_fanout.py run \
   --workers 4 --max-jobs 100
 ```
 
-**For record-backed AI compute**, retrieve accepted CIViC annotations once, plan the single-source EGFR/LUAD workload, and give both model stages the resulting snapshot.
+The research pilot uses this same nine-job workload to investigate pinned public CIViC evidence items. It reads the CIViC GraphQL connector’s record bundles and can use a separately fingerprinted nightly export when a fresh live GraphQL request fails at the network or HTTP layer. Each investigator response and adversarial critique is inspectable beside its citations, deterministic checks and source gaps. GDC and cBioPortal records are outside the pilot connector. Operator-supplied OpenAI-compatible endpoints can use separate URLs, model IDs and credentials for the two roles. A synthetic fixture exercises the full workflow offline.
+
+```sh
+python -m pip install -r requirements-dev.txt
+python scripts/research_pilot.py run --mode fixture --output .compute/fixture
+cat .compute/fixture/report.md
+```
+
+The technical report and JSON benchmark include job failures, citation checks, evidence coverage, model configuration, execution time and available usage. Outputs remain unreviewed, unpublished and nonclinical. [Nine-job real pilot launch and offline benchmark](docs/compute.md#launch-a-real-pilot)
+
+The three-job CIViC annotation workflow tests a narrower question. An investigator proposes an annotation predicate for one alteration, and a critic searches the same pinned items for a counterexample. The fan-out coordinator checks citation fingerprints and verdicts. It accepts custom subprocess adapters and supports sharding and resume. Use its native snapshot with either workflow.
 
 ```sh
 python scripts/compute_fanout.py retrieve --source civic --output .compute/civic-live.json
 python scripts/compute_fanout.py plan --spec workloads/civic-egfr-luad-annotations.json \
   --output .compute/civic-jobs.jsonl
-export OPEN_CANCER_LLM_URL='http://127.0.0.1:8000/v1/chat/completions'
-export OPEN_CANCER_LLM_MODEL='your-local-model-id'
-python scripts/compute_fanout.py run --jobs .compute/civic-jobs.jsonl \
-  --evidence .compute/civic-live.json --output .compute/civic-run \
-  --investigator 'python scripts/openai_compatible_worker.py' \
-  --critic 'python scripts/openai_compatible_worker.py' --workers 2
 ```
 
-The investigator proposes a comparison of curated annotations. The critic checks the same retrieved items for counterexamples. Each citation resolves to a specific evidence item, permanent CIViC link, query, retrieval time and fingerprint. Empty scopes produce `insufficient-evidence`. Checkpoints remain unreviewed and private to the run. A complete offline example, the exact scope and the checkpoint protocol are in the [compute guide](docs/compute.md).
+With inference endpoints configured, launch the three jobs using `compute_fanout.py run --evidence .compute/civic-live.json`, or pass the same bundle to the nine-job benchmark using `research_pilot.py run --mode real --snapshot .compute/civic-live.json`. The guide supplies complete commands for both workflows. [Three-job launch and offline example](docs/compute.md#three-job-civic-annotation-workflow)
 
 ## What the project actually does
 
@@ -67,10 +71,10 @@ The codebase includes legacy manifests and publication metadata for backward com
 
 ## Near-term engineering priorities
 
-- Expand record-backed investigations to additional permitted sources and comparisons.
+- Evaluate configured investigator and critic models against the same pinned EGFR/LUAD input.
 - Scale bounded job execution across available machines using deterministic sharding and resume.
-- Add source-specific, rights-respecting retrieval tools, frozen input snapshots where permitted, and testable computational comparisons.
-- Measure throughput, cost, failure rates, duplication, and reproducibility before increasing parallelism.
+- Extend record retrieval to additional sources where permissions and observation units allow reproducible comparisons.
+- Compare pilot failure rates, output consistency and measured token cost before increasing parallelism.
 - Surface *unverified* computational candidates and contrary evidence without auto-promoting clinical or scientific claims.
 
 **Scope:** Public computational research only, not patient-specific diagnosis or treatment. Respect source terms and privacy; see [DATA_POLICY.md](DATA_POLICY.md).
