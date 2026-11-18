@@ -1,0 +1,7 @@
+scenario_id,model,horizon_years,vaf,basis
+primary_10y,exponential,10,,Frozen PRESPEC.md; no outcome-selected horizon
+short_5y,exponential,5,,Frozen PRESPEC.md sensitivity
+long_20y,exponential,20,,Frozen PRESPEC.md sensitivity
+logistic_vaf002,logistic,10,0.02,Declared structural sensitivity; hypothetical equal VAF not observed bin mean
+logistic_vaf010,logistic,10,0.10,Declared structural sensitivity; hypothetical equal VAF not observed bin mean
+logistic_vaf020,logistic,10,0.20,Declared structural sensitivity; hypothetical equal VAF not observed bin mean
