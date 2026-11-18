@@ -1,0 +1,111 @@
+{
+  "access_date": "2026-11-18",
+  "access_timezone": "America/New_York",
+  "adult_lifespan": "Vincze mean remaining life after sexual maturity, in days; not maximum lifespan",
+  "derived_file_hashes_lf": {
+    "endpoint_audit.csv": "2254ca16cdcf12a5076b49f003461e152b106e2988ddff76c76854ec3c1d0012",
+    "reconciliation.csv": "5c9ec889a24fdcfea5b2d613f293ad69739c71c598dd8de506695731a248efd2",
+    "species_aggregates.csv": "662dcae75b78a569a46bffa7a3269374b064e8f7db5a6f1e26929bc36dcbce42"
+  },
+  "licence_audit": {
+    "checked_before_source_data_read": true,
+    "compton_article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11726020/",
+    "compton_doi": "https://doi.org/10.1158/2159-8290.CD-24-0573",
+    "compton_readme_has_explicit_reuse_grant": false,
+    "compton_repository_license": null,
+    "decision": "User-authorized narrow factual per-species aggregates and original code only; no upstream CSV, dictionary, R code, article text or individual records mirrored. No claim that article licensing grants adaptation/redistribution rights for repository assets; project MIT does not relicense third-party material.",
+    "final_article_licences": "CC BY-NC-ND 4.0 for both final articles",
+    "pinned_recursive_trees_have_license_or_copying_files": false,
+    "repository_metadata_license_field": "null for both on access date",
+    "repository_tree_checks": [
+      "https://api.github.com/repos/OrsolyaVincze/VinczeEtalNatComm_MHC-cancer/git/trees/2c8a5c5b5fda6fb34c86b0e5a2b6a58dcc85cc3e?recursive=1",
+      "https://api.github.com/repos/zacharycompton/cancerAcrossVertebrates/git/trees/4819e0933358c5fc7eab483a0c05161ea8c074b7?recursive=1"
+    ],
+    "retrieval": "GitHub API/plain UTF-8 text; no browser download or download prompt",
+    "terms": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "vincze_article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12644480/",
+    "vincze_doi": "https://doi.org/10.1038/s41467-025-65286-x",
+    "vincze_repository_license": null
+  },
+  "normalization": "Replace underscores with spaces; trim/collapse whitespace; casefold; exact equality only; reject duplicate keys",
+  "order_source": "Vincze Taxonomic order for every included species",
+  "prefit_summary": {
+    "compton_species": 327,
+    "endpoint_audit": {
+      "audited_compton_species": 327,
+      "malignancyknown_prevalence_mismatches": 182,
+      "malignant_prevalence_mismatches": 0,
+      "neoplasia_prevalence_mismatches": 0,
+      "panel_malignancyknown_prevalence_mismatches": 34
+    },
+    "malignant": 209,
+    "matched_exclusions": [
+      "Panthera_tigris",
+      "Papio_hamadryas",
+      "Saguinus_oedipus",
+      "Saimiri_sciureus",
+      "Varecia_variegata"
+    ],
+    "neoplasia": 312,
+    "normalized_matches": 47,
+    "order_label_disagreements": [
+      {
+        "compton_order": "NA",
+        "species": "Antilocapra_americana",
+        "vincze_order": "Artiodactyla"
+      }
+    ],
+    "orders": 9,
+    "primary_classes": [
+      "Mammalia"
+    ],
+    "primary_species": 42,
+    "records": 2215,
+    "species_per_order": {
+      "Artiodactyla": 8,
+      "Carnivora": 14,
+      "Chiroptera": 4,
+      "Diprotodontia": 1,
+      "Hyracoidea": 1,
+      "Pilosa": 1,
+      "Primates": 8,
+      "Proboscidea": 1,
+      "Rodentia": 4
+    },
+    "union_species": 419,
+    "vincze_species": 139,
+    "zero_malignant_species": 4,
+    "zero_neoplasia_species": 2
+  },
+  "primary_outcome": "NeoplasiaWithDenominators / RecordsWithDenominators",
+  "rounding_audit": "Half the last printed decimal unit plus 2e-15; literal zero/one endpoints have only the 2e-15 export allowance",
+  "secondary_outcome": "Malignant / RecordsWithDenominators",
+  "secondary_resolution": "Malignant reproduces printed MalignancyPrevalence at token-specific decimal precision. The dictionary's MalignancyKnown numerator fails. This is an arithmetic choice of the recorded-malignancy endpoint, not confirmation of animal-level provenance or a correction of the upstream dictionary. PropMalignant is unused and is never interpreted as progression.",
+  "sources": {
+    "compton.csv": {
+      "commit": "4819e0933358c5fc7eab483a0c05161ea8c074b7",
+      "git_blob_sha1": "d5e18150557a80b2dff1f53779182abd99e7d5ec",
+      "path": "species-cancer-prevalence-data.csv",
+      "repository": "zacharycompton/cancerAcrossVertebrates",
+      "sha256_lf": "70f8e2f6675e4c42dcf87acb0b826bb7c4ea32fed27a46900c1cfdf0bce70390",
+      "url": "https://github.com/zacharycompton/cancerAcrossVertebrates/blob/4819e0933358c5fc7eab483a0c05161ea8c074b7/species-cancer-prevalence-data.csv"
+    },
+    "dictionary.txt": {
+      "commit": "4819e0933358c5fc7eab483a0c05161ea8c074b7",
+      "git_blob_sha1": "293705259ec5d0e4fabad000e183e162057e14c5",
+      "path": "data-description-species-cancer-prevalence-data.txt",
+      "repository": "zacharycompton/cancerAcrossVertebrates",
+      "sha256_lf": "39eec5bd11bd14b09ddbf6f3248322869711dd4968e853dafe0a238724a36140",
+      "url": "https://github.com/zacharycompton/cancerAcrossVertebrates/blob/4819e0933358c5fc7eab483a0c05161ea8c074b7/data-description-species-cancer-prevalence-data.txt"
+    },
+    "vincze.csv": {
+      "commit": "2c8a5c5b5fda6fb34c86b0e5a2b6a58dcc85cc3e",
+      "git_blob_sha1": "8a937a2c8d4f1749ae33c1b12d2ed52e895852f9",
+      "path": "SourceData_FINAL.csv",
+      "repository": "OrsolyaVincze/VinczeEtalNatComm_MHC-cancer",
+      "sha256_lf": "b9d6dedc9447e9f99b275cbfbdb54e3b0e318d08c12f0384572a65101d057744",
+      "url": "https://github.com/OrsolyaVincze/VinczeEtalNatComm_MHC-cancer/blob/2c8a5c5b5fda6fb34c86b0e5a2b6a58dcc85cc3e/SourceData_FINAL.csv"
+    }
+  },
+  "status": "nonclinical_unreviewed_research_no_medical_or_veterinary_advice"
+}
