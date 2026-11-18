@@ -309,6 +309,26 @@ class MetastaticSeedingTimingTests(unittest.TestCase):
                     if regions <= 2 or sensitivity == 0:
                         self.assertEqual(result["lower"], result["upper"])
 
+    def test_t3_maximum_zero_visibility_fraction(self):
+        # The upper-extremizer's mass at F=0 is the sharp Cauchy bound;
+        # an arbitrary compatible population may have much less zero mass.
+        laws = (
+            ((F(0), F(1, 6)), (F(3, 5), F(5, 6))),
+            ((F(2, 5), F(1)),),
+            ((F(0), F(1, 5)), (F(1, 3), F(2, 5)), (F(1), F(2, 5))),
+            ((F(1), F(1)),),
+        )
+        for law in laws:
+            m = sum(value * weight for value, weight in law)
+            s = sum(value * value * weight for value, weight in law)
+            maximum_invisible = 1 - m*m/s
+            observed_invisible = sum(weight for value, weight in law if value == 0)
+            self.assertLessEqual(observed_invisible, maximum_invisible)
+            upper = exact.sharp_miss_bounds(m, s, 7, 1)["upper_atoms"]
+            self.assertEqual(sum(weight for value, weight in upper if value == 0),
+                             maximum_invisible)
+        self.assertEqual(exact.sharp_miss_bounds(0, 0, 7, 1)["upper"], 1)
+
     def test_t3_dual_polynomial_coefficients_and_global_sign_certificates(self):
         for first, second in ((F(1, 2), F(3, 10)), (F(1, 3), F(1, 9)),
                               (F(2, 3), F(2, 3))):
@@ -506,6 +526,7 @@ class MetastaticSeedingTimingTests(unittest.TestCase):
         calls = (
             lambda: exact.exp_neg_bounds(F(-1)),
             lambda: exact.exp_neg_bounds(F(1), F(0)),
+            lambda: exact.poisson_cdf_bounds(1, True),
             lambda: exact.sharp_miss_bounds(F(1, 2), F(1, 5), 3, 1),
             lambda: exact.sharp_miss_bounds(F(1, 2), F(3, 5), 3, 1),
             lambda: exact.detection_probability(F(1, 2), -1),

@@ -83,7 +83,7 @@ def poisson_pmf_bounds(mean, k, tolerance=DEFAULT_TOLERANCE):
 def poisson_cdf_bounds(mean, k, tolerance=DEFAULT_TOLERANCE):
     """Rational enclosure of P(Poisson(mean) <= k), including k < 0."""
     mean = _f(mean)
-    if mean < 0 or not isinstance(k, int):
+    if mean < 0 or not isinstance(k, int) or isinstance(k, bool):
         raise ValueError("mean must be nonnegative and k integral")
     if k < 0:
         return RationalInterval(F(0), F(0))

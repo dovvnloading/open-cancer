@@ -85,7 +85,7 @@ no patient-level sequence or clinical records were downloaded.
 | [Avanzini and Antal 2019](https://pmc.ncbi.nlm.nih.gov/articles/PMC6871767/) | Size-dependent seeding with independent metastatic birth-death growth and recurrence-time distributions. | The growth/seeding part of Theorem 1 is background, not a new process. |
 | [Angaji et al. 2024, eLife](https://doi.org/10.7554/eLife.95338) | Dense sampling and explicit birth-death pairwise mutation likelihood; Appendix 6 examines lineage-sampling bias in division clocks. | Our mutation clock is explicitly per calendar branch time; no unproved division-clock substitution is used. |
 | [Blohmer, Cheek, Hung et al. 2025, Nature Genetics](https://doi.org/10.1038/s41588-025-02078-5) | Polyguanine-based lineage division counts in 505 samples from 37 patients; metastatic divergence is an earliest possible seeding time. | Even a refined division clock is not automatically a migration clock. |
-| [Koyyalagunta, Ganesh and Morris, Metient, online 2025 / issue 2026](https://doi.org/10.1038/s41592-025-02924-8) | Multiobjective reconstruction and alternative migration histories in 167 patients / 479 tumours in the final publication. | We do not claim a new migration-history reconstruction algorithm; final-publication denominators supersede differing preprint counts. |
+| [Koyyalagunta, Ganesh and Morris, Metient, online 2025 / issue 2026](https://doi.org/10.1038/s41592-025-02924-8) | Multiobjective reconstruction and alternative migration histories in 167 patients / 479 tumours in the final publication; distinguishes genetic clonality from site clonality. | We do not claim a new migration-history reconstruction algorithm or this clonality distinction; final-publication denominators supersede differing preprint counts. |
 | [Chen et al. 2026](https://doi.org/10.1093/molbev/msag008) | Dense three-dimensional mapping and model-based early continuous dissemination in two colorectal cases. | Dense empirical mapping is valuable but does not establish a universal identification theorem. |
 | [Hessey et al. 2026, Nature](https://doi.org/10.1038/s41586-026-10428-4) | In 501 longitudinal samples from 24 patients, 156/258 lesions were inferred seeded by other metastases, 98/258 by the primary, and 4/258 by both. | Applying our primary-only generator as a universal model contradicts published aggregate evidence. |
 | [Pregnall et al. 2026](https://doi.org/10.1038/s41698-026-01291-7) | Contemporary application of timing models reports ambiguous timing for 5/15 primary/metastasis pairs. | Clock/model confounding is an active limitation, not a solved empirical problem. |
@@ -380,9 +380,11 @@ For unknown positive rates, choose any two positive branch lengths `t1,t2`
 and set `mu2=mu1*t1/t2`; their Poisson means agree. Finally, on
 `a in [aL,aU]`, the inequality `a<=s<=a+ell` proves (c). **QED.**
 
-There is no uniform finite-error classifier across an arbitrarily small
-early/late time gap: for `ell>0` the classes overlap, and even with `ell=0`
-Poisson laws at times approaching `c` approach each other. Individual times
+There is no uniformly accurate classifier over arbitrarily small early/late
+time gaps: when `ell>0`, the **possible anchor times** of arbitrarily close
+early and late histories overlap (the physical seeding-time classes are
+disjoint); even at `ell=0`, Poisson laws at times approaching `c` become
+arbitrarily close. Individual times
 separated from `c` can still be consistently classified as exposure increases.
 
 ### Theorem 3 — Sharp coverage and depth envelope from two moments
@@ -450,6 +452,12 @@ gives `m^2<=s2`, and `F^2<=F` gives `s2<=m`. Conversely the upper distribution
 in (13) has nonnegative masses summing to one, `b in [0,1]`, mean `m` and
 second moment `s2`, so these conditions suffice. The lower distribution has
 the same properties, as direct substitution verifies.
+
+For `m>0`, Cauchy–Schwarz applied to `F*1_{F>0}` gives
+`m^2 <= s2*P(F>0)`, hence `P(F=0) <= 1-m^2/s2`. The `{0,b}` distribution
+attains equality. Thus `p0` is the **maximum compatible exactly-invisible
+population fraction**, not a lower bound on the invisible fraction in every
+compatible population. At `m=0`, every case has `F=0`.
 
 Put `f(x)=(1-cD*x)^R`. For `R>=3`,
 `f'''(x)=-R(R-1)(R-2)cD^3(1-cD*x)^(R-3)<=0`. The quadratic Hermite
@@ -726,7 +734,8 @@ cell draw with probabilities `p1,...,pK>=0`, `sum pi<=1` (remaining probability
 is background). Its correct clone label is detected with probability
 `cD`, independently of identity and other draws. This is a cell-sampling
 subexperiment; it does not assert that bulk-region observations are independent
-cell labels.
+cell labels. **Founder status and pre-seeding provenance are stipulated in
+this subexperiment**, not discovered from occupancy of genotype labels.
 
 With `M>=0` draws, the exact probability of finding every label is
 
@@ -769,10 +778,16 @@ If the single-region detection probability is one, one region suffices; if it
 is zero, a nonempty set cannot reach a target below one. An empty incidence
 set needs zero regions. The per-entry miss probability and corresponding
 per-entry minimum are sharp;
-the simultaneous union bound need not be. With the stated genotype provenance
-and no false positives, a fully recovered incidence matrix gives the number
-of distinguishable founder lineages per sampled lesion and the number shared
-across those lesions.
+the simultaneous union bound need not be. With mutually exclusive diagnostic
+categories, stipulated pre-seeding provenance, and no false positives, a fully
+recovered incidence matrix identifies only **genotype support**: the number of
+represented founder-associated genotypes per *sampled* lesion and their overlap
+across sampled lesions. Interpreting this support as independently primary-
+seeding founders additionally requires an appropriate founding model excluding
+secondary seeding and mergers; G3 is a one-founder-per-site special case and
+does not generate polyclonal lesions. Neither model nor support observation
+counts genetically identical founding cells, migration trips, or extinct or
+unsampled lineages.
 
 Without a positive visibility bound, no finite sampling budget uniformly
 recovers all extant genotypes. For the non-identifiability statements, allow
