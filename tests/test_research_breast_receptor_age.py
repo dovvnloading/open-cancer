@@ -147,6 +147,9 @@ class FrozenReceptorAuditTests(unittest.TestCase):
 
     def test_nominal_and_robust_verdict_diverge_without_new_direction_choice(self):
         self.assertEqual(self.result['verdict'], 'INCONCLUSIVE')
+        self.assertIn('Minimum completion to restore compatibility: NOT APPLICABLE',
+                      analysis.render_report(self.result))
+        self.assertIn('does **not** repair source truth.', analysis.render_report(self.result))
         self.assertTrue(all(p['robust'] == 'contains 1' for p in self.result['pairs']))
         nominal_exclusions = {(p['younger'], p['older']) for p in self.result['pairs']
                               if p['scenarios']['proportional']['direction'] != 'contains 1'}

@@ -65,6 +65,11 @@ Unknown and unaccounted residual cases are separate in the input; both are in th
 conditional worst-case assignable pool. Proportional allocation uses integer
 round-half-up of pool × observed positive/(positive + negative).
 
+**Conditional accounting only:** the completed partition supposes the printed overall
+total and all observed receptor-class counts are correct, and all remaining cases
+belong to one of two binary classes. Residuals are accounting discrepancies, not
+verified additional cases; assigning them does **not** repair source truth.
+
 | Age | Printed positive | Printed double-negative | Printed unknown | Overall | Residual | Assignable pool | k to positive | Completed positive / negative |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 65-69 | 31,317 | 4,595 | 1,197 | 37,127 | 18 | 1,215 | 1,060 | 32,377 / 4,750 |
@@ -186,6 +191,10 @@ not a confidence interval; these do not change the count-based verdict.
 Allocation-specific interval exclusions: **28/50** (different mutually hypothetical
 completions; not 50 independent tests). The frozen rule does not allow a scenario-specific
 effect to override an allocation-robust failure criterion. **HER2: UNTESTABLE** here.
+
+**Minimum completion to restore compatibility: NOT APPLICABLE.** No pair met
+the stronger all-allocation falsification criterion, so no case-completion
+restoration threshold was triggered, estimated, or fitted after inspection.
 
 The older/younger receptor-class rate ratios are comparisons of one calendar year’s
 different age groups; no transition, time-series trend, screening-detection effect,

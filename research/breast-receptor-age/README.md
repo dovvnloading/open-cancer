@@ -12,6 +12,8 @@ of the simultaneous two-class proportionality restriction in **2016 USCS**
 data, not a claim of epidemiological discovery or independent replication.
 The strict failure gate asks whether an interval excludes Q=1 after
 allowing **every** allocation of unknown and residual receptor cases.
+No pair passed that stronger failure gate; a minimum restoration completion
+was therefore not triggered or computed.
 
 The [PROTOCOL.md](PROTOCOL.md) was committed by itself before numerical
 work (GitHub commit `ec33191bec49a945149ab1fc998ed588a41715d3`).
