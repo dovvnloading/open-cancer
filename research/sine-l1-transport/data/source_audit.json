@@ -1,0 +1,138 @@
+{
+  "description": "Minimal species-level derived/count-recovered aggregate for the frozen exploratory SINE-vs-L1 prediction audit; no upstream CSV is mirrored",
+  "audit_date": "2026-11-18",
+  "data_origin": {
+    "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12424770/",
+    "article_doi": "10.1101/2025.08.30.673284",
+    "article_license": "CC BY 4.0 (PMC bioRxiv/preprint)",
+    "repository": "https://github.com/VNF1981/Non-LTR-Retrotransposons-Cancer-Project",
+    "repository_license": "none found at pinned revision; GitHub license null, redistribution not assumed",
+    "pinned_commit": "792af204b4113238276b3ac43e511b62872dd368",
+    "source_path": "Supplementary Data S1.csv",
+    "source_git_blob_sha": "257a6089179942e98e1cc454fa0e3f762c83218f",
+    "read_method": "GitHub connector contents API as UTF-8 plain text, not browser download",
+    "source_license_action": "do not mirror source; derived factual aggregate and original code only",
+    "data_policy": "https://github.com/dovvnloading/open-cancer/blob/main/DATA_POLICY.md"
+  },
+  "audit": {
+    "source_species": 55,
+    "source_orders": 11,
+    "source_columns": 45,
+    "orders": {
+      "Artiodactyla": 13,
+      "Carnivora": 16,
+      "Chiroptera": 4,
+      "Cingulata": 1,
+      "Diprotodontia": 2,
+      "Hyracoidea": 1,
+      "Lagomorpha": 1,
+      "Pilosa": 1,
+      "Primates": 9,
+      "Proboscidea": 1,
+      "Rodentia": 6
+    },
+    "total_necropsies": 3533,
+    "total_neoplasia_nominal": 691,
+    "total_malignancy_nominal": 405,
+    "l1_zero_species": 9,
+    "primary_compatible_assignment_count": 45,
+    "primary_ambiguous": [
+      {
+        "species": "Cercopithecus_mitis",
+        "denominator": 40,
+        "neo_compatible": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "mal_compatible": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "neo_nominal": 4,
+        "mal_nominal": 4
+      },
+      {
+        "species": "Giraffa_camelopardalis",
+        "denominator": 30,
+        "neo_compatible": [
+          2,
+          3,
+          4
+        ],
+        "mal_compatible": [
+          2
+        ],
+        "neo_nominal": 3,
+        "mal_nominal": 2
+      },
+      {
+        "species": "Panthera_pardus",
+        "denominator": 20,
+        "neo_compatible": [
+          5,
+          6,
+          7
+        ],
+        "mal_compatible": [
+          1,
+          2,
+          3
+        ],
+        "neo_nominal": 6,
+        "mal_nominal": 2
+      }
+    ],
+    "all_primary_compatible_nonempty": true,
+    "all_primary_nominals_compatible": true,
+    "secondary_ratio_precision_mismatch_count": 31,
+    "secondary_ratio_precision_mismatch_species": [
+      "Acinonyx_jubatus",
+      "Addax_nasomaculatus",
+      "Antilocapra_americana",
+      "Canis_lupus",
+      "Capra_hircus",
+      "Carollia_perspicillata",
+      "Cercopithecus_mitis",
+      "Colobus_guereza",
+      "Dasypus_novemcinctus",
+      "Eudorcas_thomsonii",
+      "Giraffa_camelopardalis",
+      "Heterocephalus_glaber",
+      "Hydrochoerus_hydrochaeris",
+      "Lama_glama",
+      "Lemur_catta",
+      "Litocranius_walleri",
+      "Lontra_canadensis",
+      "Mus_musculus",
+      "Mustela_nigripes",
+      "Oryctolagus_cuniculus",
+      "Panthera_leo",
+      "Panthera_pardus",
+      "Panthera_tigris",
+      "Panthera_uncia",
+      "Phascolarctos_cinereus",
+      "Rangifer_tarandus",
+      "Rattus_norvegicus",
+      "Rousettus_aegyptiacus",
+      "Sus_scrofa",
+      "Ursus_maritimus",
+      "Varecia_variegata"
+    ],
+    "secondary_gate_pass": false,
+    "secondary_note": "The source Ratio is often computed from displayed decimals; its 9-digit precision does not generally equal the exact integer ratio. Frozen strict numerator reconciliation fails; secondary withheld rather than repaired after scoring.",
+    "original_zero_neoplasia_or_malignancy_species_excluded_by_upstream": true,
+    "total_nominal_note": "Includes all 55 nominal rows, including 3 rows with nonunique compatible neoplasia counts. Initial descriptive prefit sum mistakenly omitted these 3 rows; corrected in the branch before scoring/report submission.",
+    "secondary_gate_fail_reasons": [
+      "Three source neoplasia rates and two malignancy rates permit multiple numerator assignments, so all 55 endpoints are not uniquely reconciled",
+      "31 displayed Ratio tokens fail exact-precision comparison with the arithmetic integer malignancy/neoplasia ratios; ratios may have been calculated from displayed rounded rates"
+    ]
+  },
+  "method": "Literal decimal precision half-unit plus 2e-15; per-species integer numerator sets; nominal nearest integer. All 45 primary assignments retained. log1p transformations are derived, not a raw CSV replica.",
+  "clinical": "Nonclinical unreviewed research, not medical or veterinary advice"
+}
