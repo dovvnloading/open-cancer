@@ -115,3 +115,24 @@ likewise has the exact tree of local `a349bd2`. The final results are
 published after these two commits, with their tree checked against the
 locally tested files. Matching hashes establish content identity, not
 independent evidence for the claimed analysis chronology or biological truth.
+
+## Independent pre-merge review of PR #63 — 2026-11-17
+
+This amendment was written **after** the audit and does not rewrite the
+frozen protocol. An independent pre-merge reading identified an interpretation
+error in the I3 verbal label. A family-wise non-rejection when observed effect
+directions conflict is not the protocol's positive criterion for *consistent*.
+The PR now labels the universal adverse HLA-LOH observation bridge
+**untestable with current public aggregates (conflicting directions; no
+corrected rejection)**. The raw data, effect sizes, intervals, 14-test Holm
+family, source inclusion decisions and I3 rejection trigger are unchanged.
+The amendment does not turn nominal opposite-direction effects into a
+family-wise falsification, or into evidence supporting a uniformly adverse
+bridge. Tests and the generated README block were updated together.
+
+The PR file patch and compare API were also rechecked: exactly eleven new
+files under the permitted directory and the one permitted test file; zero
+existing files changed or deleted. Review threads and submitted reviews were
+empty when inspected. A reproducible source-row sample and its access limits
+are appended to SOURCES.md. That audit is a human/source comparison distinct
+from successful code tests; no biological validation is claimed.

@@ -111,11 +111,12 @@ the theorem about complete presentation loss. Response OR below one and
 death HR above one are adverse; effects are kept on their own endpoints.
 Test each eligible reported contrast with the frozen joint Holm rule.
 The nominal contrary Yang and Lozac'hmeur intervals are retained. None gives
-a corrected rejection. Under the protocol's three-label convention the
-verdict is **consistent only in the weak sense of not rejected**, with
-nominal counterevidence. It is not evidence that LOH is uniformly adverse,
-and non-significance is not equivalence. No causal or complete-presentation
-bridge is established by these associations.
+a corrected rejection. Under the frozen rules a non-rejection is **not** evidence of consistency
+with a universal adverse effect: the estimates have opposing directions,
+are largely unadjusted or otherwise differently adjusted, and do not
+calibrate LOH as complete loss of presentation. **Verdict: untestable with
+current public aggregates (conflicting directions; no corrected rejection).**
+Nominal counterevidence is retained; non-significance is not equivalence.
 
 ### ctDNA lead time and sampling — PR58
 
@@ -457,7 +458,7 @@ Iyer reports approximately p = 0.36, VMR = 2.4, with 65 retained lineages. The f
 | I1 | **untestable with current public aggregates** |
 | I2 | **consistent (clonal-burden association only)** |
 | I2-H | **untestable with current public aggregates** |
-| I3 | **consistent (not rejected; nominal counterevidence)** |
+| I3 | **untestable with current public aggregates (conflicting directions; no corrected rejection)** |
 | C1 | **untestable with current public aggregates** |
 | C2 | **untestable with current public aggregates** |
 | C3 | **untestable with current public aggregates** |
@@ -469,7 +470,7 @@ Iyer reports approximately p = 0.36, VMR = 2.4, with 65 retained lineages. The f
 | R2 | **untestable with current public aggregates** |
 | E3-X | **untestable with current public aggregates** |
 
-I3’s “consistent” means only not rejected after the specified correction. It does not establish uniformly adverse HLA-LOH effects; nominal opposite intervals are retained above. E3-X gives a conditional challenge, not an unconditional empirical falsification.
+I3 remains unresolved: nominal opposite HLA-LOH contrasts do not survive Holm correction, and the public aggregates cannot establish the universal adverse bridge. E3-X gives a conditional challenge, not an unconditional empirical falsification.
 <!-- END RECOMPUTED RESULTS -->
 
 ## What the contrary observations would change

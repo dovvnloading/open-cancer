@@ -374,15 +374,17 @@ def calculate(rows=None):
     resistance=dict(persister=persister,vmr=vmr,n=integer('iyer_lineage_count'),
                     fixed_size_binomial_vmr=fixed,excess=vmr-fixed,ratio=vmr/fixed)
     verdicts = {key: value['verdict'] for key,value in eligibility(rows).items()}
-    # The coarse protocol label means compatibility at the chosen error level,
-    # not positive evidence for every direction or biological validation.
+    # Holm non-rejection does not establish directional consistency for the
+    # universal HLA-LOH bridge, especially with opposite signs and missing
+    # functional-presentation calibration.
     i2 = [r for r in effects if r['prediction']=='I2']
     i3 = [r for r in effects if r['prediction']=='I3'] + yang
     i2_counter = any(r['effect']<1 and r['holm']<ALPHA for r in i2)
     i3_counter = any((r.get('effect',r.get('or_')) > 1 if r.get('kind','or')=='or'
                       else r['effect'] < 1) and r['holm']<ALPHA for r in i3)
     verdicts['I2'] = 'inconsistent (falsified)' if i2_counter else 'consistent (clonal-burden association only)'
-    verdicts['I3'] = 'inconsistent (falsified)' if i3_counter else 'consistent (not rejected; nominal counterevidence)'
+    verdicts['I3'] = ('inconsistent (falsified)' if i3_counter
+                      else 'untestable with current public aggregates (conflicting directions; no corrected rejection)')
     verdicts['E3-X'] = UNTESTABLE
     return dict(row_count=len(rows),file_counts={f:sum(r['file']==f for r in rows.values()) for f in FILES},
                 effects=effects,yang=yang,formal_family=family,formal_holm=adjusted,
@@ -469,8 +471,8 @@ def markdown(result):
               '#### Verdicts under the frozen rules', '', '| ID | Verdict |', '| --- | --- |']
     for key in ('I1','I2','I2-H','I3','C1','C2','C3','E1','E2','E3','E4','R1','R2','E3-X'):
         lines.append(f"| {key} | **{result['verdicts'][key]}** |")
-    lines += ['', 'I3’s “consistent” means only not rejected after the specified correction. '
-              'It does not establish uniformly adverse HLA-LOH effects; nominal opposite intervals are retained above. '
+    lines += ['', 'I3 remains unresolved: nominal opposite HLA-LOH contrasts do not survive Holm correction, '
+              'and the public aggregates cannot establish the universal adverse bridge. '
               'E3-X gives a conditional challenge, not an unconditional empirical falsification.']
     return '\n'.join(lines)+'\n'
 

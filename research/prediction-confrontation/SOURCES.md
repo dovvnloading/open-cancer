@@ -279,3 +279,59 @@ report synchronization; they do not authenticate source truth, correct the
 source papers or certify a complete literature search. Agreement among AI
 agents is not biological evidence. No new treatment, diagnostic or
 surveillance recommendation follows from this audit.
+
+## Independent PR #63 pre-merge random-row check (2026-11-17)
+
+A reviewer parsed all five CSVs and checked **all 190 scalar records** for a
+unique ID, numeric aggregate field, study/population, locator, source DOI/URL,
+access date, source-specific reuse statement and interpretation notes. No
+patient-level fields or uncontrolled-access records were present. All 12
+named primary sources have an affirmative article-specific Creative Commons
+reuse basis recorded, including the NC-ND restrictions on unchanged facts
+where applicable; third-party source materials are not relicensed by the
+repository. This is a provenance/schema and rights *review*, not a mechanical
+proof of a publisher's license or independent replication of every paper.
+
+The random draw was performed *without replacement* across the 190 CSV data
+rows using Fisher–Yates and mulberry32 with seed 63, before selecting any
+source for verification. The first **20** rows were checked. Ten values were
+rechecked directly against accessible primary-source text, figure labels or
+PDF pages:
+
+| Drawn CSV row | Source locator | Published scalar checked |
+| --- | --- | ---: |
+| `henriksen22_draw_interval` | Henriksen 2022, study-design section, printed p508 | 3 months |
+| `yang_2022_melanoma_pd1_hla_b_response_loh` | Yang 2022 Fig. 1d, B Loss, R | 4 |
+| `yang_2022_urothelial_hla_c_nonresponse_loh` | Yang 2022 Fig. 1c, C Loss, NR | 30 |
+| `henriksen24_gain_q1` | Henriksen 2024, printed p233 sampling-frequency Results | 1 month |
+| `lozac_luad_p` | Lozac'hmeur 2024, Fig. 3c caption | 0.032 |
+| `yang_2022_melanoma_ctla4_hla_c_nonresponse_loh` | Yang 2022 Fig. 1e, C Loss, NR | 12 |
+| `shibata_2026_clone9_ks_p` | Shibata 2026, Fig. 3d, Clone 9 | 0.98 |
+| `yang_2022_melanoma_ctla4_hla_c_response_loh` | Yang 2022 Fig. 1e, C Loss, R | 4 |
+| `shibata_2026_clone2_ks_p` | Shibata 2026, Fig. 3d, Clone 2 | 0.96 |
+| `henriksen24_gain_q3` | Henriksen 2024, printed p233 sampling-frequency Results | 2 months |
+
+The other **ten** selected rows are
+`lange_2022_tr14_cdk4_n`,
+`shibata_2026_ctrlen2_jq1_p`,
+`lange_2022_gbm39_egfr_ks_p`,
+`lange_2022_snu16_fgfr2_ks_p`,
+`lange_2022_colo_myc_n`,
+`shibata_2026_clone1_rho`,
+`shibata_2026_ctrl1_dmso_rho`,
+`shibata_2026_clone11_p`,
+`lange_2022_tr14_mycn_ks_p`, and
+`shibata_2026_clone10_p`.
+Their exact cell/table locators and values remain in the CSVs, and the earlier
+author's original source-cell audit is documented above; their Springer
+supplementary XLSX/PDF content could not be independently fetched during this
+pre-merge recheck. **Do not interpret the 10/20 directly checked as full
+independent source verification of all 190 rows.** No scraping workaround,
+unlicensed reproduction or imputation was used. This limitation is documented
+rather than silently treating inaccessible supplements as inspected.
+
+The review also separately compared the protocol's three verdict definitions
+to the output and corrected I3's overstated non-rejection label as recorded in
+AMENDMENTS.md. The exploratory E3-X result remains explicitly conditional on
+mitosis independence and calibrated tests, and cannot certify any clustered
+segregation extension or dose threshold.

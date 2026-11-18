@@ -584,7 +584,8 @@ class PredictionConfrontationTests(unittest.TestCase):
         self.assertIn('simultaneous_uncertainty', audit['R1']['missing'])
         self.assertIn('uncertainty_or_coefficient_covariance', audit['I2-H']['missing'])
         self.assertTrue(self.result['verdicts']['I2'].startswith('consistent'))
-        self.assertIn('nominal counterevidence', self.result['verdicts']['I3'])
+        self.assertTrue(self.result['verdicts']['I3'].startswith(
+            'untestable with current public aggregates'))
 
     def test_verdict_directions_and_primary_family_with_synthetic_aggregates(self):
         # These altered aggregate scalars exercise the decision rule only;
@@ -599,9 +600,11 @@ class PredictionConfrontationTests(unittest.TestCase):
                        and adjusted['litchfield_hla'] < .05)
         i3_counter |= any(x['or_'] > 1 and adjusted[x['id']] < .05
                           for x in self.expected['yang'])
-        for key, counter in (('I2', i2_counter), ('I3', i3_counter)):
-            expected_prefix = 'inconsistent (falsified)' if counter else 'consistent'
-            self.assertTrue(self.result['verdicts'][key].startswith(expected_prefix))
+        self.assertTrue(self.result['verdicts']['I2'].startswith(
+            'inconsistent (falsified)' if i2_counter else 'consistent'))
+        self.assertTrue(self.result['verdicts']['I3'].startswith(
+            'inconsistent (falsified)' if i3_counter else
+            'untestable with current public aggregates'))
 
         def altered(changes):
             rows = {key: dict(row) for key, row in self.rows.items()}
@@ -622,7 +625,8 @@ class PredictionConfrontationTests(unittest.TestCase):
         # response. A strong adverse HR must not be called contrary evidence.
         result = altered({'lozac_luad_hr': '2', 'lozac_luad_low': '1.2',
                           'lozac_luad_high': '3', 'lozac_luad_p': '0.000000001'})
-        self.assertTrue(result['verdicts']['I3'].startswith('consistent'))
+        self.assertTrue(result['verdicts']['I3'].startswith(
+            'untestable with current public aggregates'))
 
     def test_loader_rejects_missing_provenance_and_nonaggregate_schema(self):
         def check_bad(filename, mutate, columns=CSV_COLUMNS):
