@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: >-
+  If you use Open Cancer, its software or its research notes, please cite it
+  using the metadata below and credit Matthew Wesney as the main contributor.
+type: software
+title: "Open Cancer: compute-first, AI-driven investigation of public cancer research data"
+abstract: >-
+  Open-source software and reproducible, nonclinical computational research
+  notes for investigating public cancer research data with AI agents.
+authors:
+  - given-names: Matthew
+    family-names: Wesney
+repository-code: "https://github.com/dovvnloading/open-cancer"
+url: "https://dovvnloading.github.io/open-cancer/"
+license: MIT
+date-released: "2026-11-18"
+keywords:
+  - cancer research
+  - computational oncology
+  - AI agents
+  - reproducible research
+  - public data

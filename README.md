@@ -78,3 +78,17 @@ The codebase includes legacy manifests and publication metadata for backward com
 - Surface *unverified* computational candidates and contrary evidence without auto-promoting clinical or scientific claims.
 
 **Scope:** Public computational research only, not patient-specific diagnosis or treatment. Respect source terms and privacy; see [DATA_POLICY.md](DATA_POLICY.md).
+
+## Citation
+
+If you use this software, its research notes or results in your work, please cite this repository and credit **Matthew Wesney** as the main contributor. Citation metadata is in [CITATION.cff](CITATION.cff); GitHub's **Cite this repository** button (in the repository sidebar) exports it as APA or BibTeX.
+
+```bibtex
+@software{wesney_open_cancer,
+  author  = {Wesney, Matthew},
+  title   = {Open Cancer: compute-first, AI-driven investigation of public cancer research data},
+  year    = {2026},
+  url     = {https://github.com/dovvnloading/open-cancer},
+  license = {MIT}
+}
+```
