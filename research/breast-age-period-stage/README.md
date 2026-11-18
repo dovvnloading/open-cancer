@@ -3,9 +3,9 @@
 **Nonclinical, unreviewed computational research. No screening or medical
 advice. No patient-level data, clinical prediction, or biological validation.**
 
-**Verdict: the common-average restriction within every stage fails the frozen
-descriptive compatibility rule. Localized and distant disease fail;
-regional and unknown stage pass.** Localized failure survives the declared
+**Verdict: the conjunction of four separate within-stage common-average
+trend restrictions fails the frozen descriptive compatibility rule.
+Localized and distant disease fail; regional and unknown stage pass.** Localized failure survives the declared
 rounding stress and every single-age omission. Distant failure is a narrow
 boundary result: the wider rounding stress makes its intervals touch, and
 some age omissions restore compatibility. We therefore do not describe the
