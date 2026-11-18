@@ -364,8 +364,12 @@ evidence. No first-in-literature claim or exhaustive literature search is
 asserted. [K,N; prior repository discussion in PR #75]
 
 This audit limits a particular shortcut from intestinal passenger counts to
-a whole-animal functional clock. It does not resolve Peto's paradox, establish
-the relevant driver rate, count oncogenic stages, or quantify cancer risk.
+a whole-animal functional clock. **For PR #75, transporting colon passenger
+mutation rates to whole-animal cancer hazards therefore requires an independently
+justified species-by-tissue calibration; the colon rate alone cannot serve as a
+universal species-wide mutation clock or an observed driver rate.** It does not
+resolve Peto's paradox, establish the relevant driver rate, count oncogenic
+stages, or quantify cancer risk.
 Different tissues can have different species interactions while mutation-based
 cancer mechanisms remain operative. The neuron result is useful precisely
 as a stress test of transport, with its extra intestinal-site limitation
