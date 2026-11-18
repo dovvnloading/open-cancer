@@ -1,21 +1,23 @@
 # Research programme: claims, evidence and next decisions
 
 **Nonclinical, unreviewed research. No treatment, diagnosis, surveillance or
-patient-selection advice.** This index covers all **16 research notes merged
-through PR #68**, audited against `main` at
-[`44c7689`](https://github.com/dovvnloading/open-cancer/commit/44c7689e6e11458a341dcc0708f5df2ef521c414).
+patient-selection advice.** This index covers all **24 research notes merged
+through PR #78**, including #71's explicitly partial deliverable, audited against
+`main` at
+[`ff08fb2`](https://github.com/dovvnloading/open-cancer/commit/ff08fb20b9a3c723c11187b5f68d75b5bf07002b).
 It records mathematical results, their observation assumptions, and what the
 available data actually tested. No entry establishes a new biological discovery,
 clinical validity, external peer review or bibliographic priority.
 
-**Where a discovery is most plausible next:** use observations that can separate
-competing mechanisms, beginning with the existing cell-line fluctuation data in
-job 1 below. The programme has strong conditional mathematics, but its main
-bottleneck is identifying model inputs from observable data. The focused
-pan-cancer test did **not** demonstrate improvement over TMB alone; #68's
-conditional progression mechanism is likewise untestable with published
-aggregates, while its substituted ten-year fitness proxy fails a specified
-interval-box rule. Neither finding invalidates the narrower model theorems.
+**Where a discovery is most plausible next:** test restrictions using published
+counts, matched measurement/outcome groups and observations from different
+tissues or endpoints. The ranked jobs below specify the exact readable inputs
+and the decision each can change. More endpoint replication cannot break
+[#71](persister-colony-reanalysis/)'s exact origin alias; a better point score
+does not identify [#72](merkel-viral-antigen-test/)'s viral mechanism. The
+programme's strongest results remain conditional mathematics and explicit
+limits on inference. Its next advance needs an observation that constrains a
+missing mechanism or measurement assumption, with a result that could fail.
 
 ## Negative results and what they teach
 
@@ -28,6 +30,14 @@ The linked notes retain the individual falsification fixtures and review logs.
 
 | Result retained | What it teaches |
 | --- | --- |
+| **[CH age-prevalence transport (#78)](ch-age-prevalence-test/): the frozen compound model fails specified substituted-endpoint compatibility, but fitness alone remains untestable.** The pooled Watson-derived, unchanged-supply age curves are compared with **different** curated-driver CHIP assays/panels and age supports, not the matched nonsynonymous-SNV/VAF endpoint. In Qiu's CNSR-III cohort a common-supply intersection is empty: lower multiplier **297.545536** exceeds upper **0.628432** under all recorded age supports; the post-score finite-age-band sensitivity also fails (**5.319347 > 0.648814**). Independently, the separately published gene and pooled fitted curves violate gene-event subset inclusion in **10/24** frozen grid comparisons, maximum excess **3.3762 pp**. | **Empirical: the substituted compound transport is falsified only under its declared interval-compatibility rule; conditional model-only pooled inclusion fails.** The matched biological fitness-only claim is **untestable** from these public aggregates because gene-by-age counts, mutation panels, effective thresholds, callers and joint supply are not aligned. The internal mismatch is between separately fitted curves, not disproof of known CH age associations or a clinical progression-risk test of [#68](clonal-hematopoiesis-progression/). Source percentage conflicts and possible parent-cohort overlap remain unresolved. |
+| **[Viral-antigen transport (#76)](viral-antigen-transport-test/): the frozen Merkel offset fails the declared numerical transport rule, without an independent comparative test.** Under the primary Part-A-trained offset at assay scale `c=1`, the model's minimum viral-positive ORR is **27.534051%**, above the KEYNOTE-040 HPV-positive published 95% upper limit **22.2%** (source-rounding-widened to **22.25%**): a **5.284051 percentage-point** necessary-range gap for any nonnegative TMB. It persists at every inherited point-offset scale; low-endpoint calibration sensitivity can remove it. The eligible EBV-positive no-response stratum has adverse single-point errors but no published ORR interval. | **Empirical: the fixed-offset range rule is falsified conditionally**, not viral immunogenicity. No eligible complete HPV/EBV positive/negative ORR–TMB pair permits a status-balanced comparison against TMB-only; the relative predictive gain is **untestable**. The original pan-cancer training parent may overlap KEYNOTE-040, so the strict independent-transport verdict is **untestable** as well. Missing viral status, assay, context and paired medians are not zero effects or permission to fit an offset after seeing the target. |
+| **[Stem-cell divisions and risk (#70)](stem-cell-divisions-risk/): the association reproduces, but the tested homogeneous specifications fail.** The historical log-risk slope is **0.532638**; on the primary **25-row/15-group** panel, group-held-out log10-H RMSE is **0.647456** for descriptive log D versus **1.254919** for the homogeneous one-step limiting model. The tested common division-scaled expansion grid selects no growth. The smallest exact symmetric per-stage intensity allowance among `k=1,...,8` is **45.214277**, or **12.421121** in the declared stress box. | The common-rate point specification fails separately from poor limiting-model prediction; high-k approximation error prevents conflating them. Free tissue rates fit every k, and a minimum allowance across different k scales does not identify drivers. The stress box is not a confidence region. Neither correlation nor residuals identify expansion or preventable fractions; the international risk-plus-divisions replication remains unavailable. |
+| **[Persister colony reanalysis (#71)](persister-colony-reanalysis/): acquisition versus delayed pre-existing resistance is not identifiable from the published counts under the frozen broad kernel family.** The complete occupancy law permits every latent late-origin fraction from zero to one. Both families have primary whole-replicate joint log score **−32.186587**; both WiDr late-count observations miss their marginal predictive intervals. **Partial:** the raw Mendeley V2 archive/checksum audit and raw population recalibration remain incomplete. | This is an exact observational alias, not merely low power or a score tie. It neither establishes a delayed resistant reservoir nor rules out acquisition. More copies of this endpoint do not separate the allowed mechanisms; an independently bounded latency, founder stock or origin-specific readout could. Published annotations are not audited raw-deposit data; fitted source parameters do not replace independent raw population measurements. The positive holiday-design theorem in [#57](induced-vs-selected-resistance/) does not apply to this continuous-exposure assay. |
+| **[Merkel viral-antigen test (#72)](merkel-viral-antigen-test/): viral/assay attribution is untestable, despite improved Part B point scores.** A single nonnegative offset fixed on Part A reduces identity-scale Part B RMSE from **28.010 to 14.727 pp**, but fails the complete repair rule because the unchanged virus-negative prediction misses. Repair passes at fixed scales **4/3, 2 and 5**. Under median substitution, the primary reciprocal curve's common-scale region is **[34.112, 99.711]**, outside both assumed bands; the conservative median-envelope relaxation gives **[0.449, infinity)**, admitting both bands. | Conditional point-score improvement is a reason to investigate missing antigen inputs, not viral causation or validation of [#59](immune-escape-neoantigen-clonality/). The missing Part B viral-specific ORRs within the TMB subset prevent the denominator-matched Part-A-to-Part-B surrogate test. Median relaxation removes the claim that these marginals require a viral term; the offset is not a peptide count. [#67](immune-escape-pancancer-test/)'s failed pan-cancer improvement criterion remains unchanged. |
+| **[Incidence strata (#73)](incidence-strata-test/): shape failure persists within both printed race-specific breast strata.** **Six of 30 curves (330 rates)** fail the rounded-interval monotone-mean condition: all three breast columns and all three Black lung/bronchus sex columns. Breast minimum abstract calibration factors are **1.066238 / 1.062759 / 1.056962** for All Races / Whites / Blacks. All colon/rectum and pancreas curves pass the necessary condition. | Pooling across the printed race categories cannot alone remove the descriptive breast failure. Passing a necessary condition does not validate the mechanism. The columns overlap, and rounding intervals are not sampling intervals; missing counts/exposures still prevent a calibrated population-hazard test. Screening, cohort effects, diagnosis delay and driver counts remain unidentified. |
+| **[ecDNA rejection robustness (#74)](ecdna-rejection-robustness/): LA-N-5 fair-segregation rejection remains conditional.** At actual test-size cap `A=0.01`, its independent Holm value is **0.000000228948**, versus **0.3** under arbitrary dependence. The sharp finite-exchangeable cap model rejects LA-N-5 only exactly for **`0 <= R <= 17/3267`** (about **0.00520355**), including equality. | `R` caps correlation between different mothers' binary rejection indicators, not ecDNA dispersion; `R=0` does not imply mutual independence. The counts do not estimate the size or dependence caps. Loss of rejection is not confirmation of fair allocation. This audits the Lundberg argument in [#65](ecdna-segregation-clustering-data/)/[#63](prediction-confrontation/), not #65's separate Shibata-fit threshold transport. |
+| **[Peto's paradox / mutation rates (#75)](petos-paradox-mutation-rates/): Cagan-style mutation scaling alone does not cancel the target-cell factor.** Equal lifetime functional clocks leave exact cumulative hazard proportional to target number in the specified model. In the **six-species/four-order** mortality-matched proxy panel, fixed `k=3` cell-aware LOSO log10-H RMSE is **1.818334**, versus **0.466363** intercept-only and **0.281959** burden-only. The exact giraffe/naked-mole-rat relative-modulation infimum is **1430.21** under the stated sex-mass/CMR boxes, but the hypothetical factor-two rate/lifespan stress permits **pair F_inf=1 for tested k=3,...,8**. | The burden-only comparator omits the target factor; its better score cannot resolve that mechanistic question. The large conditional modulation is not a measured defense or extra-step count. Passenger rates, mass, lifespan summaries and mortality do not identify functional clocks, targets or onset risks. Stress-box compatibility and missing uncertainty remain visible; the biological verdict is **not identifiable**. |
 | **[Clonal haematopoiesis progression (#68)](clonal-hematopoiesis-progression/): the mechanistic target is untestable; the substituted baseline-fitness proxy fails its frozen ten-year rule.** In a seven-gene leave-one-gene-out proxy using Fabre/Abelson-refit gene Cox HRs, U2AF1 alone has nonoverlapping ten-year envelopes: observed HR **304.052 [134.063, 689.584]**, predicted **8.174 [1.123, 63.617]**. Descriptive log-RMSE is **2.054229** versus **2.276578** for an intercept-only comparator. The five-year proxy also fails for SRSF2; the 20-year per-gene overlap rule is consistent, but the **post-hoc** common-intercept feasibility gap remains **0.344714** (incompatible boxes). | Neither published gene-class baseline coefficients nor unmatched marginal Cox HRs identify the theorem's full clone state or conditional fixed-horizon hazard. A failed CI/HPDI-derived interval-box rule is **not** a calibrated significance test or rejection of established fitness–risk associations. The 20-year overlap is counterevidence to horizon-robust failure, **not** joint calibration. Seven eligible genes are not a patient-level prediction cohort. |
 | **[Pan-cancer immune test (#67)](immune-escape-pancancer-test/): no demonstrated predictive gain.** Reciprocal-TMB held-out RMSE is **13.173 percentage points (pp)** versus **12.084 pp** for log-linear TMB (21 rows, 20 parent cancers). The fixed clonal extension worsens matched prediction; its free exponent is **−1.6857**, negative under every parent deletion. Relaxed HLA uncertainty permits either sign. The coherent full panel has nine parents, below its frozen ten-parent gate; deleting the indexed-only clonal source removes clonal/full tests. | The declared improvement criterion failed. The primary reciprocal-versus-log-TMB paired error interval crosses zero, so this is not a calibrated statistical rejection of [#59](immune-escape-neoantigen-clonality/), nor evidence that individual clonality is harmful. TMB, clonal-ID fraction and ordinary HLA loss do not measure functional-load exposure. Historical response-source overlap prevents an independent-replication claim. |
 | **[Prediction confrontation (#63)](prediction-confrontation/): 13 of 14 verdicts untestable.** Only the weaker clonal-burden response association is consistent. Opposite nominal HLA-LOH outcome contrasts do not reject after the 14-contrast Holm correction; Ravi's lack of a detected HLA-LOH response association remains visible. ctDNA summaries lack the required schedule comparison or parity-thinned outcome. Iyer's lineage overdispersion lacks founder-conditioned covariance. | No unconditional corrected core prediction is validated or falsified. Ordinary HLA loss is not total presentation loss; variable founders can mimic dependent switching. A lead-time-range conflict with a perfect-periodic/common-window model depends on an unverified imaging-lag bridge. Means, medians and detected-only versus zero-imputed outcomes are different estimands. |
@@ -35,6 +45,28 @@ The linked notes retain the individual falsification fixtures and review logs.
 | **[Containment evidence (#66)](containment-evidence/): all six mechanistic checks untestable**, zero eligible reports/formal mechanistic tests. P6b's broad outcome/any-published-interval reading is contradicted by COIN OS HR **1.084 [1.008, 1.165], an 80% CI**; tumour-control and 95%-tumour-control sensitivities remain untestable. González-Cao and INTERIM have adverse point directions (INTERIM's interval crosses the null); Pressley's lung xenograft comparison is adverse without pairwise uncertainty. Seyedi's single-gemcitabine result is neutral; toxicity complicates combination effects. Bacevic has no monolayer advantage despite spheroid benefit. Restricted-extraction S1320/BFR14 negatives remain linked. | Outcomes do not identify [#61](containment-at-tumour-scale/)'s mutation-supply threshold. P6b's qualified contradiction is neither a 95% rejection nor falsification of #61. Unreached ovarian medians, unequal dosing duration, fitted counterfactuals and overlapping reports cannot become independent mechanistic confirmations. |
 | **[Metastatic timing (#62)](metastatic-seeding-timing/): optional broad-witness model fails conditionally.** TRACERx reports 75/90 late-divergence cases called early after single-region downsampling; under independent trials and per-case miss probability at most 1/2, the upper tail is about **4.59 × 10⁻¹¹**. Secondary-seeding aggregates also contradict universal primary-only seeding. Matched two-/three-region predictions remain externally untested. | This is a post-hoc conditional model check, not a migration-date measurement. Divergence is not migration. A one-region summary cannot calibrate two-moment designs; different pool sizes and sampling without replacement require different laws. |
 | **[Incidence identifiability (#64)](multistage-incidence-identifiability/): female-breast rounded means fail the homogeneous monotone-mean condition.** The minimum abstract monotonicity calibration factor is **1.066238**; none of four sites identifies a biological transition count under unrestricted age-bin calibration. | This is a descriptive shape failure, not a significance test or rejection of multistage carcinogenesis. Counts/exposures are absent, period rates mix observation effects, and grid indices are not genomic driver counts. |
+
+**Pattern across the programme.** Shared-parameter models repeatedly fail
+their specified observable restrictions, while broader nuisance families can
+accommodate the summaries or leave distinct mechanisms observationally
+equivalent without identifying the biology. The newer checks have
+closed several easy explanations: race pooling alone does not remove the
+breast shape failure, adding the tested common expansion does not rescue the
+division-risk fits, and inverse-lifespan mutation scaling leaves a target-cell
+factor. [#78](ch-age-prevalence-test/)'s unchanged fitness-plus-supply curves
+also fail a substituted prevalence target and separate gene/pooled fits violate
+an event-inclusion condition; neither observation isolates fitness itself.
+Other checks expose missing information rather than refute mechanisms:
+late colonies do not timestamp acquisition, marginal TMB does not measure
+functional antigen supply, and rejection counts do not calibrate microscopy.
+The frozen Merkel viral offset also fails a necessary cross-virus response-range
+check in [#76](viral-antigen-transport-test/), even though historical
+independence and comparative improvement remain untestable.
+The programme has accumulated more conditional exclusions and identification
+limits than independent mechanistic evidence. Another flexible fit to the same
+proxies is unlikely to change that. The next jobs therefore seek count-based
+uncertainty, matched subgroups and distinct observation channels; null results
+and failures of those measurement assumptions are valuable outcomes too.
 
 ### Mathematical failures and limits on stronger claims
 
@@ -50,15 +82,22 @@ The linked notes retain the individual falsification fixtures and review logs.
 | [#61](containment-at-tumour-scale/), [#66](containment-evidence/): containment | The large-`N` limit has one crossing, not #53's two. Near-boundary finite-size simulations have opposite estimated signs; leading-coefficient equality is not a finite-`N` tie. Under their respective assumptions, no competition, nonpositive released resistant growth and zero mutation favour M; `lambda↓0` and `N→∞` need not commute. A fully discrete cure atom can make ordinary means infinite, beyond the hybrid/coupling theorem. Hill steepness has no effect at fixed realised killing and admissible controls. A fixed lifetime-budget theorem is unproved. Stronger competition need not improve containment: in #66's saturated `c=L` calculation it reduces establishment and limiting advantage. **Mutation-supply monotonicity is not competition monotonicity.** |
 | [#62: timing/sampling](metastatic-seeding-timing/) | Passenger counts, a biopsy endpoint substituted for clonal MRCA, or an uncalibrated clock do not identify migration. Separation fails at `ell=2h`. Positive average visibility does not ensure small robust error; worst-case invisibility is not inevitable in every population. The 17-region illustration is a necessary floor, not a sufficient design. Empirical moments, linked regions and issuance-selected cases invalidate naive guarantees. Genotype support does not count transfers, founding cells or extinct lineages. **Retain lag, sampling, provenance and finite-pilot assumptions.** |
 | [#64: incidence](multistage-incidence-identifiability/) | Expansion alone cannot equate different finite transition counts under exact direct observation; unknown clone-level diagnosis delays can. Arbitrarily fast extra converting steps obstruct uniform finite-exposure recovery; any positive calibration allowance permits finite-bin confounding. Mean-count spectra do not classify finite-rate nonlinear hazards; asymmetric precursors and person-level diagnosis lags do not obey the converter-filter identity. **Exact onset identification is not stable inference from adult rounded rates.** |
-
 | [#68: clonal haematopoiesis progression](clonal-hematopoiesis-progression/) | For every integer `n>=1`, positive `q,T` and `c>0`, the same founder count and net fitness `s=0` but `b=d=0` versus `b=d=c` produce different cumulative hazards; hidden advanced stages similarly break fitness-only sufficiency. Exact cumulative hazard is linear in founder count, but risk is nonlinear and replacing stochastic clone exposure by its mean at finite `q` need not be exact (the error has an explicit bound). VAF-to-stem-cell count and a terminal mark-to-diagnosis link require separate assumptions. **Neither marginal Cox HR nor pooled VAF identifies the matched conditional progression law.** |
+| [#70: divisions/risk](stem-cell-divisions-risk/), [#75: Peto scaling](petos-paradox-mutation-rates/) | Free tissue/species rates reproduce every proposed transition count. At one endpoint, initiation and integrated clone success alias; common chronological expansion is absorbed in amplitude in #70's stated limit. #70's fixed-D and source-consistent uncertainty geometries have different N effects. #75's pairwise compatibility is not sufficient for a common multi-species calibration; finite-rate boundary values may only be limiting infima. A known mean other-cause lifetime does not determine cancer-first probability. **A fitted count, rate allowance or missing hazard multiplier is not an identified biological mechanism.** |
+| [#71](persister-colony-reanalysis/), [#72](merkel-viral-antigen-test/), [#74](ecdna-rejection-robustness/), [#76](viral-antigen-transport-test/) | #71's broad delayed-kernel construction preserves the complete joint observation law, even before binary occupancy coarsening. #72's nonlinear median plug-in can fail when distributions with the same medians remain compatible. #74's pairwise-uncorrelated witness is not mutually independent, and the pointwise beta-binomial rejection can disappear and re-enter as dependence rises. #76's inherited positive viral offset creates a nonzero response floor that conflicts with one target interval, but overlap and measurement bridges limit inference. **Do not replace an observation family, a distribution or a dependence cap with a convenient point surrogate.** |
+
+| [#78: CH age-prevalence](ch-age-prevalence-test/) | A gene-specific carrier event must lie within the corresponding pooled-carrier event, yet the **separately published** frozen gene and pooled predictions violate that subset inequality in 10 of 24 specified age/gene calculations (maximum 3.3762 pp). A free common mutation-supply factor can alias caller thinning; net clone fitness without turnover does not determine exact branching detection tails. **Do not treat separately fitted curves as a coherent joint distribution or an unmatched assay as a fitness-only test.** |
 
 ## Claim/status index
 
 **Status key.** “Proved within model” refers to written assumptions and proof,
 including declared computer-assisted components. “Known prior result” credits
 established ingredients; “conjecture” is unproved. Empirical **consistent**,
-**falsified** and **untestable** apply only to the specified observable/criterion.
+**falsified**, **untestable** and **not identifiable** apply only to the specified
+observable/criterion. “Not identifiable” means distinct allowed latent
+explanations share the observations; “untestable” means required observables or
+calibration are unavailable. **Partial** records unfinished requested work,
+even when the restricted analysis and its tests are complete.
 #67's **failed predictive criterion** remains distinct from a calibrated
 statistical rejection. Priority of candidate local contributions remains **unestablished**.
 Symbols are local to their note; identical letters need not mean the same thing.
@@ -69,109 +108,190 @@ Symbols are local to their note; identical letters need not mean the same thing.
 | [Adaptive therapy / mutation supply](adaptive-therapy-mutation-supply/) (#53) | Two-individual-cell CTMC, initially `(S,R)=(2,0)`, per-time conversion, ideal containment C versus finite sensitive clearance M, progression at total burden `>2`: both **uncensored** means are infinite. For independent `Exp(1)` censoring and `(a,b,d,k,z)=(100,1,3,2,1)`, for `mu>0`, capped-time C-minus-M has the sign of `18mu^3−185mu^2−517mu+400`. Its positive roots are `alpha≈0.63735`, `beta≈12.44262`: C wins for `0<mu<alpha` or `mu>beta`, M between; ties at the exact roots and zero. | **Proved within model.** | Low, model-specific algebraic counterexample. Mutation supply versus suppression and objective dependence are prior themes. M is not proved a common bounded-control optimum. | [test_research_adaptive_therapy_mutation_supply.py](../tests/test_research_adaptive_therapy_mutation_supply.py) | [#61](containment-at-tumour-scale/) changes scale, mutation, controls and endpoint; [#66](containment-evidence/) confronts that later model. |
 | [Combination / cross-resistance](combination-cross-resistance/) (#54) | Specified four-type branching, fixed finite **sensitive-only** founders, positive `b,mu,nu,k`, `d>=0`, equal per-drug exposure, fixed finite A-then-B period count `m`, `0<w<=1/2`, `0<=p<1`, `c>=1`: A-first improves extinction **by every sufficiently short course end** iff `c>(1-w)/w`; combination wins at equality at fourth order. A bounded-`c` local finite-course curve exists; for `w=1/2,m=1` its `T^3` coefficient has `p`-derivative `−mu*k^2/1440`. At `p=1`, sensitive-only starts tie. | **Proved within model; sixth-order identity computer-assisted.** | Narrow local coefficients/threshold refinement. Four-type branching, cross-resistance and sequencing advantages are **known prior results**. | [test_research_combination_cross_resistance.py](../tests/test_research_combination_cross_resistance.py) | No merged empirical test of its joint exposure, founder and killing assumptions. |
 | [ecDNA segregation / therapy](ecdna-segregation-therapy/) (#55) | Independent cells, complementary `Bin(2k,1/2)` sisters, no reacquisition, uniformly bounded positive division rates, division-before-death `p_k=u*s^k`, `0<u<=1`, `0<s<1`: **every finite founder multiset containing a positive-copy cell** loses all positive lineages almost surely iff `2u(1−sqrt(1−s))<=1`, including equality. Monomorphic positive founders have pooled **genealogical-generation-two**, all-cell Fano `(3+s)/(2(1+s))`; arbitrary finite mixtures containing a positive-copy founder share the asymptotic pooled Fano limit. | **Proved within model.** Positive-lineage loss, not tumour extinction. | Narrow threshold/critical/Fano package; binomial segregation, branching and neutral moment laws are prior results. | [test_research_ecdna_segregation_therapy.py](../tests/test_research_ecdna_segregation_therapy.py) | Linear gap **closed by [#60](ecdna-killing-laws-and-clustering/)**. [#63](prediction-confrontation/)/[#65](ecdna-segregation-clustering-data/) audit observability/segregation; neither validates this killing law. |
-| [Induced versus selected resistance](induced-vs-selected-resistance/) (#57) | Independent Poisson pools; unknown **common positive clone-size law**, finite second moment and non-singleton mass; singleton post-exposure acquisition; quiescent holidays; calibrated readout; positive reversible component and cellular switching `u>=0,v>0`: complete endpoint laws at **`0,H,2H`, known `H>0`**, identify all three intensities, both switching rates and the clone law. Three arms are minimal for a guarantee over the **whole stated class**, not every point; the unrestricted clone law needs the full baseline law. | **Proved within model; empirical application untestable in #63.** One-way-loss two-arm result adds third-moment/tripleton assumptions. | Narrow unknown-common-kernel design synthesis. Fluctuation tests, cumulants, switching and decompounding are known. | [test_research_induced_vs_selected_resistance.py](../tests/test_research_induced_vs_selected_resistance.py) | [#63 R1/R2](prediction-confrontation/) lacks matched holiday laws/conditioned covariance. Job 1 uses a different assay, not this holiday design. |
+| [Induced versus selected resistance](induced-vs-selected-resistance/) (#57) | Independent Poisson pools; unknown **common positive clone-size law**, finite second moment and non-singleton mass; singleton post-exposure acquisition; quiescent holidays; calibrated readout; positive reversible component and cellular switching `u>=0,v>0`: complete endpoint laws at **`0,H,2H`, known `H>0`**, identify all three intensities, both switching rates and the clone law. Three arms are minimal for a guarantee over the **whole stated class**, not every point; the unrestricted clone law needs the full baseline law. | **Proved within model; empirical application untestable in #63.** One-way-loss two-arm result adds third-moment/tripleton assumptions. | Narrow unknown-common-kernel design synthesis. Fluctuation tests, cumulants, switching and decompounding are known. | [test_research_induced_vs_selected_resistance.py](../tests/test_research_induced_vs_selected_resistance.py) | [#63 R1/R2](prediction-confrontation/) lacks matched holiday laws/conditioned covariance. [#71](persister-colony-reanalysis/) is a partial continuous-treatment assay audit with an exact origin alias, not this holiday design. |
 | [ctDNA surveillance schedule](ctdna-surveillance-schedule/) (#58) | Fixed residual `0<B*<D<C`, perfect threshold, `n>=1` dates in `(0,H]`, `H>0`, separate progression-scoring horizon `T in (0,infinity]`, and continuous positive log-rate density vanishing at both tails, strictly increasing/decreasing about one mode: the unique optimal ordered capture schedule is geometric, ratio `q=b/a`, with `a=log(D/B*)`, `b=log(C/B*)`, placement floor `max(a/H,b/T)`. A separate conditional regret bound handles bounded residual uncertainty and the specified finite-molecule assay; it does not preserve exact geometry. | **Proved within specified models; empirical optimum uncalibrated/untestable in #63.** | Narrow analytic solution/transfer synthesis. Surveillance optimization, highest-density rearrangement and submodular bounds are prior work. | [test_research_ctdna_surveillance_schedule.py](../tests/test_research_ctdna_surveillance_schedule.py) | [#63 C1–C3](prediction-confrontation/) audits capture/lead-time bridges; parity-thinning forecast lacks a matching published outcome. |
-| [Immune escape / neoantigen clonality](immune-escape-neoantigen-clonality/) (#59) | Under A1–A8, independent branching, equal antigen weights, **linear unbounded killing**, all rates fixed, `h>0`, null-cell establishment `sigma>0`, actual source exponent `rho=b−d−u*kappa/(ell+kappa)−h<0`, no initial null cells: successful-null escape obeys `k*p_k -> sigma*h/kappa`. For sequences of finite founder populations with **minimum load tending to infinity** and `sum_i 1/k_i -> L` in `[0,infinity]`, total extinction tends to `exp(−sigma*h*L/kappa)`. Equal load multisets imply equal outcomes regardless of antigen identities. | **Proved within model.** Functional-load scaling empirically **untestable** with #63/#67 inputs. | Narrow fixed-positive-escape asymptotic/harmonic limit. Branching/rescue methods and biological clonal-target association are prior work. | [test_research_immune_escape_neoantigen_clonality.py](../tests/test_research_immune_escape_neoantigen_clonality.py) | [#63](prediction-confrontation/) tests bridges; [#67](immune-escape-pancancer-test/) tests an extra ecological surrogate and finds no gain. |
+| [Immune escape / neoantigen clonality](immune-escape-neoantigen-clonality/) (#59) | Under A1–A8, independent branching, equal antigen weights, **linear unbounded killing**, all rates fixed, `h>0`, null-cell establishment `sigma>0`, actual source exponent `rho=b−d−u*kappa/(ell+kappa)−h<0`, no initial null cells: successful-null escape obeys `k*p_k -> sigma*h/kappa`. For sequences of finite founder populations with **minimum load tending to infinity** and `sum_i 1/k_i -> L` in `[0,infinity]`, total extinction tends to `exp(−sigma*h*L/kappa)`. Equal load multisets imply equal outcomes regardless of antigen identities. | **Proved within model.** Functional-load scaling empirically **untestable** with #63/#67/#72 inputs. | Narrow fixed-positive-escape asymptotic/harmonic limit. Branching/rescue methods and biological clonal-target association are prior work. | [test_research_immune_escape_neoantigen_clonality.py](../tests/test_research_immune_escape_neoantigen_clonality.py) | [#63](prediction-confrontation/) tests bridges; [#67](immune-escape-pancancer-test/) tests an extra ecological surrogate and finds no gain; [#72](merkel-viral-antigen-test/) audits its Merkel measurement/viral bridge without identifying attribution. |
 | [ecDNA killing laws / clustering](ecdna-killing-laws-and-clustering/) (#60) | Constant division `b>0`, linear whole-cell killing `d_k=gamma*k`, complementary unbiased binomial sisters, no reacquisition/copy cap: every finite positive-founder population persists with positive probability iff `gamma/b<c*`, extinct almost surely for `gamma/b>=c*`, where **`0.378474994554<c*<0.378474994555`**, with all-type tail certificates. Specified clustered/asymmetric families obey `c*<=(1−R)/2`. Identical full one-copy generation-two mean/Fano dose curves can have different thresholds. | **Proved within model. Interior clustering-threshold monotonicity: conjecture.** | Narrow killing-law classification, certificates and identifiability obstruction; beta-binomial segregation formulas are prior work. | [test_research_ecdna_killing_laws_and_clustering.py](../tests/test_research_ecdna_killing_laws_and_clustering.py) | Extends [#55](ecdna-segregation-therapy/); [#63](prediction-confrontation/) cannot test the threshold; [#65](ecdna-segregation-clustering-data/) transports published kernels conditionally. |
 | [Containment at tumour scale](containment-at-tumour-scale/) (#61) | Under A1–A6's **hybrid** (deterministic sensitive bulk; stochastic resistant founders switched to deterministic density at `ceil(N^a)`, `0<a<1/2`; no initial resistance), shared bounded Hill killing, per-division `mu=lambda/N`, fixed `lambda>0`, course `L log N` and common exposure ceiling: C holds sensitive density at `s0`, M uses maximum dose, both stop after the course, and T is first total-burden passage to density `B=s0+eps`, including rebound. Their ordinary means satisfy `E[T_C]/log N -> c`, `E[T_M]/log N -> d+(J−d)exp(−lambda*A)`. Positive competition plus the theorem's admissibility conditions give `d<c<J` and one limiting crossing `log((J−d)/(c−d))/A`. C wins above; a strict limit gives eventual finite-`N` ordering, not a finite-size boundary. | **Proved within hybrid/scaling.** Near-boundary finite-size/biological transport unproved. | Model-specific progression-limit/coupling refinement; ecological trade-off, bounded dosing, branching establishment and thinning are prior work. | [test_research_containment_at_tumour_scale.py](../tests/test_research_containment_at_tumour_scale.py) | Revises [#53](adaptive-therapy-mutation-supply/)'s question. [#66](containment-evidence/) finds no joint aggregate identification of the parameters. |
 | [Metastatic seeding timing](metastatic-seeding-timing/) (#62) | In the **conditional witness/clock experiment on witness capture**, calibrated positive calendar mutation rate and known reference/endpoint permit arbitrarily small uniform early/late error for hypotheses separated by `2h` **iff `ell<2h`**, where `ell` bounds ancestor-to-migration lag. For every visibility law `F` on `[0,1]` with population moments `m=E[F]>0,s2=E[F^2]`, sharp miss bounds permit a **maximum** invisible fraction `1−m^2/s2`; finite-pilot/distinct-region laws are separate. Founder-genotype support does not identify all migration events. | **Proved within model.** Useful biological lag/coverage: **conjecture**. Broad-witness submodel **conditionally falsified**; sharper sampling predictions **untested**. | Conditional design synthesis with classical clock, moment and occupancy ingredients; no first timing/sampling warning. | [test_research_metastatic_seeding_timing.py](../tests/test_research_metastatic_seeding_timing.py) | Its own TRACERx/Hessey checks; [#52](clonal-tree-identifiability/) concerns separate genealogy identification. |
-| [Prediction confrontation](prediction-confrontation/) (#63) | Aggregate audit with recorded protocol/amendments for five theory notes yields **14 verdicts**: only I2's weaker clonal-burden response association is consistent; **13 are untestable** with located aggregates/controls. No unconditional corrected core prediction is falsified or validated. Exploratory ecDNA rejection-frequency evidence depends on source-test calibration/independence. | **Empirical: consistent (I2 only); untestable (other 13).** | Evidence/eligibility and arithmetic audit; no new biology or independent replication. | [test_research_prediction_confrontation.py](../tests/test_research_prediction_confrontation.py) | Bridges from [#55](ecdna-segregation-therapy/), [#57](induced-vs-selected-resistance/), [#58](ctdna-surveillance-schedule/), [#59](immune-escape-neoantigen-clonality/), [#60](ecdna-killing-laws-and-clustering/); followed by [#65](ecdna-segregation-clustering-data/)/[#67](immune-escape-pancancer-test/). |
-| [Multistage incidence identifiability](multistage-incidence-identifiability/) (#64) | Constant positive finite initiation/mutation rates, clean birth, independent clones and exact direct hazard give `k=1+ord_0(h)`, even with intermediate expansion. A nondividing/lossless **converting** precursor exactly aliases a clone-level exponential diagnosis lag. Unbounded fast extra rates prevent uniform finite-Poisson-exposure recovery; with free amplitude and positive finite-bin means, **any `rho>1`** calibration allowance permits a sufficiently fast extra stage with identical means. SEER rounded rates identify no biological `k`; female breast fails the homogeneous monotone-mean condition. | **Proved within model; TSCE equivalence is known prior work. Empirical: descriptive shape falsification; biological count untestable.** | Narrow observation/finite-bin/calibration synthesis. Onset powers, TSCE invariants, spectral symmetries and projective-distance formula have prior foundations. | [test_research_multistage_incidence_identifiability.py](../tests/test_research_multistage_incidence_identifiability.py) | Its own [44-rate SEER provenance](multistage-incidence-identifiability/data/PROVENANCE.md); distinct from #52's tree and #62's migration estimands. |
-| [ecDNA segregation / clustering data](ecdna-segregation-clustering-data/) (#65) | Transporting **nine published baseline ecDNA clone MLEs from one COLO320DM system** through #60's full asymmetric beta-binomial linear-killing model gives `R=0.089717–0.148457` and thresholds **11.19%–18.76% below binomial**, conditionally. Bounds cover rounding/numerics, not unknown sampling/model error. Uniform model envelope `L(R_U)<=c*<=(1−R_L)/2` holds for any fixed allocation-mixture law in a justified `R` interval; unordered counts have exact bias/dispersion aliases. | **Model envelope proved. Empirical: conditional source-fit implications; new dispersion inference and empirical eradication-threshold validation untestable.** | Narrow transport/envelope and observation audit. Unequal inheritance/fitted segregation are prior results; no empirical refit or calibrated confidence distribution. | [test_research_ecdna_segregation_clustering_data.py](../tests/test_research_ecdna_segregation_clustering_data.py) | [#55](ecdna-segregation-therapy/)/[#60](ecdna-killing-laws-and-clustering/) theory; revisits [#63](prediction-confrontation/), correcting HSR exclusions and retaining counterevidence. |
+| [Prediction confrontation](prediction-confrontation/) (#63) | Aggregate audit with recorded protocol/amendments for five theory notes yields **14 verdicts**: only I2's weaker clonal-burden response association is consistent; **13 are untestable** with located aggregates/controls. No unconditional corrected core prediction is falsified or validated. Exploratory ecDNA rejection-frequency evidence depends on source-test calibration/independence. | **Empirical: consistent (I2 only); untestable (other 13).** | Evidence/eligibility and arithmetic audit; no new biology or independent replication. | [test_research_prediction_confrontation.py](../tests/test_research_prediction_confrontation.py) | Bridges from [#55](ecdna-segregation-therapy/), [#57](induced-vs-selected-resistance/), [#58](ctdna-surveillance-schedule/), [#59](immune-escape-neoantigen-clonality/), [#60](ecdna-killing-laws-and-clustering/); followed by [#65](ecdna-segregation-clustering-data/)/[#67](immune-escape-pancancer-test/) and [#74](ecdna-rejection-robustness/)'s conditional ecDNA rejection frontier. |
+| [Multistage incidence identifiability](multistage-incidence-identifiability/) (#64) | Constant positive finite initiation/mutation rates, clean birth, independent clones and exact direct hazard give `k=1+ord_0(h)`, even with intermediate expansion. A nondividing/lossless **converting** precursor exactly aliases a clone-level exponential diagnosis lag. Unbounded fast extra rates prevent uniform finite-Poisson-exposure recovery; with free amplitude and positive finite-bin means, **any `rho>1`** calibration allowance permits a sufficiently fast extra stage with identical means. SEER rounded rates identify no biological `k`; female breast fails the homogeneous monotone-mean condition. | **Proved within model; TSCE equivalence is known prior work. Empirical: descriptive shape falsification; biological count untestable.** | Narrow observation/finite-bin/calibration synthesis. Onset powers, TSCE invariants, spectral symmetries and projective-distance formula have prior foundations. | [test_research_multistage_incidence_identifiability.py](../tests/test_research_multistage_incidence_identifiability.py) | Its own [44-rate SEER provenance](multistage-incidence-identifiability/data/PROVENANCE.md); followed by [#70](stem-cell-divisions-risk/)'s tissue-rate frontier, [#73](incidence-strata-test/)'s within-stratum shape audit and [#75](petos-paradox-mutation-rates/)'s cross-species compatibility test; distinct from #52's tree and #62's migration estimands. |
+| [ecDNA segregation / clustering data](ecdna-segregation-clustering-data/) (#65) | Transporting **nine published baseline ecDNA clone MLEs from one COLO320DM system** through #60's full asymmetric beta-binomial linear-killing model gives `R=0.089717–0.148457` and thresholds **11.19%–18.76% below binomial**, conditionally. Bounds cover rounding/numerics, not unknown sampling/model error. Uniform model envelope `L(R_U)<=c*<=(1−R_L)/2` holds for any fixed allocation-mixture law in a justified `R` interval; unordered counts have exact bias/dispersion aliases. | **Model envelope proved. Empirical: conditional source-fit implications; new dispersion inference and empirical eradication-threshold validation untestable.** | Narrow transport/envelope and observation audit. Unequal inheritance/fitted segregation are prior results; no empirical refit or calibrated confidence distribution. | [test_research_ecdna_segregation_clustering_data.py](../tests/test_research_ecdna_segregation_clustering_data.py) | [#55](ecdna-segregation-therapy/)/[#60](ecdna-killing-laws-and-clustering/) theory; revisits [#63](prediction-confrontation/), correcting HSR exclusions and retaining counterevidence. [#74](ecdna-rejection-robustness/) audits the separate Lundberg rejection argument, without changing this Shibata-fit transport. |
 | [Containment evidence](containment-evidence/) (#66) | Audit of **69 source/study records, 15 numerically included reports, 179 aggregate rows, 44 contrasts** (not independent-study counts): no report jointly identifies `d,c,J,A,lambda`. **P1/P2/P2a/P3/P4/P5 all untestable**, zero eligible reports/formal mechanistic tests, no pooled effects. P6a is consistent with some benefit; P6b is falsified only under its broad outcome/any-reported-interval reading, by COIN's **80%-CI OS** comparison; narrower post-extraction sensitivities remain untestable. | **Empirical: mostly untestable; limited descriptive consistency and qualified extension falsification.** | Provenance/identifiability audit, not a new efficacy estimate, complete systematic review or mechanistic discovery. | [test_research_containment_evidence.py](../tests/test_research_containment_evidence.py) | Confronts [#61](containment-at-tumour-scale/), with a correction to universal competition-strength benefit; [#53](adaptive-therapy-mutation-supply/) has a different model/endpoint. |
-| [Immune escape pan-cancer test](immune-escape-pancancer-test/) (#67) | Extra surrogate `p=[A0(1−L)+A1*L] exp[−B/(T*f)]`, `0<=A1<=A0<=1,B>=0`, uses median TMB `T`, clonal fraction `f`, ordinary-HLA-LOH prevalence `L` and an unvalidated response bridge. Grouped held-out reciprocal-TMB RMSE **13.173 pp vs log-TMB 12.084 pp**, 21 rows/20 parents, fails the improvement criterion. Fixed clonal extension worsens matched prediction; free exponent is negative. Full coherent **nine-parent** panel fails the frozen ten-parent gate; full-model fits are exploratory. | **Empirical: failed predictive criterion; contrary clonal-proxy direction. Full gated test and mechanistic scaling untestable.** | Repository-specific surrogate test with preserved negatives; no demonstrated biomarker, first ecological analysis or independent outcome replication. | [test_research_immune_escape_pancancer_test.py](../tests/test_research_immune_escape_pancancer_test.py) | Tests an extra observation model built on [#59](immune-escape-neoantigen-clonality/), after [#63](prediction-confrontation/); does not refute the theorem. |
-
+| [Immune escape pan-cancer test](immune-escape-pancancer-test/) (#67) | Extra surrogate `p=[A0(1−L)+A1*L] exp[−B/(T*f)]`, `0<=A1<=A0<=1,B>=0`, uses median TMB `T`, clonal fraction `f`, ordinary-HLA-LOH prevalence `L` and an unvalidated response bridge. Grouped held-out reciprocal-TMB RMSE **13.173 pp vs log-TMB 12.084 pp**, 21 rows/20 parents, fails the improvement criterion. Fixed clonal extension worsens matched prediction; free exponent is negative. Full coherent **nine-parent** panel fails the frozen ten-parent gate; full-model fits are exploratory. | **Empirical: failed predictive criterion; contrary clonal-proxy direction. Full gated test and mechanistic scaling untestable.** | Repository-specific surrogate test with preserved negatives; no demonstrated biomarker, first ecological analysis or independent outcome replication. | [test_research_immune_escape_pancancer_test.py](../tests/test_research_immune_escape_pancancer_test.py) | Tests an extra observation model built on [#59](immune-escape-neoantigen-clonality/), after [#63](prediction-confrontation/); followed by [#72](merkel-viral-antigen-test/)'s frozen Merkel transfer/measurement audit. Neither refutes the theorem. |
 | [Clonal haematopoiesis progression](clonal-hematopoiesis-progression/) (#68) | For every integer `n>=0`, finite `b,d,q,T>=0` in the independent marked birth–death model, `S_n(T)=(E exp(-q A_T))^n` with `A_T=∫₀ᵀZ(t)dt`; thus `H_n=-n log E exp(-q A_T)`, not generally `nqK(s,T)` at finite `q`, `s=b−d`. The exact bound is `0<=nqK(s,T)−H_n<=nq² E[A_T²]/2`; for `n→∞,q=κ/n`, `H_n→κK(s,T)` at fixed rates/horizon. For matched initial count, age and effective initiation coefficient, and a shared finite nonzero nonnegative completion measure at fixed `T>0`, the rare-hit cumulative-hazard ratio at `s_high>=s_low` lies in `[1,exp((s_high−s_low)T)]`. Unknown turnover, advanced states, observation or diagnosis mapping defeat inference from net fitness/VAF alone. | **Proved within specified branching/observation models.** Main conditional biological target **empirically untestable**; seven-gene ten-year substituted baseline-fitness **proxy falsified only by the declared descriptive interval-box rule** (U2AF1). The 20-year per-gene overlap sensitivity is consistent, while a post-hoc common-intercept check remains infeasible. | **Narrow original-to-repository synthesis/audit, global novelty unestablished.** CH growth/AML associations, CHRS, multiple hits and branching machinery are **known prior results**; not a discovered mechanism or clinical risk predictor. | [test_research_clonal_hematopoiesis_progression.py](../tests/test_research_clonal_hematopoiesis_progression.py) | Its own [source/endpoint audit](clonal-hematopoiesis-progression/SOURCE_AUDIT.md) and [frozen prespecification](clonal-hematopoiesis-progression/PRESPEC.md); related but distinct identifiability limits in [#57](induced-vs-selected-resistance/) and [#64](multistage-incidence-identifiability/), and aggregate testing limits in [#63](prediction-confrontation/). |
+| [Stem-cell divisions and risk](stem-cell-divisions-risk/) (#70) | In the independent-lineage, ordered equal-rate chain, `H=N psi_k(uD/N)`, where `psi_k(x)=x−log(sum_{j=0}^{k−1} x^j/j!)`. For every positive integer k and tissue with `0<R<1,N,D>0`, the required intensity is uniquely `U_k=(N/D) psi_k^{-1}(−log(1−R)/N)`. If independently selectable tissue boxes give full attainable intensity intervals `[ell_i,r_i]`, one `u0>0` with `u_i in [u0/rho,u0*rho]`, `rho>=1`, is feasible iff `rho²>=max(1,max_i ell_i/min_i r_i)`. Coupling D to N through the source counting formula changes the uncertainty extrema. Free tissue rates fit every k; the half-slope, homogeneous limiting-model comparisons and exact compatibility frontier identify no biological k, expansion or attributable fraction. | **Proved within model. Empirical: association consistent; tested common-rate point specification falsified conditionally for k=1,...,8; limiting-model predictive failure. Biological interpretation not identifiable.** The international joint risk/division replication is unavailable. | Reproducible analysis plus **candidate narrow exact-inverse/observation-map refinement; priority unestablished**. Half-slope ambiguity, independent-target models and interval-intersection geometry are **known prior results**. | [test_research_stem_cell_divisions_risk.py](../tests/test_research_stem_cell_divisions_risk.py) | Extends [#64](multistage-incidence-identifiability/)'s bounded-calibration geometry to cross-tissue endpoints; its onset-order theorem does not identify a count here. The exact chain is reused by [#75](petos-paradox-mutation-rates/). |
+| [Persister colony reanalysis](persister-colony-reanalysis/) (#71) | Under the frozen broad delayed-outgrowth/acquisition kernels, early/newly late/neither well probabilities are `1−exp(−a)`, `exp(−a)(1−exp(−b))`, `exp(−a−b)`. Splitting `b=b_delayed+b_acquired` in any proportion leaves the complete observation law unchanged; the matched-prior held-out predictions also coincide. Four biological-replicate folds of published DiFi B6/WiDr B7 annotations give summed joint log score **−32.186587** for both families; both WiDr late counts miss the primary marginal predictive intervals. Neither acquisition nor delayed pre-existing resistance is established. | **Partial; empirical: origin not identifiable within the stated family.** Conditional observational alias proved; raw Mendeley V2 archive integrity, internal locators and population recalibration remain **incomplete**. The published-count analysis does not finish the requested raw-data job. | Limited, preliminary application of known marked-Poisson observation-law reasoning plus a reproducible aggregate holdout audit; no new biology, audited raw-data replication or drug-causation result. | [test_research_persister_colony_reanalysis.py](../tests/test_research_persister_colony_reanalysis.py) | Applies [#57](induced-vs-selected-resistance/)'s unknown-kernel nonidentifiability through a vector-readout extension to a continuous-treatment assay. It does **not** test #57's positive quiescent `0,H,2H` holiday theorem. |
+| [Merkel viral-antigen test](merkel-viral-antigen-test/) (#72) | Replays frozen leave-Merkel-out [#67](immune-escape-pancancer-test/) curves against JAVELIN Parts A/B. For the primary reciprocal curve under median substitution, common assay scale must lie in **[34.112,99.711]**, outside assumed bands `[1,2]` and `[0.5,5]`; the conservative median-envelope relaxation instead has region **[0.449,infinity)**. One nonnegative viral offset fixed on Part A at each of five fixed scales improves Part B point scores at all five, but the full repair rule passes only at **4/3, 2 and 5**; at identity scale, RMSE improves **28.010 to 14.727 pp** while the unchanged virus-negative prediction still misses. | **Empirical: viral/assay attribution untestable.** The median-substitution surrogate fails within the assumed bands; the relaxed median envelope is consistent. Conditional point-score gain is not mechanism identification, a validated viral offset or reversal of #67's failed improvement criterion. | Low: repository-specific frozen-surrogate transfer and denominator/median audit using established viral biology and elementary distribution bounds. Distinct trial cohorts are not independent programme replication. | [test_research_merkel_viral_antigen_test.py](../tests/test_research_merkel_viral_antigen_test.py) | Tests [#67](immune-escape-pancancer-test/)'s extra observation model motivated by [#59](immune-escape-neoantigen-clonality/); TMB, viral status and ORR do not measure its functional antigen load. Missing Part B viral-specific outcomes **within the TMB subset** block the matched surrogate test. |
+| [Incidence strata test](incidence-strata-test/) (#73) | Applies [#64](multistage-incidence-identifiability/)'s necessary nondecreasing-bin-mean condition to **330 SEER 2013–2017 rates / 30 site–sex–race curves**, ages 30–84, with printed one-decimal rates represented only by rounding intervals. **Six fail:** female breast in All Races, Whites and Blacks, plus Black lung/bronchus in Both Sexes, Males and Females. Breast minimum abstract calibration allowances are **1.066238 / 1.062759 / 1.056962**; all colon/rectum and pancreas curves pass the necessary condition. | **Empirical: descriptive shape falsification within the stated rounding rule; consistency only with a necessary condition for passing curves.** Race pooling alone does not remove the breast failure. Population-hazard significance and causal explanation remain **untestable**, with no counts/exposures or identified biological step count. | Low: reproducible within-stratum and constraint-age audit extending #64, **no new theorem**. The overlapping race/sex columns are not independent samples or replications. | [test_research_incidence_strata_test.py](../tests/test_research_incidence_strata_test.py) | Tests [#64](multistage-incidence-identifiability/)'s observable homogeneous-model restriction; [#70](stem-cell-divisions-risk/) is a methodological precedent, not a separately validated theory here. |
+| [ecDNA rejection robustness](ecdna-rejection-robustness/) (#74) | For the three untreated Lundberg lines, computes **sharp attained** upper tails over finite exchangeable binary rejection indicators with actual null-size cap `p<=A` and between-mother correlation cap `Corr<=R`, then applies Holm at family level 0.05, equality rejecting. At `A=0.01`, LA-N-5 alone rejects exactly when **`0<=R<=17/3267`**. The zero-correlation-cap tail is not the mutually independent tail. An exact-r beta-binomial sensitivity has nonmonotone rejection re-entry; it is not robustness under a cap allowing smaller r. | **Proved within the declared sensitivity model. Empirical: fair-segregation rejection conditional; actual size/dependence caps not identifiable from these counts.** Loss of rejection does not establish fair segregation. | Narrow repository robustness/frontier audit with **known prior** finite-moment, exchangeability, Holm and polynomial-certification tools; no new segregation estimate, biological experiment or general statistical-method priority claim. | [test_research_ecdna_rejection_robustness.py](../tests/test_research_ecdna_rejection_robustness.py) | Extends the Lundberg rejection-count endpoints in [#65](ecdna-segregation-clustering-data/) and [#63](prediction-confrontation/). Does not recalculate #65's separate Shibata-fit transport or refute [#55](ecdna-segregation-therapy/)/[#60](ecdna-killing-laws-and-clustering/)'s conditional mathematics. |
+| [Peto's paradox / mutation rates](petos-paradox-mutation-rates/) (#75) | In the ordered equal-rate independent-target chain, `H=N psi_k(x)` exactly, so equal lifetime **functional** clocks leave H proportional to target number. For positive M,m,L, direct onset risks `0<R_i,R_j<1`, fixed a, unrestricted positive finite common c,nu and **real effective targets** `N=nu M^a`, impose passenger-to-functional calibration `x=c mL`. A two-species pair with `b=(m_i L_i)/(m_j L_j)!=1`, `y=(H_i/H_j)/(M_i/M_j)^a` and integer `k>1` admits positive finite common c,nu iff **`min(b,b^k)<y<max(b,b^k)`**; endpoints are only limits. The note treats the k=1 and b=1 cases separately and derives a sharp interval-modulation infimum. The six-species mortality-matched proxy's cell-aware limiting models predict worse than the intercept for every tested k=1,...,8. | **Proved within model. Empirical: unmodulated shared-k proxy fails under the stated mapping/primary boxes; biological compensation not identifiable.** The hypothetical factor-two rate/lifespan stress gives `F_inf=1` for the **giraffe/naked-mole-rat pair** at tested k=3,...,8; no extra biological steps, repair or immune defense are measured. | Reproducible synthesis plus **candidate narrow exact pair-compatibility/modulation refinement; priority unestablished**. Peto tradeoffs, mutation/cancer joins, the exact chain and interval geometry are **known prior results**. | [test_research_petos_paradox_mutation_rates.py](../tests/test_research_petos_paradox_mutation_rates.py) | Reuses [#70](stem-cell-divisions-risk/)'s exact chain and [#64](multistage-incidence-identifiability/)/[#70](stem-cell-divisions-risk/)'s compatibility geometry. Passenger clocks, target proxies and mortality are observation assumptions; pairwise compatibility does not establish a single all-species calibration. |
+
+| [Viral-antigen offset transport](viral-antigen-transport-test/) (#76) | Transport the **unchanged** [#72](merkel-viral-antigen-test/) Part-A-calibrated one-parameter offset of [#67](immune-escape-pancancer-test/)'s frozen Merkel-held-out reciprocal TMB curve across the specified HPV/EBV-labelled cancer strata, with the five inherited assay scales and no target refit. At the primary point offset and `c=1`, the viral-positive response range has lower limit **27.534051%** and upper ceiling **48.718323%**; the selected KEYNOTE-040 HPV-positive ORR 95% interval **[4.7%,22.2%]**, widened for printed rounding to **[4.65%,22.25%]**, is below the minimum by **5.284051 pp**. This is a necessary range contradiction for **all nonnegative TMB**, not a paired predictive-error test; all inherited point scales retain the contradiction, while a low-endpoint training sensitivity may not. | **Empirical: frozen point-offset transport falsified under the declared range criterion.** A strict historically independent out-of-sample verdict is **untestable** owing to possible training-cohort overlap; comparative offset-versus-TMB predictive gain is **untestable** because **zero complete eligible positive/negative ORR–TMB pairs** are available. The EBV result is adverse single-stratum point evidence only. Neither finding identifies viral antigen supply. | Limited repository-specific source/transport audit and numerical counterexample using **known prior** viral biology and elementary response-range bounds; priority for any narrow synthesis unestablished. No new viral mechanism, independent external validation or biomarker. | [test_research_viral_antigen_transport_test.py](../tests/test_research_viral_antigen_transport_test.py) | Tests the measurement/offset extension in [#72](merkel-viral-antigen-test/) of [#67](immune-escape-pancancer-test/)'s ecological proxy; [#59](immune-escape-neoantigen-clonality/)'s functional-load model is not measured or falsified. |
+
+| [CH age-prevalence transport](ch-age-prevalence-test/) (#78) | Under a frozen Watson-derived truncated stretched-exponential distribution of fitness effects, the specified positive Poisson mutation supply, cross-sectional clone-threshold observation and true-VAF reference, the note derives a one-dimensional age-prevalence integral, an exact integer birth–death cross-sectional tail, sharp age-support/common-supply compatibility bounds and necessary gene-in-pooled event inclusion (numbered results 1–7). At the unchanged supplied parameters the **substituted** curated-driver CHIP aggregate endpoint fails the frozen interval-compatibility criterion; in Qiu/CNSR-III the primary common-supply bounds are **[297.545536,0.628432]** (empty) and the post-score finite-band sensitivity remains empty (**[5.319347,0.648814]**). Separate gene and pooled model fits violate the necessary event-inclusion condition in **10/24** frozen grid comparisons (largest **3.3762 pp**). | **Proved within stated model** (calculus, conditional branching and identification results). **Empirical: substituted compound transport falsified under the declared descriptive criterion; fitness alone untestable.** A necessary internal fit-consistency test fails, but published broad gene marginals are **not** matched gene-by-age curves; different variant panels, VAF thresholds, callers, age distributions, supply and possible cohort overlap prevent causal or mechanistic attribution. | Limited numerical transport and source/eligibility audit, plus a model-only necessary subset check; Watson's age-prevalence/fitness framework, CH age associations and core branching/Poisson tools are **known prior results**. Neither a new CH mechanism, a first external comparison, clinical predictor nor priority claim. | [test_research_ch_age_prevalence_test.py](../tests/test_research_ch_age_prevalence_test.py) | Separately interrogates the age-prevalence observation bridge motivated by CH fitness studies; related to but **not a test of** [#68](clonal-hematopoiesis-progression/)'s conditional progression-hazard theorem. [#64](multistage-incidence-identifiability/) supplies a distinct observation/calibration precedent; [#70](stem-cell-divisions-risk/) similarly illustrates nonidentification from aggregate endpoints. |
 
 ## Five next jobs, ranked by expected scientific value
 
-This is a prioritization judgment, not a forecast of successful discovery.
-Ranking weighs mechanistic discrimination, independent observations, available
-measurement, and the chance a negative answer changes the programme. All jobs
-are nonclinical and use existing public cell-line data or published aggregates.
-Freeze question, estimand, exclusions, sensitivity region and held-out scoring
-before fitting; retain null and unavailable outcomes.
+### Disposition of the previous ranking
 
-1. **Highest: does resistance-origin inference survive realistic outgrowth?**
-   Use **Russo et al. 2022, Mendeley Data V2,
-   [DOI 10.17632/mvfm7hs9kw.2](https://data.mendeley.com/datasets/mvfm7hs9kw/2)**,
-   `Russo_et_al_v2.zip`: DiFi/WiDr early/late colony assays and population
-   measurements, with the [paper's Fig. 3e and Supplementary Tables 1, 2, 4,
-   5](https://www.nature.com/articles/s41588-022-01105-z).
-   Within a prespecified competing-model family, ask whether held-out colony
-   counts require increased post-exposure acquisition after allowing delayed
-   outgrowth, measured persister turnover and unequal clone-size/readout
-   kernels. Hold out entire cultures/biological replicates and keep independent
-   dynamics calibration separate from the colony-count prediction target.
-   A robust signal or predictive observational alias would sharpen
-   [#57](induced-vs-selected-resistance/). This is not its quiescent `0,H,2H`
-   experiment and cannot by itself prove drug causation.
+| Previous rank / question | State after this integration |
+| --- | --- |
+| 1. Russo raw resistance-origin reanalysis | **Partial in [#71](persister-colony-reanalysis/), not done.** The published-count alias/holdout audit is complete; original Mendeley archive verification, raw-data tracing and independent population recalibration remain open. Those unavailable raw inputs are not prerequisites for any new ranked job. |
+| 2. Merkel assay/viral-status surrogate | **Done within the available aggregate scope in [#72](merkel-viral-antigen-test/).** The scale/median audit and Part-A-fixed offset transfer are reported; mechanistic attribution remains untestable. New job 3 asks a different question using matched TMB bins already printed in the articles. |
+| 3. ecDNA miscalibration/dependence frontier | **Done in [#74](ecdna-rejection-robustness/).** The sharp frontier and contrary beta-binomial sensitivity are retained; actual size/dependence calibration is still missing. |
+| 4. Within-demographic-stratum incidence shape | **Done in [#73](incidence-strata-test/).** Breast failure persists in both printed race-specific strata. New job 2 adds count denominators and stage information from a different published aggregate table. |
+| 5. Seyedi terminal-cause composition | **Not done; retained as new job 5.** [#66](containment-evidence/)'s toxicity warning is not the proposed cause-composition/reclassification analysis. |
 
-2. **High: does the immune surrogate's Merkel-cell residual survive assay
-   and viral-status stratification?** Use **JAVELIN Merkel 200 Part B,
-   [D'Angelo et al. 2021](https://pmc.ncbi.nlm.nih.gov/articles/PMC8311489/),
-   Fig. 1D, biomarker Results and Supplementary Fig. 3B**, and distinct
-   **Part A [2020 report](https://pmc.ncbi.nlm.nih.gov/articles/PMC7239697/),
-   response/biomarker Results and Figs. 1/3**. Compute which common assay-scale
-   conversions, if any, make the frozen [#67](immune-escape-pancancer-test/)
-   TMB-only curve compatible with each cohort's MCPyV-positive/negative ORR
-   intervals and TMB medians; compare the compatibility regions. Chalmers
-   mutations/Mb (including synonymous alterations) and JAVELIN NSSV/Mb differ:
-   this is an observation-bridge sensitivity test, not calibrated external
-   validation. Any exploratory viral-status extension must have at most one
-   added parameter, fixed on Part A before scoring Part B. Keep first/later-line
-   cohorts and TMB-/ORR-evaluable denominators separate; marginal summaries are
-   not paired data and overlapping follow-ups are not replications. Median
-   substitution remains an assumption; no functional-load or causal inference.
+### New ranking
 
-3. **Moderate: how fragile is the ecDNA fair-segregation rejection?** Use
-   **[Lundberg et al. 2008](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0003099),
-   Results “Statistical distribution of DMs at mitosis”, Fig. 3E–G**:
-   CHP-212 `2/100`, LA-N-5 `10/100`, MC-IX `1/50` nominal `0.01` test rejections,
-   already in [lundberg.csv](ecdna-segregation-clustering-data/data/lundberg.csv).
-   Map the joint miscalibration/dependence frontier that removes the
-   Holm-adjusted inconsistency, using exact tails under a declared exchangeable
-   count model and dependence-robust bounds. This correlation concerns test
-   indicators, not ecDNA dispersion, and cannot be estimated from these counts.
-   A quantified robustness frontier would extend
-   [#65](ecdna-segregation-clustering-data/)'s two dependence endpoints;
-   it would not supply a new segregation estimate.
+This is a prioritization judgment, not a forecast of discovery. The highest
+value is a new observable that can distinguish explanations or make a
+prediction fail, with an explicit comparison and an affordable stopping rule.
+All five jobs use existing public article text, printed tables or a directly
+readable aggregate text table; **none requires browser file downloads,
+controlled data, individual records or new experiments**. The sources and
+outcomes are already visible: freeze the new question, population, exclusions,
+uncertainty assumptions and scoring before analysis, without calling that
+blinding or independent preregistration. A failed data reconciliation or a
+non-identifying observation map is a reported result, not permission to fill
+missing cells or tune the question after fitting.
 
-4. **Moderate: does the incidence-model failure persist within published
-   demographic strata?** Use **SEER CSR 1975–2017, incidence period 2013–2017,
-   [Table 4.11](https://seer.cancer.gov/archive/csr/1975_2017/results_single/sect_04_table.11.pdf)**,
-   age-specific female All Races/White/Black columns at ages 30–84, plus
-   **Tables [6.10](https://seer.cancer.gov/archive/csr/1975_2017/results_single/sect_06_table.10.pdf),
-   [15.10](https://seer.cancer.gov/archive/csr/1975_2017/results_single/sect_15_table.10.pdf),
-   [22.7](https://seer.cancer.gov/archive/csr/1975_2017/results_single/sect_22_table.07.pdf)**
-   for prespecified site/sex contrasts. Apply
-   [#64](multistage-incidence-identifiability/)'s rounding-aware monotonicity
-   and calibration frontier within strata; compare which ages force model
-   relaxation. This asks whether pooled shape failure survives the available
-   stratification; it cannot identify its cause, supply missing denominators
-   or estimate drivers.
+1. **Highest: does antigen-presentation architecture add portable predictive
+   information beyond size and lifespan?** Use **Vincze et al. (2025),
+   [Immunological surveillance against cancer across mammals](https://doi.org/10.1038/s41467-025-65286-x)**,
+   Methods “Cancer mortality risk,” and the paper-linked, pinned
+   [SourceData_FINAL.csv](https://github.com/OrsolyaVincze/VinczeEtalNatComm_MHC-cancer/blob/2c8a5c5b5fda6fb34c86b0e5a2b6a58dcc85cc3e/SourceData_FINAL.csv)
+   and [phylogeny.tre](https://github.com/OrsolyaVincze/VinczeEtalNatComm_MHC-cancer/blob/2c8a5c5b5fda6fb34c86b0e5a2b6a58dcc85cc3e/phylogeny.tre).
+   Freeze a common species panel; compare a body-mass/adult-lifespan/diet
+   baseline with one added `log(MHC-I gene-family size + 1)` term, holding out
+   entire taxonomic orders. Freeze zero-aware cancer-death scoring, order-level
+   uncertainty and a phylogeny sensitivity using the pinned tree; retain
+   zero-case species, naked mole rat and Patagonian mara
+   in the primary panel, with source exclusions only as a declared sensitivity.
+   Audit rounding before recovering integer cancer deaths from `CMR * RDI`
+   (RDI is deaths with known cause); **ICM is a separate estimator, never a
+   count recovered by that multiplication**. The published association is
+   prior work; the new question is incremental predictive transport under
+   this inclusive specification. Gain or failure would constrain a measured
+   antigen-presentation proxy motivated by [#59](immune-escape-neoantigen-clonality/)
+   after [#75](petos-paradox-mutation-rates/)'s mutation-only deficit. Mortality
+   provenance overlaps #75; this is not independent mortality validation,
+   functional-repertoire measurement or identification of immune causation.
 
-5. **Moderate: how robustly do terminal-cause distributions differ across
-   containment schedules?** Use **Seyedi et al. 2024,
-   [Cancers 16:257](https://www.mdpi.com/2072-6694/16/2/257),
-   [supplement](https://www.mdpi.com/article/10.3390/cancers16020257/s1),
-   `cancers-2752834-supplementary.pdf`, Tables S2–S4 (pp. 32–33)**: aggregate
-   outcomes attributed to toxicity, cancer or other causes across capecitabine,
-   gemcitabine and combination schedules. Table S1 records attribution reasons;
-   Table S5 supplies dose means. Prespecify exact small-sample cause-composition
-   contrasts and reclassification bounds, preserving source-pooled groups and
-   counting the shared combination control once. Determine whether the
-   toxicity-attribution contrast survives the declared sensitivity range.
-   This quantifies [#66](containment-evidence/)'s comparator warning. Unequal
-   observation times and competing risks prevent interpretation as equal-horizon
-   cancer mortality, cause-specific survival, causal attribution, competition
-   or #61's mutation threshold.
+2. **High: which breast-incidence declines survive sampling uncertainty and
+   stage decomposition?** Use **Turbow et al. (2021),
+   [Mammography use and breast cancer incidence among older U.S. women](https://doi.org/10.1007/s10549-021-06160-4)**,
+   **Table 1**, printed manuscript **pp. 12–13** in the openly readable
+   [CDC author manuscript](https://stacks.cdc.gov/view/cdc/147747/cdc_147747_DS1.pdf)
+   ([article text](https://pmc.ncbi.nlm.nih.gov/articles/PMC10846538/)). It prints
+   2016 USCS age-bin case counts, population denominators, rates/intervals and
+   localized/regional/distant/unknown-stage counts. First reconcile each
+   count/exposure pair with the table's rate and age-adjustment labels; retain
+   unassigned residual counts and source inconsistencies explicitly. Freeze
+   adjacent-age contrasts for finite bins 65–84, with 85+ separate, and use
+   a declared count/exposure sampling model and simultaneous uncertainty.
+   Then ask which stage-specific declines remain under worst-case allocation
+   of unknown stage and small unreconciled residuals. This can test
+   [#73](incidence-strata-test/)'s shape restriction statistically in these
+   different aggregates and locate the observable stage contribution; failure of
+   reconciliation limits the claim. USCS includes SEER, so this is not a fully
+   independent replication. Stage at diagnosis, screening and cohort effects
+   remain distinct; neither the table nor its separate 2018 screening survey
+   identifies the cause of a 2016 age pattern or a biological transition count.
+
+3. **High: does the frozen TMB-only surrogate survive outcome-matched TMB
+   bins without substituting a median?** Use **JAVELIN Merkel 200 Part A,
+   [D'Angelo et al. (2020)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7239697/)**,
+   Results “Exploratory biomarker analyses,” high/low-TMB ORR paragraph, and
+   **Part B, [D'Angelo et al. (2021)](https://pmc.ncbi.nlm.nih.gov/articles/PMC8311489/)**,
+   Results “Tumor mutational burden.” Both print ORRs and 95% intervals for
+   **TMB <2 versus >=2 NSSV/Mb within the TMB-evaluable cohort**. For each
+   frozen monotone curve `f` from [#72](merkel-viral-antigen-test/) and common
+   positive assay scale c, add the explicit mean-response bridge
+   `ORR_bin = E[f(cT) given bin]`: low-bin mean response is at most `f(2c)`
+   and high-bin mean response is at least `f(2c)`. That bridge is an additional
+   assumption for an ecologically fitted curve. Compute the sharp scale region
+   over arbitrary within-bin TMB distributions, retaining each curve's full
+   response range and finite-TMB/open-endpoint limits. Intersect it across
+   Parts A/B and compare the already-declared scale bands; fit no Part B
+   outcome parameter. Preserve the printed marginal
+   intervals without calling their intersection a simultaneous confidence test
+   or inferring counts from rounded percentages. This uses matched
+   measurement/outcome subsets to remove #72's median substitution and broad
+   ORR/TMB denominator mismatch. It can falsify that observation bridge or
+   show its latitude; it does not isolate viral antigens or test
+   [#59](immune-escape-neoantigen-clonality/)'s functional-load theorem.
+   The same trial cohorts remain reused evidence.
+
+4. **Moderate: how much species-by-tissue variation does the mutation-clock
+   bridge require?** Use **Kapadia et al. (2025),
+   [Clonal dynamics and somatic evolution of haematopoiesis in mouse](https://doi.org/10.1038/s41586-025-08625-8)**,
+   Results “Somatic mutation accumulation,” with **Mitchell et al. (2022),
+   [Clonal dynamics of haematopoiesis across the human lifespan](https://doi.org/10.1038/s41586-022-04786-y)**,
+   abstract/Results for the human blood rate, and **Cagan et al. (2022),
+   [Somatic mutation rates scale with lifespan across mammals](https://pmc.ncbi.nlm.nih.gov/articles/PMC9021023/)**,
+   Results “Correlation with life-history traits,” the printed human/mouse
+   colon-rate comparison. Freeze the separable restriction
+   `rate(species,tissue)=species_factor * tissue_factor`; it predicts a
+   mouse/human rate ratio that is identical in blood and colon. Compare the
+   ratio of those ratios with one and bound the minimum multiplicative
+   departure, using printed intervals only where supplied and a separately
+   labeled assay/normalization sensitivity elsewhere. Add a predeclared
+   three-species negative control from **Caglayan et al., September 2026
+   [preprint, version 1](https://pmc.ncbi.nlm.nih.gov/articles/PMC13622217/)**,
+   Results accompanying Figs. 1f and 2i–l: printed human/mouse/ferret
+   glutamatergic-neuron annual SNV rates. The additional ferret colon input
+   is the `Ferret` mutation-rate row in the exact
+   [Compton-hosted Cagan aggregate table](https://github.com/zacharycompton/cancerAcrossVertebrates/blob/3b4db10c7c38c63aeebfc9a48ce4bfa376dfd2bc/Mutation_Data.csv),
+   already transcribed with missing uncertainty in
+   [#75's source audit](petos-paradox-mutation-rates/data/PROVENANCE.md).
+   Freeze human/mouse calibration and score ferret transfer without fitting
+   its neuronal outcome. Keep SEMs distinct from confidence limits and the
+   preprint check distinct from the peer-reviewed blood/colon comparison. Keep
+   cultured stem-cell estimates, duplex blood estimates, per-genome/per-base
+   units and genotype effects distinct. This is a quantitative transport check
+   for [#75](petos-paradox-mutation-rates/)'s colon-to-whole-animal bridge,
+   not a new discovery that tissues differ: that observation is prior work.
+   Postmitotic neurons are a transport negative control, not cancer targets;
+   the sparse panel does not support a general species-level validation.
+   A failure rejects the separable passenger-clock proxy under its measurement
+   assumptions, not mutation-based cancer models or functional driver clocks.
+
+5. **Moderate: does a schedule-associated terminal-cause contrast survive
+   attribution uncertainty?** Use **Seyedi et al. (2024),
+   [Cancers 16:257](https://www.mdpi.com/2072-6694/16/2/257)**,
+   [public supplement](https://www.mdpi.com/article/10.3390/cancers16020257/s1),
+   **`cancers-2752834-supplementary.pdf`, Table S4 (pp. 32–33)** for the
+   primary combination/vehicle comparison, with the cause-definition narrative
+   on p. 32. The public supplement is a ZIP containing that printed PDF and
+   can be read through ordinary HTTP/archive parsing without a browser
+   download. Table S1 states attribution reasons; S5 gives dose means.
+   **Reconcile denominators first:** the adaptive rows of single-drug
+   Tables S2/S3 each sum to 13, although the listed pooled groups contain 12
+   animals. Keep those discrepancies visible; do not silently subtract a case
+   or treat those totals as randomized sample sizes. S4's group totals agree
+   with the stated combination/vehicle sizes and supply the executable
+   primary contrast. Freeze exact small-sample cause-composition comparisons
+   and the number/fraction of cause reclassifications needed to erase each
+   contrast, preserving source-pooled arms and counting the shared combination
+   control once. Use S2/S3 only after a documented reconciliation or explicit
+   partial-identification bounds. Report effects and multiplicity-aware
+   uncertainty with every adverse or null contrast. This
+   would quantify how much [#66](containment-evidence/)'s toxicity explanation
+   depends on attribution, rather than treating an all-cause outcome as
+   evidence for [#61](containment-at-tumour-scale/)'s mechanism. Unequal
+   follow-up and competing risks prevent interpretation as equal-horizon
+   cancer mortality, cause-specific survival or an identified mutation-supply
+   threshold. No schedule or dose recommendation follows.
 
 The original index's laboratory/new-sampling proposals are not executable
-with the present public inputs. A new 100-mother ecDNA experiment, matched
-ctDNA schedule outcomes, calibrated metastatic lag/pairwise downsampling
-release, or real-tumour `lambda/lambda*` estimation is not an existing-data
-job. #60's solved linear threshold is also no longer an open task.
+with these public inputs. A new 100-mother ecDNA experiment, matched ctDNA
+schedule outcomes, calibrated metastatic lag/pairwise downsampling release,
+or real-tumour `lambda/lambda*` estimation is not an existing-data job.
+#60's solved linear threshold is also no longer an open task. Repeating #71's
+endpoint alone, fitting more offsets to #72's unmatched marginals, or treating
+#74's caps as measured parameters would not resolve their identification limits.
 
 ## Verification boundaries and reproducibility
 
@@ -191,8 +311,23 @@ exact algebra, rounded-rate sensitivity and synthetic exposure calculations.
 bounds, hidden-state counterexamples, all published gene-proxy LOO predictions,
 held-out leakage, sensitivity scenarios and seeded simulations. These are
 implementation checks, not validation of a clinical progression mechanism.
+#70 checks the finite-risk inverse, coupled uncertainty extrema and source
+variants separately from limiting-model prediction. #71 checks the complete
+origin alias and whole-replicate predictions but cannot verify an unfetched
+archive or complete raw population calibration. #72 checks frozen curve
+transfer, denominator flags, median-envelope bounds and the Part-A-only
+offset fit. #73 checks the rounding-aware strata and constraint ages; #74
+checks attained finite-exchangeable bounds and contrary beta-binomial
+sensitivities. #75 checks exact pair compatibility/modulation and held-out
+proxy fits separately, including stress-box rescue and observation aliases.
+#76 checks that the inherited offset and scales are frozen, verifies every
+source range calculation and missing paired-data gate, and separates its
+conditional transport failure from the untestable independent comparison.
+#78 checks frozen supply/panel joins, all age-bin predictions, common-multiplier
+and gene-subset contradictions, with matched-assay and cohort-independence
+failures kept separate from any biological fitness conclusion.
 
-Empirical tests in #63/#65/#66/#67/#68 recompute source joins, exclusions,
+Empirical tests in #63/#65–#68/#70–#76/#78 recompute source joins, exclusions,
 denominators, uncertainty conventions and generated blocks. They do not
 establish source truth, search completeness, undocumented sampling assumptions,
 independent replication or biological validity. Respect the frozen protocols
@@ -228,6 +363,18 @@ python -B research/immune-escape-pancancer-test/analysis.py --check
 python -B research/multistage-incidence-identifiability/analysis.py
 python -B research/clonal-hematopoiesis-progression/analysis.py
 python -B research/clonal-hematopoiesis-progression/verify.py
+python -B research/stem-cell-divisions-risk/analysis.py
+python -B research/stem-cell-divisions-risk/verifier.py
+python -B research/persister-colony-reanalysis/analysis.py --format markdown
+python -B research/merkel-viral-antigen-test/analysis.py --check
+python -B research/incidence-strata-test/analysis.py --check
+python -B research/ecdna-rejection-robustness/analysis.py --check
+python -B research/ecdna-rejection-robustness/verifier.py
+python -B research/petos-paradox-mutation-rates/analysis.py
+python -B research/petos-paradox-mutation-rates/verifier.py
+python -B research/viral-antigen-transport-test/analysis.py --check
+python -B research/ch-age-prevalence-test/analysis.py
+python -B research/ch-age-prevalence-test/verify.py
 ```
 
 Repository gates use the existing dependency in
