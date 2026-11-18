@@ -39,10 +39,10 @@ lengths below. For arbitrary specified finite courses, `verifier.py` instead
 returns rigorous rational probability enclosures and, when separated, a strict
 comparison certificate. It never labels overlapping intervals a tie.
 
-The candidate model-specific refinement is the particular analytic threshold, its strict
-boundary coefficient and period dependence, the accompanying bounded
-finite-course threshold theorem, and the leading nonzero cross-resistance correction to that local curve,
-certified by an exact polynomial identity. We found no matching result in the primary
+The candidate model-specific refinement is the analytic local threshold, its
+strict boundary coefficient and period dependence, the accompanying bounded
+finite-course threshold theorem, and the leading nonzero cross-resistance
+correction to that local curve, certified by an exact polynomial identity. We found no matching result in the primary
 sources audited through **17 November 2026**. This is a qualified novelty
 assessment, not proof of exhaustive priority.
 
@@ -924,15 +924,16 @@ and \(p<1\). Theorem 5 uses a **finite symbolic Lie-polynomial
 certificate**, not a closed-form elementary hand reduction of all sixth-order
 terms. The separate forward-generator test checks rational examples and
 the predicted \(p\)-slope, but only the generic polynomial identities
-in \`algebra_certificate.py\` address all algebraic rate values. This is
+in `algebra_certificate.py` address all algebraic rate values. This is
 an explicitly computer-assisted proof component, not a peer-reviewed
 symbolic-algebra theorem.
 
 **Quantifier and boundary audit.** At \(ac=r\), A-first loses at order four,
-so the condition in (9) must remain strict. At \(p=1\), or when \(\mu=0\)
-or \(k=0\), all A/B schedules are identical **only from sensitive-only
-initial populations**; if an A-resistant cell is initially present, even
-\(p=1\) need not imply equality. A dedicated regression now distinguishes
+so the condition in (9) must remain strict. At \(p=1\) or \(\mu=0\), the stated identical-schedule conclusion
+is guaranteed **from sensitive-only initial populations**; an initially
+A-resistant cell can break either equality. If \(k=0\), however, drug
+death rates are dose independent, so **all** initial populations tie.
+The added regression distinguishes the p=1 initial-state boundary. A dedicated regression now distinguishes
 these cases. The parameter \(p\) redistributes mutant offspring toward
 the directly doubly resistant type; it is not proof that measured
 cross-resistance is beneficial. Equation (28) compares two analytic
