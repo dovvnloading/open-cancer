@@ -717,7 +717,10 @@ rate even when the true hazard is monotone. Period rates also combine people
 born in different years; changes across age can reflect cohort composition,
 exposure histories, detection or screening, subtype composition, selection,
 competing mortality, and other within-stratum heterogeneity. Those are
-possible explanations, not effects estimated by this analysis.
+possible explanations, not effects estimated by this analysis. In particular,
+screening cessation, cohort effects, and diagnosis delays are **not identified
+causes** here: these aggregate rates do not distinguish them, establish that
+they occurred, or estimate their contributions.
 
 The broad source race and sex labels do not establish biological homogeneity.
 Differences between their calibration factors are descriptive differences in
