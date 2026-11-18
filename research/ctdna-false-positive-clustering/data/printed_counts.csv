@@ -1,0 +1,13 @@
+key,value,unit,locator,source_url,doi,accessed,licence
+surveillance_patients,190,patients,Results surveillance paragraph,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0
+surveillance_samples,816,plasma samples,Results surveillance paragraph,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0
+min_tests_per_person,1,tests,Results surveillance paragraph,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0
+max_tests_per_person,8,tests,Results surveillance paragraph,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0
+ever_positive_patients,64,patients,Results surveillance paragraph and Fig. 3a,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0
+serial_negative_patients,126,patients,Results surveillance paragraph and Fig. 3a,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0
+ever_positive_recurrences,54,patients,Results surveillance paragraph and Fig. 3a,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0
+serial_negative_recurrences,10,patients,Results surveillance paragraph and Fig. 3a,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0
+reported_patient_specificity_numerator,116,patients,Results surveillance paragraph and Discussion,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0
+reported_patient_specificity_denominator,126,patients,Results surveillance paragraph and Discussion,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0
+reported_sample_specificity_numerator,619,plasma samples,Results surveillance paragraph and Discussion,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0
+reported_sample_specificity_denominator,637,plasma samples,Results surveillance paragraph and Discussion,https://www.nature.com/articles/s41698-026-01277-5,10.1038/s41698-026-01277-5,2026-11-18,CC BY 4.0

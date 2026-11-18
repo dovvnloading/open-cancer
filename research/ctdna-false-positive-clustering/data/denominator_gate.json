@@ -1,0 +1,30 @@
+{
+  "article_html": "https://www.nature.com/articles/s41698-026-01277-5",
+  "html_fallback_and_licence": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12913904/",
+  "doi": "10.1038/s41698-026-01277-5",
+  "accessed": "2026-11-18",
+  "source_version": "Nature version of record 2026-02-17; published 2026-01-19",
+  "licence": "CC BY 4.0 (article HTML rights statement)",
+  "gates": {
+    "G1": {
+      "status": "supported",
+      "locator": "Results surveillance paragraph; Fig. 3a caption",
+      "reason": "The reported patient-level specificity is numerically reconcilable with the 126 nonrecurrent participants. The separate 126 serial-negative patients include 10 recurrences."
+    },
+    "G2": {
+      "status": "not_documented",
+      "locator": "Results surveillance paragraph; Discussion",
+      "reason": "The 619/637 sample-level fraction is printed without a sample-to-nonrecurrent-patient denominator crosswalk or explicit indication that all 637 samples come from the 126 nonrecurrent patients."
+    },
+    "G3": {
+      "status": "not_documented",
+      "locator": "Results surveillance paragraph; Methods cohort selection and statistical analysis",
+      "reason": "Both fractions are called surveillance specificity, but the 1-8 range is for 190 participants overall and QC and eligibility are sample-dependent; the eligible 637 samples and per-person range are not matched to the nonrecurrent cohort."
+    },
+    "G4": {
+      "status": "not_documented",
+      "locator": "Results surveillance paragraph; Methods sample classification and QC",
+      "reason": "No individual or aggregate linkage proves that each ever-positive nonrecurrent patient is positive among precisely the 637 sample-denominator tests."
+    }
+  }
+}
