@@ -41,6 +41,11 @@ PREREG_COMMIT = "f5c1f4e87bfd03c85eb015fa14e72a28d33844ad"
 AMENDMENT_COMMIT = "c7d255d7bfafe0ac720e1752a4b55058d136ecd3"
 
 
+def relative_posix_key(path, root):
+    """Use stable POSIX separators for artifact keys, including on Windows."""
+    return path.relative_to(root).as_posix()
+
+
 def normalized_hash(path):
     """Hash text after universal newline conversion, without trimming content."""
     return hashlib.sha256(Path(path).read_text(encoding="utf-8").encode("utf-8")).hexdigest()
@@ -353,7 +358,7 @@ def analyze():
     return {"status": "nonclinical; unreviewed; no medical advice",
             "preregistration_commit": PREREG_COMMIT,
             "prospective_amendment_commit": AMENDMENT_COMMIT,
-            "hashes": {str(p.relative_to(ROOT)): normalized_hash(p) for p in
+            "hashes": {relative_posix_key(p, ROOT): normalized_hash(p) for p in
                        [ROOT/"PROTOCOL.md", ROOT/"AMENDMENTS.md", *sorted((ROOT/"data").glob("*.csv"))]},
             "historical_all": {"n": len(original),
                 **simple_fit([math.log10(r["total_divisions"]) for r in original],

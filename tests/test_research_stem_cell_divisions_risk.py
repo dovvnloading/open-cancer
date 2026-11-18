@@ -19,7 +19,7 @@ import importlib.util
 import itertools
 import json
 import math
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 import random
 import statistics
 import sys
@@ -294,8 +294,19 @@ class StemCellDivisionsRiskTests(unittest.TestCase):
 
     def test_04_normalized_hashes_preserve_every_other_byte(self):
         expected_paths = {"PROTOCOL.md", "AMENDMENTS.md"}
-        expected_paths.update(str(p.relative_to(RESEARCH)) for p in (RESEARCH / "data").glob("*.csv"))
+        expected_paths.update(p.relative_to(RESEARCH).as_posix() for p in (RESEARCH / "data").glob("*.csv"))
         self.assertEqual(set(self.results["hashes"]), expected_paths)
+        self.assertTrue(all("\\" not in key for key in self.results["hashes"]))
+        # Exercise Windows semantics on every OS; a Linux-only checkout would
+        # otherwise miss accidental backslash keys in analysis_results.json.
+        win_base = PureWindowsPath(r"C:\work\stem-cell-divisions-risk")
+        posix_base = PurePosixPath("/work/stem-cell-divisions-risk")
+        for name in ("tv2015.csv", "little2016.csv", "tv2015_nunney2020.csv",
+                     "liu2022_ranked_risk_audit.csv"):
+            canonical = "data/" + name
+            self.assertEqual(A.relative_posix_key(win_base / "data" / name, win_base), canonical)
+            self.assertEqual(A.relative_posix_key(posix_base / "data" / name, posix_base), canonical)
+            self.assertIn(canonical, self.results["hashes"])
         for relative, digest in self.results["hashes"].items():
             payload = (RESEARCH / relative).read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
             self.assertEqual(digest, hashlib.sha256(payload).hexdigest())
