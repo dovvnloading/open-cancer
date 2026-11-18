@@ -1,0 +1,6 @@
+tree eebe458cf6d0e48c7285c31c5fb4ef053b0aeb92
+parent e6558b46e1f7c3ee59f590e0b93ceae48cea2f1c
+author Codex <codex@openai.com> 1794976445 -0500
+committer Codex <codex@openai.com> 1794976445 -0500
+
+Prespecify CH fitness progression model and aggregate stress test

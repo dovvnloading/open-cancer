@@ -1,0 +1,4553 @@
+{
+  "all_finite": {
+    "descriptive": {
+      "fit": {
+        "clock": "effective",
+        "correlation": 0.792888886405,
+        "family": "descriptive",
+        "intercept": -7.42407015226,
+        "k": null,
+        "r_squared": 0.628672786184,
+        "rmse": 0.712536232286,
+        "slope": 0.510211891552
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.732621404242,
+        "row_rmse": 0.771699113045
+      },
+      "leave_row_out": {
+        "fold_count": 30,
+        "group_balanced_rmse": 0.755587673886,
+        "row_rmse": 0.755587673886
+      },
+      "training_rmse": 0.712536232286
+    },
+    "exact_frontier": [
+      {
+        "baseline_interval": [
+          2.92759019294e-13,
+          2.92759019294e-13
+        ],
+        "compatible_allowances": [],
+        "k": 1,
+        "limiting_point_rho": 122.163202112,
+        "lower_constraint": [
+          "gallbladder"
+        ],
+        "max_relative_exact_vs_rare_rate": 1.7763568394e-15,
+        "rate_spread": 14923.8479503,
+        "rho": 122.163202112,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          7.44059922404e-08,
+          7.44059922404e-08
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 2,
+        "limiting_point_rho": 58.0961276738,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 4.44896805412e-05,
+        "rate_spread": 3375.1655669,
+        "rho": 58.0961751487,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          6.01236382756e-06,
+          6.01236382756e-06
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 3,
+        "limiting_point_rho": 50.5288979961,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.000942909292976,
+        "rate_spread": 2553.33545345,
+        "rho": 50.5305398096,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          5.8118667286e-05,
+          5.8118667286e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 4,
+        "limiting_point_rho": 47.1233489255,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0043268261944,
+        "rate_spread": 2221.44295191,
+        "rho": 47.1321859446,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000237460965397,
+          0.000237460965397
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 5,
+        "limiting_point_rho": 45.1912068161,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0108220087901,
+        "rate_spread": 2044.33086074,
+        "rho": 45.2142771782,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000598193863758,
+          0.000598193863758
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 6,
+        "limiting_point_rho": 46.1847797769,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0200353737144,
+        "rate_spread": 2126.77991014,
+        "rho": 46.1170240816,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00117754523605,
+          0.00117754523605
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 7,
+        "limiting_point_rho": 47.2324713459,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0312686881436,
+        "rate_spread": 2221.20741959,
+        "rho": 47.1296872427,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00199596259367,
+          0.00199596259367
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 8,
+        "limiting_point_rho": 48.0338076112,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0438748778892,
+        "rate_spread": 2293.94100896,
+        "rho": 47.8951042275,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      }
+    ],
+    "expansion": [
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -13.8104328223,
+          "k": 2
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 2.11259391817,
+          "row_rmse": 2.23413907693
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 2.11033078932,
+          "row_rmse": 2.11033078932
+        },
+        "training_rmse": 2.03998642968
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -15.3046977866,
+          "k": 3
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 3.23809029895,
+          "row_rmse": 3.40785923499
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 3.21220536447,
+          "row_rmse": 3.21220536447
+        },
+        "training_rmse": 3.10513185232
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -16.6740240144,
+          "k": 4
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 4.41127627942,
+          "row_rmse": 4.62300006572
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 4.35721591304,
+          "row_rmse": 4.35721591304
+        },
+        "training_rmse": 4.21197538261
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -17.9464402291,
+          "k": 5
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 5.60227114219,
+          "row_rmse": 5.85382375389
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 5.51857750405,
+          "row_rmse": 5.51857750405
+        },
+        "training_rmse": 5.33462492059
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -19.1396751978,
+          "k": 6
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 6.80172620707,
+          "row_rmse": 7.09216986311
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 6.68777726676,
+          "row_rmse": 6.68777726676
+        },
+        "training_rmse": 6.46485135787
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -20.2659633769,
+          "k": 7
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 8.0058397904,
+          "row_rmse": 8.33468608195
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 7.86131870728,
+          "row_rmse": 7.86131870728
+        },
+        "training_rmse": 7.59927475037
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -21.3342596089,
+          "k": 8
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 9.21278546429,
+          "row_rmse": 9.57974992856
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 9.03751065345,
+          "row_rmse": 9.03751065345
+        },
+        "training_rmse": 8.73626029833
+      }
+    ],
+    "geometry_covariance_ratio": 0.458289427843,
+    "groups": 15,
+    "ids": [
+      "aml",
+      "basal_cell",
+      "cll",
+      "colorectal",
+      "colorectal_lynch",
+      "duodenum",
+      "duodenum_fap",
+      "esophagus_squamous",
+      "gallbladder",
+      "glioblastoma",
+      "head_neck",
+      "head_neck_hpv16",
+      "liver",
+      "liver_hcv",
+      "lung_nonsmokers",
+      "lung_smokers",
+      "medulloblastoma",
+      "melanoma",
+      "osteosarcoma",
+      "osteosarcoma_arms",
+      "osteosarcoma_head",
+      "osteosarcoma_legs",
+      "osteosarcoma_pelvis",
+      "ovarian_germ",
+      "pancreatic_ductal",
+      "pancreatic_endocrine",
+      "small_intestine",
+      "testicular_germ",
+      "thyroid_papillary_follicular",
+      "thyroid_medullary"
+    ],
+    "logR_fit": {
+      "correlation": 0.793787732114,
+      "intercept": -7.36976876351,
+      "r_squared": 0.630098963655,
+      "rmse": 0.701027728605,
+      "slope": 0.503508130194
+    },
+    "n": 30,
+    "outliers_negative": [
+      {
+        "amplitude_ratio": 0.0194932292966,
+        "group": "small_intestine",
+        "prediction": -1.44463370394,
+        "residual": -1.71011620862,
+        "tissue": "Small intestine adenocarcinoma",
+        "tissue_id": "small_intestine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.04580805725,
+        "group": "pancreas",
+        "prediction": -2.37309801355,
+        "residual": -1.33905812655,
+        "tissue": "Pancreatic endocrine islet cell carcinoma",
+        "tissue_id": "pancreatic_endocrine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.0597399870527,
+        "group": "small_intestine",
+        "prediction": -2.29907871711,
+        "residual": -1.22373487586,
+        "tissue": "Duodenum adenocarcinoma",
+        "tissue_id": "duodenum",
+        "training_grid_c": null
+      }
+    ],
+    "outliers_positive": [
+      {
+        "amplitude_ratio": 20.5121797532,
+        "group": "lung",
+        "prediction": -2.38531365565,
+        "residual": 1.31201181368,
+        "tissue": "Lung adenocarcinoma smokers",
+        "tissue_id": "lung_smokers",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 16.9997767259,
+        "group": "colorectal",
+        "prediction": -1.38961775637,
+        "residual": 1.23044321742,
+        "tissue": "Colorectal adenocarcinoma with Lynch syndrome",
+        "tissue_id": "colorectal_lynch",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 10.8597455068,
+        "group": "head_neck",
+        "prediction": -2.11844367576,
+        "residual": 1.03581964788,
+        "tissue": "Head & neck squamous cell carcinoma with HPV16",
+        "tissue_id": "head_neck_hpv16",
+        "training_grid_c": null
+      }
+    ],
+    "saturation": {
+      "max_risk": 0.5,
+      "ordered_cloud_bound_applicable": false,
+      "ordering_violations": 174,
+      "sigma_at_max_risk": 0.69314718056
+    },
+    "separable": {
+      "fit": {
+        "b_N": 0.53627236207,
+        "b_v": 0.479407706385,
+        "clock": "effective",
+        "family": "separable",
+        "intercept": -7.56289553818,
+        "k": null
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.760445199445,
+        "row_rmse": 0.796123509708
+      },
+      "leave_row_out": {
+        "fold_count": 30,
+        "group_balanced_rmse": 0.785249210289,
+        "row_rmse": 0.785249210289
+      },
+      "training_rmse": 0.711137623808
+    },
+    "sequential": [
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -12.1400765989,
+          "k": 1
+        },
+        "implied_equal_rate": 7.24308198667e-13,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 1.18018271895,
+          "row_rmse": 1.22708930251
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 1.17941880742,
+          "row_rmse": 1.17941880742
+        },
+        "max_exact_logH_discrepancy": 2.6645352591e-15,
+        "predicted_logH_slope": 1.0,
+        "predicted_logR_slope": 0.971775794395,
+        "training_rmse": 1.14010484717
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -13.8104328223,
+          "k": 2
+        },
+        "implied_equal_rate": 1.24389461834e-07,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 2.11259391817,
+          "row_rmse": 2.23413907693
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 2.11033078932,
+          "row_rmse": 2.11033078932
+        },
+        "max_exact_logH_discrepancy": 0.000210260683803,
+        "predicted_logH_slope": 1.45828942784,
+        "predicted_logR_slope": 1.30703026898,
+        "training_rmse": 2.03998642968
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -15.3046977866,
+          "k": 3
+        },
+        "implied_equal_rate": 7.9146929505e-06,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 3.23809029895,
+          "row_rmse": 3.40785923499
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 3.21220536447,
+          "row_rmse": 3.21220536447
+        },
+        "max_exact_logH_discrepancy": 0.0150345125491,
+        "predicted_logH_slope": 1.91657885569,
+        "predicted_logR_slope": 1.58041945016,
+        "training_rmse": 3.10513185232
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -16.6740240144,
+          "k": 4
+        },
+        "implied_equal_rate": 6.78412742205e-05,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 4.41127627942,
+          "row_rmse": 4.62300006572
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 4.35721591304,
+          "row_rmse": 4.35721591304
+        },
+        "max_exact_logH_discrepancy": 0.136559052756,
+        "predicted_logH_slope": 2.37486828353,
+        "predicted_logR_slope": 1.83500661002,
+        "training_rmse": 4.21197538261
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -17.9464402291,
+          "k": 5
+        },
+        "implied_equal_rate": 0.00025746129785,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 5.60227114219,
+          "row_rmse": 5.85382375389
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 5.51857750405,
+          "row_rmse": 5.51857750405
+        },
+        "max_exact_logH_discrepancy": 0.529462868038,
+        "predicted_logH_slope": 2.83315771137,
+        "predicted_logR_slope": 2.09272870992,
+        "training_rmse": 5.33462492059
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -19.1396751978,
+          "k": 6
+        },
+        "implied_equal_rate": 0.000645734713206,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 6.80172620707,
+          "row_rmse": 7.09216986311
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 6.68777726676,
+          "row_rmse": 6.68777726676
+        },
+        "max_exact_logH_discrepancy": 1.30330108506,
+        "predicted_logH_slope": 3.29144713922,
+        "predicted_logR_slope": 2.35092074162,
+        "training_rmse": 6.46485135787
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -20.2659633769,
+          "k": 7
+        },
+        "implied_equal_rate": 0.00127309957962,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 8.0058397904,
+          "row_rmse": 8.33468608195
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 7.86131870728,
+          "row_rmse": 7.86131870728
+        },
+        "max_exact_logH_discrepancy": 2.41921135543,
+        "predicted_logH_slope": 3.74973656706,
+        "predicted_logR_slope": 2.60921943769,
+        "training_rmse": 7.59927475037
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -21.3342596089,
+          "k": 8
+        },
+        "implied_equal_rate": 0.00215386038666,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 9.21278546429,
+          "row_rmse": 9.57974992856
+        },
+        "leave_row_out": {
+          "fold_count": 30,
+          "group_balanced_rmse": 9.03751065345,
+          "row_rmse": 9.03751065345
+        },
+        "max_exact_logH_discrepancy": 3.75991475253,
+        "predicted_logH_slope": 4.2080259949,
+        "predicted_logR_slope": 2.86750868749,
+        "training_rmse": 8.73626029833
+      }
+    ],
+    "stress_frontier": [
+      {
+        "baseline_interval": [
+          2.92730764745e-13,
+          2.92730764745e-13
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 1,
+        "limiting_point_rho": 122.163202112,
+        "lower_constraint": [
+          "gallbladder"
+        ],
+        "max_relative_exact_vs_rare_rate": 1.7763568394e-15,
+        "rate_spread": 2386.93676712,
+        "rho": 48.8562868741,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          7.44068748692e-08,
+          7.44068748692e-08
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 2,
+        "limiting_point_rho": 58.0961276738,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 4.44896805412e-05,
+        "rate_spread": 337.495189019,
+        "rho": 18.3710421321,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          6.01244993758e-06,
+          6.01244993758e-06
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 3,
+        "limiting_point_rho": 50.5288979961,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.000942909292976,
+        "rate_spread": 218.30612328,
+        "rho": 14.7751860658,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          5.81206561163e-05,
+          5.81206561163e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 4,
+        "limiting_point_rho": 47.1233489255,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0043268261944,
+        "rate_spread": 175.652889359,
+        "rho": 13.2534104803,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000237476793935,
+          0.000237476793935
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 5,
+        "limiting_point_rho": 45.1912068161,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0108220087901,
+        "rate_spread": 154.284236252,
+        "rho": 12.4211205715,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000598455801771,
+          0.000598455801771
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 6,
+        "limiting_point_rho": 46.1847797769,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0200353737144,
+        "rate_spread": 155.531503083,
+        "rho": 12.4712270079,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00117794637778,
+          0.00117794637778
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 7,
+        "limiting_point_rho": 47.2324713459,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0312686881436,
+        "rate_spread": 158.977720162,
+        "rho": 12.6086367289,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.0019964954803,
+          0.0019964954803
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 8,
+        "limiting_point_rho": 48.0338076112,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0438748778892,
+        "rate_spread": 161.582947937,
+        "rho": 12.7115281511,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      }
+    ]
+  },
+  "corrected_effective": {
+    "descriptive": {
+      "fit": {
+        "clock": "effective",
+        "correlation": 0.805526604236,
+        "family": "descriptive",
+        "intercept": -6.81777581886,
+        "k": null,
+        "r_squared": 0.648873110132,
+        "rmse": 0.604264369686,
+        "slope": 0.428137748026
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.650005741844,
+        "row_rmse": 0.693366667771
+      },
+      "leave_row_out": {
+        "fold_count": 25,
+        "group_balanced_rmse": 0.654984932056,
+        "row_rmse": 0.654984932056
+      },
+      "training_rmse": 0.604264369686
+    },
+    "exact_frontier": [
+      {
+        "baseline_interval": [
+          2.99315002018e-13,
+          2.99315002018e-13
+        ],
+        "compatible_allowances": [],
+        "k": 1,
+        "limiting_point_rho": 124.856154355,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 1.11022302463e-15,
+        "rate_spread": 15589.0592804,
+        "rho": 124.856154355,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          1.05243978567e-07,
+          1.05243978567e-07
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 2,
+        "limiting_point_rho": 82.1462752878,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 2.23370990085e-05,
+        "rate_spread": 6748.02157232,
+        "rho": 82.1463424159,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          8.5042221836e-06,
+          8.5042221836e-06
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 3,
+        "limiting_point_rho": 71.4464273433,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.000595350093451,
+        "rate_spread": 5104.92370809,
+        "rho": 71.448748821,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          8.22062792256e-05,
+          8.22062792256e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 4,
+        "limiting_point_rho": 66.6310776348,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00306039958013,
+        "rate_spread": 4441.36581274,
+        "rho": 66.643572929,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000335878011974,
+          0.000335878011974
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 5,
+        "limiting_point_rho": 63.8990835422,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00818454826889,
+        "rate_spread": 4087.26282483,
+        "rho": 63.9317043792,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000845901493536,
+          0.000845901493536
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 6,
+        "limiting_point_rho": 65.3207367152,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0158297474928,
+        "rate_spread": 4254.28855632,
+        "rho": 65.2249074841,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00166515796003,
+          0.00166515796003
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 7,
+        "limiting_point_rho": 66.8025232577,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0254728707099,
+        "rate_spread": 4443.17593058,
+        "rho": 66.6571521337,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00282247585828,
+          0.00282247585828
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 8,
+        "limiting_point_rho": 67.9358809452,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.036557344296,
+        "rate_spread": 4588.66803131,
+        "rho": 67.7397079364,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      }
+    ],
+    "geometry_covariance_ratio": 0.47172421699,
+    "groups": 15,
+    "ids": [
+      "aml",
+      "basal_cell",
+      "cll",
+      "colorectal",
+      "duodenum",
+      "esophagus_squamous",
+      "gallbladder",
+      "glioblastoma",
+      "head_neck",
+      "liver",
+      "lung_nonsmokers",
+      "medulloblastoma",
+      "melanoma",
+      "osteosarcoma",
+      "osteosarcoma_arms",
+      "osteosarcoma_head",
+      "osteosarcoma_legs",
+      "osteosarcoma_pelvis",
+      "ovarian_germ",
+      "pancreatic_ductal",
+      "pancreatic_endocrine",
+      "small_intestine",
+      "testicular_germ",
+      "thyroid_papillary_follicular",
+      "thyroid_medullary"
+    ],
+    "logR_fit": {
+      "correlation": 0.805921994095,
+      "intercept": -6.79201335821,
+      "r_squared": 0.649510260566,
+      "rmse": 0.598894184037,
+      "slope": 0.424926816104
+    },
+    "n": 25,
+    "outliers_negative": [
+      {
+        "amplitude_ratio": 0.0372553333868,
+        "group": "small_intestine",
+        "prediction": -1.72593836669,
+        "residual": -1.42881154588,
+        "tissue": "Small intestine adenocarcinoma",
+        "tissue_id": "small_intestine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.0740792905028,
+        "group": "pancreas",
+        "prediction": -2.58185295432,
+        "residual": -1.13030318578,
+        "tissue": "Pancreatic endocrine islet cell carcinoma",
+        "tissue_id": "pancreatic_endocrine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.0868564532834,
+        "group": "small_intestine",
+        "prediction": -2.46161568427,
+        "residual": -1.06119790869,
+        "tissue": "Duodenum adenocarcinoma",
+        "tissue_id": "duodenum",
+        "training_grid_c": null
+      }
+    ],
+    "outliers_positive": [
+      {
+        "amplitude_ratio": 16.1904922993,
+        "group": "skin",
+        "prediction": -1.65698745276,
+        "residual": 1.20926005441,
+        "tissue": "Basal cell carcinoma",
+        "tissue_id": "basal_cell",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 14.2971830894,
+        "group": "thyroid",
+        "prediction": -3.14186560385,
+        "residual": 1.15525047878,
+        "tissue": "Thyroid papillary follicular carcinoma",
+        "tissue_id": "thyroid_papillary_follicular",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 8.90033172432,
+        "group": "gallbladder",
+        "prediction": -3.50163943938,
+        "residual": 0.949406193539,
+        "tissue": "Gallbladder non papillary adenocarcinoma",
+        "tissue_id": "gallbladder",
+        "training_grid_c": null
+      }
+    ],
+    "saturation": {
+      "max_risk": 0.3,
+      "ordered_cloud_bound_applicable": false,
+      "ordering_violations": 113,
+      "sigma_at_max_risk": 0.832241535857
+    },
+    "separable": {
+      "fit": {
+        "b_N": 0.507848894113,
+        "b_v": 0.338870615669,
+        "clock": "effective",
+        "family": "separable",
+        "intercept": -7.26114884967,
+        "k": null
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.689997805626,
+        "row_rmse": 0.704392954279
+      },
+      "leave_row_out": {
+        "fold_count": 25,
+        "group_balanced_rmse": 0.666930224276,
+        "row_rmse": 0.666930224276
+      },
+      "training_rmse": 0.590323976092
+    },
+    "sequential": [
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -12.1604706174,
+          "k": 1
+        },
+        "implied_equal_rate": 6.91081683653e-13,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 1.30682921417,
+          "row_rmse": 1.38423700028
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 1.30477484824,
+          "row_rmse": 1.30477484824
+        },
+        "max_exact_logH_discrepancy": 2.44249065418e-15,
+        "predicted_logH_slope": 1.0,
+        "predicted_logR_slope": 0.973327872029,
+        "training_rmse": 1.25258385431
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -13.6427369706,
+          "k": 2
+        },
+        "implied_equal_rate": 1.5087994417e-07,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 2.38652842319,
+          "row_rmse": 2.515042949
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 2.36494781662,
+          "row_rmse": 2.36494781662
+        },
+        "max_exact_logH_discrepancy": 0.00025506587158,
+        "predicted_logH_slope": 1.47172421699,
+        "predicted_logR_slope": 1.32043310963,
+        "training_rmse": 2.27034990395
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -14.9489120648,
+          "k": 3
+        },
+        "implied_equal_rate": 1.03999035527e-05,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 3.61947409102,
+          "row_rmse": 3.75521868114
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 3.53932702774,
+          "row_rmse": 3.53932702774
+        },
+        "max_exact_logH_discrepancy": 0.0197482847859,
+        "predicted_logH_slope": 1.94344843398,
+        "predicted_logR_slope": 1.58700475607,
+        "training_rmse": 3.39775394663
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -16.1301484224,
+          "k": 4
+        },
+        "implied_equal_rate": 9.27818215066e-05,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 4.89111714617,
+          "row_rmse": 5.02441946861
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 4.74383919485,
+          "row_rmse": 4.74383919485
+        },
+        "max_exact_logH_discrepancy": 0.186026243256,
+        "predicted_logH_slope": 2.41517265097,
+        "predicted_logR_slope": 1.83937936734,
+        "training_rmse": 4.55408562706
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -17.214474767,
+          "k": 5
+        },
+        "implied_equal_rate": 0.000360665869881,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 6.17760638441,
+          "row_rmse": 6.30514171096
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 5.96024342348,
+          "row_rmse": 5.96024342348
+        },
+        "max_exact_logH_discrepancy": 0.7268989423,
+        "predicted_logH_slope": 2.88689686796,
+        "predicted_logR_slope": 2.09144139742,
+        "training_rmse": 5.72183368654
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -18.2196198655,
+          "k": 6
+        },
+        "implied_equal_rate": 0.000919171794206,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 7.47127658469,
+          "row_rmse": 7.59155651626
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 7.18250025346,
+          "row_rmse": 7.18250025346
+        },
+        "max_exact_logH_discrepancy": 1.74739220157,
+        "predicted_logH_slope": 3.35862108495,
+        "predicted_logR_slope": 2.34244095413,
+        "training_rmse": 6.89520024332
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -19.1578181744,
+          "k": 7
+        },
+        "implied_equal_rate": 0.00183302687412,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 8.76895013273,
+          "row_rmse": 8.88119057499
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 8.40805774113,
+          "row_rmse": 8.40805774113
+        },
+        "max_exact_logH_discrepancy": 3.12650200898,
+        "predicted_logH_slope": 3.83034530194,
+        "predicted_logR_slope": 2.59261077569,
+        "training_rmse": 8.07173543148
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -20.0380245363,
+          "k": 8
+        },
+        "implied_equal_rate": 0.00312785731171,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 10.0690793282,
+          "row_rmse": 10.1728196221
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 9.63565653853,
+          "row_rmse": 9.63565653853
+        },
+        "max_exact_logH_discrepancy": 4.70886675271,
+        "predicted_logH_slope": 4.30206951893,
+        "predicted_logR_slope": 2.84186546364,
+        "training_rmse": 9.25023027699
+      }
+    ],
+    "stress_frontier": [
+      {
+        "baseline_interval": [
+          2.9932195291e-13,
+          2.9932195291e-13
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 1,
+        "limiting_point_rho": 124.856154355,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 1.11022302463e-15,
+        "rate_spread": 2493.92857008,
+        "rho": 49.9392487938,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          1.05245227006e-07,
+          1.05245227006e-07
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 2,
+        "limiting_point_rho": 82.1462752878,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 2.23370990085e-05,
+        "rate_spread": 674.759436511,
+        "rho": 25.9761320545,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          8.50434398241e-06,
+          8.50434398241e-06
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 3,
+        "limiting_point_rho": 71.4464273433,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.000595350093451,
+        "rate_spread": 436.462863838,
+        "rho": 20.8916936565,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          8.2209092338e-05,
+          8.2209092338e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 4,
+        "limiting_point_rho": 66.6310776348,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00306039958013,
+        "rate_spread": 351.185582793,
+        "rho": 18.739946179,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00033590040074,
+          0.00033590040074
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 5,
+        "limiting_point_rho": 63.8990835422,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00818454826889,
+        "rate_spread": 308.462898741,
+        "rho": 17.5631118752,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000846271898131,
+          0.000846271898131
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 6,
+        "limiting_point_rho": 65.3207367152,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0158297474928,
+        "rate_spread": 311.116298662,
+        "rho": 17.6384891264,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00166572521157,
+          0.00166572521157
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 7,
+        "limiting_point_rho": 66.8025232577,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0254728707099,
+        "rate_spread": 318.009913658,
+        "rho": 17.8328324631,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.0028232294093,
+          0.0028232294093
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 8,
+        "limiting_point_rho": 67.9358809452,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.036557344296,
+        "rate_spread": 323.221261884,
+        "rho": 17.9783553721,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      }
+    ]
+  },
+  "duplicate_contrasts": [
+    {
+      "hazard_ratio": 1.26899315173,
+      "higher": "cll",
+      "lower": "aml",
+      "rate_ratios": {
+        "1": 1.26899315173,
+        "2": 1.12649633227,
+        "3": 1.08265857045,
+        "4": 1.06143299422,
+        "5": 1.04897434108,
+        "6": 1.04082590705,
+        "7": 1.0351062148,
+        "8": 1.03088298664
+      },
+      "risk_ratio": 1.26829268293
+    },
+    {
+      "hazard_ratio": null,
+      "higher": "colorectal_fap",
+      "lower": "colorectal",
+      "rate_ratios": null,
+      "risk_ratio": 20.8333333333
+    },
+    {
+      "hazard_ratio": 14.091151446,
+      "higher": "colorectal_lynch",
+      "lower": "colorectal",
+      "rate_ratios": {
+        "1": 14.091151446,
+        "2": 3.75389467251,
+        "3": 2.41633568859,
+        "4": 1.94067918522,
+        "5": 1.70366643482,
+        "6": 1.5636351551,
+        "7": 1.4718492343,
+        "8": 1.40729680919
+      },
+      "risk_ratio": 10.4166666667
+    },
+    {
+      "hazard_ratio": null,
+      "higher": "colorectal_fap",
+      "lower": "colorectal_lynch",
+      "rate_ratios": null,
+      "risk_ratio": 2.0
+    },
+    {
+      "hazard_ratio": 118.739444331,
+      "higher": "duodenum_fap",
+      "lower": "duodenum",
+      "rate_ratios": {
+        "1": 118.739444331,
+        "2": 10.8972033232,
+        "3": 4.91878407846,
+        "4": 3.31098610266,
+        "5": 2.61701716561,
+        "6": 2.24147989082,
+        "7": 2.00947360982,
+        "8": 1.85310136211
+      },
+      "risk_ratio": 116.666666667
+    },
+    {
+      "hazard_ratio": 5.94953301849,
+      "higher": "head_neck_hpv16",
+      "lower": "head_neck",
+      "rate_ratios": {
+        "1": 5.94953301849,
+        "2": 2.43921181278,
+        "3": 1.81261988291,
+        "4": 1.56382887855,
+        "5": 1.4325973086,
+        "6": 1.35230758883,
+        "7": 1.29841691574,
+        "8": 1.25985654841
+      },
+      "risk_ratio": 5.75
+    },
+    {
+      "hazard_ratio": 10.3358851367,
+      "higher": "liver_hcv",
+      "lower": "liver",
+      "rate_ratios": {
+        "1": 10.3358851367,
+        "2": 3.21495230845,
+        "3": 2.17844639946,
+        "4": 1.79380939799,
+        "5": 1.59736151137,
+        "6": 1.47941583222,
+        "7": 1.40128886406,
+        "8": 1.34597241209
+      },
+      "risk_ratio": 10.0
+    },
+    {
+      "hazard_ratio": 18.728657369,
+      "higher": "lung_smokers",
+      "lower": "lung_nonsmokers",
+      "rate_ratios": {
+        "1": 18.728657369,
+        "2": 4.32767493523,
+        "3": 2.65594697394,
+        "4": 2.08168564234,
+        "5": 1.80004279785,
+        "6": 1.63515143134,
+        "7": 1.5277758528,
+        "8": 1.45267327489
+      },
+      "risk_ratio": 18.0
+    }
+  ],
+  "hashes": {
+    "AMENDMENTS.md": "c0e1f1edc451de114ffc6fa4f8ffc69983bd6d3e8afca6f28c6e9479edc2cdc8",
+    "PROTOCOL.md": "c60a2f2d99106a5e65378f9df1337a43edac79efcb0af1afe8f8f9ec0a1cde4b",
+    "data/little2016.csv": "baee121cc5c08144177d2add71e777821d549f7ee542a7262d1744f1ba80a32d",
+    "data/liu2022_ranked_risk_audit.csv": "919a0e48e5455f38cb8d99b85b40f050a591888dd2061f38eb3e0eb36f4550fe",
+    "data/tv2015.csv": "40101d378d61c098b5a7e4610861319114644de7f3b25931b1ec3d8380598704",
+    "data/tv2015_nunney2020.csv": "d72da38db78c182aec6659f01b928f00f577e2ca6a2ddb262953a5a67af8e3c6"
+  },
+  "historical_all": {
+    "bootstrap": {
+      "draws": 2000,
+      "lower": 0.313519071983,
+      "seed": 1260825,
+      "skipped": 0,
+      "upper": 0.636103197853
+    },
+    "correlation": 0.803928553018,
+    "intercept": -7.61081016489,
+    "n": 31,
+    "r_squared": 0.646301118357,
+    "rmse": 0.724545631337,
+    "slope": 0.532638064367
+  },
+  "international_endpoint_audit": {
+    "n": 17,
+    "rows": [
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.029206721,
+        "risk_median": 0.012133814,
+        "risk_min": 0.002169643,
+        "tissue": "head & neck squamous cell carcinoma",
+        "tissue_id": "head_neck"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.155363776,
+        "risk_median": 0.001570111,
+        "risk_min": 0.0,
+        "tissue": "esophageal squamous cell carcinoma",
+        "tissue_id": "esophagus_squamous"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.067111297,
+        "risk_median": 0.030898802,
+        "risk_min": 0.001297671,
+        "tissue": "colorectal adenocarcinoma",
+        "tissue_id": "colorectal"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.028237789,
+        "risk_median": 0.00247951,
+        "risk_min": 0.0,
+        "tissue": "hepatocellular carcinoma",
+        "tissue_id": "liver"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.014975921,
+        "risk_median": 0.007753628,
+        "risk_min": 0.000215202,
+        "tissue": "pancreatic cancer (ductal + endocrine)",
+        "tissue_id": "pancreatic_combined"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.026455077,
+        "risk_median": 0.01195417,
+        "risk_min": 0.0,
+        "tissue": "lung adenocarcinoma",
+        "tissue_id": "lung_adenocarcinoma"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.001824406,
+        "risk_median": 0.000205915,
+        "risk_min": 0.0,
+        "tissue": "osteosarcoma",
+        "tissue_id": "osteosarcoma"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.049457625,
+        "risk_median": 0.006615544,
+        "risk_min": 0.0,
+        "tissue": "melanoma",
+        "tissue_id": "melanoma"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.001249202,
+        "risk_median": 0.000249753,
+        "risk_min": 0.0,
+        "tissue": "ovarian germ cell",
+        "tissue_id": "ovarian_germ"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.010162599,
+        "risk_median": 0.003502034,
+        "risk_min": 0.000100616,
+        "tissue": "testicular germ cell",
+        "tissue_id": "testicular_germ"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.000432123,
+        "risk_median": 9.48e-05,
+        "risk_min": 0.0,
+        "tissue": "medulloblastoma",
+        "tissue_id": "medulloblastoma"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.040835403,
+        "risk_median": 0.005705464,
+        "risk_min": 0.0,
+        "tissue": "thyroid follicular/papillary",
+        "tissue_id": "thyroid_papillary_follicular"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.000913568,
+        "risk_median": 0.000141167,
+        "risk_min": 0.0,
+        "tissue": "thyroid medullary",
+        "tissue_id": "thyroid_medullary"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.005817165,
+        "risk_median": 0.002330291,
+        "risk_min": 0.0,
+        "tissue": "chronic lymphocytic leukemia",
+        "tissue_id": "cll"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.007249971,
+        "risk_median": 0.002000186,
+        "risk_min": 0.0,
+        "tissue": "acute myeloid leukemia",
+        "tissue_id": "aml"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.243457411,
+        "risk_median": 0.09924712,
+        "risk_min": 0.001025839,
+        "tissue": "prostate",
+        "tissue_id": "prostate"
+      },
+      {
+        "age_endpoint": "birth through age 74; cumulative risk on [0,75), not full lifetime",
+        "registry_count": 423,
+        "risk_max": 0.119815722,
+        "risk_median": 0.086177005,
+        "risk_min": 0.007625557,
+        "tissue": "breast",
+        "tissue_id": "breast"
+      }
+    ],
+    "status": "risk-only endpoint audit; no coherent risk-plus-divisions fit"
+  },
+  "later_developmental": {
+    "descriptive": {
+      "fit": {
+        "clock": "developmental",
+        "correlation": 0.807791026993,
+        "family": "descriptive",
+        "intercept": -6.9543380602,
+        "k": null,
+        "r_squared": 0.652526343291,
+        "rmse": 0.601112673405,
+        "slope": 0.440057189945
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.647455519285,
+        "row_rmse": 0.685612085714
+      },
+      "leave_row_out": {
+        "fold_count": 25,
+        "group_balanced_rmse": 0.651007234248,
+        "row_rmse": 0.651007234248
+      },
+      "training_rmse": 0.601112673405
+    },
+    "exact_frontier": [
+      {
+        "baseline_interval": [
+          2.48190603465e-13,
+          2.48190603465e-13
+        ],
+        "compatible_allowances": [],
+        "k": 1,
+        "limiting_point_rho": 104.43662052,
+        "lower_constraint": [
+          "gallbladder"
+        ],
+        "max_relative_exact_vs_rare_rate": 1.33226762955e-15,
+        "rate_spread": 10907.0077055,
+        "rho": 104.43662052,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          3.33488355523e-08,
+          3.33488355523e-08
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 2,
+        "limiting_point_rho": 26.2575160101,
+        "lower_constraint": [
+          "gallbladder"
+        ],
+        "max_relative_exact_vs_rare_rate": 2.23370990085e-05,
+        "rate_spread": 689.469892826,
+        "rho": 26.2577587167,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          2.08156709828e-06,
+          2.08156709828e-06
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 3,
+        "limiting_point_rho": 17.6402318858,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.000595350093451,
+        "rate_spread": 311.223870887,
+        "rho": 17.6415382234,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          1.90566275435e-05,
+          1.90566275435e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 4,
+        "limiting_point_rho": 15.5779983862,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00306039958013,
+        "rate_spread": 242.868205652,
+        "rho": 15.5842293891,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          7.53790317309e-05,
+          7.53790317309e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 5,
+        "limiting_point_rho": 14.4582614334,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00818454826889,
+        "rate_spread": 209.479986425,
+        "rho": 14.4734234521,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000186212091222,
+          0.000186212091222
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 6,
+        "limiting_point_rho": 14.4307755062,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0158297474928,
+        "rate_spread": 208.039625937,
+        "rho": 14.4235788186,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00036106326162,
+          0.00036106326162
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 7,
+        "limiting_point_rho": 14.5299188994,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0254728707099,
+        "rate_spread": 210.810474389,
+        "rho": 14.5193138402,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000605190462115,
+          0.000605190462115
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 8,
+        "limiting_point_rho": 14.6047231885,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.036557344296,
+        "rate_spread": 212.889022046,
+        "rho": 14.5907169819,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      }
+    ],
+    "geometry_covariance_ratio": 0.315199117087,
+    "groups": 15,
+    "ids": [
+      "aml",
+      "basal_cell",
+      "cll",
+      "colorectal",
+      "duodenum",
+      "esophagus_squamous",
+      "gallbladder",
+      "glioblastoma",
+      "head_neck",
+      "liver",
+      "lung_nonsmokers",
+      "medulloblastoma",
+      "melanoma",
+      "osteosarcoma",
+      "osteosarcoma_arms",
+      "osteosarcoma_head",
+      "osteosarcoma_legs",
+      "osteosarcoma_pelvis",
+      "ovarian_germ",
+      "pancreatic_ductal",
+      "pancreatic_endocrine",
+      "small_intestine",
+      "testicular_germ",
+      "thyroid_papillary_follicular",
+      "thyroid_medullary"
+    ],
+    "logR_fit": {
+      "correlation": 0.808171099893,
+      "intercept": -6.92746796102,
+      "r_squared": 0.653140526703,
+      "rmse": 0.595784528945,
+      "slope": 0.436747986845
+    },
+    "n": 25,
+    "outliers_negative": [
+      {
+        "amplitude_ratio": 0.037486489747,
+        "group": "small_intestine",
+        "prediction": -1.72862468734,
+        "residual": -1.42612522522,
+        "tissue": "Small intestine adenocarcinoma",
+        "tissue_id": "small_intestine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.0773688232763,
+        "group": "pancreas",
+        "prediction": -2.6007221317,
+        "residual": -1.1114340084,
+        "tissue": "Pancreatic endocrine islet cell carcinoma",
+        "tissue_id": "pancreatic_endocrine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.0913045544651,
+        "group": "small_intestine",
+        "prediction": -2.48330603457,
+        "residual": -1.03950755839,
+        "tissue": "Duodenum adenocarcinoma",
+        "tissue_id": "duodenum",
+        "training_grid_c": null
+      }
+    ],
+    "outliers_positive": [
+      {
+        "amplitude_ratio": 15.6598638333,
+        "group": "skin",
+        "prediction": -1.64251537978,
+        "residual": 1.19478798143,
+        "tissue": "Basal cell carcinoma",
+        "tissue_id": "basal_cell",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 14.713099436,
+        "group": "thyroid",
+        "prediction": -3.15431929516,
+        "residual": 1.16770417009,
+        "tissue": "Thyroid papillary follicular carcinoma",
+        "tissue_id": "thyroid_papillary_follicular",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 9.85392859886,
+        "group": "gallbladder",
+        "prediction": -3.54584265691,
+        "residual": 0.993609411071,
+        "tissue": "Gallbladder non papillary adenocarcinoma",
+        "tissue_id": "gallbladder",
+        "training_grid_c": null
+      }
+    ],
+    "saturation": {
+      "max_risk": 0.3,
+      "ordered_cloud_bound_applicable": false,
+      "ordering_violations": 98,
+      "sigma_at_max_risk": 0.832241535857
+    },
+    "separable": {
+      "fit": {
+        "b_N": 0.505286679269,
+        "b_v": 0.487696091317,
+        "clock": "developmental",
+        "family": "separable",
+        "intercept": -7.70294416951,
+        "k": null
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.716905023536,
+        "row_rmse": 0.729479611242
+      },
+      "leave_row_out": {
+        "fold_count": 25,
+        "group_balanced_rmse": 0.679396853873,
+        "row_rmse": 0.679396853873
+      },
+      "training_rmse": 0.600693363818
+    },
+    "sequential": [
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -12.561876372,
+          "k": 1
+        },
+        "implied_equal_rate": 2.74235471021e-13,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 1.07909063674,
+          "row_rmse": 1.12432826548
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 1.06315778978,
+          "row_rmse": 1.06315778978
+        },
+        "max_exact_logH_discrepancy": 3.10862446895e-15,
+        "predicted_logH_slope": 0.867491461016,
+        "predicted_logR_slope": 0.854737445571,
+        "training_rmse": 1.02063147819
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -14.44554848,
+          "k": 2
+        },
+        "implied_equal_rate": 5.98722749218e-08,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 1.64423472773,
+          "row_rmse": 1.78440668636
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 1.66355720393,
+          "row_rmse": 1.66355720393
+        },
+        "max_exact_logH_discrepancy": 0.000101698355687,
+        "predicted_logH_slope": 1.1826905781,
+        "predicted_logR_slope": 1.1142627935,
+        "training_rmse": 1.59701491577
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -16.1531293288,
+          "k": 3
+        },
+        "implied_equal_rate": 4.12689630881e-06,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 2.39888733565,
+          "row_rmse": 2.57558924856
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 2.40136789174,
+          "row_rmse": 2.40136789174
+        },
+        "max_exact_logH_discrepancy": 0.00788200427076,
+        "predicted_logH_slope": 1.49788969519,
+        "predicted_logR_slope": 1.31809968624,
+        "training_rmse": 2.30531317607
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -17.7357714411,
+          "k": 4
+        },
+        "implied_equal_rate": 3.68177411223e-05,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 3.21214794649,
+          "row_rmse": 3.40775179752
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 3.18241104011,
+          "row_rmse": 3.18241104011
+        },
+        "max_exact_logH_discrepancy": 0.0747666248376,
+        "predicted_logH_slope": 1.81308881228,
+        "predicted_logR_slope": 1.48919552409,
+        "training_rmse": 3.0551145985
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -19.2215035403,
+          "k": 5
+        },
+        "implied_equal_rate": 0.000143119658714,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 4.04885289717,
+          "row_rmse": 4.2569289671
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 3.98132382517,
+          "row_rmse": 3.98132382517
+        },
+        "max_exact_logH_discrepancy": 0.300358537109,
+        "predicted_logH_slope": 2.12828792936,
+        "predicted_logR_slope": 1.65161416386,
+        "training_rmse": 3.82207087216
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -20.6280543935,
+          "k": 6
+        },
+        "implied_equal_rate": 0.000364746333025,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 4.89699974549,
+          "row_rmse": 5.11465304098
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 4.78917173105,
+          "row_rmse": 4.78917173105
+        },
+        "max_exact_logH_discrepancy": 0.774733996228,
+        "predicted_logH_slope": 2.44348704645,
+        "predicted_logR_slope": 1.81518649179,
+        "training_rmse": 4.59760486181
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -21.9676584571,
+          "k": 7
+        },
+        "implied_equal_rate": 0.000727382884123,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 5.75152889269,
+          "row_rmse": 5.97724575448
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 5.60209063066,
+          "row_rmse": 5.60209063066
+        },
+        "max_exact_logH_discrepancy": 1.52925320758,
+        "predicted_logH_slope": 2.75868616354,
+        "predicted_logR_slope": 1.97792073149,
+        "training_rmse": 5.37800700544
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -23.2492705737,
+          "k": 8
+        },
+        "implied_equal_rate": 0.00124119831773,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 6.60996551212,
+          "row_rmse": 6.84286617366
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 6.41815394757,
+          "row_rmse": 6.41815394757
+        },
+        "max_exact_logH_discrepancy": 2.52511613367,
+        "predicted_logH_slope": 3.07388528062,
+        "predicted_logR_slope": 2.13964899812,
+        "training_rmse": 6.16142778967
+      }
+    ]
+  },
+  "later_effective": {
+    "descriptive": {
+      "fit": {
+        "clock": "effective",
+        "correlation": 0.807791026993,
+        "family": "descriptive",
+        "intercept": -6.9543380602,
+        "k": null,
+        "r_squared": 0.652526343291,
+        "rmse": 0.601112673405,
+        "slope": 0.440057189945
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.647455519285,
+        "row_rmse": 0.685612085714
+      },
+      "leave_row_out": {
+        "fold_count": 25,
+        "group_balanced_rmse": 0.651007234248,
+        "row_rmse": 0.651007234248
+      },
+      "training_rmse": 0.601112673405
+    },
+    "exact_frontier": [
+      {
+        "baseline_interval": [
+          2.92759019294e-13,
+          2.92759019294e-13
+        ],
+        "compatible_allowances": [],
+        "k": 1,
+        "limiting_point_rho": 122.163202112,
+        "lower_constraint": [
+          "gallbladder"
+        ],
+        "max_relative_exact_vs_rare_rate": 1.33226762955e-15,
+        "rate_spread": 14923.8479503,
+        "rho": 122.163202112,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          7.44059922404e-08,
+          7.44059922404e-08
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 2,
+        "limiting_point_rho": 58.0961276738,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 2.23370990085e-05,
+        "rate_spread": 3375.1655669,
+        "rho": 58.0961751487,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          6.01236382756e-06,
+          6.01236382756e-06
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 3,
+        "limiting_point_rho": 50.5288979961,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.000595350093451,
+        "rate_spread": 2553.33545345,
+        "rho": 50.5305398096,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          5.8118667286e-05,
+          5.8118667286e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 4,
+        "limiting_point_rho": 47.1233489255,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00306039958013,
+        "rate_spread": 2221.44295191,
+        "rho": 47.1321859446,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000237460965397,
+          0.000237460965397
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 5,
+        "limiting_point_rho": 45.1912068161,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00818454826889,
+        "rate_spread": 2044.33086074,
+        "rho": 45.2142771782,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000598193863758,
+          0.000598193863758
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 6,
+        "limiting_point_rho": 46.1847797769,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0158297474928,
+        "rate_spread": 2126.77991014,
+        "rho": 46.1170240816,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00117754523605,
+          0.00117754523605
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 7,
+        "limiting_point_rho": 47.2324713459,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0254728707099,
+        "rate_spread": 2221.20741959,
+        "rho": 47.1296872427,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00199596259367,
+          0.00199596259367
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 8,
+        "limiting_point_rho": 48.0338076112,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.036557344296,
+        "rate_spread": 2293.94100896,
+        "rho": 47.8951042275,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      }
+    ],
+    "expansion": [
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -13.7572828121,
+          "k": 2
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 2.24178426369,
+          "row_rmse": 2.38852550521
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 2.23895994258,
+          "row_rmse": 2.23895994258
+        },
+        "training_rmse": 2.14940154487
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -15.120730827,
+          "k": 3
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 3.38965663528,
+          "row_rmse": 3.55280701525
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 3.33788817399,
+          "row_rmse": 3.33788817399
+        },
+        "training_rmse": 3.20437264703
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -16.3592401053,
+          "k": 4
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 4.57901166438,
+          "row_rmse": 4.7477312976
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 4.46876356676,
+          "row_rmse": 4.46876356676
+        },
+        "training_rmse": 4.29001302409
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -17.5008393706,
+          "k": 5
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 5.78431705885,
+          "row_rmse": 5.9548802212
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 5.6123072515,
+          "row_rmse": 5.6123072515
+        },
+        "training_rmse": 5.38781496144
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -18.5632573899,
+          "k": 6
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 6.99733521773,
+          "row_rmse": 7.1680803296
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 6.76209524265,
+          "row_rmse": 6.76209524265
+        },
+        "training_rmse": 6.49161143295
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -19.5587286195,
+          "k": 7
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 8.21465013002,
+          "row_rmse": 8.3847053593
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 7.91540687345,
+          "row_rmse": 7.91540687345
+        },
+        "training_rmse": 7.59879059851
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -20.4962079022,
+          "k": 8
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 9.43459875486,
+          "row_rmse": 9.60345372775
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 9.07089821295,
+          "row_rmse": 9.07089821295
+        },
+        "training_rmse": 8.70806228443
+      }
+    ],
+    "geometry_covariance_ratio": 0.44770765607,
+    "groups": 15,
+    "ids": [
+      "aml",
+      "basal_cell",
+      "cll",
+      "colorectal",
+      "duodenum",
+      "esophagus_squamous",
+      "gallbladder",
+      "glioblastoma",
+      "head_neck",
+      "liver",
+      "lung_nonsmokers",
+      "medulloblastoma",
+      "melanoma",
+      "osteosarcoma",
+      "osteosarcoma_arms",
+      "osteosarcoma_head",
+      "osteosarcoma_legs",
+      "osteosarcoma_pelvis",
+      "ovarian_germ",
+      "pancreatic_ductal",
+      "pancreatic_endocrine",
+      "small_intestine",
+      "testicular_germ",
+      "thyroid_papillary_follicular",
+      "thyroid_medullary"
+    ],
+    "logR_fit": {
+      "correlation": 0.808171099893,
+      "intercept": -6.92746796102,
+      "r_squared": 0.653140526703,
+      "rmse": 0.595784528945,
+      "slope": 0.436747986845
+    },
+    "n": 25,
+    "outliers_negative": [
+      {
+        "amplitude_ratio": 0.037486489747,
+        "group": "small_intestine",
+        "prediction": -1.72862468734,
+        "residual": -1.42612522522,
+        "tissue": "Small intestine adenocarcinoma",
+        "tissue_id": "small_intestine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.0773688232763,
+        "group": "pancreas",
+        "prediction": -2.6007221317,
+        "residual": -1.1114340084,
+        "tissue": "Pancreatic endocrine islet cell carcinoma",
+        "tissue_id": "pancreatic_endocrine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.0913045544651,
+        "group": "small_intestine",
+        "prediction": -2.48330603457,
+        "residual": -1.03950755839,
+        "tissue": "Duodenum adenocarcinoma",
+        "tissue_id": "duodenum",
+        "training_grid_c": null
+      }
+    ],
+    "outliers_positive": [
+      {
+        "amplitude_ratio": 15.6598638333,
+        "group": "skin",
+        "prediction": -1.64251537978,
+        "residual": 1.19478798143,
+        "tissue": "Basal cell carcinoma",
+        "tissue_id": "basal_cell",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 14.713099436,
+        "group": "thyroid",
+        "prediction": -3.15431929516,
+        "residual": 1.16770417009,
+        "tissue": "Thyroid papillary follicular carcinoma",
+        "tissue_id": "thyroid_papillary_follicular",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 9.85392859886,
+        "group": "gallbladder",
+        "prediction": -3.54584265691,
+        "residual": 0.993609411071,
+        "tissue": "Gallbladder non papillary adenocarcinoma",
+        "tissue_id": "gallbladder",
+        "training_grid_c": null
+      }
+    ],
+    "saturation": {
+      "max_risk": 0.3,
+      "ordered_cloud_bound_applicable": false,
+      "ordering_violations": 113,
+      "sigma_at_max_risk": 0.832241535857
+    },
+    "separable": {
+      "fit": {
+        "b_N": 0.505769522329,
+        "b_v": 0.358994430383,
+        "clock": "effective",
+        "family": "separable",
+        "intercept": -7.301877579,
+        "k": null
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.692403252995,
+        "row_rmse": 0.707152913518
+      },
+      "leave_row_out": {
+        "fold_count": 25,
+        "group_balanced_rmse": 0.667871878534,
+        "row_rmse": 0.667871878534
+      },
+      "training_rmse": 0.591326045141
+    },
+    "sequential": [
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -12.2177435381,
+          "k": 1
+        },
+        "implied_equal_rate": 6.05698449451e-13,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 1.2549189464,
+          "row_rmse": 1.33746090728
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 1.25864224577,
+          "row_rmse": 1.25864224577
+        },
+        "max_exact_logH_discrepancy": 2.55351295664e-15,
+        "predicted_logH_slope": 1.0,
+        "predicted_logR_slope": 0.975447616757,
+        "training_rmse": 1.20829655594
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -13.7572828121,
+          "k": 2
+        },
+        "implied_equal_rate": 1.32238706941e-07,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 2.24178426369,
+          "row_rmse": 2.38852550521
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 2.23895994258,
+          "row_rmse": 2.23895994258
+        },
+        "max_exact_logH_discrepancy": 0.000223524322614,
+        "predicted_logH_slope": 1.44770765607,
+        "predicted_logR_slope": 1.30756906072,
+        "training_rmse": 2.14940154487
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -15.120730827,
+          "k": 3
+        },
+        "implied_equal_rate": 9.11499408148e-06,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 3.38965663528,
+          "row_rmse": 3.55280701525
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 3.33788817399,
+          "row_rmse": 3.33788817399
+        },
+        "max_exact_logH_discrepancy": 0.0173102433769,
+        "predicted_logH_slope": 1.89541531214,
+        "predicted_logR_slope": 1.56117333359,
+        "training_rmse": 3.20437264703
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -16.3592401053,
+          "k": 4
+        },
+        "implied_equal_rate": 8.13186150829e-05,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 4.57901166438,
+          "row_rmse": 4.7477312976
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 4.46876356676,
+          "row_rmse": 4.46876356676
+        },
+        "max_exact_logH_discrepancy": 0.163339663803,
+        "predicted_logH_slope": 2.34312296821,
+        "predicted_logR_slope": 1.79649073566,
+        "training_rmse": 4.29001302409
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -17.5008393706,
+          "k": 5
+        },
+        "implied_equal_rate": 0.000316105553546,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 5.78431705885,
+          "row_rmse": 5.9548802212
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 5.6123072515,
+          "row_rmse": 5.6123072515
+        },
+        "max_exact_logH_discrepancy": 0.643030240901,
+        "predicted_logH_slope": 2.79083062428,
+        "predicted_logR_slope": 2.03294337278,
+        "training_rmse": 5.38781496144
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -18.5632573899,
+          "k": 6
+        },
+        "implied_equal_rate": 0.000805607996419,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 6.99733521773,
+          "row_rmse": 7.1680803296
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 6.76209524265,
+          "row_rmse": 6.76209524265
+        },
+        "max_exact_logH_discrepancy": 1.57145499659,
+        "predicted_logH_slope": 3.23853828035,
+        "predicted_logR_slope": 2.26874739386,
+        "training_rmse": 6.49161143295
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -19.5587286195,
+          "k": 7
+        },
+        "implied_equal_rate": 0.00160655615931,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 8.21465013002,
+          "row_rmse": 8.3847053593
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 7.91540687345,
+          "row_rmse": 7.91540687345
+        },
+        "max_exact_logH_discrepancy": 2.86121720768,
+        "predicted_logH_slope": 3.68624593642,
+        "predicted_logR_slope": 2.5043117816,
+        "training_rmse": 7.59879059851
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -20.4962079022,
+          "k": 8
+        },
+        "implied_equal_rate": 0.00274141012361,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 9.43459875486,
+          "row_rmse": 9.60345372775
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 9.07089821295,
+          "row_rmse": 9.07089821295
+        },
+        "max_exact_logH_discrepancy": 4.36577092171,
+        "predicted_logH_slope": 4.13395359249,
+        "predicted_logR_slope": 2.73960366599,
+        "training_rmse": 8.70806228443
+      }
+    ],
+    "stress_frontier": [
+      {
+        "baseline_interval": [
+          2.92730764745e-13,
+          2.92730764745e-13
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 1,
+        "limiting_point_rho": 122.163202112,
+        "lower_constraint": [
+          "gallbladder"
+        ],
+        "max_relative_exact_vs_rare_rate": 1.33226762955e-15,
+        "rate_spread": 2386.93676712,
+        "rho": 48.8562868741,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          7.44068748692e-08,
+          7.44068748692e-08
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 2,
+        "limiting_point_rho": 58.0961276738,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 2.23370990085e-05,
+        "rate_spread": 337.495189019,
+        "rho": 18.3710421321,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          6.01244993758e-06,
+          6.01244993758e-06
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 3,
+        "limiting_point_rho": 50.5288979961,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.000595350093451,
+        "rate_spread": 218.30612328,
+        "rho": 14.7751860658,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          5.81206561163e-05,
+          5.81206561163e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 4,
+        "limiting_point_rho": 47.1233489255,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00306039958013,
+        "rate_spread": 175.652889359,
+        "rho": 13.2534104803,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000237476793935,
+          0.000237476793935
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 5,
+        "limiting_point_rho": 45.1912068161,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00818454826889,
+        "rate_spread": 154.284236252,
+        "rho": 12.4211205715,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000598455801771,
+          0.000598455801771
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 6,
+        "limiting_point_rho": 46.1847797769,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0158297474928,
+        "rate_spread": 155.531503083,
+        "rho": 12.4712270079,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00117794637778,
+          0.00117794637778
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 7,
+        "limiting_point_rho": 47.2324713459,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0254728707099,
+        "rate_spread": 158.977720162,
+        "rho": 12.6086367289,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.0019964954803,
+          0.0019964954803
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 8,
+        "limiting_point_rho": 48.0338076112,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.036557344296,
+        "rate_spread": 161.582947937,
+        "rho": 12.7115281511,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      }
+    ]
+  },
+  "preregistration_commit": "f5c1f4e87bfd03c85eb015fa14e72a28d33844ad",
+  "primary": {
+    "descriptive": {
+      "fit": {
+        "clock": "effective",
+        "correlation": 0.807791026993,
+        "family": "descriptive",
+        "intercept": -6.9543380602,
+        "k": null,
+        "r_squared": 0.652526343291,
+        "rmse": 0.601112673405,
+        "slope": 0.440057189945
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.647455519285,
+        "row_rmse": 0.685612085714
+      },
+      "leave_row_out": {
+        "fold_count": 25,
+        "group_balanced_rmse": 0.651007234248,
+        "row_rmse": 0.651007234248
+      },
+      "training_rmse": 0.601112673405
+    },
+    "exact_frontier": [
+      {
+        "baseline_interval": [
+          2.92759019294e-13,
+          2.92759019294e-13
+        ],
+        "compatible_allowances": [],
+        "k": 1,
+        "limiting_point_rho": 122.163202112,
+        "lower_constraint": [
+          "gallbladder"
+        ],
+        "max_relative_exact_vs_rare_rate": 1.33226762955e-15,
+        "rate_spread": 14923.8479503,
+        "rho": 122.163202112,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          7.44059922404e-08,
+          7.44059922404e-08
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 2,
+        "limiting_point_rho": 58.0961276738,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 2.23370990085e-05,
+        "rate_spread": 3375.1655669,
+        "rho": 58.0961751487,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          6.01236382756e-06,
+          6.01236382756e-06
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 3,
+        "limiting_point_rho": 50.5288979961,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.000595350093451,
+        "rate_spread": 2553.33545345,
+        "rho": 50.5305398096,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          5.8118667286e-05,
+          5.8118667286e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 4,
+        "limiting_point_rho": 47.1233489255,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00306039958013,
+        "rate_spread": 2221.44295191,
+        "rho": 47.1321859446,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000237460965397,
+          0.000237460965397
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 5,
+        "limiting_point_rho": 45.1912068161,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00818454826889,
+        "rate_spread": 2044.33086074,
+        "rho": 45.2142771782,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000598193863758,
+          0.000598193863758
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 6,
+        "limiting_point_rho": 46.1847797769,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0158297474928,
+        "rate_spread": 2126.77991014,
+        "rho": 46.1170240816,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00117754523605,
+          0.00117754523605
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 7,
+        "limiting_point_rho": 47.2324713459,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0254728707099,
+        "rate_spread": 2221.20741959,
+        "rho": 47.1296872427,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00199596259367,
+          0.00199596259367
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 8,
+        "limiting_point_rho": 48.0338076112,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.036557344296,
+        "rate_spread": 2293.94100896,
+        "rho": 47.8951042275,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      }
+    ],
+    "expansion": [
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -13.7572828121,
+          "k": 2
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 2.24178426369,
+          "row_rmse": 2.38852550521
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 2.23895994258,
+          "row_rmse": 2.23895994258
+        },
+        "training_rmse": 2.14940154487
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -15.120730827,
+          "k": 3
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 3.38965663528,
+          "row_rmse": 3.55280701525
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 3.33788817399,
+          "row_rmse": 3.33788817399
+        },
+        "training_rmse": 3.20437264703
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -16.3592401053,
+          "k": 4
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 4.57901166438,
+          "row_rmse": 4.7477312976
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 4.46876356676,
+          "row_rmse": 4.46876356676
+        },
+        "training_rmse": 4.29001302409
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -17.5008393706,
+          "k": 5
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 5.78431705885,
+          "row_rmse": 5.9548802212
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 5.6123072515,
+          "row_rmse": 5.6123072515
+        },
+        "training_rmse": 5.38781496144
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -18.5632573899,
+          "k": 6
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 6.99733521773,
+          "row_rmse": 7.1680803296
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 6.76209524265,
+          "row_rmse": 6.76209524265
+        },
+        "training_rmse": 6.49161143295
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -19.5587286195,
+          "k": 7
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 8.21465013002,
+          "row_rmse": 8.3847053593
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 7.91540687345,
+          "row_rmse": 7.91540687345
+        },
+        "training_rmse": 7.59879059851
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "expansion",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -20.4962079022,
+          "k": 8
+        },
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 9.43459875486,
+          "row_rmse": 9.60345372775
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 9.07089821295,
+          "row_rmse": 9.07089821295
+        },
+        "training_rmse": 8.70806228443
+      }
+    ],
+    "geometry_covariance_ratio": 0.44770765607,
+    "groups": 15,
+    "ids": [
+      "aml",
+      "basal_cell",
+      "cll",
+      "colorectal",
+      "duodenum",
+      "esophagus_squamous",
+      "gallbladder",
+      "glioblastoma",
+      "head_neck",
+      "liver",
+      "lung_nonsmokers",
+      "medulloblastoma",
+      "melanoma",
+      "osteosarcoma",
+      "osteosarcoma_arms",
+      "osteosarcoma_head",
+      "osteosarcoma_legs",
+      "osteosarcoma_pelvis",
+      "ovarian_germ",
+      "pancreatic_ductal",
+      "pancreatic_endocrine",
+      "small_intestine",
+      "testicular_germ",
+      "thyroid_papillary_follicular",
+      "thyroid_medullary"
+    ],
+    "logR_fit": {
+      "correlation": 0.808171099893,
+      "intercept": -6.92746796102,
+      "r_squared": 0.653140526703,
+      "rmse": 0.595784528945,
+      "slope": 0.436747986845
+    },
+    "n": 25,
+    "outliers_negative": [
+      {
+        "amplitude_ratio": 0.037486489747,
+        "group": "small_intestine",
+        "prediction": -1.72862468734,
+        "residual": -1.42612522522,
+        "tissue": "Small intestine adenocarcinoma",
+        "tissue_id": "small_intestine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.0773688232763,
+        "group": "pancreas",
+        "prediction": -2.6007221317,
+        "residual": -1.1114340084,
+        "tissue": "Pancreatic endocrine islet cell carcinoma",
+        "tissue_id": "pancreatic_endocrine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.0913045544651,
+        "group": "small_intestine",
+        "prediction": -2.48330603457,
+        "residual": -1.03950755839,
+        "tissue": "Duodenum adenocarcinoma",
+        "tissue_id": "duodenum",
+        "training_grid_c": null
+      }
+    ],
+    "outliers_positive": [
+      {
+        "amplitude_ratio": 15.6598638333,
+        "group": "skin",
+        "prediction": -1.64251537978,
+        "residual": 1.19478798143,
+        "tissue": "Basal cell carcinoma",
+        "tissue_id": "basal_cell",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 14.713099436,
+        "group": "thyroid",
+        "prediction": -3.15431929516,
+        "residual": 1.16770417009,
+        "tissue": "Thyroid papillary follicular carcinoma",
+        "tissue_id": "thyroid_papillary_follicular",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 9.85392859886,
+        "group": "gallbladder",
+        "prediction": -3.54584265691,
+        "residual": 0.993609411071,
+        "tissue": "Gallbladder non papillary adenocarcinoma",
+        "tissue_id": "gallbladder",
+        "training_grid_c": null
+      }
+    ],
+    "saturation": {
+      "max_risk": 0.3,
+      "ordered_cloud_bound_applicable": false,
+      "ordering_violations": 113,
+      "sigma_at_max_risk": 0.832241535857
+    },
+    "separable": {
+      "fit": {
+        "b_N": 0.505769522329,
+        "b_v": 0.358994430383,
+        "clock": "effective",
+        "family": "separable",
+        "intercept": -7.301877579,
+        "k": null
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.692403252995,
+        "row_rmse": 0.707152913518
+      },
+      "leave_row_out": {
+        "fold_count": 25,
+        "group_balanced_rmse": 0.667871878534,
+        "row_rmse": 0.667871878534
+      },
+      "training_rmse": 0.591326045141
+    },
+    "sequential": [
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -12.2177435381,
+          "k": 1
+        },
+        "implied_equal_rate": 6.05698449451e-13,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 1.2549189464,
+          "row_rmse": 1.33746090728
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 1.25864224577,
+          "row_rmse": 1.25864224577
+        },
+        "max_exact_logH_discrepancy": 2.55351295664e-15,
+        "predicted_logH_slope": 1.0,
+        "predicted_logR_slope": 0.975447616757,
+        "training_rmse": 1.20829655594
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -13.7572828121,
+          "k": 2
+        },
+        "implied_equal_rate": 1.32238706941e-07,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 2.24178426369,
+          "row_rmse": 2.38852550521
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 2.23895994258,
+          "row_rmse": 2.23895994258
+        },
+        "max_exact_logH_discrepancy": 0.000223524322614,
+        "predicted_logH_slope": 1.44770765607,
+        "predicted_logR_slope": 1.30756906072,
+        "training_rmse": 2.14940154487
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -15.120730827,
+          "k": 3
+        },
+        "implied_equal_rate": 9.11499408148e-06,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 3.38965663528,
+          "row_rmse": 3.55280701525
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 3.33788817399,
+          "row_rmse": 3.33788817399
+        },
+        "max_exact_logH_discrepancy": 0.0173102433769,
+        "predicted_logH_slope": 1.89541531214,
+        "predicted_logR_slope": 1.56117333359,
+        "training_rmse": 3.20437264703
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -16.3592401053,
+          "k": 4
+        },
+        "implied_equal_rate": 8.13186150829e-05,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 4.57901166438,
+          "row_rmse": 4.7477312976
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 4.46876356676,
+          "row_rmse": 4.46876356676
+        },
+        "max_exact_logH_discrepancy": 0.163339663803,
+        "predicted_logH_slope": 2.34312296821,
+        "predicted_logR_slope": 1.79649073566,
+        "training_rmse": 4.29001302409
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -17.5008393706,
+          "k": 5
+        },
+        "implied_equal_rate": 0.000316105553546,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 5.78431705885,
+          "row_rmse": 5.9548802212
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 5.6123072515,
+          "row_rmse": 5.6123072515
+        },
+        "max_exact_logH_discrepancy": 0.643030240901,
+        "predicted_logH_slope": 2.79083062428,
+        "predicted_logR_slope": 2.03294337278,
+        "training_rmse": 5.38781496144
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -18.5632573899,
+          "k": 6
+        },
+        "implied_equal_rate": 0.000805607996419,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 6.99733521773,
+          "row_rmse": 7.1680803296
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 6.76209524265,
+          "row_rmse": 6.76209524265
+        },
+        "max_exact_logH_discrepancy": 1.57145499659,
+        "predicted_logH_slope": 3.23853828035,
+        "predicted_logR_slope": 2.26874739386,
+        "training_rmse": 6.49161143295
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -19.5587286195,
+          "k": 7
+        },
+        "implied_equal_rate": 0.00160655615931,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 8.21465013002,
+          "row_rmse": 8.3847053593
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 7.91540687345,
+          "row_rmse": 7.91540687345
+        },
+        "max_exact_logH_discrepancy": 2.86121720768,
+        "predicted_logH_slope": 3.68624593642,
+        "predicted_logR_slope": 2.5043117816,
+        "training_rmse": 7.59879059851
+      },
+      {
+        "fit": {
+          "clock": "effective",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -20.4962079022,
+          "k": 8
+        },
+        "implied_equal_rate": 0.00274141012361,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 9.43459875486,
+          "row_rmse": 9.60345372775
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 9.07089821295,
+          "row_rmse": 9.07089821295
+        },
+        "max_exact_logH_discrepancy": 4.36577092171,
+        "predicted_logH_slope": 4.13395359249,
+        "predicted_logR_slope": 2.73960366599,
+        "training_rmse": 8.70806228443
+      }
+    ],
+    "slope_bootstrap": {
+      "draws": 2000,
+      "lower": 0.232629858264,
+      "seed": 1260825,
+      "skipped": 0,
+      "upper": 0.535653073526
+    },
+    "stress_frontier": [
+      {
+        "baseline_interval": [
+          2.92730764745e-13,
+          2.92730764745e-13
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 1,
+        "limiting_point_rho": 122.163202112,
+        "lower_constraint": [
+          "gallbladder"
+        ],
+        "max_relative_exact_vs_rare_rate": 1.33226762955e-15,
+        "rate_spread": 2386.93676712,
+        "rho": 48.8562868741,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          7.44068748692e-08,
+          7.44068748692e-08
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 2,
+        "limiting_point_rho": 58.0961276738,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 2.23370990085e-05,
+        "rate_spread": 337.495189019,
+        "rho": 18.3710421321,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          6.01244993758e-06,
+          6.01244993758e-06
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 3,
+        "limiting_point_rho": 50.5288979961,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.000595350093451,
+        "rate_spread": 218.30612328,
+        "rho": 14.7751860658,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          5.81206561163e-05,
+          5.81206561163e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 4,
+        "limiting_point_rho": 47.1233489255,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00306039958013,
+        "rate_spread": 175.652889359,
+        "rho": 13.2534104803,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000237476793935,
+          0.000237476793935
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 5,
+        "limiting_point_rho": 45.1912068161,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00818454826889,
+        "rate_spread": 154.284236252,
+        "rho": 12.4211205715,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000598455801771,
+          0.000598455801771
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 6,
+        "limiting_point_rho": 46.1847797769,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0158297474928,
+        "rate_spread": 155.531503083,
+        "rho": 12.4712270079,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00117794637778,
+          0.00117794637778
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 7,
+        "limiting_point_rho": 47.2324713459,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0254728707099,
+        "rate_spread": 158.977720162,
+        "rho": 12.6086367289,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.0019964954803,
+          0.0019964954803
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 8,
+        "limiting_point_rho": 48.0338076112,
+        "lower_constraint": [
+          "ovarian_germ"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.036557344296,
+        "rate_spread": 161.582947937,
+        "rho": 12.7115281511,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      }
+    ]
+  },
+  "primary_developmental": {
+    "descriptive": {
+      "fit": {
+        "clock": "developmental",
+        "correlation": 0.807791026993,
+        "family": "descriptive",
+        "intercept": -6.9543380602,
+        "k": null,
+        "r_squared": 0.652526343291,
+        "rmse": 0.601112673405,
+        "slope": 0.440057189945
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.647455519285,
+        "row_rmse": 0.685612085714
+      },
+      "leave_row_out": {
+        "fold_count": 25,
+        "group_balanced_rmse": 0.651007234248,
+        "row_rmse": 0.651007234248
+      },
+      "training_rmse": 0.601112673405
+    },
+    "exact_frontier": [
+      {
+        "baseline_interval": [
+          2.48190603465e-13,
+          2.48190603465e-13
+        ],
+        "compatible_allowances": [],
+        "k": 1,
+        "limiting_point_rho": 104.43662052,
+        "lower_constraint": [
+          "gallbladder"
+        ],
+        "max_relative_exact_vs_rare_rate": 1.33226762955e-15,
+        "rate_spread": 10907.0077055,
+        "rho": 104.43662052,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          3.33488355523e-08,
+          3.33488355523e-08
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 2,
+        "limiting_point_rho": 26.2575160101,
+        "lower_constraint": [
+          "gallbladder"
+        ],
+        "max_relative_exact_vs_rare_rate": 2.23370990085e-05,
+        "rate_spread": 689.469892826,
+        "rho": 26.2577587167,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          2.08156709828e-06,
+          2.08156709828e-06
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 3,
+        "limiting_point_rho": 17.6402318858,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.000595350093451,
+        "rate_spread": 311.223870887,
+        "rho": 17.6415382234,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          1.90566275435e-05,
+          1.90566275435e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 4,
+        "limiting_point_rho": 15.5779983862,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00306039958013,
+        "rate_spread": 242.868205652,
+        "rho": 15.5842293891,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          7.53790317309e-05,
+          7.53790317309e-05
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 5,
+        "limiting_point_rho": 14.4582614334,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.00818454826889,
+        "rate_spread": 209.479986425,
+        "rho": 14.4734234521,
+        "upper_constraint": [
+          "small_intestine"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000186212091222,
+          0.000186212091222
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 6,
+        "limiting_point_rho": 14.4307755062,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0158297474928,
+        "rate_spread": 208.039625937,
+        "rho": 14.4235788186,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.00036106326162,
+          0.00036106326162
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 7,
+        "limiting_point_rho": 14.5299188994,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.0254728707099,
+        "rate_spread": 210.810474389,
+        "rho": 14.5193138402,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      },
+      {
+        "baseline_interval": [
+          0.000605190462115,
+          0.000605190462115
+        ],
+        "compatible_allowances": [
+          100
+        ],
+        "k": 8,
+        "limiting_point_rho": 14.6047231885,
+        "lower_constraint": [
+          "osteosarcoma_legs"
+        ],
+        "max_relative_exact_vs_rare_rate": 0.036557344296,
+        "rate_spread": 212.889022046,
+        "rho": 14.5907169819,
+        "upper_constraint": [
+          "colorectal"
+        ]
+      }
+    ],
+    "geometry_covariance_ratio": 0.316720747751,
+    "groups": 15,
+    "ids": [
+      "aml",
+      "basal_cell",
+      "cll",
+      "colorectal",
+      "duodenum",
+      "esophagus_squamous",
+      "gallbladder",
+      "glioblastoma",
+      "head_neck",
+      "liver",
+      "lung_nonsmokers",
+      "medulloblastoma",
+      "melanoma",
+      "osteosarcoma",
+      "osteosarcoma_arms",
+      "osteosarcoma_head",
+      "osteosarcoma_legs",
+      "osteosarcoma_pelvis",
+      "ovarian_germ",
+      "pancreatic_ductal",
+      "pancreatic_endocrine",
+      "small_intestine",
+      "testicular_germ",
+      "thyroid_papillary_follicular",
+      "thyroid_medullary"
+    ],
+    "logR_fit": {
+      "correlation": 0.808171099893,
+      "intercept": -6.92746796102,
+      "r_squared": 0.653140526703,
+      "rmse": 0.595784528945,
+      "slope": 0.436747986845
+    },
+    "n": 25,
+    "outliers_negative": [
+      {
+        "amplitude_ratio": 0.037486489747,
+        "group": "small_intestine",
+        "prediction": -1.72862468734,
+        "residual": -1.42612522522,
+        "tissue": "Small intestine adenocarcinoma",
+        "tissue_id": "small_intestine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.0773688232763,
+        "group": "pancreas",
+        "prediction": -2.6007221317,
+        "residual": -1.1114340084,
+        "tissue": "Pancreatic endocrine islet cell carcinoma",
+        "tissue_id": "pancreatic_endocrine",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 0.0913045544651,
+        "group": "small_intestine",
+        "prediction": -2.48330603457,
+        "residual": -1.03950755839,
+        "tissue": "Duodenum adenocarcinoma",
+        "tissue_id": "duodenum",
+        "training_grid_c": null
+      }
+    ],
+    "outliers_positive": [
+      {
+        "amplitude_ratio": 15.6598638333,
+        "group": "skin",
+        "prediction": -1.64251537978,
+        "residual": 1.19478798143,
+        "tissue": "Basal cell carcinoma",
+        "tissue_id": "basal_cell",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 14.713099436,
+        "group": "thyroid",
+        "prediction": -3.15431929516,
+        "residual": 1.16770417009,
+        "tissue": "Thyroid papillary follicular carcinoma",
+        "tissue_id": "thyroid_papillary_follicular",
+        "training_grid_c": null
+      },
+      {
+        "amplitude_ratio": 9.85392859886,
+        "group": "gallbladder",
+        "prediction": -3.54584265691,
+        "residual": 0.993609411071,
+        "tissue": "Gallbladder non papillary adenocarcinoma",
+        "tissue_id": "gallbladder",
+        "training_grid_c": null
+      }
+    ],
+    "saturation": {
+      "max_risk": 0.3,
+      "ordered_cloud_bound_applicable": false,
+      "ordering_violations": 101,
+      "sigma_at_max_risk": 0.832241535857
+    },
+    "separable": {
+      "fit": {
+        "b_N": 0.505633916584,
+        "b_v": 0.48675310235,
+        "clock": "developmental",
+        "family": "separable",
+        "intercept": -7.70160727137,
+        "k": null
+      },
+      "leave_group_out": {
+        "fold_count": 15,
+        "group_balanced_rmse": 0.71584349074,
+        "row_rmse": 0.728580100011
+      },
+      "leave_row_out": {
+        "fold_count": 25,
+        "group_balanced_rmse": 0.678622545123,
+        "row_rmse": 0.678622545123
+      },
+      "training_rmse": 0.599937810444
+    },
+    "sequential": [
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -12.5579696085,
+          "k": 1
+        },
+        "implied_equal_rate": 2.76713528005e-13,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 1.08024275877,
+          "row_rmse": 1.12425777767
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 1.06341207018,
+          "row_rmse": 1.06341207018
+        },
+        "max_exact_logH_discrepancy": 3.10862446895e-15,
+        "predicted_logH_slope": 0.869013091681,
+        "predicted_logR_slope": 0.856150405044,
+        "training_rmse": 1.02087558737
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -14.4377349529,
+          "k": 2
+        },
+        "implied_equal_rate": 6.04132950475e-08,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 1.65110984013,
+          "row_rmse": 1.78781232864
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 1.66773820663,
+          "row_rmse": 1.66773820663
+        },
+        "max_exact_logH_discrepancy": 0.000102617190539,
+        "predicted_logH_slope": 1.18573383943,
+        "predicted_logR_slope": 1.11660071462,
+        "training_rmse": 1.60102867836
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -16.1414090382,
+          "k": 3
+        },
+        "implied_equal_rate": 4.16418792605e-06,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 2.41146523826,
+          "row_rmse": 2.58275677744
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 2.40971574708,
+          "row_rmse": 2.40971574708
+        },
+        "max_exact_logH_discrepancy": 0.00795317512515,
+        "predicted_logH_slope": 1.50245458718,
+        "predicted_logR_slope": 1.32116162516,
+        "training_rmse": 2.3133271172
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -17.7201443869,
+          "k": 4
+        },
+        "implied_equal_rate": 3.71504349936e-05,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 3.23015898855,
+          "row_rmse": 3.41863050029
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 3.19483692833,
+          "row_rmse": 3.19483692833
+        },
+        "max_exact_logH_discrepancy": 0.0754392768887,
+        "predicted_logH_slope": 1.81917533493,
+        "predicted_logR_slope": 1.49281195416,
+        "training_rmse": 3.06704345119
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -19.2019697226,
+          "k": 5
+        },
+        "implied_equal_rate": 0.000144412922013,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 4.07215559528,
+          "row_rmse": 4.27147266184
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 3.9977630966,
+          "row_rmse": 3.9977630966
+        },
+        "max_exact_logH_discrepancy": 0.303030674797,
+        "predicted_logH_slope": 2.13589608268,
+        "predicted_logR_slope": 1.65610072534,
+        "training_rmse": 3.83785257273
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -20.6046138123,
+          "k": 6
+        },
+        "implied_equal_rate": 0.0003680422677,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 4.92551894707,
+          "row_rmse": 5.13283208193
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 4.809585254,
+          "row_rmse": 4.809585254
+        },
+        "max_exact_logH_discrepancy": 0.781413377488,
+        "predicted_logH_slope": 2.45261683044,
+        "predicted_logR_slope": 1.8204805411,
+        "training_rmse": 4.61720184384
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -21.9403111123,
+          "k": 7
+        },
+        "implied_equal_rate": 0.00073395568898,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 5.78522118925,
+          "row_rmse": 5.99904108495
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 5.62645400012,
+          "row_rmse": 5.62645400012
+        },
+        "max_exact_logH_discrepancy": 1.54156006678,
+        "predicted_logH_slope": 2.76933757819,
+        "predicted_logR_slope": 1.98396557748,
+        "training_rmse": 5.40139584011
+      },
+      {
+        "fit": {
+          "clock": "developmental",
+          "family": "sequential",
+          "gamma": 0.0,
+          "grid_c": 0,
+          "intercept": -23.2180164654,
+          "k": 8
+        },
+        "implied_equal_rate": 0.00125241408113,
+        "leave_group_out": {
+          "fold_count": 15,
+          "group_balanced_rmse": 6.64880388671,
+          "row_rmse": 6.86826506286
+        },
+        "leave_row_out": {
+          "fold_count": 25,
+          "group_balanced_rmse": 6.44645116916,
+          "row_rmse": 6.44645116916
+        },
+        "max_exact_logH_discrepancy": 2.54347961006,
+        "predicted_logH_slope": 3.08605832594,
+        "predicted_logR_slope": 2.14644180978,
+        "training_rmse": 6.1885931224
+      }
+    ]
+  },
+  "prospective_amendment_commit": "c7d255d7bfafe0ac720e1752a4b55058d136ecd3",
+  "source_version_audit": {
+    "annual_lifetime_inconsistencies": [
+      {
+        "annual_times_80": 1920.0,
+        "source_lifetime": 1947.0,
+        "tissue_id": "duodenum"
+      },
+      {
+        "annual_times_80": 1920.0,
+        "source_lifetime": 1947.0,
+        "tissue_id": "duodenum_fap"
+      },
+      {
+        "annual_times_80": 73.0,
+        "source_lifetime": 88.0,
+        "tissue_id": "liver"
+      },
+      {
+        "annual_times_80": 73.0,
+        "source_lifetime": 88.0,
+        "tissue_id": "liver_hcv"
+      },
+      {
+        "annual_times_80": 5.36,
+        "source_lifetime": 5.0,
+        "tissue_id": "osteosarcoma"
+      },
+      {
+        "annual_times_80": 5.36,
+        "source_lifetime": 5.0,
+        "tissue_id": "osteosarcoma_arms"
+      },
+      {
+        "annual_times_80": 5.36,
+        "source_lifetime": 5.0,
+        "tissue_id": "osteosarcoma_head"
+      },
+      {
+        "annual_times_80": 5.36,
+        "source_lifetime": 5.0,
+        "tissue_id": "osteosarcoma_legs"
+      },
+      {
+        "annual_times_80": 5.36,
+        "source_lifetime": 5.0,
+        "tissue_id": "osteosarcoma_pelvis"
+      },
+      {
+        "annual_times_80": 2880.0,
+        "source_lifetime": 2920.0,
+        "tissue_id": "small_intestine"
+      }
+    ],
+    "changes": [
+      {
+        "field": "divisions_per_year",
+        "little2016": 0.025,
+        "tissue_id": "glioblastoma",
+        "tv2015": 0.0
+      },
+      {
+        "field": "divisions_per_lifetime",
+        "little2016": 2.0,
+        "tissue_id": "glioblastoma",
+        "tv2015": 0.0
+      },
+      {
+        "field": "divisions_per_year",
+        "little2016": 0.025,
+        "tissue_id": "medulloblastoma",
+        "tv2015": 0.0
+      },
+      {
+        "field": "divisions_per_lifetime",
+        "little2016": 2.0,
+        "tissue_id": "medulloblastoma",
+        "tv2015": 0.0
+      },
+      {
+        "field": "divisions_per_year",
+        "little2016": 0.025,
+        "tissue_id": "ovarian_germ",
+        "tv2015": 0.0
+      },
+      {
+        "field": "divisions_per_lifetime",
+        "little2016": 2.0,
+        "tissue_id": "ovarian_germ",
+        "tv2015": 0.0
+      }
+    ],
+    "numeric_fields_compared": 155
+  },
+  "status": "nonclinical; unreviewed; no medical advice"
+}
