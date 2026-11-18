@@ -41,7 +41,7 @@ def digest(content: bytes | str) -> str:
 
 def tracked_payloads(root: Path = ROOT) -> dict[str, Path]:
     repo = root.parents[1]
-    paths = {str(p.relative_to(repo)): p for p in root.rglob("*")
+    paths = {p.relative_to(repo).as_posix(): p for p in root.rglob("*")
              if p.is_file() and p.name != MANIFEST_NAME and "__pycache__" not in p.parts}
     paths[TEST_PATH] = repo / TEST_PATH
     return dict(sorted(paths.items()))

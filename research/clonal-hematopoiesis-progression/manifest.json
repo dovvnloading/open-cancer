@@ -16,8 +16,8 @@
     "research/clonal-hematopoiesis-progression/model.py": "5d98fa9783b9a9912296459b3f74a25a041bb136cca3d12ca6158c1552c42df4",
     "research/clonal-hematopoiesis-progression/model_scenarios.csv": "3f2a07d4302fdbdeabee6fe25694626dff2d39758a551274a77d436c6d666815",
     "research/clonal-hematopoiesis-progression/simulate.py": "23d3218fd019691cb58c7c3f4f31b616d70145ffc30c5b58443fa776af440542",
-    "research/clonal-hematopoiesis-progression/verify.py": "18fd2f595672145b7a9bf066fa1a6dc5a446a9c27a7e6f350cca9afe11517012",
-    "tests/test_research_clonal_hematopoiesis_progression.py": "d5b0f40f209c97e3609edc9c2b510accd640d916d412e073a10ebebdc266f618"
+    "research/clonal-hematopoiesis-progression/verify.py": "c2bd2a6e2f68d5d5b8300413c307652bde570b6a46e19d0241971cb2f6a1ab3c",
+    "tests/test_research_clonal_hematopoiesis_progression.py": "ce7748232a98879e98cc72171d382705ad1cf0cef35012c84e56a00a9941d7ff"
   },
   "format": "utf8-lf-sha256-v1",
   "meaning": "integrity of local textual artifacts; not source truth or clinical validity",

@@ -11,7 +11,7 @@ import csv
 import hashlib
 import importlib.util
 import math
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 import random
 import statistics
 import sys
@@ -90,6 +90,14 @@ class ClonalHematopoiesisProgressionTests(unittest.TestCase):
                             p == "tests/test_research_clonal_hematopoiesis_progression.py"
                             for p in checked))
         self.assertEqual(VERIFY.digest("a\nb\nc\n"), VERIFY.digest(b"a\r\nb\rc\n"))
+        self.assertTrue(all("\\" not in key for key in checked))
+        self.assertEqual(set(checked), {
+            path.relative_to(REPO).as_posix()
+            for path in VERIFY.tracked_payloads(ROOT).values()
+        })
+        self.assertEqual(
+            PureWindowsPath(r"research\clonal-hematopoiesis-progression\verify.py").as_posix(),
+            "research/clonal-hematopoiesis-progression/verify.py")
         text = (ROOT / "README.md").read_text(encoding="utf-8")
         actual = ANALYSIS.BEGIN + text.split(ANALYSIS.BEGIN, 1)[1].split(ANALYSIS.END, 1)[0] + ANALYSIS.END
         self.assertEqual(actual, ANALYSIS.render_report(self.report))
