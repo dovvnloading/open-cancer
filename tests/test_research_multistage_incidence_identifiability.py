@@ -238,6 +238,15 @@ class MultistageIncidenceIdentifiabilityTests(unittest.TestCase):
 
     def test_10_data_provenance_and_deterministic_full_reproduction(self):
         self.assertEqual(self.results["source_sha256"], "1a0b4c66b6267c9841b05dfb47cf2831e66e9d02a03bc3d3017b30cfc4fa0198")
+        # Git core.autocrlf=true may produce CRLF, or an older checkout CR.
+        # A provenance digest must not depend on platform-specific newlines.
+        canonical = A.DATA.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        with tempfile.TemporaryDirectory() as temporary:
+            for idx, ending in enumerate((b"\n", b"\r\n", b"\r")):
+                alternate = Path(temporary) / f"alternate-newlines-{idx}.csv"
+                alternate.write_bytes(canonical.replace(b"\n", ending))
+                self.assertEqual(A.source_sha256(alternate), self.results["source_sha256"])
+                self.assertEqual(sum(map(len, A.load_data(alternate).values())), 44)
         stored = json.loads((RESEARCH / "analysis_results.json").read_text(encoding="utf-8"))
         self.assertEqual(self.results, stored)
         groups = A.load_data()

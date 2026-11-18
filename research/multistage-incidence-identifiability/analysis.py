@@ -30,6 +30,18 @@ GROWTH_GRID = tuple(F(i, 200) for i in range(-12, 13))
 SERIES_TERMS = 70
 
 
+def source_sha256(path: Path = DATA) -> str:
+    """SHA-256 of UTF-8 CSV text after universal-newline normalization to LF.
+
+    Git may checkout this public CSV with CRLF under core.autocrlf=true.
+    Newline-normalized text hashes identically on Linux, macOS, and Windows.
+    This is a content-integrity checksum, not upstream data authentication.
+    """
+    with path.open("r", encoding="utf-8", newline=None) as stream:
+        normalized_text = stream.read()
+    return sha256(normalized_text.encode("utf-8")).hexdigest()
+
+
 def _display(x: F, places: int = 6, sqrt: bool = False) -> str:
     with localcontext() as ctx:
         ctx.prec = 60
@@ -186,7 +198,7 @@ def analyze() -> dict:
         assert (ehi - elo) / 2 < F(1, 10**100)
     return {
         "label": "nonclinical computational research; no medical advice; unreviewed",
-        "source_sha256": sha256(DATA.read_bytes()).hexdigest(),
+        "source_sha256": source_sha256(DATA),
         "source_access_date": "2026-11-17",
         "rate_period": "2013-2017",
         "observation_assumptions": {

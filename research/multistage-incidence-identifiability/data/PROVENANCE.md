@@ -90,6 +90,12 @@ printed to one decimal place, matching the selected source column.
   None of the selected cells is suppressed; this does not reveal the actual
   counts.
 
+`analysis_results.json` stores the SHA-256 digest of the CSV's UTF-8 text
+after **universal-newline normalization to LF**. The digest is identical for
+LF, CRLF, or CR-only checkouts (including Windows `core.autocrlf=true`),
+while retaining every published value and other byte of the decoded text.
+This integrity check does not authenticate the upstream NCI source.
+
 These are pooled **period** rates, not a followed birth cohort. Age bands can
 differ in birth cohort, exposures, detection, screening, competing mortality,
 and tumor subtype composition. A constant-rate homogeneous biological model

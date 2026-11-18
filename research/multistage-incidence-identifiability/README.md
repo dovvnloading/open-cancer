@@ -806,6 +806,12 @@ For every term, `b^p-a^p<=b^p` bounds its absolute value by the majorant
 **majorant** ratios are bounded by `|g|b/(N+k+2)`, giving (17). Actual
 bin-integral term ratios need not satisfy that bound. This argument also
 encloses alternating series at negative `g`.
+The CSV provenance SHA-256 in `analysis_results.json` hashes UTF-8 text
+**after universal-newline normalization to LF**. This makes the digest
+stable for LF and Windows CRLF checkouts without rewriting the original
+SEER values; `test_10` also checks a CR-only input. The digest is a local
+content-integrity checksum, not verification of the upstream data.
+
 `analysis.py` uses these enclosures to certify grid comparisons before
 formatting any rounded output, and asserts its squared-threshold enclosure
 width is below `10^-24`. This is numerical certification, not proof that
