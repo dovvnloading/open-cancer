@@ -1,0 +1,27 @@
+{
+  "files": {
+    "research/ch-age-prevalence-test/DECISIONS.md": "b63735f6776f0ef18833cc0e0252c1e0d7806b711eab5b1910b851dbd2a8629d",
+    "research/ch-age-prevalence-test/PROTOCOL.md": "4089b9d295c03cb7399714a110d50adecf46cc53e04ea7acb84135bdfae1a7fc",
+    "research/ch-age-prevalence-test/README.md": "acf74a0c0700894e534a286ca0a6c05b1667465cf0ec3e8b54464dfb32d8daca",
+    "research/ch-age-prevalence-test/THEOREMS.md": "1f3bc9086a34b6ea0b38762d4f0700b5924f9416b06a9cf9ca54aeb863ddad6a",
+    "research/ch-age-prevalence-test/analysis.py": "0a5a0629205d15b90790f2dde3e802820395e2669e8619ca24a01d4530cf8fe6",
+    "research/ch-age-prevalence-test/data/cohorts.csv": "754e83cb2f47d050117f89c16f346070f98dce12195627d110e16ccdb9699468",
+    "research/ch-age-prevalence-test/data/context_aggregates.csv": "60bfb9340073ffd60d55385e9f3505f29c498485473a90464c1dea48811f2855",
+    "research/ch-age-prevalence-test/data/math_scenarios.csv": "5b9d48e9af7e49224f5df371e8454c6f4148bd92599ff0ba15eff39a95540dbd",
+    "research/ch-age-prevalence-test/data/model_parameters.csv": "2c5b62d92fe96dc6639180fdc46475df1af7b625737d1e332be20ce08fa02eea",
+    "research/ch-age-prevalence-test/data/mutation_supply.csv": "d1188a3068e9add9c38534b862c2d2731509b616caab93b9452d0c3c333fe3a9",
+    "research/ch-age-prevalence-test/data/prediction_grid.csv": "452d41f21437b6e6d7398fbdec2d12ed544acd7beeafb2bd74e2e769fc0b8be5",
+    "research/ch-age-prevalence-test/data/prevalence.csv": "f42b35aa6e93a85aca67d9e118efa8a560806af423daa9dcd48f484f7c30c992",
+    "research/ch-age-prevalence-test/data/scenarios.csv": "db02055b3800acdc0d9c3576f5a90899df737e8ec09b7a9b038041c836271d58",
+    "research/ch-age-prevalence-test/data/source_audit.csv": "08b37b1c014b8eb9c82181e2faa06637e57d383bbb44348bdb8979604de9f629",
+    "research/ch-age-prevalence-test/freeze_evidence.json": "ed0e1d08594a44a58fcdf5b08f9e9b6eaae6f11bb557473fa781a0ed0e33954a",
+    "research/ch-age-prevalence-test/model.py": "30db0a238ff65e587307a4e82a17a0411d6e56afbec295ca0c638bb3719f878c",
+    "research/ch-age-prevalence-test/report.json": "36b5ead9c453e40c76b8c2a184476239ec247e0a9c1f3f8cf76048bd8ec89d97",
+    "research/ch-age-prevalence-test/verify.py": "9ead6993244d6580d11bfc6dc67259a22050740c8ffe1c22b2cc4fdd1fbaedeb",
+    "tests/test_research_ch_age_prevalence_test.py": "2aaae14465b13710acbec448e036a3cde402d8fd820469ad7c1da8359b481b1d"
+  },
+  "format_version": 1,
+  "normalization": "CRLF and CR to LF before SHA-256; UTF-8 bytes otherwise unchanged",
+  "path_policy": "Every key constructed using Path.relative_to(ROOT).as_posix()",
+  "status": "nonclinical; unreviewed; no medical advice"
+}

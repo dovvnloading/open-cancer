@@ -1,0 +1,15 @@
+{
+  "base_main_sha": "5993e6cc474958bd7645721ce1771b6bc7848f08",
+  "chronology": "Original local commit preceded deliberate target table extraction and all target scoring; later publication normalized CSV line endings. Self-authored times are not trusted third-party timestamps.",
+  "local_commit_payload": "tree d624bc787887bffed3279afd81e1cc0b84a08a45\nparent 5993e6cc474958bd7645721ce1771b6bc7848f08\nauthor Codex <codex@openai.com> 1794986307 -0500\ncommitter Codex <codex@openai.com> 1794986307 -0500\n\nresearch: freeze CH age-prevalence transport protocol before extraction\n",
+  "local_commit_sha": "6d00600fc57919ab89e9408717a65526fe069a66",
+  "normalization": "CRLF and CR to LF; UTF-8 bytes otherwise unchanged",
+  "normalized_sha256": {
+    "research/ch-age-prevalence-test/PROTOCOL.md": "4089b9d295c03cb7399714a110d50adecf46cc53e04ea7acb84135bdfae1a7fc",
+    "research/ch-age-prevalence-test/data/model_parameters.csv": "2c5b62d92fe96dc6639180fdc46475df1af7b625737d1e332be20ce08fa02eea",
+    "research/ch-age-prevalence-test/data/mutation_supply.csv": "d1188a3068e9add9c38534b862c2d2731509b616caab93b9452d0c3c333fe3a9"
+  },
+  "published_protocol_commit_sha": "bdbf5d30cd25f3c8e6739148f922bde1d22b2a80",
+  "published_protocol_tree_sha": "4f3862a3c91ee2ec52d8d488556887ba5f7ec4fa",
+  "status": "nonclinical in-session freeze; no third-party registration or complete blinding"
+}

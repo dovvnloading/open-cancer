@@ -1,0 +1,3321 @@
+{
+  "cohort_scores": [
+    {
+      "analysis_role": "development",
+      "cohort_id": "genovese2014",
+      "endpoint_id": "candidate_drivers",
+      "macro_mae_pp": 15.11155044688,
+      "macro_rmse_pp": 21.03813411219,
+      "model_id": "POOLED10",
+      "nonoverlap_rows": 1,
+      "parent_ids": [
+        "genovese2014_development_collection"
+      ],
+      "parents": 1,
+      "point_parent_ids": [
+        "genovese2014_development_collection"
+      ],
+      "point_parents": 1,
+      "point_rows": 2,
+      "rows": 2
+    },
+    {
+      "analysis_role": "development",
+      "cohort_id": "jaiswal2014",
+      "endpoint_id": "curated_160_gene_SNV_indel",
+      "macro_mae_pp": 26.949231046125,
+      "macro_rmse_pp": 30.254469373914,
+      "model_id": "POOLED10",
+      "nonoverlap_rows": 4,
+      "parent_ids": [
+        "jaiswal2014_development_collection"
+      ],
+      "parents": 1,
+      "point_parent_ids": [
+        "jaiswal2014_development_collection"
+      ],
+      "point_parents": 1,
+      "point_rows": 4,
+      "rows": 4
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "lifelines2021",
+      "endpoint_id": "targeted_27_gene_CH",
+      "macro_mae_pp": null,
+      "macro_rmse_pp": null,
+      "model_id": "ASXL1",
+      "nonoverlap_rows": 1,
+      "parent_ids": [
+        "Lifelines"
+      ],
+      "parents": 1,
+      "point_parent_ids": [],
+      "point_parents": 0,
+      "point_rows": 0,
+      "rows": 1
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "lifelines2021",
+      "endpoint_id": "targeted_27_gene_CH",
+      "macro_mae_pp": null,
+      "macro_rmse_pp": null,
+      "model_id": "DNMT3A",
+      "nonoverlap_rows": 1,
+      "parent_ids": [
+        "Lifelines"
+      ],
+      "parents": 1,
+      "point_parent_ids": [],
+      "point_parents": 0,
+      "point_rows": 0,
+      "rows": 1
+    },
+    {
+      "analysis_role": "external_age",
+      "cohort_id": "lifelines2021",
+      "endpoint_id": "targeted_27_gene_CH",
+      "macro_mae_pp": null,
+      "macro_rmse_pp": null,
+      "model_id": "POOLED10",
+      "nonoverlap_rows": 0,
+      "parent_ids": [
+        "Lifelines"
+      ],
+      "parents": 1,
+      "point_parent_ids": [],
+      "point_parents": 0,
+      "point_rows": 0,
+      "rows": 1
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "lifelines2021",
+      "endpoint_id": "targeted_27_gene_CH",
+      "macro_mae_pp": null,
+      "macro_rmse_pp": null,
+      "model_id": "TET2",
+      "nonoverlap_rows": 0,
+      "parent_ids": [
+        "Lifelines"
+      ],
+      "parents": 1,
+      "point_parent_ids": [],
+      "point_parents": 0,
+      "point_rows": 0,
+      "rows": 1
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "lifelines2021",
+      "endpoint_id": "targeted_27_gene_CH",
+      "macro_mae_pp": null,
+      "macro_rmse_pp": null,
+      "model_id": "TP53",
+      "nonoverlap_rows": 1,
+      "parent_ids": [
+        "Lifelines"
+      ],
+      "parents": 1,
+      "point_parent_ids": [],
+      "point_parents": 0,
+      "point_rows": 0,
+      "rows": 1
+    },
+    {
+      "analysis_role": "external_age",
+      "cohort_id": "qiu2023_cnsr",
+      "endpoint_id": "curated_74_gene_CHIP",
+      "macro_mae_pp": 4.033401688147,
+      "macro_rmse_pp": 5.605065503119,
+      "model_id": "POOLED10",
+      "nonoverlap_rows": 4,
+      "parent_ids": [
+        "CNSR_III"
+      ],
+      "parents": 1,
+      "point_parent_ids": [
+        "CNSR_III"
+      ],
+      "point_parents": 1,
+      "point_rows": 4,
+      "rows": 6
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "schenz2022_covid",
+      "endpoint_id": "targeted_driver_CHIP",
+      "macro_mae_pp": 7.679650093834,
+      "macro_rmse_pp": 7.679650093834,
+      "model_id": "DNMT3A",
+      "nonoverlap_rows": 0,
+      "parent_ids": [
+        "German_COVID_hospital_2020_2021"
+      ],
+      "parents": 1,
+      "point_parent_ids": [
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 1,
+      "point_rows": 1,
+      "rows": 1
+    },
+    {
+      "analysis_role": "external_age",
+      "cohort_id": "schenz2022_covid",
+      "endpoint_id": "targeted_driver_CHIP",
+      "macro_mae_pp": 9.462687619165,
+      "macro_rmse_pp": 12.558012016074,
+      "model_id": "POOLED10",
+      "nonoverlap_rows": 1,
+      "parent_ids": [
+        "German_COVID_hospital_2020_2021"
+      ],
+      "parents": 1,
+      "point_parent_ids": [
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 1,
+      "point_rows": 3,
+      "rows": 3
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "schenz2022_covid",
+      "endpoint_id": "targeted_driver_CHIP",
+      "macro_mae_pp": 7.042075567752,
+      "macro_rmse_pp": 7.042075567752,
+      "model_id": "TET2",
+      "nonoverlap_rows": 0,
+      "parent_ids": [
+        "German_COVID_hospital_2020_2021"
+      ],
+      "parents": 1,
+      "point_parent_ids": [
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 1,
+      "point_rows": 1,
+      "rows": 1
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "wu2025_ukb",
+      "endpoint_id": "curated_58_gene_CHIP",
+      "macro_mae_pp": 2.370557342919,
+      "macro_rmse_pp": 2.370557342919,
+      "model_id": "ASXL1",
+      "nonoverlap_rows": 0,
+      "parent_ids": [
+        "UK_Biobank"
+      ],
+      "parents": 1,
+      "point_parent_ids": [
+        "UK_Biobank"
+      ],
+      "point_parents": 1,
+      "point_rows": 1,
+      "rows": 1
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "wu2025_ukb",
+      "endpoint_id": "curated_58_gene_CHIP",
+      "macro_mae_pp": 7.717743862104,
+      "macro_rmse_pp": 7.717743862104,
+      "model_id": "DNMT3A",
+      "nonoverlap_rows": 0,
+      "parent_ids": [
+        "UK_Biobank"
+      ],
+      "parents": 1,
+      "point_parent_ids": [
+        "UK_Biobank"
+      ],
+      "point_parents": 1,
+      "point_rows": 1,
+      "rows": 1
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "wu2025_ukb",
+      "endpoint_id": "curated_58_gene_CHIP",
+      "macro_mae_pp": 5.245105084505,
+      "macro_rmse_pp": 5.245105084505,
+      "model_id": "TET2",
+      "nonoverlap_rows": 0,
+      "parent_ids": [
+        "UK_Biobank"
+      ],
+      "parents": 1,
+      "point_parent_ids": [
+        "UK_Biobank"
+      ],
+      "point_parents": 1,
+      "point_rows": 1,
+      "rows": 1
+    },
+    {
+      "analysis_role": "external_age",
+      "cohort_id": "zhang2025_ukb",
+      "endpoint_id": "curated_55_gene_CHIP",
+      "macro_mae_pp": null,
+      "macro_rmse_pp": null,
+      "model_id": "POOLED10",
+      "nonoverlap_rows": 1,
+      "parent_ids": [
+        "UK_Biobank"
+      ],
+      "parents": 1,
+      "point_parent_ids": [],
+      "point_parents": 0,
+      "point_rows": 0,
+      "rows": 2
+    }
+  ],
+  "delete_one_parent": [
+    {
+      "macro_mae_pp": 9.462687619165,
+      "macro_rmse_pp": 12.558012016074,
+      "nonoverlap_rows": 2,
+      "parent_ids": [
+        "German_COVID_hospital_2020_2021",
+        "Lifelines",
+        "UK_Biobank"
+      ],
+      "parents": 3,
+      "point_parent_ids": [
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 1,
+      "point_rows": 3,
+      "removed_parent": "CNSR_III",
+      "rows": 6
+    },
+    {
+      "macro_mae_pp": 4.033401688147,
+      "macro_rmse_pp": 5.605065503119,
+      "nonoverlap_rows": 5,
+      "parent_ids": [
+        "CNSR_III",
+        "Lifelines",
+        "UK_Biobank"
+      ],
+      "parents": 3,
+      "point_parent_ids": [
+        "CNSR_III"
+      ],
+      "point_parents": 1,
+      "point_rows": 4,
+      "removed_parent": "German_COVID_hospital_2020_2021",
+      "rows": 9
+    },
+    {
+      "macro_mae_pp": 6.748044653656,
+      "macro_rmse_pp": 9.724207553577,
+      "nonoverlap_rows": 6,
+      "parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021",
+        "UK_Biobank"
+      ],
+      "parents": 3,
+      "point_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 2,
+      "point_rows": 7,
+      "removed_parent": "Lifelines",
+      "rows": 11
+    },
+    {
+      "macro_mae_pp": 6.748044653656,
+      "macro_rmse_pp": 9.724207553577,
+      "nonoverlap_rows": 5,
+      "parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021",
+        "Lifelines"
+      ],
+      "parents": 3,
+      "point_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 2,
+      "point_rows": 7,
+      "removed_parent": "UK_Biobank",
+      "rows": 10
+    }
+  ],
+  "descriptive_verdict": "fails frozen interval-compatibility criterion",
+  "detection_illustrations": [
+    {
+      "at_vaf_02": 0.999999999992,
+      "at_vaf_05": 0.999999999993,
+      "at_vaf_10": 0.999999999992,
+      "cohort_id": "lifelines2021",
+      "depth": 9726,
+      "interpretation": "Published mean aligned consensus reads; single-depth binomial illustration only, not calibrated caller",
+      "min_alt_reads": 10
+    }
+  ],
+  "development_summary": {
+    "macro_mae_pp": 21.030390746502,
+    "macro_rmse_pp": 26.057014449276,
+    "nonoverlap_rows": 5,
+    "parent_ids": [
+      "genovese2014_development_collection",
+      "jaiswal2014_development_collection"
+    ],
+    "parents": 2,
+    "point_parent_ids": [
+      "genovese2014_development_collection",
+      "jaiswal2014_development_collection"
+    ],
+    "point_parents": 2,
+    "point_rows": 6,
+    "rows": 6
+  },
+  "external_gene_age_summary": {
+    "macro_mae_pp": null,
+    "macro_rmse_pp": null,
+    "nonoverlap_rows": 0,
+    "parent_ids": [],
+    "parents": 0,
+    "point_parent_ids": [],
+    "point_parents": 0,
+    "point_rows": 0,
+    "rows": 0
+  },
+  "external_independence_note": "A parent is in the independent stratum only if every audited linked release is labelled independent. The other stratum retains unresolved or known overlap; the combined summary is descriptive, not independent validation.",
+  "external_independent_summary": {
+    "macro_mae_pp": 6.748044653656,
+    "macro_rmse_pp": 9.724207553577,
+    "nonoverlap_rows": 5,
+    "parent_ids": [
+      "CNSR_III",
+      "German_COVID_hospital_2020_2021"
+    ],
+    "parents": 2,
+    "point_parent_ids": [
+      "CNSR_III",
+      "German_COVID_hospital_2020_2021"
+    ],
+    "point_parents": 2,
+    "point_rows": 7,
+    "rows": 9
+  },
+  "external_overlap_uncertain_summary": {
+    "macro_mae_pp": null,
+    "macro_rmse_pp": null,
+    "nonoverlap_rows": 1,
+    "parent_ids": [
+      "Lifelines",
+      "UK_Biobank"
+    ],
+    "parents": 2,
+    "point_parent_ids": [],
+    "point_parents": 0,
+    "point_rows": 0,
+    "rows": 3
+  },
+  "external_reference_02_summary": {
+    "macro_mae_pp": 12.507704561301,
+    "macro_rmse_pp": 16.294873378696,
+    "nonoverlap_rows": 6,
+    "parent_ids": [
+      "CNSR_III",
+      "German_COVID_hospital_2020_2021",
+      "Lifelines",
+      "UK_Biobank"
+    ],
+    "parents": 4,
+    "point_parent_ids": [
+      "CNSR_III",
+      "German_COVID_hospital_2020_2021"
+    ],
+    "point_parents": 2,
+    "point_rows": 7,
+    "rows": 12
+  },
+  "external_substitute_summary": {
+    "macro_mae_pp": 6.748044653656,
+    "macro_rmse_pp": 9.724207553577,
+    "nonoverlap_rows": 6,
+    "parent_ids": [
+      "CNSR_III",
+      "German_COVID_hospital_2020_2021",
+      "Lifelines",
+      "UK_Biobank"
+    ],
+    "parents": 4,
+    "point_parent_ids": [
+      "CNSR_III",
+      "German_COVID_hospital_2020_2021"
+    ],
+    "point_parents": 2,
+    "point_rows": 7,
+    "rows": 12
+  },
+  "finite_age_supply_feasibility": [
+    {
+      "analysis_role": "external_age",
+      "bound_kinds": [
+        "sharp finite-band bounds"
+      ],
+      "cohort_id": "qiu2023_cnsr",
+      "compatible": false,
+      "endpoint_id": "curated_74_gene_CHIP",
+      "includes_frozen_supply": false,
+      "lower": 5.319347255753,
+      "model_id": "POOLED10",
+      "row_ids": [
+        "qiu2023_cnsr_40_49",
+        "qiu2023_cnsr_50_59",
+        "qiu2023_cnsr_60_69",
+        "qiu2023_cnsr_70_79"
+      ],
+      "upper": 0.648813679688
+    },
+    {
+      "analysis_role": "external_age",
+      "bound_kinds": [
+        "sharp finite-band bounds"
+      ],
+      "cohort_id": "schenz2022_covid",
+      "compatible": true,
+      "endpoint_id": "targeted_driver_CHIP",
+      "includes_frozen_supply": false,
+      "lower": 1.334903983969,
+      "model_id": "POOLED10",
+      "row_ids": [
+        "schenz2022_covid_lt45",
+        "schenz2022_covid_45_65",
+        "schenz2022_covid_gt65"
+      ],
+      "upper": 2.924886696679
+    }
+  ],
+  "frozen_protocol_sha256": "4089b9d295c03cb7399714a110d50adecf46cc53e04ea7acb84135bdfae1a7fc",
+  "future_predictions": [
+    {
+      "age": 40.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "DNMT3A",
+      "prediction": 0.005898143067,
+      "source_cutoff_prediction": 0.005898143067,
+      "vaf": 0.02
+    },
+    {
+      "age": 50.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "DNMT3A",
+      "prediction": 0.041494949484,
+      "source_cutoff_prediction": 0.041494949484,
+      "vaf": 0.02
+    },
+    {
+      "age": 60.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "DNMT3A",
+      "prediction": 0.124010160454,
+      "source_cutoff_prediction": 0.124010160454,
+      "vaf": 0.02
+    },
+    {
+      "age": 70.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "DNMT3A",
+      "prediction": 0.248060921636,
+      "source_cutoff_prediction": 0.248060921636,
+      "vaf": 0.02
+    },
+    {
+      "age": 80.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "DNMT3A",
+      "prediction": 0.393469122938,
+      "source_cutoff_prediction": 0.393469122938,
+      "vaf": 0.02
+    },
+    {
+      "age": 90.0,
+      "cutoff_difference_pp": 6.8052827e-05,
+      "model_id": "DNMT3A",
+      "prediction": 0.537836845471,
+      "source_cutoff_prediction": 0.537836164943,
+      "vaf": 0.02
+    },
+    {
+      "age": 40.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "TET2",
+      "prediction": 0.005254925513,
+      "source_cutoff_prediction": 0.005254925513,
+      "vaf": 0.02
+    },
+    {
+      "age": 50.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "TET2",
+      "prediction": 0.028156813734,
+      "source_cutoff_prediction": 0.028156813734,
+      "vaf": 0.02
+    },
+    {
+      "age": 60.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "TET2",
+      "prediction": 0.071999898339,
+      "source_cutoff_prediction": 0.071999898339,
+      "vaf": 0.02
+    },
+    {
+      "age": 70.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "TET2",
+      "prediction": 0.133400619445,
+      "source_cutoff_prediction": 0.133400619445,
+      "vaf": 0.02
+    },
+    {
+      "age": 80.0,
+      "cutoff_difference_pp": 3.2e-11,
+      "model_id": "TET2",
+      "prediction": 0.207280663512,
+      "source_cutoff_prediction": 0.207280663512,
+      "vaf": 0.02
+    },
+    {
+      "age": 90.0,
+      "cutoff_difference_pp": 0.00123999066,
+      "model_id": "TET2",
+      "prediction": 0.288420722515,
+      "source_cutoff_prediction": 0.288408322608,
+      "vaf": 0.02
+    },
+    {
+      "age": 40.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "ASXL1",
+      "prediction": 0.00289308029,
+      "source_cutoff_prediction": 0.00289308029,
+      "vaf": 0.02
+    },
+    {
+      "age": 50.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "ASXL1",
+      "prediction": 0.014136019965,
+      "source_cutoff_prediction": 0.014136019965,
+      "vaf": 0.02
+    },
+    {
+      "age": 60.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "ASXL1",
+      "prediction": 0.033975658719,
+      "source_cutoff_prediction": 0.033975658719,
+      "vaf": 0.02
+    },
+    {
+      "age": 70.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "ASXL1",
+      "prediction": 0.060461380898,
+      "source_cutoff_prediction": 0.060461380898,
+      "vaf": 0.02
+    },
+    {
+      "age": 80.0,
+      "cutoff_difference_pp": 2.67e-10,
+      "model_id": "ASXL1",
+      "prediction": 0.09178979254,
+      "source_cutoff_prediction": 0.091789792537,
+      "vaf": 0.02
+    },
+    {
+      "age": 90.0,
+      "cutoff_difference_pp": 0.001584101745,
+      "model_id": "ASXL1",
+      "prediction": 0.126527283598,
+      "source_cutoff_prediction": 0.126511442581,
+      "vaf": 0.02
+    },
+    {
+      "age": 40.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "TP53",
+      "prediction": 0.001076201693,
+      "source_cutoff_prediction": 0.001076201693,
+      "vaf": 0.02
+    },
+    {
+      "age": 50.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "TP53",
+      "prediction": 0.005401155757,
+      "source_cutoff_prediction": 0.005401155757,
+      "vaf": 0.02
+    },
+    {
+      "age": 60.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "TP53",
+      "prediction": 0.013169715296,
+      "source_cutoff_prediction": 0.013169715296,
+      "vaf": 0.02
+    },
+    {
+      "age": 70.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "TP53",
+      "prediction": 0.023711989429,
+      "source_cutoff_prediction": 0.023711989429,
+      "vaf": 0.02
+    },
+    {
+      "age": 80.0,
+      "cutoff_difference_pp": 1.1e-11,
+      "model_id": "TP53",
+      "prediction": 0.036417026278,
+      "source_cutoff_prediction": 0.036417026278,
+      "vaf": 0.02
+    },
+    {
+      "age": 90.0,
+      "cutoff_difference_pp": 0.00039595159,
+      "model_id": "TP53",
+      "prediction": 0.05081218445,
+      "source_cutoff_prediction": 0.050808224934,
+      "vaf": 0.02
+    },
+    {
+      "age": 40.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "POOLED10",
+      "prediction": 0.000748501001,
+      "source_cutoff_prediction": 0.000748501001,
+      "vaf": 0.02
+    },
+    {
+      "age": 50.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "POOLED10",
+      "prediction": 0.019192554172,
+      "source_cutoff_prediction": 0.019192554172,
+      "vaf": 0.02
+    },
+    {
+      "age": 60.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "POOLED10",
+      "prediction": 0.090248262219,
+      "source_cutoff_prediction": 0.090248262219,
+      "vaf": 0.02
+    },
+    {
+      "age": 70.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "POOLED10",
+      "prediction": 0.21566842245,
+      "source_cutoff_prediction": 0.21566842245,
+      "vaf": 0.02
+    },
+    {
+      "age": 80.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "POOLED10",
+      "prediction": 0.36936144946,
+      "source_cutoff_prediction": 0.36936144946,
+      "vaf": 0.02
+    },
+    {
+      "age": 90.0,
+      "cutoff_difference_pp": 0.0,
+      "model_id": "POOLED10",
+      "prediction": 0.523225993,
+      "source_cutoff_prediction": 0.523225993,
+      "vaf": 0.02
+    }
+  ],
+  "largest_external_age_errors": [
+    "schenz2022_covid_45_65",
+    "qiu2023_cnsr_70_79",
+    "schenz2022_covid_gt65",
+    "qiu2023_cnsr_60_69",
+    "qiu2023_cnsr_40_49",
+    "qiu2023_cnsr_50_59",
+    "schenz2022_covid_lt45"
+  ],
+  "largest_external_age_gaps": [
+    "qiu2023_cnsr_ge80",
+    "schenz2022_covid_45_65",
+    "zhang2025_ukb_ge60",
+    "qiu2023_cnsr_70_79",
+    "qiu2023_cnsr_40_49",
+    "qiu2023_cnsr_lt40",
+    "lifelines2021_all_source_genes",
+    "qiu2023_cnsr_50_59",
+    "qiu2023_cnsr_60_69",
+    "schenz2022_covid_gt65",
+    "schenz2022_covid_lt45",
+    "zhang2025_ukb_lt60"
+  ],
+  "largest_gene_marginal_gaps": [
+    "lifelines2021_dnmt3a",
+    "lifelines2021_asxl1",
+    "lifelines2021_tp53",
+    "lifelines2021_tet2",
+    "schenz2022_covid_dnmt3a",
+    "schenz2022_covid_tet2",
+    "wu2025_ukb_asxl1",
+    "wu2025_ukb_dnmt3a",
+    "wu2025_ukb_tet2"
+  ],
+  "loco_supply_calibration": [
+    {
+      "constant_baseline": 0.4415,
+      "constant_mae_pp": 40.914154489681,
+      "constant_rmse_pp": 40.937933463658,
+      "finite_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "held_parent": "CNSR_III",
+      "independence_status": "non-independent interpretation: unresolved or linked cohort overlap",
+      "mae_pp": 8.656293595209,
+      "multiplier": 2.041687137273,
+      "predictions": [
+        {
+          "constant_error_pp": -42.292857142857,
+          "constant_prediction": 0.4415,
+          "error_pp": 1.819106146396,
+          "prediction": 0.000380367107,
+          "record_id": "qiu2023_cnsr_40_49"
+        },
+        {
+          "constant_error_pp": -41.980130192188,
+          "constant_prediction": 0.4415,
+          "error_pp": 0.215074329437,
+          "prediction": 0.019547954784,
+          "record_id": "qiu2023_cnsr_50_59"
+        },
+        {
+          "constant_error_pp": -40.629920674269,
+          "constant_prediction": 0.4415,
+          "error_pp": -8.110857893183,
+          "prediction": 0.116309372189,
+          "record_id": "qiu2023_cnsr_60_69"
+        },
+        {
+          "constant_error_pp": -38.75370994941,
+          "constant_prediction": 0.4415,
+          "error_pp": -24.480136011823,
+          "prediction": 0.298764260624,
+          "record_id": "qiu2023_cnsr_70_79"
+        }
+      ],
+      "rmse_pp": 12.926895209792,
+      "status": "descriptive; mutation supply refitted on other parents",
+      "training_exclusions": [
+        {
+          "reason": "no finite-band midpoint",
+          "record_id": "zhang2025_ukb_lt60"
+        },
+        {
+          "reason": "no finite-band midpoint",
+          "record_id": "zhang2025_ukb_ge60"
+        },
+        {
+          "reason": "endpoint probability 0 or 1 excluded from log transform; no pseudocount",
+          "record_id": "schenz2022_covid_lt45"
+        },
+        {
+          "reason": "no finite-band midpoint",
+          "record_id": "lifelines2021_all_source_genes"
+        }
+      ],
+      "training_ids": [
+        "schenz2022_covid_45_65",
+        "schenz2022_covid_gt65"
+      ],
+      "training_parents": [
+        "German_COVID_hospital_2020_2021"
+      ]
+    },
+    {
+      "constant_baseline": 0.032358455103,
+      "constant_mae_pp": 28.354718163227,
+      "constant_rmse_pp": 34.898193703866,
+      "finite_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "held_parent": "German_COVID_hospital_2020_2021",
+      "independence_status": "non-independent interpretation: unresolved or linked cohort overlap",
+      "mae_pp": 11.116237354356,
+      "multiplier": 2.56223673984,
+      "predictions": [
+        {
+          "constant_error_pp": -3.235845510319,
+          "constant_prediction": 0.032358455103,
+          "error_pp": -0.199055002898,
+          "prediction": 0.001990550029,
+          "record_id": "schenz2022_covid_lt45"
+        },
+        {
+          "constant_error_pp": 28.764154489681,
+          "constant_prediction": 0.032358455103,
+          "error_pp": 6.944137509874,
+          "prediction": 0.250558624901,
+          "record_id": "schenz2022_covid_45_65"
+        },
+        {
+          "constant_error_pp": 53.064154489681,
+          "constant_prediction": 0.032358455103,
+          "error_pp": -26.205519550295,
+          "prediction": 0.825055195503,
+          "record_id": "schenz2022_covid_gt65"
+        }
+      ],
+      "rmse_pp": 15.65236854868,
+      "status": "descriptive; mutation supply refitted on other parents",
+      "training_exclusions": [
+        {
+          "reason": "no finite-band midpoint",
+          "record_id": "zhang2025_ukb_lt60"
+        },
+        {
+          "reason": "no finite-band midpoint",
+          "record_id": "zhang2025_ukb_ge60"
+        },
+        {
+          "reason": "no finite-band midpoint",
+          "record_id": "qiu2023_cnsr_lt40"
+        },
+        {
+          "reason": "no finite-band midpoint",
+          "record_id": "qiu2023_cnsr_ge80"
+        },
+        {
+          "reason": "no finite-band midpoint",
+          "record_id": "lifelines2021_all_source_genes"
+        }
+      ],
+      "training_ids": [
+        "qiu2023_cnsr_40_49",
+        "qiu2023_cnsr_50_59",
+        "qiu2023_cnsr_60_69",
+        "qiu2023_cnsr_70_79"
+      ],
+      "training_parents": [
+        "CNSR_III"
+      ]
+    }
+  ],
+  "loco_supply_calibration_status": "descriptive secondary calibration",
+  "loco_supply_calibration_strata": {
+    "independent": {
+      "finite_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "finite_parents": 2,
+      "results": [
+        {
+          "constant_baseline": 0.4415,
+          "constant_mae_pp": 40.914154489681,
+          "constant_rmse_pp": 40.937933463658,
+          "finite_parent_ids": [
+            "CNSR_III",
+            "German_COVID_hospital_2020_2021"
+          ],
+          "held_parent": "CNSR_III",
+          "independence_status": "independent parents as audited",
+          "mae_pp": 8.656293595209,
+          "multiplier": 2.041687137273,
+          "predictions": [
+            {
+              "constant_error_pp": -42.292857142857,
+              "constant_prediction": 0.4415,
+              "error_pp": 1.819106146396,
+              "prediction": 0.000380367107,
+              "record_id": "qiu2023_cnsr_40_49"
+            },
+            {
+              "constant_error_pp": -41.980130192188,
+              "constant_prediction": 0.4415,
+              "error_pp": 0.215074329437,
+              "prediction": 0.019547954784,
+              "record_id": "qiu2023_cnsr_50_59"
+            },
+            {
+              "constant_error_pp": -40.629920674269,
+              "constant_prediction": 0.4415,
+              "error_pp": -8.110857893183,
+              "prediction": 0.116309372189,
+              "record_id": "qiu2023_cnsr_60_69"
+            },
+            {
+              "constant_error_pp": -38.75370994941,
+              "constant_prediction": 0.4415,
+              "error_pp": -24.480136011823,
+              "prediction": 0.298764260624,
+              "record_id": "qiu2023_cnsr_70_79"
+            }
+          ],
+          "rmse_pp": 12.926895209792,
+          "status": "descriptive; mutation supply refitted on other parents",
+          "training_exclusions": [
+            {
+              "reason": "endpoint probability 0 or 1 excluded from log transform; no pseudocount",
+              "record_id": "schenz2022_covid_lt45"
+            }
+          ],
+          "training_ids": [
+            "schenz2022_covid_45_65",
+            "schenz2022_covid_gt65"
+          ],
+          "training_parents": [
+            "German_COVID_hospital_2020_2021"
+          ]
+        },
+        {
+          "constant_baseline": 0.032358455103,
+          "constant_mae_pp": 28.354718163227,
+          "constant_rmse_pp": 34.898193703866,
+          "finite_parent_ids": [
+            "CNSR_III",
+            "German_COVID_hospital_2020_2021"
+          ],
+          "held_parent": "German_COVID_hospital_2020_2021",
+          "independence_status": "independent parents as audited",
+          "mae_pp": 11.116237354356,
+          "multiplier": 2.56223673984,
+          "predictions": [
+            {
+              "constant_error_pp": -3.235845510319,
+              "constant_prediction": 0.032358455103,
+              "error_pp": -0.199055002898,
+              "prediction": 0.001990550029,
+              "record_id": "schenz2022_covid_lt45"
+            },
+            {
+              "constant_error_pp": 28.764154489681,
+              "constant_prediction": 0.032358455103,
+              "error_pp": 6.944137509874,
+              "prediction": 0.250558624901,
+              "record_id": "schenz2022_covid_45_65"
+            },
+            {
+              "constant_error_pp": 53.064154489681,
+              "constant_prediction": 0.032358455103,
+              "error_pp": -26.205519550295,
+              "prediction": 0.825055195503,
+              "record_id": "schenz2022_covid_gt65"
+            }
+          ],
+          "rmse_pp": 15.65236854868,
+          "status": "descriptive; mutation supply refitted on other parents",
+          "training_exclusions": [
+            {
+              "reason": "no finite-band midpoint",
+              "record_id": "qiu2023_cnsr_lt40"
+            },
+            {
+              "reason": "no finite-band midpoint",
+              "record_id": "qiu2023_cnsr_ge80"
+            }
+          ],
+          "training_ids": [
+            "qiu2023_cnsr_40_49",
+            "qiu2023_cnsr_50_59",
+            "qiu2023_cnsr_60_69",
+            "qiu2023_cnsr_70_79"
+          ],
+          "training_parents": [
+            "CNSR_III"
+          ]
+        }
+      ],
+      "status": "descriptive secondary calibration"
+    },
+    "overlap_uncertain": {
+      "finite_parent_ids": [],
+      "finite_parents": 0,
+      "results": [],
+      "status": "untestable: fewer than two parents with finite-band rows"
+    }
+  },
+  "marginal_gene_summary": {
+    "macro_mae_pp": 6.235999130318,
+    "macro_rmse_pp": 6.526178317401,
+    "nonoverlap_rows": 3,
+    "parent_ids": [
+      "German_COVID_hospital_2020_2021",
+      "Lifelines",
+      "UK_Biobank"
+    ],
+    "parents": 3,
+    "point_parent_ids": [
+      "German_COVID_hospital_2020_2021",
+      "UK_Biobank"
+    ],
+    "point_parents": 2,
+    "point_rows": 5,
+    "rows": 9
+  },
+  "normalized_input_sha256": {
+    "data/cohorts.csv": "754e83cb2f47d050117f89c16f346070f98dce12195627d110e16ccdb9699468",
+    "data/context_aggregates.csv": "60bfb9340073ffd60d55385e9f3505f29c498485473a90464c1dea48811f2855",
+    "data/math_scenarios.csv": "5b9d48e9af7e49224f5df371e8454c6f4148bd92599ff0ba15eff39a95540dbd",
+    "data/model_parameters.csv": "2c5b62d92fe96dc6639180fdc46475df1af7b625737d1e332be20ce08fa02eea",
+    "data/mutation_supply.csv": "d1188a3068e9add9c38534b862c2d2731509b616caab93b9452d0c3c333fe3a9",
+    "data/prediction_grid.csv": "452d41f21437b6e6d7398fbdec2d12ed544acd7beeafb2bd74e2e769fc0b8be5",
+    "data/prevalence.csv": "f42b35aa6e93a85aca67d9e118efa8a560806af423daa9dcd48f484f7c30c992",
+    "data/scenarios.csv": "db02055b3800acdc0d9c3576f5a90899df737e8ec09b7a9b038041c836271d58",
+    "data/source_audit.csv": "08b37b1c014b8eb9c82181e2faa06637e57d383bbb44348bdb8979604de9f629"
+  },
+  "report_verification": {
+    "basis": "binary64/libm and numerical-integration variation; not uncertainty",
+    "exact": "integer values, nonnumeric values, keys, hashes and displayed README",
+    "float_absolute_tolerance": 5e-10,
+    "float_relative_tolerance": 5e-09
+  },
+  "scored_rows": [
+    {
+      "age_label": "60-69",
+      "analysis_role": "development",
+      "cohort_id": "jaiswal2014",
+      "endpoint_id": "curated_160_gene_SNV_indel",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "development",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": null,
+        "lower": 0.05,
+        "point": 0.056,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": null,
+        "uncertainty": "published marginal 95% confidence interval",
+        "upper": 0.063
+      },
+      "parent_cohort": "jaiswal2014_development_collection",
+      "parent_independence_status": "not established independent",
+      "record_id": "jaiswal2014_60_69",
+      "reference_comparison": {
+        "age_interval_gap_pp": 2.724826221893,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": -9.333004718408
+      },
+      "reference_prediction": {
+        "lower": 0.090248262219,
+        "lower_intensity": 0.094583532317,
+        "midpoint_age": 65.0,
+        "midpoint_intensity": 0.159594293778,
+        "uniform_age_mean": 0.149330047184,
+        "upper": 0.21566842245,
+        "upper_intensity": 0.242923417494,
+        "vaf": 0.02
+      },
+      "role": "development",
+      "source_comparison": {
+        "age_interval_gap_pp": 2.724826221893,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": -9.333004718408
+      },
+      "source_prediction": {
+        "lower": 0.090248262219,
+        "lower_intensity": 0.094583532317,
+        "midpoint_age": 65.0,
+        "midpoint_intensity": 0.159594293778,
+        "uniform_age_mean": 0.149330047184,
+        "upper": 0.21566842245,
+        "upper_intensity": 0.242923417494,
+        "vaf": 0.02
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.211150060858,
+        0.687984421277
+      ],
+      "threshold_basis": "2% reference only; source has no uniform cutoff"
+    },
+    {
+      "age_label": "70-79",
+      "analysis_role": "development",
+      "cohort_id": "jaiswal2014",
+      "endpoint_id": "curated_160_gene_SNV_indel",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "development",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 219,
+        "lower": 0.084,
+        "point": 0.095217391304,
+        "printed_percentage_alternative": 0.095,
+        "source_conflict": false,
+        "total": 2300,
+        "uncertainty": "published marginal 95% confidence interval",
+        "upper": 0.108
+      },
+      "parent_cohort": "jaiswal2014_development_collection",
+      "parent_independence_status": "not established independent",
+      "record_id": "jaiswal2014_70_79",
+      "reference_comparison": {
+        "age_interval_gap_pp": 10.766842245049,
+        "binomial_deviance": 527.41561185783,
+        "interval_compatible": false,
+        "signed_error_pp": -19.621148686092
+      },
+      "reference_prediction": {
+        "lower": 0.21566842245,
+        "lower_intensity": 0.242923417494,
+        "midpoint_age": 75.0,
+        "midpoint_intensity": 0.343744265624,
+        "uniform_age_mean": 0.291428878165,
+        "upper": 0.36936144946,
+        "upper_intensity": 0.461022400628,
+        "vaf": 0.02
+      },
+      "role": "development",
+      "source_comparison": {
+        "age_interval_gap_pp": 10.766842245049,
+        "binomial_deviance": 527.41561185783,
+        "interval_compatible": false,
+        "signed_error_pp": -19.621148686092
+      },
+      "source_prediction": {
+        "lower": 0.21566842245,
+        "lower_intensity": 0.242923417494,
+        "midpoint_age": 75.0,
+        "midpoint_intensity": 0.343744265624,
+        "uniform_age_mean": 0.291428878165,
+        "upper": 0.36936144946,
+        "upper_intensity": 0.461022400628,
+        "vaf": 0.02
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.190313776919,
+        0.470473977277
+      ],
+      "threshold_basis": "2% reference only; source has no uniform cutoff"
+    },
+    {
+      "age_label": "80-89",
+      "analysis_role": "development",
+      "cohort_id": "jaiswal2014",
+      "endpoint_id": "curated_160_gene_SNV_indel",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "development",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 37,
+        "lower": 0.086,
+        "point": 0.116719242902,
+        "printed_percentage_alternative": 0.117,
+        "source_conflict": false,
+        "total": 317,
+        "uncertainty": "published marginal 95% confidence interval",
+        "upper": 0.157
+      },
+      "parent_cohort": "jaiswal2014_development_collection",
+      "parent_independence_status": "not established independent",
+      "record_id": "jaiswal2014_80_89",
+      "reference_comparison": {
+        "age_interval_gap_pp": 21.236144945992,
+        "binomial_deviance": 163.073534183864,
+        "interval_compatible": false,
+        "signed_error_pp": -33.051692955548
+      },
+      "reference_prediction": {
+        "lower": 0.36936144946,
+        "lower_intensity": 0.461022400628,
+        "midpoint_age": 85.0,
+        "midpoint_intensity": 0.59368821153,
+        "uniform_age_mean": 0.447236172458,
+        "upper": 0.523225993,
+        "upper_intensity": 0.740712680238,
+        "vaf": 0.02
+      },
+      "role": "development",
+      "source_comparison": {
+        "age_interval_gap_pp": 21.236144945992,
+        "binomial_deviance": 163.073534183864,
+        "interval_compatible": false,
+        "signed_error_pp": -33.051692955548
+      },
+      "source_prediction": {
+        "lower": 0.36936144946,
+        "lower_intensity": 0.461022400628,
+        "midpoint_age": 85.0,
+        "midpoint_intensity": 0.59368821153,
+        "uniform_age_mean": 0.447236172458,
+        "upper": 0.523225993,
+        "upper_intensity": 0.740712680238,
+        "vaf": 0.02
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.121402954111,
+        0.370455580353
+      ],
+      "threshold_basis": "2% reference only; source has no uniform cutoff"
+    },
+    {
+      "age_label": "90-108",
+      "analysis_role": "development",
+      "cohort_id": "jaiswal2014",
+      "endpoint_id": "curated_160_gene_SNV_indel",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "development",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 19,
+        "lower": 0.121,
+        "point": 0.184466019417,
+        "printed_percentage_alternative": 0.184,
+        "source_conflict": false,
+        "total": 103,
+        "uncertainty": "published marginal 95% confidence interval",
+        "upper": 0.27
+      },
+      "parent_cohort": "jaiswal2014_development_collection",
+      "parent_independence_status": "not established independent",
+      "record_id": "jaiswal2014_90_108_text",
+      "reference_comparison": {
+        "age_interval_gap_pp": 25.32259930002,
+        "binomial_deviance": 91.080040297809,
+        "interval_compatible": false,
+        "signed_error_pp": -45.791077824451
+      },
+      "reference_prediction": {
+        "lower": 0.523225993,
+        "lower_intensity": 0.740712680238,
+        "midpoint_age": 99.0,
+        "midpoint_intensity": 1.038526994761,
+        "uniform_age_mean": 0.642376797662,
+        "upper": 0.747116791372,
+        "upper_intensity": 1.374827522814,
+        "vaf": 0.02
+      },
+      "role": "development",
+      "source_comparison": {
+        "age_interval_gap_pp": 25.32259930002,
+        "binomial_deviance": 91.080040297809,
+        "interval_compatible": false,
+        "signed_error_pp": -45.791077824451
+      },
+      "source_prediction": {
+        "lower": 0.523225993,
+        "lower_intensity": 0.740712680238,
+        "midpoint_age": 99.0,
+        "midpoint_intensity": 1.038526994761,
+        "uniform_age_mean": 0.642376797662,
+        "upper": 0.747116791372,
+        "upper_intensity": 1.374827522814,
+        "vaf": 0.02
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.093808408078,
+        0.424875600535
+      ],
+      "threshold_basis": "2% reference only; source has no uniform cutoff"
+    },
+    {
+      "age_label": "<50",
+      "analysis_role": "development",
+      "cohort_id": "genovese2014",
+      "endpoint_id": "candidate_drivers",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "development",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": null,
+        "lower": 0.0065,
+        "point": 0.007,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": null,
+        "uncertainty": "printed rounding interval; sampling uncertainty unavailable",
+        "upper": 0.0075
+      },
+      "parent_cohort": "genovese2014_development_collection",
+      "parent_independence_status": "not established independent",
+      "record_id": "genovese2014_candidate_drivers_lt50",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": null,
+        "interval_compatible": true,
+        "signed_error_pp": 0.474469794854
+      },
+      "reference_prediction": {
+        "lower": 0.0,
+        "lower_intensity": 0.0,
+        "midpoint_age": 34.5,
+        "midpoint_intensity": 2.0620018e-05,
+        "uniform_age_mean": 0.002255302051,
+        "upper": 0.019192554172,
+        "upper_intensity": 0.019379122243,
+        "vaf": 0.02
+      },
+      "role": "development",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": null,
+        "interval_compatible": true,
+        "signed_error_pp": 0.474469794854
+      },
+      "source_prediction": {
+        "lower": 0.0,
+        "lower_intensity": 0.0,
+        "midpoint_age": 34.5,
+        "midpoint_intensity": 2.0620018e-05,
+        "uniform_age_mean": 0.002255302051,
+        "upper": 0.019192554172,
+        "upper_intensity": 0.019379122243,
+        "vaf": 0.02
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.336507345821,
+        3.799028819612462e+20
+      ],
+      "threshold_basis": "2% reference only; source has no uniform cutoff"
+    },
+    {
+      "age_label": ">65",
+      "analysis_role": "development",
+      "cohort_id": "genovese2014",
+      "endpoint_id": "candidate_drivers",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "development",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": null,
+        "lower": 0.0565,
+        "point": 0.057,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": null,
+        "uncertainty": "printed rounding interval; sampling uncertainty unavailable",
+        "upper": 0.0575
+      },
+      "parent_cohort": "genovese2014_development_collection",
+      "parent_independence_status": "not established independent",
+      "record_id": "genovese2014_candidate_drivers_gt65",
+      "reference_comparison": {
+        "age_interval_gap_pp": 9.001042085671,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": -29.748631098905
+      },
+      "reference_prediction": {
+        "lower": 0.147510420857,
+        "lower_intensity": 0.159594293778,
+        "midpoint_age": 79.0,
+        "midpoint_intensity": 0.436301822725,
+        "uniform_age_mean": 0.354486310989,
+        "upper": 0.566306477378,
+        "upper_intensity": 0.835417163411,
+        "vaf": 0.02
+      },
+      "role": "development",
+      "source_comparison": {
+        "age_interval_gap_pp": 9.001042085671,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": -29.748631098905
+      },
+      "source_prediction": {
+        "lower": 0.147510420857,
+        "lower_intensity": 0.159594293778,
+        "midpoint_age": 79.0,
+        "midpoint_intensity": 0.436301822725,
+        "uniform_age_mean": 0.354486310989,
+        "upper": 0.566306477378,
+        "upper_intensity": 0.835417163411,
+        "vaf": 0.02
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.069616613975,
+        0.371061886099
+      ],
+      "threshold_basis": "2% reference only; source has no uniform cutoff"
+    },
+    {
+      "age_label": "<60",
+      "analysis_role": "external_age",
+      "cohort_id": "zhang2025_ukb",
+      "endpoint_id": "curated_55_gene_CHIP",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "overlap_uncertain",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 4508,
+        "lower": 0.017522441033,
+        "point": 0.018036833871,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 249933,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.018566041986
+      },
+      "parent_cohort": "UK_Biobank",
+      "parent_independence_status": "not established independent",
+      "record_id": "zhang2025_ukb_lt60",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": null,
+        "interval_compatible": true,
+        "signed_error_pp": null
+      },
+      "reference_prediction": {
+        "lower": 0.0,
+        "lower_intensity": 0.0,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 0.090248262219,
+        "upper_intensity": 0.094583532317,
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": null,
+        "interval_compatible": true,
+        "signed_error_pp": null
+      },
+      "source_prediction": {
+        "lower": 0.0,
+        "lower_intensity": 0.0,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 0.090248262219,
+        "upper_intensity": 0.094583532317,
+        "vaf": 0.02
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "conservative closure for open or missing age support",
+      "supply_feasible": [
+        0.186901205876,
+        "infinity"
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": ">=60",
+      "analysis_role": "external_age",
+      "cohort_id": "zhang2025_ukb",
+      "endpoint_id": "curated_55_gene_CHIP",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "overlap_uncertain",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 9551,
+        "lower": 0.045857572787,
+        "point": 0.046764756286,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 204235,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.047688989279
+      },
+      "parent_cohort": "UK_Biobank",
+      "parent_independence_status": "not established independent",
+      "record_id": "zhang2025_ukb_ge60",
+      "reference_comparison": {
+        "age_interval_gap_pp": 4.255927293965,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "reference_prediction": {
+        "lower": 0.090248262219,
+        "lower_intensity": 0.094583532317,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 4.255927293965,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "source_prediction": {
+        "lower": 0.090248262219,
+        "lower_intensity": 0.094583532317,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.02
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "conservative closure for open or missing age support",
+      "supply_feasible": [
+        0.0,
+        0.516618531918
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "37-73 (whole cohort marginal)",
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "wu2025_ukb",
+      "endpoint_id": "curated_58_gene_CHIP",
+      "endpoint_match": "no",
+      "gene": "DNMT3A",
+      "independence": "overlap_uncertain",
+      "model_id": "DNMT3A",
+      "observation": {
+        "cases": 10945,
+        "lower": 0.02352623873,
+        "point": 0.023965823794,
+        "printed_percentage_alternative": 0.024,
+        "source_conflict": false,
+        "total": 456692,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.024413417101
+      },
+      "parent_cohort": "UK_Biobank",
+      "parent_independence_status": "not established independent",
+      "record_id": "wu2025_ukb_dnmt3a",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 41916.26044632916,
+        "interval_compatible": true,
+        "signed_error_pp": -7.717743862104
+      },
+      "reference_prediction": {
+        "lower": 0.002318189843,
+        "lower_intensity": 0.002320881005,
+        "midpoint_age": 55.0,
+        "midpoint_intensity": 0.079835101705,
+        "uniform_age_mean": 0.101143262415,
+        "upper": 0.290518155168,
+        "upper_intensity": 0.343220371389,
+        "vaf": 0.02
+      },
+      "role": "external_gene_marginal",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 41916.26044632916,
+        "interval_compatible": true,
+        "signed_error_pp": -7.717743862104
+      },
+      "source_prediction": {
+        "lower": 0.002318189843,
+        "lower_intensity": 0.002320881005,
+        "midpoint_age": 55.0,
+        "midpoint_intensity": 0.079835101705,
+        "uniform_age_mean": 0.101143262415,
+        "upper": 0.290518155168,
+        "upper_intensity": 0.343220371389,
+        "vaf": 0.02
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.069364761506,
+        10.649561672466
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "37-73 (whole cohort marginal)",
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "wu2025_ukb",
+      "endpoint_id": "curated_58_gene_CHIP",
+      "endpoint_match": "no",
+      "gene": "TET2",
+      "independence": "overlap_uncertain",
+      "model_id": "TET2",
+      "observation": {
+        "cases": 2566,
+        "lower": 0.00465,
+        "point": 0.00561866641,
+        "printed_percentage_alternative": 0.0047,
+        "source_conflict": true,
+        "total": 456692,
+        "uncertainty": "computed marginal Wilson 95% interval; hull with conflicting printed percentage rounding interval",
+        "upper": 0.005839648959
+      },
+      "parent_cohort": "UK_Biobank",
+      "parent_independence_status": "not established independent",
+      "record_id": "wu2025_ukb_tet2",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 37231.68519993391,
+        "interval_compatible": true,
+        "signed_error_pp": -5.245105084505
+      },
+      "reference_prediction": {
+        "lower": 0.002319479852,
+        "lower_intensity": 0.002322174013,
+        "midpoint_age": 55.0,
+        "midpoint_intensity": 0.048772248474,
+        "uniform_age_mean": 0.058069717255,
+        "upper": 0.154496782737,
+        "upper_intensity": 0.167823305491,
+        "vaf": 0.02
+      },
+      "role": "external_gene_marginal",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 37231.68519993391,
+        "interval_compatible": true,
+        "signed_error_pp": -5.245105084505
+      },
+      "source_prediction": {
+        "lower": 0.002319479852,
+        "lower_intensity": 0.002322174013,
+        "midpoint_age": 55.0,
+        "midpoint_intensity": 0.048772248474,
+        "uniform_age_mean": 0.058069717255,
+        "upper": 0.154496782737,
+        "upper_intensity": 0.167823305491,
+        "vaf": 0.02
+      },
+      "source_status": "source_conflict",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.027772333935,
+        2.522104867766
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "37-73 (whole cohort marginal)",
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "wu2025_ukb",
+      "endpoint_id": "curated_58_gene_CHIP",
+      "endpoint_match": "no",
+      "gene": "ASXL1",
+      "independence": "overlap_uncertain",
+      "model_id": "ASXL1",
+      "observation": {
+        "cases": 1604,
+        "lower": 0.00245,
+        "point": 0.003512213921,
+        "printed_percentage_alternative": 0.0025,
+        "source_conflict": true,
+        "total": 456692,
+        "uncertainty": "computed marginal Wilson 95% interval; hull with conflicting printed percentage rounding interval",
+        "upper": 0.003688018678
+      },
+      "parent_cohort": "UK_Biobank",
+      "parent_independence_status": "not established independent",
+      "record_id": "wu2025_ukb_asxl1",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 15345.21664201091,
+        "interval_compatible": true,
+        "signed_error_pp": -2.370557342919
+      },
+      "reference_prediction": {
+        "lower": 0.001324829179,
+        "lower_intensity": 0.001325707541,
+        "midpoint_age": 55.0,
+        "midpoint_intensity": 0.023369259979,
+        "uniform_age_mean": 0.02721778735,
+        "upper": 0.069423379655,
+        "upper_intensity": 0.071950863093,
+        "vaf": 0.02
+      },
+      "role": "external_gene_marginal",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 15345.21664201091,
+        "interval_compatible": true,
+        "signed_error_pp": -2.370557342919
+      },
+      "source_prediction": {
+        "lower": 0.001324829179,
+        "lower_intensity": 0.001325707541,
+        "midpoint_age": 55.0,
+        "midpoint_intensity": 0.023369259979,
+        "uniform_age_mean": 0.02721778735,
+        "upper": 0.069423379655,
+        "upper_intensity": 0.071950863093,
+        "vaf": 0.02
+      },
+      "source_status": "source_conflict",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.034092796884,
+        2.7870673372
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "<45",
+      "analysis_role": "external_age",
+      "cohort_id": "schenz2022_covid",
+      "endpoint_id": "targeted_driver_CHIP",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "independent",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 0,
+        "lower": 0.0,
+        "point": 0.0,
+        "printed_percentage_alternative": 0.0,
+        "source_conflict": false,
+        "total": 8,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.324407564884
+      },
+      "parent_cohort": "German_COVID_hospital_2020_2021",
+      "parent_independence_status": "independent",
+      "record_id": "schenz2022_covid_lt45",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 0.010472401085,
+        "interval_compatible": true,
+        "signed_error_pp": -0.065431091301
+      },
+      "reference_prediction": {
+        "lower": 0.0,
+        "lower_intensity": 0.0,
+        "midpoint_age": 34.5,
+        "midpoint_intensity": 2.0620018e-05,
+        "uniform_age_mean": 0.000654310913,
+        "upper": 0.0052963308,
+        "upper_intensity": 0.00531040608,
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 0.066974043881,
+        "interval_compatible": true,
+        "signed_error_pp": -0.417712916741
+      },
+      "source_prediction": {
+        "lower": 3.9316e-08,
+        "lower_intensity": 3.9316e-08,
+        "midpoint_age": 34.5,
+        "midpoint_intensity": 0.000777654061,
+        "uniform_age_mean": 0.004177129167,
+        "upper": 0.02361841754,
+        "upper_intensity": 0.023901803341,
+        "vaf": 0.01
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.0,
+        9974714.04515573
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "45-65",
+      "analysis_role": "external_age",
+      "cohort_id": "schenz2022_covid",
+      "endpoint_id": "targeted_driver_CHIP",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "independent",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": null,
+        "lower": 0.315,
+        "point": 0.32,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 50,
+        "uncertainty": "printed rounding interval; sampling uncertainty unavailable",
+        "upper": 0.325
+      },
+      "parent_cohort": "German_COVID_hospital_2020_2021",
+      "parent_independence_status": "independent",
+      "record_id": "schenz2022_covid_45_65",
+      "reference_comparison": {
+        "age_interval_gap_pp": 16.748957914329,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": 26.293588452846
+      },
+      "reference_prediction": {
+        "lower": 0.0052963308,
+        "lower_intensity": 0.00531040608,
+        "midpoint_age": 55.0,
+        "midpoint_intensity": 0.048155137982,
+        "uniform_age_mean": 0.057064115472,
+        "upper": 0.147510420857,
+        "upper_intensity": 0.159594293778,
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 6.820453066649,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": 20.379167283582
+      },
+      "source_prediction": {
+        "lower": 0.02361841754,
+        "lower_intensity": 0.023901803341,
+        "midpoint_age": 55.0,
+        "midpoint_intensity": 0.112568514335,
+        "uniform_age_mean": 0.116208327164,
+        "upper": 0.246795469334,
+        "upper_intensity": 0.283418466994,
+        "vaf": 0.01
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        1.334903983969,
+        16.444055810658
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": ">65",
+      "analysis_role": "external_age",
+      "cohort_id": "schenz2022_covid",
+      "endpoint_id": "targeted_driver_CHIP",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "independent",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": null,
+        "lower": 0.5625,
+        "point": 0.563,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 32,
+        "uncertainty": "printed rounding interval; sampling uncertainty unavailable",
+        "upper": 0.5635
+      },
+      "parent_cohort": "German_COVID_hospital_2020_2021",
+      "parent_independence_status": "independent",
+      "record_id": "schenz2022_covid_gt65",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": null,
+        "interval_compatible": true,
+        "signed_error_pp": 19.346748578631
+      },
+      "reference_prediction": {
+        "lower": 0.147510420857,
+        "lower_intensity": 0.159594293778,
+        "midpoint_age": 80.0,
+        "midpoint_intensity": 0.461022400628,
+        "uniform_age_mean": 0.369532514214,
+        "upper": 0.593892063213,
+        "upper_intensity": 0.901136300559,
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": null,
+        "interval_compatible": true,
+        "signed_error_pp": 7.591182657171
+      },
+      "source_prediction": {
+        "lower": 0.246795469334,
+        "lower_intensity": 0.283418466994,
+        "midpoint_age": 80.0,
+        "midpoint_intensity": 0.680376145801,
+        "uniform_age_mean": 0.487088173428,
+        "upper": 0.703789727062,
+        "upper_intensity": 1.216685695312,
+        "vaf": 0.01
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.679451214368,
+        2.924886696679
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "24-95 whole cohort",
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "schenz2022_covid",
+      "endpoint_id": "targeted_driver_CHIP",
+      "endpoint_match": "no",
+      "gene": "DNMT3A",
+      "independence": "independent",
+      "model_id": "DNMT3A",
+      "observation": {
+        "cases": 16,
+        "lower": 0.112497371583,
+        "point": 0.177777777778,
+        "printed_percentage_alternative": 0.178,
+        "source_conflict": false,
+        "total": 90,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.269438920447
+      },
+      "parent_cohort": "German_COVID_hospital_2020_2021",
+      "parent_independence_status": "independent",
+      "record_id": "schenz2022_covid_dnmt3a",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 0.103785247948,
+        "interval_compatible": true,
+        "signed_error_pp": -1.322820737343
+      },
+      "reference_prediction": {
+        "lower": 3.8193e-08,
+        "lower_intensity": 3.8193e-08,
+        "midpoint_age": 59.5,
+        "midpoint_intensity": 0.126438818252,
+        "uniform_age_mean": 0.191005985151,
+        "upper": 0.604240138618,
+        "upper_intensity": 0.92694766232,
+        "vaf": 0.02
+      },
+      "role": "external_gene_marginal",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 3.022304526544,
+        "interval_compatible": true,
+        "signed_error_pp": -7.679650093834
+      },
+      "source_prediction": {
+        "lower": 9.983849e-06,
+        "lower_intensity": 9.983899e-06,
+        "midpoint_age": 59.5,
+        "midpoint_intensity": 0.214244027289,
+        "uniform_age_mean": 0.254574278716,
+        "upper": 0.704838437036,
+        "upper_intensity": 1.220232401495,
+        "vaf": 0.01
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.097804152631,
+        31444.8741223951
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "24-95 whole cohort",
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "schenz2022_covid",
+      "endpoint_id": "targeted_driver_CHIP",
+      "endpoint_match": "no",
+      "gene": "TET2",
+      "independence": "independent",
+      "model_id": "TET2",
+      "observation": {
+        "cases": 6,
+        "lower": 0.030909927746,
+        "point": 0.066666666667,
+        "printed_percentage_alternative": 0.067,
+        "source_conflict": false,
+        "total": 90,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.137900947743
+      },
+      "parent_cohort": "German_COVID_hospital_2020_2021",
+      "parent_independence_status": "independent",
+      "record_id": "schenz2022_covid_tet2",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 1.518742960133,
+        "interval_compatible": true,
+        "signed_error_pp": -3.7290020781
+      },
+      "reference_prediction": {
+        "lower": 1.02917e-07,
+        "lower_intensity": 1.02917e-07,
+        "midpoint_age": 59.5,
+        "midpoint_intensity": 0.07187396053,
+        "uniform_age_mean": 0.103956687448,
+        "upper": 0.330215391774,
+        "upper_intensity": 0.400799098543,
+        "vaf": 0.02
+      },
+      "role": "external_gene_marginal",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 4.528470540846,
+        "interval_compatible": true,
+        "signed_error_pp": -7.042075567752
+      },
+      "source_prediction": {
+        "lower": 1.5095911e-05,
+        "lower_intensity": 1.5096025e-05,
+        "midpoint_age": 59.5,
+        "midpoint_intensity": 0.10871897963,
+        "uniform_age_mean": 0.137087422344,
+        "upper": 0.398864420684,
+        "upper_intensity": 0.508934780344,
+        "vaf": 0.01
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.061693008223,
+        9829.41591045344
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "<40",
+      "analysis_role": "external_age",
+      "cohort_id": "qiu2023_cnsr",
+      "endpoint_id": "curated_74_gene_CHIP",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "independent",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 1,
+        "lower": 0.001033054314,
+        "point": 0.005847953216,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 171,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.032376978181
+      },
+      "parent_cohort": "CNSR_III",
+      "parent_independence_status": "independent",
+      "record_id": "qiu2023_cnsr_lt40",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.028455331274,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "reference_prediction": {
+        "lower": 0.0,
+        "lower_intensity": 0.0,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 0.000748501001,
+        "upper_intensity": 0.000748781268,
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.102958060521,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "source_prediction": {
+        "lower": 0.0,
+        "lower_intensity": 0.0,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 3.473709e-06,
+        "upper_intensity": 3.473715e-06,
+        "vaf": 0.05
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "conservative closure for open or missing age support",
+      "supply_feasible": [
+        297.545535526025,
+        "infinity"
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "40-49",
+      "analysis_role": "external_age",
+      "cohort_id": "qiu2023_cnsr",
+      "endpoint_id": "curated_74_gene_CHIP",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "independent",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 13,
+        "lower": 0.010884841455,
+        "point": 0.018571428571,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 700,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.031513142419
+      },
+      "parent_cohort": "CNSR_III",
+      "parent_independence_status": "independent",
+      "record_id": "qiu2023_cnsr_40_49",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 9.592174726328,
+        "interval_compatible": true,
+        "signed_error_pp": 1.171029846594
+      },
+      "reference_prediction": {
+        "lower": 0.000748501001,
+        "lower_intensity": 0.000748781268,
+        "midpoint_age": 45.0,
+        "midpoint_intensity": 0.00531040608,
+        "uniform_age_mean": 0.006861130105,
+        "upper": 0.019192554172,
+        "upper_intensity": 0.019379122243,
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.882946457779,
+        "binomial_deviance": 71.568659954396,
+        "interval_compatible": false,
+        "signed_error_pp": 1.812114217665
+      },
+      "source_prediction": {
+        "lower": 3.473709e-06,
+        "lower_intensity": 3.473715e-06,
+        "midpoint_age": 45.0,
+        "midpoint_intensity": 0.000186335829,
+        "uniform_age_mean": 0.000450286395,
+        "upper": 0.002055376877,
+        "upper_intensity": 0.002057492063,
+        "vaf": 0.05
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        5.319347255753,
+        9217.903436034441
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "50-59",
+      "analysis_role": "external_age",
+      "cohort_id": "qiu2023_cnsr",
+      "endpoint_id": "curated_74_gene_CHIP",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "independent",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 35,
+        "lower": 0.015642964478,
+        "point": 0.021698698078,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 1613,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.030027226881
+      },
+      "parent_cohort": "CNSR_III",
+      "parent_independence_status": "independent",
+      "record_id": "qiu2023_cnsr_50_59",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 33.445029327381,
+        "interval_compatible": true,
+        "signed_error_pp": -2.790059321494
+      },
+      "reference_prediction": {
+        "lower": 0.019192554172,
+        "lower_intensity": 0.019379122243,
+        "midpoint_age": 55.0,
+        "midpoint_intensity": 0.048155137982,
+        "uniform_age_mean": 0.049599291293,
+        "upper": 0.090248262219,
+        "upper_intensity": 0.094583532317,
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 12.096389685168,
+        "interval_compatible": true,
+        "signed_error_pp": 1.03296852256
+      },
+      "source_prediction": {
+        "lower": 0.002055376877,
+        "lower_intensity": 0.002057492063,
+        "midpoint_age": 55.0,
+        "midpoint_intensity": 0.009669230256,
+        "uniform_age_mean": 0.011369012853,
+        "upper": 0.027594053244,
+        "upper_intensity": 0.027981921014,
+        "vaf": 0.05
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.563456910449,
+        14.817688667558
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "60-69",
+      "analysis_role": "external_age",
+      "cohort_id": "qiu2023_cnsr",
+      "endpoint_id": "curated_74_gene_CHIP",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "independent",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 71,
+        "lower": 0.028001076697,
+        "point": 0.035200793257,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 2017,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.044167602437
+      },
+      "parent_cohort": "CNSR_III",
+      "parent_independence_status": "independent",
+      "record_id": "qiu2023_cnsr_60_69",
+      "reference_comparison": {
+        "age_interval_gap_pp": 4.608065978234,
+        "binomial_deviance": 284.783569615295,
+        "interval_compatible": false,
+        "signed_error_pp": -11.412925392677
+      },
+      "reference_prediction": {
+        "lower": 0.090248262219,
+        "lower_intensity": 0.094583532317,
+        "midpoint_age": 65.0,
+        "midpoint_intensity": 0.159594293778,
+        "uniform_age_mean": 0.149330047184,
+        "upper": 0.21566842245,
+        "upper_intensity": 0.242923417494,
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": 27.43402619221,
+        "interval_compatible": true,
+        "signed_error_pp": -2.580777045158
+      },
+      "source_prediction": {
+        "lower": 0.027594053244,
+        "lower_intensity": 0.027981921014,
+        "midpoint_age": 65.0,
+        "midpoint_intensity": 0.060561799053,
+        "uniform_age_mean": 0.061008563709,
+        "upper": 0.103334542002,
+        "upper_intensity": 0.109072443013,
+        "vaf": 0.05
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.260382746095,
+        1.614352982915
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": "70-79",
+      "analysis_role": "external_age",
+      "cohort_id": "qiu2023_cnsr",
+      "endpoint_id": "curated_74_gene_CHIP",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "independent",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 64,
+        "lower": 0.042484206587,
+        "point": 0.053962900506,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 1186,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.068321697715
+      },
+      "parent_cohort": "CNSR_III",
+      "parent_independence_status": "independent",
+      "record_id": "qiu2023_cnsr_70_79",
+      "reference_comparison": {
+        "age_interval_gap_pp": 14.734672473525,
+        "binomial_deviance": 432.71444576089,
+        "interval_compatible": false,
+        "signed_error_pp": -23.746597765937
+      },
+      "reference_prediction": {
+        "lower": 0.21566842245,
+        "lower_intensity": 0.242923417494,
+        "midpoint_age": 75.0,
+        "midpoint_intensity": 0.343744265624,
+        "uniform_age_mean": 0.291428878165,
+        "upper": 0.36936144946,
+        "upper_intensity": 0.461022400628,
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 3.501284428646,
+        "binomial_deviance": 129.597616507755,
+        "interval_compatible": false,
+        "signed_error_pp": -10.707746967207
+      },
+      "source_prediction": {
+        "lower": 0.103334542002,
+        "lower_intensity": 0.109072443013,
+        "midpoint_age": 75.0,
+        "midpoint_intensity": 0.173832293831,
+        "uniform_age_mean": 0.161040370178,
+        "upper": 0.224647875587,
+        "upper_intensity": 0.254437998735,
+        "vaf": 0.05
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "sharp finite-band bounds",
+      "supply_feasible": [
+        0.170623349708,
+        0.648813679688
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": ">=80",
+      "analysis_role": "external_age",
+      "cohort_id": "qiu2023_cnsr",
+      "endpoint_id": "curated_74_gene_CHIP",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "independent",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 36,
+        "lower": 0.08009214146,
+        "point": 0.109422492401,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 329,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.147768471485
+      },
+      "parent_cohort": "CNSR_III",
+      "parent_independence_status": "independent",
+      "record_id": "qiu2023_cnsr_ge80",
+      "reference_comparison": {
+        "age_interval_gap_pp": 22.15929779745,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "reference_prediction": {
+        "lower": 0.36936144946,
+        "lower_intensity": 0.461022400628,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 7.687940410135,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "source_prediction": {
+        "lower": 0.224647875587,
+        "lower_intensity": 0.254437998735,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.05
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "conservative closure for open or missing age support",
+      "supply_feasible": [
+        0.0,
+        0.628432241967
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": ">=80 whole cohort",
+      "analysis_role": "external_age",
+      "cohort_id": "lifelines2021",
+      "endpoint_id": "targeted_27_gene_CH",
+      "endpoint_match": "no",
+      "gene": "ALL_SOURCE_GENES",
+      "independence": "overlap_uncertain",
+      "model_id": "POOLED10",
+      "observation": {
+        "cases": 382,
+        "lower": 0.57627178754,
+        "point": 0.615136876006,
+        "printed_percentage_alternative": 0.615,
+        "source_conflict": false,
+        "total": 621,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.652586265941
+      },
+      "parent_cohort": "Lifelines",
+      "parent_independence_status": "not established independent",
+      "record_id": "lifelines2021_all_source_genes",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": null,
+        "interval_compatible": true,
+        "signed_error_pp": null
+      },
+      "reference_prediction": {
+        "lower": 0.36936144946,
+        "lower_intensity": 0.461022400628,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.02
+      },
+      "role": "external_age",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": null,
+        "interval_compatible": true,
+        "signed_error_pp": null
+      },
+      "source_prediction": {
+        "lower": 0.493573533654,
+        "lower_intensity": 0.680376145801,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.01
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "conservative closure for open or missing age support",
+      "supply_feasible": [
+        0.0,
+        1.553903526209
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": ">=80 whole cohort",
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "lifelines2021",
+      "endpoint_id": "targeted_27_gene_CH",
+      "endpoint_match": "no",
+      "gene": "DNMT3A",
+      "independence": "overlap_uncertain",
+      "model_id": "DNMT3A",
+      "observation": {
+        "cases": 219,
+        "lower": 0.316088549965,
+        "point": 0.352657004831,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 621,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.391037157818
+      },
+      "parent_cohort": "Lifelines",
+      "parent_independence_status": "not established independent",
+      "record_id": "lifelines2021_dnmt3a",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.243196511987,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "reference_prediction": {
+        "lower": 0.393469122938,
+        "lower_intensity": 0.499999641651,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.02
+      },
+      "role": "external_gene_marginal",
+      "source_comparison": {
+        "age_interval_gap_pp": 11.515798053534,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "source_prediction": {
+        "lower": 0.506195138353,
+        "lower_intensity": 0.705614856743,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.01
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "conservative closure for open or missing age support",
+      "supply_feasible": [
+        0.0,
+        0.702930249941
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": ">=80 whole cohort",
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "lifelines2021",
+      "endpoint_id": "targeted_27_gene_CH",
+      "endpoint_match": "no",
+      "gene": "TET2",
+      "independence": "overlap_uncertain",
+      "model_id": "TET2",
+      "observation": {
+        "cases": 166,
+        "lower": 0.234011715202,
+        "point": 0.26731078905,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 621,
+        "uncertainty": "computed marginal Wilson 95% interval",
+        "upper": 0.30347095993
+      },
+      "parent_cohort": "Lifelines",
+      "parent_independence_status": "not established independent",
+      "record_id": "lifelines2021_tet2",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": null,
+        "interval_compatible": true,
+        "signed_error_pp": null
+      },
+      "reference_prediction": {
+        "lower": 0.207280663512,
+        "lower_intensity": 0.232286046239,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.02
+      },
+      "role": "external_gene_marginal",
+      "source_comparison": {
+        "age_interval_gap_pp": 0.0,
+        "binomial_deviance": null,
+        "interval_compatible": true,
+        "signed_error_pp": null
+      },
+      "source_prediction": {
+        "lower": 0.265511499425,
+        "lower_intensity": 0.308580939617,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.01
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "conservative closure for open or missing age support",
+      "supply_feasible": [
+        0.0,
+        1.171964129719
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": ">=80 whole cohort",
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "lifelines2021",
+      "endpoint_id": "targeted_27_gene_CH",
+      "endpoint_match": "no",
+      "gene": "ASXL1",
+      "independence": "overlap_uncertain",
+      "model_id": "ASXL1",
+      "observation": {
+        "cases": null,
+        "lower": 0.055,
+        "point": 0.06,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 621,
+        "uncertainty": "printed rounding interval; sampling uncertainty unavailable",
+        "upper": 0.065
+      },
+      "parent_cohort": "Lifelines",
+      "parent_independence_status": "not established independent",
+      "record_id": "lifelines2021_asxl1",
+      "reference_comparison": {
+        "age_interval_gap_pp": 2.678979253998,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "reference_prediction": {
+        "lower": 0.09178979254,
+        "lower_intensity": 0.096279421161,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.02
+      },
+      "role": "external_gene_marginal",
+      "source_comparison": {
+        "age_interval_gap_pp": 4.926664786666,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "source_prediction": {
+        "lower": 0.114266647867,
+        "lower_intensity": 0.121339330634,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.01
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "conservative closure for open or missing age support",
+      "supply_feasible": [
+        0.0,
+        0.553890888819
+      ],
+      "threshold_basis": "printed source cutoff"
+    },
+    {
+      "age_label": ">=80 whole cohort",
+      "analysis_role": "external_gene_marginal",
+      "cohort_id": "lifelines2021",
+      "endpoint_id": "targeted_27_gene_CH",
+      "endpoint_match": "no",
+      "gene": "TP53",
+      "independence": "overlap_uncertain",
+      "model_id": "TP53",
+      "observation": {
+        "cases": null,
+        "lower": 0.025,
+        "point": 0.03,
+        "printed_percentage_alternative": null,
+        "source_conflict": false,
+        "total": 621,
+        "uncertainty": "printed rounding interval; sampling uncertainty unavailable",
+        "upper": 0.035
+      },
+      "parent_cohort": "Lifelines",
+      "parent_independence_status": "not established independent",
+      "record_id": "lifelines2021_tp53",
+      "reference_comparison": {
+        "age_interval_gap_pp": 0.141702627791,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "reference_prediction": {
+        "lower": 0.036417026278,
+        "lower_intensity": 0.037096677843,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.02
+      },
+      "role": "external_gene_marginal",
+      "source_comparison": {
+        "age_interval_gap_pp": 1.069141607084,
+        "binomial_deviance": null,
+        "interval_compatible": false,
+        "signed_error_pp": null
+      },
+      "source_prediction": {
+        "lower": 0.045691416071,
+        "lower_intensity": 0.046768196599,
+        "midpoint_age": null,
+        "midpoint_intensity": null,
+        "uniform_age_mean": null,
+        "upper": 1.0,
+        "upper_intensity": "infinity",
+        "vaf": 0.01
+      },
+      "source_status": "as_printed",
+      "strict_eligible": false,
+      "supply_bound_kind": "conservative closure for open or missing age support",
+      "supply_feasible": [
+        0.0,
+        0.761782156128
+      ],
+      "threshold_basis": "printed source cutoff"
+    }
+  ],
+  "sensitivities": [
+    {
+      "macro_mae_pp": 12.507704561301,
+      "macro_rmse_pp": 16.294873378696,
+      "nonoverlap_rows": 6,
+      "parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021",
+        "Lifelines",
+        "UK_Biobank"
+      ],
+      "parents": 4,
+      "point_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 2,
+      "point_rows": 7,
+      "rows": 12,
+      "scenario_id": "reference"
+    },
+    {
+      "macro_mae_pp": 13.047514133434,
+      "macro_rmse_pp": 17.460786746892,
+      "nonoverlap_rows": 6,
+      "parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021",
+        "Lifelines",
+        "UK_Biobank"
+      ],
+      "parents": 4,
+      "point_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 2,
+      "point_rows": 7,
+      "rows": 12,
+      "scenario_id": "vaf_01"
+    },
+    {
+      "macro_mae_pp": 12.378320633047,
+      "macro_rmse_pp": 17.0422840848,
+      "nonoverlap_rows": 8,
+      "parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021",
+        "Lifelines",
+        "UK_Biobank"
+      ],
+      "parents": 4,
+      "point_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 2,
+      "point_rows": 7,
+      "rows": 12,
+      "scenario_id": "vaf_03"
+    },
+    {
+      "macro_mae_pp": 12.572983147924,
+      "macro_rmse_pp": 18.723544917609,
+      "nonoverlap_rows": 6,
+      "parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021",
+        "Lifelines",
+        "UK_Biobank"
+      ],
+      "parents": 4,
+      "point_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 2,
+      "point_rows": 7,
+      "rows": 12,
+      "scenario_id": "vaf_05"
+    },
+    {
+      "macro_mae_pp": 13.23878030394,
+      "macro_rmse_pp": 21.388412291304,
+      "nonoverlap_rows": 6,
+      "parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021",
+        "Lifelines",
+        "UK_Biobank"
+      ],
+      "parents": 4,
+      "point_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 2,
+      "point_rows": 7,
+      "rows": 12,
+      "scenario_id": "vaf_10"
+    },
+    {
+      "macro_mae_pp": 12.679375874539,
+      "macro_rmse_pp": 16.515927304009,
+      "nonoverlap_rows": 6,
+      "parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021",
+        "Lifelines",
+        "UK_Biobank"
+      ],
+      "parents": 4,
+      "point_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 2,
+      "point_rows": 7,
+      "rows": 12,
+      "scenario_id": "A_70000"
+    },
+    {
+      "macro_mae_pp": 12.285440058506,
+      "macro_rmse_pp": 16.271269793102,
+      "nonoverlap_rows": 6,
+      "parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021",
+        "Lifelines",
+        "UK_Biobank"
+      ],
+      "parents": 4,
+      "point_parent_ids": [
+        "CNSR_III",
+        "German_COVID_hospital_2020_2021"
+      ],
+      "point_parents": 2,
+      "point_rows": 7,
+      "rows": 12,
+      "scenario_id": "A_130000"
+    }
+  ],
+  "status": "nonclinical; unreviewed; no medical advice",
+  "strict_eligible_parents": 0,
+  "strict_eligible_rows": 0,
+  "strict_loco_status": "untestable: fewer than two parents with finite-band rows",
+  "strict_loco_supply_calibration": [],
+  "strict_summary": {
+    "macro_mae_pp": null,
+    "macro_rmse_pp": null,
+    "nonoverlap_rows": 0,
+    "parent_ids": [],
+    "parents": 0,
+    "point_parent_ids": [],
+    "point_parents": 0,
+    "point_rows": 0,
+    "rows": 0
+  },
+  "strict_verdict": "untestable",
+  "subset_coherence": {
+    "comparisons": 24,
+    "interpretation": "separate fitted candidate forecasts; violations preclude a joint carrier model with these subset endpoints",
+    "maximum_gap_pp": 3.376189823555,
+    "violation_count": 10,
+    "violations": [
+      {
+        "age": 40.0,
+        "gap_pp": 0.5149642066,
+        "gene": "DNMT3A",
+        "gene_prediction": 0.005898143067,
+        "pooled_prediction": 0.000748501001,
+        "vaf": 0.02
+      },
+      {
+        "age": 50.0,
+        "gap_pp": 2.230239531224,
+        "gene": "DNMT3A",
+        "gene_prediction": 0.041494949484,
+        "pooled_prediction": 0.019192554172,
+        "vaf": 0.02
+      },
+      {
+        "age": 60.0,
+        "gap_pp": 3.376189823555,
+        "gene": "DNMT3A",
+        "gene_prediction": 0.124010160454,
+        "pooled_prediction": 0.090248262219,
+        "vaf": 0.02
+      },
+      {
+        "age": 70.0,
+        "gap_pp": 3.239249918525,
+        "gene": "DNMT3A",
+        "gene_prediction": 0.248060921636,
+        "pooled_prediction": 0.21566842245,
+        "vaf": 0.02
+      },
+      {
+        "age": 80.0,
+        "gap_pp": 2.410767347782,
+        "gene": "DNMT3A",
+        "gene_prediction": 0.393469122938,
+        "pooled_prediction": 0.36936144946,
+        "vaf": 0.02
+      },
+      {
+        "age": 90.0,
+        "gap_pp": 1.461085247063,
+        "gene": "DNMT3A",
+        "gene_prediction": 0.537836845471,
+        "pooled_prediction": 0.523225993,
+        "vaf": 0.02
+      },
+      {
+        "age": 40.0,
+        "gap_pp": 0.450642451155,
+        "gene": "TET2",
+        "gene_prediction": 0.005254925513,
+        "pooled_prediction": 0.000748501001,
+        "vaf": 0.02
+      },
+      {
+        "age": 50.0,
+        "gap_pp": 0.896425956144,
+        "gene": "TET2",
+        "gene_prediction": 0.028156813734,
+        "pooled_prediction": 0.019192554172,
+        "vaf": 0.02
+      },
+      {
+        "age": 40.0,
+        "gap_pp": 0.214457928929,
+        "gene": "ASXL1",
+        "gene_prediction": 0.00289308029,
+        "pooled_prediction": 0.000748501001,
+        "vaf": 0.02
+      },
+      {
+        "age": 40.0,
+        "gap_pp": 0.032770069225,
+        "gene": "TP53",
+        "gene_prediction": 0.001076201693,
+        "pooled_prediction": 0.000748501001,
+        "vaf": 0.02
+      }
+    ]
+  },
+  "supply_feasibility": [
+    {
+      "analysis_role": "development",
+      "bound_kinds": [
+        "sharp finite-band bounds"
+      ],
+      "cohort_id": "genovese2014",
+      "compatible": true,
+      "endpoint_id": "candidate_drivers",
+      "includes_frozen_supply": false,
+      "lower": 0.336507345821,
+      "model_id": "POOLED10",
+      "row_ids": [
+        "genovese2014_candidate_drivers_lt50",
+        "genovese2014_candidate_drivers_gt65"
+      ],
+      "upper": 0.371061886099
+    },
+    {
+      "analysis_role": "development",
+      "bound_kinds": [
+        "sharp finite-band bounds"
+      ],
+      "cohort_id": "jaiswal2014",
+      "compatible": true,
+      "endpoint_id": "curated_160_gene_SNV_indel",
+      "includes_frozen_supply": false,
+      "lower": 0.211150060858,
+      "model_id": "POOLED10",
+      "row_ids": [
+        "jaiswal2014_60_69",
+        "jaiswal2014_70_79",
+        "jaiswal2014_80_89",
+        "jaiswal2014_90_108_text"
+      ],
+      "upper": 0.370455580353
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "bound_kinds": [
+        "conservative closure for open or missing age support"
+      ],
+      "cohort_id": "lifelines2021",
+      "compatible": true,
+      "endpoint_id": "targeted_27_gene_CH",
+      "includes_frozen_supply": false,
+      "lower": 0.0,
+      "model_id": "ASXL1",
+      "row_ids": [
+        "lifelines2021_asxl1"
+      ],
+      "upper": 0.553890888819
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "bound_kinds": [
+        "conservative closure for open or missing age support"
+      ],
+      "cohort_id": "lifelines2021",
+      "compatible": true,
+      "endpoint_id": "targeted_27_gene_CH",
+      "includes_frozen_supply": false,
+      "lower": 0.0,
+      "model_id": "DNMT3A",
+      "row_ids": [
+        "lifelines2021_dnmt3a"
+      ],
+      "upper": 0.702930249941
+    },
+    {
+      "analysis_role": "external_age",
+      "bound_kinds": [
+        "conservative closure for open or missing age support"
+      ],
+      "cohort_id": "lifelines2021",
+      "compatible": true,
+      "endpoint_id": "targeted_27_gene_CH",
+      "includes_frozen_supply": true,
+      "lower": 0.0,
+      "model_id": "POOLED10",
+      "row_ids": [
+        "lifelines2021_all_source_genes"
+      ],
+      "upper": 1.553903526209
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "bound_kinds": [
+        "conservative closure for open or missing age support"
+      ],
+      "cohort_id": "lifelines2021",
+      "compatible": true,
+      "endpoint_id": "targeted_27_gene_CH",
+      "includes_frozen_supply": true,
+      "lower": 0.0,
+      "model_id": "TET2",
+      "row_ids": [
+        "lifelines2021_tet2"
+      ],
+      "upper": 1.171964129719
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "bound_kinds": [
+        "conservative closure for open or missing age support"
+      ],
+      "cohort_id": "lifelines2021",
+      "compatible": true,
+      "endpoint_id": "targeted_27_gene_CH",
+      "includes_frozen_supply": false,
+      "lower": 0.0,
+      "model_id": "TP53",
+      "row_ids": [
+        "lifelines2021_tp53"
+      ],
+      "upper": 0.761782156128
+    },
+    {
+      "analysis_role": "external_age",
+      "bound_kinds": [
+        "conservative closure for open or missing age support",
+        "sharp finite-band bounds"
+      ],
+      "cohort_id": "qiu2023_cnsr",
+      "compatible": false,
+      "endpoint_id": "curated_74_gene_CHIP",
+      "includes_frozen_supply": false,
+      "lower": 297.545535526025,
+      "model_id": "POOLED10",
+      "row_ids": [
+        "qiu2023_cnsr_lt40",
+        "qiu2023_cnsr_40_49",
+        "qiu2023_cnsr_50_59",
+        "qiu2023_cnsr_60_69",
+        "qiu2023_cnsr_70_79",
+        "qiu2023_cnsr_ge80"
+      ],
+      "upper": 0.628432241967
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "bound_kinds": [
+        "sharp finite-band bounds"
+      ],
+      "cohort_id": "schenz2022_covid",
+      "compatible": true,
+      "endpoint_id": "targeted_driver_CHIP",
+      "includes_frozen_supply": true,
+      "lower": 0.097804152631,
+      "model_id": "DNMT3A",
+      "row_ids": [
+        "schenz2022_covid_dnmt3a"
+      ],
+      "upper": 31444.8741223951
+    },
+    {
+      "analysis_role": "external_age",
+      "bound_kinds": [
+        "sharp finite-band bounds"
+      ],
+      "cohort_id": "schenz2022_covid",
+      "compatible": true,
+      "endpoint_id": "targeted_driver_CHIP",
+      "includes_frozen_supply": false,
+      "lower": 1.334903983969,
+      "model_id": "POOLED10",
+      "row_ids": [
+        "schenz2022_covid_lt45",
+        "schenz2022_covid_45_65",
+        "schenz2022_covid_gt65"
+      ],
+      "upper": 2.924886696679
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "bound_kinds": [
+        "sharp finite-band bounds"
+      ],
+      "cohort_id": "schenz2022_covid",
+      "compatible": true,
+      "endpoint_id": "targeted_driver_CHIP",
+      "includes_frozen_supply": true,
+      "lower": 0.061693008223,
+      "model_id": "TET2",
+      "row_ids": [
+        "schenz2022_covid_tet2"
+      ],
+      "upper": 9829.41591045344
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "bound_kinds": [
+        "sharp finite-band bounds"
+      ],
+      "cohort_id": "wu2025_ukb",
+      "compatible": true,
+      "endpoint_id": "curated_58_gene_CHIP",
+      "includes_frozen_supply": true,
+      "lower": 0.034092796884,
+      "model_id": "ASXL1",
+      "row_ids": [
+        "wu2025_ukb_asxl1"
+      ],
+      "upper": 2.7870673372
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "bound_kinds": [
+        "sharp finite-band bounds"
+      ],
+      "cohort_id": "wu2025_ukb",
+      "compatible": true,
+      "endpoint_id": "curated_58_gene_CHIP",
+      "includes_frozen_supply": true,
+      "lower": 0.069364761506,
+      "model_id": "DNMT3A",
+      "row_ids": [
+        "wu2025_ukb_dnmt3a"
+      ],
+      "upper": 10.649561672466
+    },
+    {
+      "analysis_role": "external_gene_marginal",
+      "bound_kinds": [
+        "sharp finite-band bounds"
+      ],
+      "cohort_id": "wu2025_ukb",
+      "compatible": true,
+      "endpoint_id": "curated_58_gene_CHIP",
+      "includes_frozen_supply": true,
+      "lower": 0.027772333935,
+      "model_id": "TET2",
+      "row_ids": [
+        "wu2025_ukb_tet2"
+      ],
+      "upper": 2.522104867766
+    },
+    {
+      "analysis_role": "external_age",
+      "bound_kinds": [
+        "conservative closure for open or missing age support"
+      ],
+      "cohort_id": "zhang2025_ukb",
+      "compatible": true,
+      "endpoint_id": "curated_55_gene_CHIP",
+      "includes_frozen_supply": false,
+      "lower": 0.186901205876,
+      "model_id": "POOLED10",
+      "row_ids": [
+        "zhang2025_ukb_lt60",
+        "zhang2025_ukb_ge60"
+      ],
+      "upper": 0.516618531918
+    }
+  ]
+}
