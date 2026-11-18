@@ -48,6 +48,19 @@ post-extraction E3-X check in
 observation bridge. Those models still require their stated allocation,
 copy-conservation, birth/death, and sampling assumptions.
 
+**What this does and does not say about PR #65:** #65's reported
+conditional decrease in the ecDNA-lineage persistence/eradication threshold
+came from transporting **Shibata et al.'s published fitted segregation
+parameters** through PR #60's specified asymmetric beta-binomial killing
+model. That numerical shift was **not derived from Lundberg's mother-level
+test-rejection counts**. Weakening the Lundberg rejection argument therefore
+does not recalculate or invalidate the Shibata-fit model transport; equally,
+those point-fit threshold calculations cannot rescue an unconditional
+Lundberg rejection or supply missing test calibration, fit uncertainty,
+physical allocation validation, or a clinical conclusion. #65's threshold
+shift remains conditional on the Shibata fit and model assumptions, not a
+new estimate established by the current three rejection counts.
+
 The [protocol](PROTOCOL.md) was frozen locally in
 `acc2dc41f8a6673c17be28a4f80170505cf1fb84`, then preserved unchanged publicly in
 [`d58107d841841dfb42577e10f1f6065c11c909bc`](https://github.com/dovvnloading/open-cancer/commit/d58107d841841dfb42577e10f1f6065c11c909bc),
