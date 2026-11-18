@@ -741,9 +741,10 @@ two Descartes variations, prove there are exactly two positive simple roots;
 decimal brackets only locate them. These independent eliminations confirm
 the two ranking reversals without fitting a plot.
 
-**Dependency/edge audit.** The first-event equations require \(z>0\) for
-uniqueness and strictly positive denominators. At \(z=0\) the objective
-changes, and the algebraic resolvent comparison cannot silently be relabelled
+**Dependency/edge audit.** The strict diagonal-dominance proof of
+uniqueness uses \(z>0\), as do the positive-denominator estimates for the
+censored formulas. Absorbing chains can sometimes be solved at \(z=0\),
+but then the finite objective changes, and the algebraic resolvent comparison cannot silently be relabelled
 an ordinary mean. The mass at \(T=\infty\) is positive under both policies:
 two M kills can precede conversion, while C reaches pure R at positive \(\mu\)
 and can undergo two R deaths. At \(\mu=0\), C is stuck at \((2,0)\);
@@ -755,7 +756,7 @@ counterexample is a separate objective with a separate exact enclosure.
 **Evidence and remaining gaps.** The symbolic polynomial, exact occupancy
 resolvent, and independently enumerated jump-chain bounds test the stated
 finite chain; simulations only assess implementation consistency. The new
-leading-coefficient-cancellation regression tests check a previously untested
+leading-coefficient-cancellation regression test checks a previously untested
 boundary of the analytic sign criterion. None of these tests checks a
 large-population mutation process, shared admissible dose controls, clinical
 parameters, or bibliographic priority. Hansen–Woods–Read (2017),
