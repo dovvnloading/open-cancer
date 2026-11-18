@@ -1,4 +1,4 @@
-# Persister-colony resistance-origin reanalysis
+# partial: published-count reanalysis; raw Mendeley audit blocked
 
 **Nonclinical computational research. Unreviewed. No treatment advice.**
 
@@ -38,7 +38,8 @@ The planned whole-biological-replicate scoring, competing observation laws,
 priors, sensitivity choices, and verdict rule remain those in
 [PROTOCOL.md](PROTOCOL.md). This deviation is a restricted deliverable while
 the archive is inaccessible; it does not assert that the user's requested
-raw-data job is finished. The eventual PR is to remain draft for that reason.
+raw-data job is finished. This is a clearly labelled partial result, not a
+completed raw-data experiment; merging it does not close the open items below.
 
 The acquisition failures were an HTTP 403 / Cloudflare 1010 response at the
 documented Mendeley public download and API endpoints, and timeouts without a
@@ -47,6 +48,49 @@ control was bypassed. [fetch_sources.py](fetch_sources.py) accepts an official
 locally downloaded archive and checks its entire advertised digest before
 listing candidate data members. A source-access success must precede the
 remaining extraction, raw-data cross-check, and population calibration work.
+
+## Open items — raw Mendeley V2 audit (not completed)
+
+The following tasks remain **open after this partial result is merged**. None
+may be represented as completed merely because the existing tests and CI pass.
+
+1. **Obtain original archive bytes.** Acquire the complete, official Mendeley
+   Data **V2** `Russo_et_al_v2.zip` (DOI
+   [10.17632/mvfm7hs9kw.2](https://doi.org/10.17632/mvfm7hs9kw.2)) outside the
+   repository. Record the exact retrieval URL, access date, version, byte size,
+   and original source identity. The article's supplementary workbook is **not**
+   a replacement for this raw archive. No further browser download is needed
+   for this merged partial note.
+2. **Verify the complete archive and trace the raw observations.** Independently
+   compute the archive's whole-file SHA-256 and require an exact match to the
+   publisher-advertised
+   `2f594e2a76e328d82d954102bc89936edd0932e9d01a8daf8a67e463033d3d4f`
+   before parsing it. Audit ZIP member integrity, member names and individual
+   source-file hashes. Identify the original paths, sheets/columns, experimental
+   cultures and biological replicates for **both** DiFi and WiDr early/late
+   colony counts; reconcile them with the published Fig. 3e annotations,
+   readout intervals, late risk sets, censoring, and omissions. Record the
+   source URL, archive member, sheet/column locator, access date, licence,
+   and any exclusions for every permitted aggregate row. Never label the
+   current published-figure CSV as raw-deposit data.
+3. **Calibrate population dynamics from raw measurements separately.** Locate
+   the independent DiFi/WiDr dose-response and single-dose population time
+   courses in the verified archive, preserve assay units and replicate IDs,
+   and reproduce within-assay normalization. Estimate late-phase net log
+   slopes using the protocol's day `>=14` primary and `>=10` sensitivity
+   windows where supported. Audit zeros, missingness, time intervals and
+   biological-versus-technical replicates. Evaluate the frozen birth/death,
+   persister-turnover, detection and unequal-outgrowth-kernel sensitivities
+   **without fitting the population measurements to the held-out colony
+   outcome**. Compare founder stock and delay assumptions to measured bounds;
+   do not call the previously published Table 4 estimates raw recalibration.
+4. **Finish and re-audit the raw-data fit.** Re-run the protocol's whole-culture
+   or whole-biological-replicate holdouts on the verified raw colony target;
+   recompute all displayed scores and uncertainty intervals from permitted
+   aggregates, document any necessary prespecified protocol deviations, run
+   the offline tests and CI, and independently inspect adverse fits and exact
+   observational aliases. Change the source-status flags only when each
+   corresponding source audit and calibration is actually complete.
 
 ## Pre-fit interpretation constraints
 
@@ -239,7 +283,7 @@ dosing policy, or treatment decision follows from this work.
 | Attempt | Result and consequence |
 |---|---|
 | Verify reuse rights before committing third-party data | Mendeley and the article identify CC BY 4.0. Attribution, licence links, and transformations are recorded in [data/README.md](data/README.md). No raw archive is mirrored. |
-| Acquire and check the requested raw deposit | Failed in this environment. The advertised archive hash is not represented as locally verified. The PR remains draft and the raw-data job remains incomplete. |
+| Acquire and check the requested raw deposit | Failed in this environment. The advertised archive hash is not represented as locally verified. The note remains labelled partial and the raw-data job remains incomplete. |
 | Independently check source transcription | Original figure annotations were visually inspected, and all selected workbook cells were re-extracted from hash-pinned XLSX bytes. Local subplot labels were corrected to avoid implying recovered raw IDs. |
 | Check denominator, pairing, and unit conversions | Late counts use the early-negative risk set. Entire biological replicates are held out. Week conversion and the different rate-table powers of ten were audited. |
 | Check original source uncertainty labels | The workbook/caption interval discrepancy and inferred Table 5 uncertainty labels are preserved rather than silently corrected. |
