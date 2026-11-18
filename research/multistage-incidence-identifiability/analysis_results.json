@@ -1,0 +1,486 @@
+{
+  "cancers": {
+    "colon_and_rectum": {
+      "best_one_growth_on_declared_grid": 5,
+      "best_one_growth_per_year": "-0.010",
+      "best_one_growth_rho": "1.241860",
+      "best_pure_power_on_declared_k_grid": 5,
+      "best_pure_power_rho": "1.265066",
+      "by_k": [
+        {
+          "grid_growth_per_year": "0.060",
+          "grid_min_rho": "1.646597",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 2,
+          "pure_power_min_rho": "3.876099",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "3.668862"
+        },
+        {
+          "grid_growth_per_year": "0.060",
+          "grid_min_rho": "1.462377",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 3,
+          "pure_power_min_rho": "2.434843",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "2.179629"
+        },
+        {
+          "grid_growth_per_year": "0.045",
+          "grid_min_rho": "1.331451",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 4,
+          "pure_power_min_rho": "1.546167",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.294892"
+        },
+        {
+          "grid_growth_per_year": "-0.010",
+          "grid_min_rho": "1.241860",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 5,
+          "pure_power_min_rho": "1.265066",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.085332"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "1.437426",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 6,
+          "pure_power_min_rho": "1.634967",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.308960"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "2.226277",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 7,
+          "pure_power_min_rho": "2.594305",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.917491"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "3.583760",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 8,
+          "pure_power_min_rho": "4.113324",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "2.898973"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "5.748181",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 9,
+          "pure_power_min_rho": "6.516757",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "4.382836"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "9.193672",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 10,
+          "pure_power_min_rho": "10.316778",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "6.626225"
+        }
+      ],
+      "identified_biological_k": null,
+      "joint_grid_k_minimum_certified_unique": true,
+      "monotonicity": {
+        "homogeneous_monotone_mean_compatible": true,
+        "interpretation": "deterministic rounded-mean compatibility; not a sampling test",
+        "minimum_rho_for_any_nondecreasing_mean": "1.000000",
+        "rounding_robust_decreases": []
+      },
+      "reason": "Theorem 7: positive bin shapes, free amplitude and unbounded age multipliers",
+      "rows": 11,
+      "sum_rates_exact": "4873/5",
+      "table": "6.10",
+      "unrestricted_bin_multiplier_compatible_k": "every positive integer"
+    },
+    "female_breast": {
+      "best_one_growth_on_declared_grid": 4,
+      "best_one_growth_per_year": "-0.015",
+      "best_one_growth_rho": "1.504293",
+      "best_pure_power_on_declared_k_grid": 4,
+      "best_pure_power_rho": "1.578568",
+      "by_k": [
+        {
+          "grid_growth_per_year": "0.045",
+          "grid_min_rho": "1.722975",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 2,
+          "pure_power_min_rho": "2.675151",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "2.527002"
+        },
+        {
+          "grid_growth_per_year": "0.035",
+          "grid_min_rho": "1.601425",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 3,
+          "pure_power_min_rho": "1.833579",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.630852"
+        },
+        {
+          "grid_growth_per_year": "-0.015",
+          "grid_min_rho": "1.504293",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 4,
+          "pure_power_min_rho": "1.578568",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.397025"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "1.822619",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 5,
+          "pure_power_min_rho": "2.112619",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.776420"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "2.570781",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 6,
+          "pure_power_min_rho": "2.938490",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "2.368560"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "3.693617",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 7,
+          "pure_power_min_rho": "4.304212",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "3.181309"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "5.945817",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 8,
+          "pure_power_min_rho": "6.824417",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "4.809687"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "9.536809",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 9,
+          "pure_power_min_rho": "10.811953",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "7.271564"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "15.253224",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 10,
+          "pure_power_min_rho": "17.116569",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "10.993571"
+        }
+      ],
+      "identified_biological_k": null,
+      "joint_grid_k_minimum_certified_unique": true,
+      "monotonicity": {
+        "homogeneous_monotone_mean_compatible": false,
+        "interpretation": "deterministic rounded-mean compatibility; not a sampling test",
+        "minimum_rho_for_any_nondecreasing_mean": "1.066238",
+        "rounding_robust_decreases": [
+          {
+            "earlier_age": "65-69",
+            "later_age": "80-84",
+            "minimum_decline_per_100000": "12.9"
+          },
+          {
+            "earlier_age": "70-74",
+            "later_age": "75-79",
+            "minimum_decline_per_100000": "11.2"
+          },
+          {
+            "earlier_age": "70-74",
+            "later_age": "80-84",
+            "minimum_decline_per_100000": "56.6"
+          },
+          {
+            "earlier_age": "75-79",
+            "later_age": "80-84",
+            "minimum_decline_per_100000": "45.3"
+          }
+        ]
+      },
+      "reason": "Theorem 7: positive bin shapes, free amplitude and unbounded age multipliers",
+      "rows": 11,
+      "sum_rates_exact": "15192/5",
+      "table": "4.11",
+      "unrestricted_bin_multiplier_compatible_k": "every positive integer"
+    },
+    "lung_and_bronchus": {
+      "best_one_growth_on_declared_grid": 7,
+      "best_one_growth_per_year": "0.040",
+      "best_one_growth_rho": "1.482398",
+      "best_pure_power_on_declared_k_grid": 7,
+      "best_pure_power_rho": "1.576755",
+      "by_k": [
+        {
+          "grid_growth_per_year": "0.060",
+          "grid_min_rho": "4.484726",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 2,
+          "pure_power_min_rho": "11.445072",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "10.822892"
+        },
+        {
+          "grid_growth_per_year": "0.060",
+          "grid_min_rho": "3.801923",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 3,
+          "pure_power_min_rho": "7.417575",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "6.627641"
+        },
+        {
+          "grid_growth_per_year": "0.060",
+          "grid_min_rho": "2.985218",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 4,
+          "pure_power_min_rho": "4.811223",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "4.058585"
+        },
+        {
+          "grid_growth_per_year": "0.060",
+          "grid_min_rho": "2.226626",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 5,
+          "pure_power_min_rho": "3.224045",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "2.554995"
+        },
+        {
+          "grid_growth_per_year": "0.060",
+          "grid_min_rho": "1.689266",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 6,
+          "pure_power_min_rho": "2.165324",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.631620"
+        },
+        {
+          "grid_growth_per_year": "0.040",
+          "grid_min_rho": "1.482398",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 7,
+          "pure_power_min_rho": "1.576755",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.127094"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "1.506873",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 8,
+          "pure_power_min_rho": "1.607992",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.248204"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "1.903948",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 9,
+          "pure_power_min_rho": "2.158520",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.451709"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "3.045184",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 10,
+          "pure_power_min_rho": "3.417186",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "2.194778"
+        }
+      ],
+      "identified_biological_k": null,
+      "joint_grid_k_minimum_certified_unique": true,
+      "monotonicity": {
+        "homogeneous_monotone_mean_compatible": true,
+        "interpretation": "deterministic rounded-mean compatibility; not a sampling test",
+        "minimum_rho_for_any_nondecreasing_mean": "1.000000",
+        "rounding_robust_decreases": []
+      },
+      "reason": "Theorem 7: positive bin shapes, free amplitude and unbounded age multipliers",
+      "rows": 11,
+      "sum_rates_exact": "16197/10",
+      "table": "15.10",
+      "unrestricted_bin_multiplier_compatible_k": "every positive integer"
+    },
+    "pancreas": {
+      "best_one_growth_on_declared_grid": 6,
+      "best_one_growth_per_year": "0.030",
+      "best_one_growth_rho": "1.245370",
+      "best_pure_power_on_declared_k_grid": 6,
+      "best_pure_power_rho": "1.333798",
+      "by_k": [
+        {
+          "grid_growth_per_year": "0.060",
+          "grid_min_rho": "2.464002",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 2,
+          "pure_power_min_rho": "6.654579",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "6.298789"
+        },
+        {
+          "grid_growth_per_year": "0.060",
+          "grid_min_rho": "2.105523",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 3,
+          "pure_power_min_rho": "4.180197",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "3.742038"
+        },
+        {
+          "grid_growth_per_year": "0.060",
+          "grid_min_rho": "1.677924",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 4,
+          "pure_power_min_rho": "2.679477",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "2.260316"
+        },
+        {
+          "grid_growth_per_year": "0.060",
+          "grid_min_rho": "1.364172",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 5,
+          "pure_power_min_rho": "1.786676",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.449660"
+        },
+        {
+          "grid_growth_per_year": "0.030",
+          "grid_min_rho": "1.245370",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 6,
+          "pure_power_min_rho": "1.333798",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.019741"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "1.271340",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 7,
+          "pure_power_min_rho": "1.430677",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.098701"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "1.976331",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 8,
+          "pure_power_min_rho": "2.268369",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "1.598693"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "3.169941",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 9,
+          "pure_power_min_rho": "3.593786",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "2.416996"
+        },
+        {
+          "grid_growth_per_year": "-0.060",
+          "grid_min_rho": "5.070021",
+          "grid_minimum_certified_unique": true,
+          "grid_rho_squared_enclosure_width_less_than": "1e-24",
+          "k": 10,
+          "pure_power_min_rho": "5.689378",
+          "pure_power_unknown_within_bin_weights_rho_infimum": "3.654154"
+        }
+      ],
+      "identified_biological_k": null,
+      "joint_grid_k_minimum_certified_unique": true,
+      "monotonicity": {
+        "homogeneous_monotone_mean_compatible": true,
+        "interpretation": "deterministic rounded-mean compatibility; not a sampling test",
+        "minimum_rho_for_any_nondecreasing_mean": "1.000000",
+        "rounding_robust_decreases": []
+      },
+      "reason": "Theorem 7: positive bin shapes, free amplitude and unbounded age multipliers",
+      "rows": 11,
+      "sum_rates_exact": "733/2",
+      "table": "22.7",
+      "unrestricted_bin_multiplier_compatible_k": "every positive integer"
+    }
+  },
+  "label": "nonclinical computational research; no medical advice; unreviewed",
+  "observation_assumptions": {
+    "default_within_bin_age_weights": "uniform; source weights are unavailable",
+    "growth_grid": "-0.060 to 0.060 per year inclusive, spacing 0.005",
+    "k_grid": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "limiting_family": "rare-terminal-marking/high-immigration limit; one nonzero net-growth rate",
+    "multiplier": "a_j in [1/rho,rho] and a free common amplitude",
+    "optimization": "exact finite-grid minimum only; no continuous or full MSCE optimum claimed",
+    "person_years_and_counts": "unavailable; no data-specific sampling probabilities",
+    "rho_interpretation": "relative age-shape compatibility threshold, not measured reporting bias",
+    "rounding_sensitivity": "closed +/-0.05 per 100000, not a confidence interval",
+    "unknown_within_bin_weights": "power-family endpoint closure gives a sharp infimum, not guaranteed attainment"
+  },
+  "rate_period": "2013-2017",
+  "source_access_date": "2026-11-17",
+  "source_sha256": "1a0b4c66b6267c9841b05dfb47cf2831e66e9d02a03bc3d3017b30cfc4fa0198",
+  "synthetic_poisson_exposure_certificates": [
+    {
+      "assumed_hazard_upper_per_year": "1/1000",
+      "coupling_error_lower_bound": "0.18393972",
+      "extra_conversion_rate_per_year": "100",
+      "maximum_exposure_density_persons": "100000",
+      "rational_enclosure_width_less_than": "1e-100"
+    },
+    {
+      "assumed_hazard_upper_per_year": "1/1000",
+      "coupling_error_lower_bound": "0.45241870",
+      "extra_conversion_rate_per_year": "1000",
+      "maximum_exposure_density_persons": "100000",
+      "rational_enclosure_width_less_than": "1e-100"
+    },
+    {
+      "assumed_hazard_upper_per_year": "1/1000",
+      "coupling_error_lower_bound": "0.49502491",
+      "extra_conversion_rate_per_year": "10000",
+      "maximum_exposure_density_persons": "100000",
+      "rational_enclosure_width_less_than": "1e-100"
+    }
+  ]
+}
