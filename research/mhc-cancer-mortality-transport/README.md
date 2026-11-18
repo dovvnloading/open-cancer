@@ -304,10 +304,26 @@ the two pinned text files. Keep those source files outside this repository.
 The derivation verifies source identities; offline reproduction uses only
 the committed numerical summaries. Canonical hashes normalize CRLF and CR
 to LF without trimming content, and file-path keys use `Path.as_posix()`.
-Floating comparisons tolerate ordinary platform arithmetic variation;
-optional raw re-derivation can differ in final floating-point digits across
-math-library implementations. CI is a computational check, not biological
-validation or a source-permissions decision.
+The 13 retained common-panel columns are used to audit count rounding,
+fit both prespecified models, identify order holdouts, or compute the pinned-tree
+sensitivity. In particular, the original decimal precision is retained only
+to audit recoverable deaths, not to copy the source table. Review-time data
+minimization removed the unnecessary taxonomic-order column from the exclusion
+list; the frozen primary species, covariates, numerators, denominator counts,
+and phylogeny weights were not changed.
+
+Saved Newton iteration counts, line-search steps and final gradient ratios are
+**platform-specific stopping diagnostics**, not exact numerical targets. Every
+fit must satisfy its frozen maximum-gradient bound of
+`max(1e-8, 1e-10 * effective_training_denominator)`. Independent tests check
+the gradient and score equations; saved coefficients, probabilities and losses
+are compared to complete fresh refits within a declared absolute/relative
+`3e-7` snapshot tolerance, far smaller than the order-jackknife uncertainty
+interval. The README's archived numerical block is exactly reproduced from
+the archived report, rather than demanding identical optimizer stop states
+from Python 3.12/3.14 or Windows/Linux. Optional raw re-derivation may differ
+in final floating-point digits between math-library implementations. CI is a
+computational check, not biological validation or a source-permissions decision.
 
 ## Falsification, novelty, and remaining uncertainty
 

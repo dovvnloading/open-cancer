@@ -9,9 +9,9 @@
   "file_hashes_lf": {
     "PROTOCOL.md": "aa0b6e05590d2016129b2207d0842ff89117ce00e8458c7219fb9fd9c1046c50",
     "analysis.py": "5573dd5dbfc66417c9e29cadb337d182b875ab19909e75b61f26c7239792cc7d",
-    "data/exclusions.csv": "0b9c287426ae8017ecf6dc0903d39851869eb7a926c5ecd115ea90d23529f1fe",
-    "data/fetch_verify.py": "c2d53e0711d4efea3449260aa07fe4d2e577c6e14c605064ac914806b57f84c8",
-    "data/source_audit.json": "387afa38d5edd87f4bb27abc762621b87bd1d35ef4082e4c1e8d15785e339339",
+    "data/exclusions.csv": "fb7011cdc54e6e26aa8c6614df858f4128e893ef6f7d0625ad14d5cd26eaf503",
+    "data/fetch_verify.py": "808a4d92bbeec5b133cf207d429543381cb24b60632af9837ce5bc9826b82573",
+    "data/source_audit.json": "1a152082f1980461870643e8ff88026648a9850fad8a411e3c53439a29efa477",
     "data/species_aggregates.csv": "d06e6807da107eadd634d5e4e5048369107254113b44acfe1204f0bcb04c990c"
   },
   "limitations": [
@@ -10467,7 +10467,7 @@
     "count_lower_total": 694,
     "count_upper_total": 700,
     "derived_file_hashes_lf": {
-      "exclusions.csv": "0b9c287426ae8017ecf6dc0903d39851869eb7a926c5ecd115ea90d23529f1fe",
+      "exclusions.csv": "fb7011cdc54e6e26aa8c6614df858f4128e893ef6f7d0625ad14d5cd26eaf503",
       "species_aggregates.csv": "d06e6807da107eadd634d5e4e5048369107254113b44acfe1204f0bcb04c990c"
     },
     "excluded_species": 14,

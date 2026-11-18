@@ -155,20 +155,66 @@ class MhcCancerMortalityTransportTests(unittest.TestCase):
         self.assertTrue(math.isclose(actual, expected, rel_tol=rel, abs_tol=absolute),
                         label or "{!r} != {!r}".format(actual, expected))
 
-    def assert_tree(self, actual, expected, label="report"):
+    def assert_optimizer_diagnostic(self, key, left, right, label):
+        """Optimizer stopping details are certificates, not portable bit patterns.
+
+        The frozen relative gradient target is 1e-10 times the effective
+        training denominator, floored at 1e-8. A different libm or Python
+        version may terminate at a different Newton step while still meeting
+        this exact condition. Never compare saved gradient norms or ratios
+        against their values on the current platform.
+        """
+        for report in (left, right):
+            value = report[key]
+            self.assertIsInstance(value, (float, int), label)
+            self.assertTrue(math.isfinite(value), label)
+            self.assertGreaterEqual(value, 0, label)
+            if key == "maximum_gradient_ratio":
+                self.assertLessEqual(value, 1.0 + 1e-12, label)
+            elif key == "maximum_absolute_gradient":
+                self.assertIn("gradient_tolerance", report, label)
+                self.assertLessEqual(
+                    value, report["gradient_tolerance"] * (1.0 + 1e-12), label)
+            elif key in ("iterations", "maximum_fit_iterations"):
+                self.assertIsInstance(value, int, label)
+                self.assertLessEqual(value, A.MAX_ITERATIONS, label)
+            elif key == "line_search_halvings":
+                self.assertIsInstance(value, int, label)
+                self.assertLessEqual(value, 44 * report["iterations"], label)
+
+    def assert_tree(self, actual, expected, label="report", snapshot=False):
         if isinstance(expected, dict):
             self.assertIsInstance(actual, dict, label)
             self.assertEqual(set(actual), set(expected), label)
             for key in expected:
-                self.assert_tree(actual[key], expected[key], label + "." + key)
+                if snapshot and key in (
+                        "maximum_gradient_ratio", "maximum_absolute_gradient",
+                        "iterations", "line_search_halvings",
+                        "maximum_fit_iterations"):
+                    self.assert_optimizer_diagnostic(
+                        key, actual, expected, label + "." + key)
+                    continue
+                self.assert_tree(actual[key], expected[key],
+                                 label + "." + key, snapshot=snapshot)
         elif isinstance(expected, list):
             self.assertIsInstance(actual, list, label)
             self.assertEqual(len(actual), len(expected), label)
             for index, (left, right) in enumerate(zip(actual, expected)):
-                self.assert_tree(left, right, label + "[" + str(index) + "]")
+                self.assert_tree(left, right, label + "[" + str(index) + "]",
+                                 snapshot=snapshot)
         elif isinstance(expected, float):
             self.assertIsInstance(actual, (float, int), label)
-            self.assert_close(actual, expected, label)
+            if snapshot:
+                # Final Newton gradients may be as large as ~1e-6 in this
+                # panel (the prespecified relative stop). Numerical
+                # objective/fit/prediction snapshots use 3e-7 absolute and
+                # relative tolerance across libm/Python implementations.
+                # Independent checks below separately enforce the true KKT
+                # bound, prediction equations, and all score identities.
+                self.assert_close(actual, expected, label,
+                                  rel=3e-7, absolute=3e-7)
+            else:
+                self.assert_close(actual, expected, label)
         else:
             self.assertEqual(actual, expected, label)
 
@@ -178,12 +224,16 @@ class MhcCancerMortalityTransportTests(unittest.TestCase):
 
         saved = json.loads((RESEARCH / "data" / "results.json").read_text(encoding="utf-8"),
                            parse_constant=reject_nonfinite)
-        self.assert_tree(saved, self.report)
+        self.assert_tree(saved, self.report, snapshot=True)
         readme = canonical_text(RESEARCH / "README.md")
         self.assertEqual(readme.count(BEGIN), 1)
         self.assertEqual(readme.count(END), 1)
         block = readme[readme.index(BEGIN):readme.index(END) + len(END)] + "\n"
-        self.assertEqual(block, A.render_results(self.report))
+        # The archived Markdown is a byte-exact rendering of the archived
+        # result; a new platform's floating optimizer diagnostics are not.
+        # All saved scientific numbers are checked against a fresh complete
+        # reconstruction with bounded numerical tolerance above.
+        self.assertEqual(block, A.render_results(saved))
         self.assertIn(FREEZE, readme)
         self.assertIn("nonclinical", readme.lower())
         self.assertIn("no medical or veterinary advice", " ".join(readme.lower().split()))
@@ -578,7 +628,7 @@ class MhcCancerMortalityTransportTests(unittest.TestCase):
                 if newline == b"\r\n":
                     with no_network():
                         regenerated = A.build_report(base)
-                    self.assert_tree(regenerated, self.report)
+                    self.assert_tree(regenerated, self.report, snapshot=True)
         self.assertEqual(F.normalized_sha256("a \r\n\r"), hashlib.sha256(b"a \n\n").hexdigest())
         self.assertNotEqual(F.normalized_sha256("a \r\n\r"), F.normalized_sha256("a"))
         audit = self.report["source_audit"]
@@ -654,6 +704,33 @@ END;
         self.assertEqual(self.report["source_audit"]["reuse"]["article_license"], "CC-BY-NC-ND-4.0")
         self.assertFalse((RESEARCH / "data" / "SourceData_FINAL.csv").exists())
         self.assertFalse((RESEARCH / "data" / "phylogeny.tre").exists())
+
+    def test_13_saved_optimizer_diagnostics_use_bounds_not_exact_bits(self):
+        saved = json.loads((RESEARCH / "data" / "results.json").read_text(
+            encoding="utf-8"))
+        changed = copy.deepcopy(saved)
+        # Mimic Windows/Python 3.14 accepting a slightly different final
+        # Newton step (but the same scientific score within tolerance).
+        changed["primary"]["maximum_gradient_ratio"] *= 0.9
+        changed["numerical_audit"]["maximum_gradient_ratio"] *= 0.9
+        changed["primary"]["maximum_fit_iterations"] += 1
+        changed["numerical_audit"]["maximum_fit_iterations"] += 1
+        fold = changed["primary"]["folds"][0]["baseline_fit"]
+        fold["maximum_absolute_gradient"] = 0.0
+        fold["iterations"] += 1
+        fold["line_search_halvings"] = 0
+        changed["primary"]["baseline_loss"] += 5e-8
+        self.assert_tree(saved, changed, snapshot=True)
+
+        # A numerical diagnostic above its declared convergence bound is
+        # still an error, even if no exact stored value is required.
+        changed["primary"]["maximum_gradient_ratio"] = 1.001
+        with self.assertRaises(AssertionError):
+            self.assert_tree(saved, changed, snapshot=True)
+        changed["primary"]["maximum_gradient_ratio"] = saved["primary"]["maximum_gradient_ratio"]
+        changed["primary"]["baseline_loss"] += 1e-4
+        with self.assertRaises(AssertionError):
+            self.assert_tree(saved, changed, snapshot=True)
 
     def test_99_entire_dedicated_suite_remains_below_one_minute(self):
         self.assertLess(self.rebuild_seconds, 60)

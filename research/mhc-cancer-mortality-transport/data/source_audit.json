@@ -27,7 +27,7 @@
   "count_lower_total": 694,
   "count_upper_total": 700,
   "derived_file_hashes_lf": {
-    "exclusions.csv": "0b9c287426ae8017ecf6dc0903d39851869eb7a926c5ecd115ea90d23529f1fe",
+    "exclusions.csv": "fb7011cdc54e6e26aa8c6614df858f4128e893ef6f7d0625ad14d5cd26eaf503",
     "species_aggregates.csv": "d06e6807da107eadd634d5e4e5048369107254113b44acfe1204f0bcb04c990c"
   },
   "excluded_species": 14,

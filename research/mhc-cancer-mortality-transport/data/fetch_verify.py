@@ -362,7 +362,6 @@ def derive_outputs(source_texts):
         missing = [field for field in REQUIRED_FIELDS if not row[field]]
         if missing:
             exclusions.append({"species": row["Species"],
-                               "order": row["Taxonomic order"],
                                "reason": "missing:" + ";".join(missing)})
             continue
         eligible.append(row)
@@ -415,7 +414,7 @@ def derive_outputs(source_texts):
         order_counts[row["order"]] = order_counts.get(row["order"], 0) + 1
     worst_residual, worst_species = max(residuals)
     aggregate_csv = csv_content(aggregates, AGGREGATE_FIELDS)
-    exclusions_csv = csv_content(exclusions, ("species", "order", "reason"))
+    exclusions_csv = csv_content(exclusions, ("species", "reason"))
     audit = {
         "status": "nonclinical_unreviewed_research_no_medical_or_veterinary_advice",
         "source_repository": SOURCE_REPOSITORY,
