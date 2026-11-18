@@ -18,8 +18,8 @@ degenerate inputs does not repair that guarantee.
 
 The unverified candidate mathematical refinement is the universal, rational,
 strictly positive two-sample construction, its proof of uniqueness against
-*all* alternative trees, and its explicit perturbation radius. Several ingredients and supporting bounds
-are already known. The literature review below explains that distinction before
+*all* alternative trees, and its explicit perturbation radius. Several
+ingredients and supporting bounds are already known. The literature review below explains that distinction before
 the new arguments.
 
 ## 1. Literature first: what is established, and the precise pivot
