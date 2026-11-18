@@ -57,7 +57,9 @@ a course and exposure budget growing as `log(N)`, a deterministic sensitive
 bulk, perfect clone measurement, and a specified feedback policy. It neither
 optimizes over all admissible controls nor proves the finite-size boundary at
 `10^8`--`10^11` cells. Simulations at those sizes are reported separately from
-the proven scaling limit. Finite-size corrections are substantial.
+the proven scaling limit. **The `10^8`--`10^11` simulations are numerical
+evidence, not proofs of the finite-population policy ranking or of a
+finite-N threshold.** Finite-size corrections are substantial.
 
 ## 1. What was already known, and the precise pivot
 
@@ -447,7 +449,12 @@ On extinction the lifetime and maximum are finite almost surely.
 
 **Step 2: immigration and the stochastic switch.** M's auxiliary process
 has a finite Poisson number of immigrants, with mean
-`lambda*bS*s0/delta`. On the event E that any family survives, a finite sum
+`lambda*bS*s0/delta`. The expected number arriving after the actual course
+end `H_N=L*log(N)` in this all-time auxiliary construction is
+`lambda*bS*s0*exp(-delta*H_N)/delta`, which tends to zero. Thus the
+probability of any such post-course auxiliary arrival is at most this
+quantity; extending its founder clock to infinity does not alter the
+limiting on-course establishment event. On the event E that any family survives, a finite sum
 of such families has logarithmic growth rate `g0`; on its complement all
 families die at a finite last extinction time. Therefore its hitting time
 of `m_N` divided by `log(N)` tends to `a/g0` on E and is absent for all
