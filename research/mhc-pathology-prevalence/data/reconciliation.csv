@@ -1,0 +1,420 @@
+normalized_species,vincze_species,compton_species,compton_class,vincze_order,compton_order,status,reason
+acinonyx jubatus,Acinonyx_jubatus,Acinonyx jubatus,Mammalia,Carnivora,Carnivora,included,
+acomys cahirinus,Acomys_cahirinus,,,Rodentia,,excluded,absent_from_compton
+acrantophis dumerili,,Acrantophis dumerili,Reptilia,,Squamata,excluded,absent_from_vincze
+acrobates pygmaeus,,Acrobates pygmaeus,Mammalia,,Diprotodontia,excluded,absent_from_vincze
+acryllium vulturinum,,Acryllium vulturinum,Aves,,Galliformes,excluded,absent_from_vincze
+addax nasomaculatus,,Addax nasomaculatus,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+aepyceros melampus,Aepyceros_melampus,Aepyceros melampus,Mammalia,Artiodactyla,Artiodactyla,included,
+agalychnis callidryas,,Agalychnis callidryas,Amphibia,,Anura,excluded,absent_from_vincze
+agama agama,,Agama agama,Reptilia,,Squamata,excluded,absent_from_vincze
+agapornis fischeri,,Agapornis fischeri,Aves,,Psittaciformes,excluded,absent_from_vincze
+agapornis nigrigenis,,Agapornis nigrigenis,Aves,,Psittaciformes,excluded,absent_from_vincze
+agkistrodon contortrix,,Agkistrodon contortrix,Reptilia,,Squamata,excluded,absent_from_vincze
+ailurus fulgens,Ailurus_fulgens,Ailurus fulgens,Mammalia,Carnivora,Carnivora,included,
+aix galericulata,,Aix galericulata,Aves,,Anseriformes,excluded,absent_from_vincze
+aix sponsa,,Aix sponsa,Aves,,Anseriformes,excluded,absent_from_vincze
+alces alces,Alces_alces,,,Artiodactyla,,excluded,absent_from_compton
+alytes cisternasii,,Alytes cisternasii,Amphibia,,Anura,excluded,absent_from_vincze
+alytes muletensis,,Alytes muletensis,Amphibia,,Anura,excluded,absent_from_vincze
+ambystoma mexicanum,,Ambystoma mexicanum,Amphibia,,Caudata,excluded,absent_from_vincze
+ambystoma tigrinum,,Ambystoma tigrinum,Amphibia,,Caudata,excluded,absent_from_vincze
+ammotragus lervia,Ammotragus_lervia,,,Artiodactyla,,excluded,absent_from_compton
+anas acuta,,Anas acuta,Aves,,Anseriformes,excluded,absent_from_vincze
+anas formosa,,Anas formosa,Aves,,Anseriformes,excluded,absent_from_vincze
+anas platyrhynchos,,Anas platyrhynchos,Aves,,Anseriformes,excluded,absent_from_vincze
+anaxyrus baxteri,,Anaxyrus baxteri,Amphibia,,Anura,excluded,absent_from_vincze
+anodorhynchus hyacinthinus,,Anodorhynchus hyacinthinus,Aves,,Psittaciformes,excluded,absent_from_vincze
+anolis equestris,,Anolis equestris,Reptilia,,Squamata,excluded,absent_from_vincze
+anomaloglossus beebei,,Anomaloglossus beebei,Amphibia,,Anura,excluded,absent_from_vincze
+anthracoceros malayanus,,Anthracoceros malayanus,Aves,,Bucerotiformes,excluded,absent_from_vincze
+antidorcas marsupialis,Antidorcas_marsupialis,,,Artiodactyla,,excluded,absent_from_compton
+antilocapra americana,Antilocapra_americana,Antilocapra americana,Mammalia,Artiodactyla,NA,included,
+anurolimnas fasciatus,,Anurolimnas fasciatus,Aves,,Gruiformes,excluded,absent_from_vincze
+aratinga solstitialis,,Aratinga solstitialis,Aves,,Psittaciformes,excluded,absent_from_vincze
+ardeola speciosa,,Ardeola speciosa,Aves,,Pelecaniformes,excluded,absent_from_vincze
+artibeus jamaicensis,Artibeus_jamaicensis,Artibeus jamaicensis,Mammalia,Chiroptera,Chiroptera,included,
+asarcornis scutulata,,Asarcornis scutulata,Aves,,Anseriformes,excluded,absent_from_vincze
+ascaphus truei,,Ascaphus truei,Amphibia,,Anura,excluded,absent_from_vincze
+atelerix albiventris,,Atelerix albiventris,Mammalia,,Eulipotyphla,excluded,absent_from_vincze
+ateles fusciceps,Ateles_fusciceps,,,Primates,,excluded,absent_from_compton;missing:MHC I gene family size
+ateles geoffroyi,Ateles_geoffroyi,,,Primates,,excluded,absent_from_compton
+atelopus zeteki,,Atelopus zeteki,Amphibia,,Anura,excluded,absent_from_vincze
+athene cunicularia,,Athene cunicularia,Aves,,Strigiformes,excluded,absent_from_vincze
+atheris ceratophora,,Atheris ceratophora,Reptilia,,Squamata,excluded,absent_from_vincze
+axis porcinus,Axis_porcinus,,,Artiodactyla,,excluded,absent_from_compton
+basiliscus plumifrons,,Basiliscus plumifrons,Reptilia,,Squamata,excluded,absent_from_vincze
+bison bison,Bison_bison,,,Artiodactyla,,excluded,absent_from_compton
+bison bonasus,Bison_bonasus,,,Artiodactyla,,excluded,absent_from_compton;missing:MHC I gene family size
+bitis arietans,,Bitis arietans,Reptilia,,Squamata,excluded,absent_from_vincze
+bitis gabonica,,Bitis gabonica,Reptilia,,Squamata,excluded,absent_from_vincze
+bitis nasicornis,,Bitis nasicornis,Reptilia,,Squamata,excluded,absent_from_vincze
+boa constrictor,,Boa constrictor,Reptilia,,Squamata,excluded,absent_from_vincze
+boiga dendrophila,,Boiga dendrophila,Reptilia,,Squamata,excluded,absent_from_vincze
+bos gaurus,Bos_gaurus,,,Artiodactyla,,excluded,absent_from_compton
+bothriechis schlegelii,,Bothriechis schlegelii,Reptilia,,Squamata,excluded,absent_from_vincze
+branta ruficollis,,Branta ruficollis,Aves,,Anseriformes,excluded,absent_from_vincze
+bubulcus ibis,,Bubulcus ibis,Aves,,Pelecaniformes,excluded,absent_from_vincze
+bufo bufo,,Bufo bufo,Amphibia,,Anura,excluded,absent_from_vincze
+cacatua moluccensis,,Cacatua moluccensis,Aves,,Psittaciformes,excluded,absent_from_vincze
+callipepla gambelii,,Callipepla gambelii,Aves,,Galliformes,excluded,absent_from_vincze
+callithrix jacchus,Callithrix_jacchus,Callithrix jacchus,Mammalia,Primates,Primates,included,
+calumma parsonii,,Calumma parsonii,Reptilia,,Squamata,excluded,absent_from_vincze
+canis lupus,,Canis lupus,Mammalia,,Carnivora,excluded,absent_from_vincze
+capra hircus,,Capra hircus,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+capra ibex,Capra_ibex,,,Artiodactyla,,excluded,absent_from_compton
+capra nubiana,,Capra nubiana,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+capra sibirica,Capra_sibirica,,,Artiodactyla,,excluded,absent_from_compton
+carollia perspicillata,Carollia_perspicillata,Carollia perspicillata,Mammalia,Chiroptera,Chiroptera,included,
+cavia fulgida,,Cavia fulgida,Mammalia,,Rodentia,excluded,absent_from_vincze
+cebuella pygmaea,,Cebuella pygmaea,Mammalia,,Primates,excluded,absent_from_vincze
+ceratophrys ornata,,Ceratophrys ornata,Amphibia,,Anura,excluded,absent_from_vincze
+ceratotherium simum,Ceratotherium_simum,,,Perissodactyla,,excluded,absent_from_compton
+cercopithecus mitis,,Cercopithecus mitis,Mammalia,,Primates,excluded,absent_from_vincze
+cercopithecus neglectus,Cercopithecus_neglectus,,,Primates,,excluded,absent_from_compton
+cervus elaphus,Cervus_elaphus,,,Artiodactyla,,excluded,absent_from_compton
+cervus nippon,Cervus_nippon,,,Artiodactyla,,excluded,absent_from_compton;missing:MHC I gene family size
+chalcomitra senegalensis,,Chalcomitra senegalensis,Aves,,Passeriformes,excluded,absent_from_vincze
+chalcophaps indica,,Chalcophaps indica,Aves,,Columbiformes,excluded,absent_from_vincze
+chamaeleo calyptratus,,Chamaeleo calyptratus,Reptilia,,Squamata,excluded,absent_from_vincze
+chelodina mccordi,,Chelodina mccordi,Reptilia,,Testudines,excluded,absent_from_vincze
+chelus fimbriatus,,Chelus fimbriatus,Reptilia,,Testudines,excluded,absent_from_vincze
+chinchilla lanigera,,Chinchilla lanigera,Mammalia,,Rodentia,excluded,absent_from_vincze
+chlamydosaurus kingii,,Chlamydosaurus kingii,Reptilia,,Squamata,excluded,absent_from_vincze
+chloebia gouldiae,,Chloebia gouldiae,Aves,,Passeriformes,excluded,absent_from_vincze
+choloepus didactylus,Choloepus_didactylus,Choloepus didactylus,Mammalia,Pilosa,Pilosa,included,
+chrotopterus auritus,,Chrotopterus auritus,Mammalia,,Chiroptera,excluded,absent_from_vincze
+chrysocyon brachyurus,Chrysocyon_brachyurus,,,Carnivora,,excluded,absent_from_compton
+ciconia ciconia,,Ciconia ciconia,Aves,,Ciconiiformes,excluded,absent_from_vincze
+cnemidophorus uniparens,,Cnemidophorus uniparens,Reptilia,,Squamata,excluded,absent_from_vincze
+coendou prehensilis,Coendou_prehensilis,,,Rodentia,,excluded,absent_from_compton
+colinus virginianus,,Colinus virginianus,Aves,,Galliformes,excluded,absent_from_vincze
+colius striatus,,Colius striatus,Aves,,Coliiformes,excluded,absent_from_vincze
+colobus guereza,,Colobus guereza,Mammalia,,Primates,excluded,absent_from_vincze
+columba hodgsonii,,Columba hodgsonii,Aves,,Columbiformes,excluded,absent_from_vincze
+columba livia,,Columba livia,Aves,,Columbiformes,excluded,absent_from_vincze
+connochaetes taurinus,Connochaetes_taurinus,,,Artiodactyla,,excluded,absent_from_compton
+copsychus malabaricus,,Copsychus malabaricus,Aves,,Passeriformes,excluded,absent_from_vincze
+coracias cyanogaster,,Coracias cyanogaster,Aves,,Coraciiformes,excluded,absent_from_vincze
+corallus caninus,,Corallus caninus,Reptilia,,Squamata,excluded,absent_from_vincze
+cornufer guentheri,,Cornufer guentheri,Amphibia,,Anura,excluded,absent_from_vincze
+cosmopsarus regius,,Cosmopsarus regius,Aves,,Passeriformes,excluded,absent_from_vincze
+cossypha polioptera,,Cossypha polioptera,Aves,,Passeriformes,excluded,absent_from_vincze
+crex crex,,Crex crex,Aves,,Gruiformes,excluded,absent_from_vincze
+crocuta crocuta,Crocuta_crocuta,,,Carnivora,,excluded,absent_from_compton
+crotalus atrox,,Crotalus atrox,Reptilia,,Squamata,excluded,absent_from_vincze
+crotalus durissus,,Crotalus durissus,Reptilia,,Squamata,excluded,absent_from_vincze
+crotalus horridus,,Crotalus horridus,Reptilia,,Squamata,excluded,absent_from_vincze
+crotalus lepidus,,Crotalus lepidus,Reptilia,,Squamata,excluded,absent_from_vincze
+crotalus polystictus,,Crotalus polystictus,Reptilia,,Squamata,excluded,absent_from_vincze
+crotaphytus collaris,,Crotaphytus collaris,Reptilia,,Squamata,excluded,absent_from_vincze
+ctenodactylus gundi,Ctenodactylus_gundi,,,Rodentia,,excluded,absent_from_compton
+ctenosaura bakeri,,Ctenosaura bakeri,Reptilia,,Squamata,excluded,absent_from_vincze
+cygnus cygnus,,Cygnus cygnus,Aves,,Anseriformes,excluded,absent_from_vincze
+cynomys ludovicianus,,Cynomys ludovicianus,Mammalia,,Rodentia,excluded,absent_from_vincze
+dacnis lineata,,Dacnis lineata,Aves,,Passeriformes,excluded,absent_from_vincze
+dasyprocta punctata,Dasyprocta_punctata,Dasyprocta punctata,Mammalia,Rodentia,Rodentia,included,
+dasypus novemcinctus,,Dasypus novemcinctus,Mammalia,,Cingulata,excluded,absent_from_vincze
+delphinus delphis,,Delphinus delphis,Mammalia,,Cetacea,excluded,absent_from_vincze
+dendrobates tinctorius,,Dendrobates tinctorius,Amphibia,,Anura,excluded,absent_from_vincze
+dendrocygna autumnalis,,Dendrocygna autumnalis,Aves,,Anseriformes,excluded,absent_from_vincze
+dendrocygna viduata,,Dendrocygna viduata,Aves,,Anseriformes,excluded,absent_from_vincze
+dendrolagus goodfellowi,,Dendrolagus goodfellowi,Mammalia,,Diprotodontia,excluded,absent_from_vincze
+dendropsophus ebraccatus,,Dendropsophus ebraccatus,Amphibia,,Anura,excluded,absent_from_vincze
+didelphis marsupialis,,Didelphis marsupialis,Mammalia,,Didelphimorphia,excluded,absent_from_vincze
+didelphis virginiana,Didelphis_virginiana,,,Didelphimorphia,,excluded,absent_from_compton
+dolichotis patagonum,Dolichotis_patagonum,,,Rodentia,,excluded,absent_from_compton
+dryophytes versicolor,,Dryophytes versicolor,Amphibia,,Anura,excluded,absent_from_vincze
+ducula brenchleyi,,Ducula brenchleyi,Aves,,Columbiformes,excluded,absent_from_vincze
+dyscophus antongilii,,Dyscophus antongilii,Amphibia,,Anura,excluded,absent_from_vincze
+echinops telfairi,Echinops_telfairi,,,Afrosoricida,,excluded,absent_from_compton
+egretta garzetta,,Egretta garzetta,Aves,,Pelecaniformes,excluded,absent_from_vincze
+eidolon helvum,Eidolon_helvum,Eidolon helvum,Mammalia,Chiroptera,Chiroptera,included,
+elaphurus davidianus,Elaphurus_davidianus,,,Artiodactyla,,excluded,absent_from_compton
+elephas maximus,Elephas_maximus,Elephas maximus,Mammalia,Proboscidea,Proboscidea,included,
+elgaria kingii,,Elgaria kingii,Reptilia,,Squamata,excluded,absent_from_vincze
+eos bornea,,Eos bornea,Aves,,Psittaciformes,excluded,absent_from_vincze
+epicrates subflavus,,Epicrates subflavus,Reptilia,,Squamata,excluded,absent_from_vincze
+equus grevyi,,Equus grevyi,Mammalia,,Perissodactyla,excluded,absent_from_vincze
+equus zebra,Equus_zebra,,,Perissodactyla,,excluded,absent_from_compton
+erethizon dorsatum,Erethizon_dorsatum,,,Rodentia,,excluded,absent_from_compton
+erpeton tentaculatum,,Erpeton tentaculatum,Reptilia,,Squamata,excluded,absent_from_vincze
+erythrocebus patas,Erythrocebus_patas,,,Primates,,excluded,absent_from_compton
+eublepharis macularius,,Eublepharis macularius,Reptilia,,Squamata,excluded,absent_from_vincze
+eudocimus ruber,,Eudocimus ruber,Aves,,Pelecaniformes,excluded,absent_from_vincze
+eudorcas thomsonii,Eudorcas_thomsonii,Eudorcas thomsonii,Mammalia,Artiodactyla,Artiodactyla,included,
+eudromia elegans,,Eudromia elegans,Aves,,Tinamiformes,excluded,absent_from_vincze
+eudyptes chrysocome,,Eudyptes chrysocome,Aves,,Sphenisciformes,excluded,absent_from_vincze
+eulemur macaco,Eulemur_macaco,,,Primates,,excluded,absent_from_compton
+euphonia violacea,,Euphonia violacea,Aves,,Passeriformes,excluded,absent_from_vincze
+euplectes nigroventris,,Euplectes nigroventris,Aves,,Passeriformes,excluded,absent_from_vincze
+eurypyga helias,,Eurypyga helias,Aves,,Gruiformes,excluded,absent_from_vincze
+fringilla coelebs,,Fringilla coelebs,Aves,,Passeriformes,excluded,absent_from_vincze
+fukomys damarensis,Fukomys_damarensis,,,Rodentia,,excluded,absent_from_compton
+furcifer pardalis,,Furcifer pardalis,Reptilia,,Squamata,excluded,absent_from_vincze
+galago senegalensis,Galago_senegalensis,,,Primates,,excluded,absent_from_compton;missing:MHC I gene family size
+gallicolumba luzonica,,Gallicolumba luzonica,Aves,,Columbiformes,excluded,absent_from_vincze
+gallus gallus,,Gallus gallus,Aves,,Galliformes,excluded,absent_from_vincze
+gazella spekei,,Gazella spekei,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+geokichla citrina,,Geokichla citrina,Aves,,Passeriformes,excluded,absent_from_vincze
+geopelia cuneata,,Geopelia cuneata,Aves,,Columbiformes,excluded,absent_from_vincze
+geotrypetes seraphini,,Geotrypetes seraphini,Amphibia,,Gymnophiona,excluded,absent_from_vincze
+giraffa camelopardalis,Giraffa_camelopardalis,Giraffa camelopardalis,Mammalia,Artiodactyla,Artiodactyla,included,
+gonocephalus chamaeleontinus,,Gonocephalus chamaeleontinus,Reptilia,,Squamata,excluded,absent_from_vincze
+gopherus agassizii,,Gopherus agassizii,Reptilia,,Testudines,excluded,absent_from_vincze
+gorilla gorilla,Gorilla_gorilla,Gorilla gorilla,Mammalia,Primates,Primates,included,
+goura victoria,,Goura victoria,Aves,,Columbiformes,excluded,absent_from_vincze
+guira guira,,Guira guira,Aves,,Cuculiformes,excluded,absent_from_vincze
+haliaeetus leucocephalus,,Haliaeetus leucocephalus,Aves,,Accipitriformes,excluded,absent_from_vincze
+heloderma horridum,,Heloderma horridum,Reptilia,,Squamata,excluded,absent_from_vincze
+heloderma suspectum,,Heloderma suspectum,Reptilia,,Squamata,excluded,absent_from_vincze
+helogale parvula,Helogale_parvula,,,Carnivora,,excluded,absent_from_compton
+heterocephalus glaber,Heterocephalus_glaber,Heterocephalus glaber,Mammalia,Rodentia,Rodentia,included,
+hippopotamus amphibius,Hippopotamus_amphibius,,,Artiodactyla,,excluded,absent_from_compton
+hippotragus equinus,Hippotragus_equinus,,,Artiodactyla,,excluded,absent_from_compton
+hippotragus niger,Hippotragus_niger,,,Artiodactyla,,excluded,absent_from_compton
+hyaena hyaena,Hyaena_hyaena,,,Carnivora,,excluded,absent_from_compton
+hydrochoerus hydrochaeris,Hydrochoerus_hydrochaeris,Hydrochoerus hydrochaeris,Mammalia,Rodentia,Rodentia,included,
+hydrodynastes gigas,,Hydrodynastes gigas,Reptilia,,Squamata,excluded,absent_from_vincze
+iguana iguana,,Iguana iguana,Reptilia,,Squamata,excluded,absent_from_vincze
+incilius coniferus,,Incilius coniferus,Amphibia,,Anura,excluded,absent_from_vincze
+irena cyanogaster,,Irena cyanogaster,Aves,,Passeriformes,excluded,absent_from_vincze
+jaculus jaculus,Jaculus_jaculus,,,Rodentia,,excluded,absent_from_compton
+kobus ellipsiprymnus,Kobus_ellipsiprymnus,,,Artiodactyla,,excluded,absent_from_compton
+kobus leche,Kobus_leche,,,Artiodactyla,,excluded,absent_from_compton
+lama glama,,Lama glama,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+lama guanicoe,Lama_guanicoe,,,Artiodactyla,,excluded,absent_from_compton
+lampropeltis getula,,Lampropeltis getula,Reptilia,,Squamata,excluded,absent_from_vincze
+lampropeltis triangulum,,Lampropeltis triangulum,Reptilia,,Squamata,excluded,absent_from_vincze
+lamprotornis splendidus,,Lamprotornis splendidus,Aves,,Passeriformes,excluded,absent_from_vincze
+langaha madagascariensis,,Langaha madagascariensis,Reptilia,,Squamata,excluded,absent_from_vincze
+larosterna inca,,Larosterna inca,Aves,,Charadriiformes,excluded,absent_from_vincze
+leiothrix lutea,,Leiothrix lutea,Aves,,Passeriformes,excluded,absent_from_vincze
+lemniscomys barbarus,,Lemniscomys barbarus,Mammalia,,Rodentia,excluded,absent_from_vincze
+lemur catta,Lemur_catta,Lemur catta,Mammalia,Primates,Primates,included,
+leontopithecus chrysomelas,,Leontopithecus chrysomelas,Mammalia,,Primates,excluded,absent_from_vincze
+leopardus pardalis,Leopardus_pardalis,,,Carnivora,,excluded,absent_from_compton;missing:MHC I gene family size
+leptodactylus fallax,,Leptodactylus fallax,Amphibia,,Anura,excluded,absent_from_vincze
+leptodactylus pentadactylus,,Leptodactylus pentadactylus,Amphibia,,Anura,excluded,absent_from_vincze
+lepus timidus,Lepus_timidus,,,Lagomorpha,,excluded,absent_from_compton
+leucopsar rothschildi,,Leucopsar rothschildi,Aves,,Passeriformes,excluded,absent_from_vincze
+lichanura trivirgata,,Lichanura trivirgata,Reptilia,,Squamata,excluded,absent_from_vincze
+lithobates catesbeianus,,Lithobates catesbeianus,Amphibia,,Anura,excluded,absent_from_vincze
+lithobates pipiens,,Lithobates pipiens,Amphibia,,Anura,excluded,absent_from_vincze
+lithobates sevosus,,Lithobates sevosus,Amphibia,,Anura,excluded,absent_from_vincze
+litocranius walleri,Litocranius_walleri,Litocranius walleri,Mammalia,Artiodactyla,Artiodactyla,included,
+lontra canadensis,Lontra_canadensis,Lontra canadensis,Mammalia,Carnivora,Carnivora,included,
+lophodytes cucullatus,,Lophodytes cucullatus,Aves,,Anseriformes,excluded,absent_from_vincze
+lophura edwardsi,,Lophura edwardsi,Aves,,Galliformes,excluded,absent_from_vincze
+lorius garrulus,,Lorius garrulus,Aves,,Psittaciformes,excluded,absent_from_vincze
+lorius lory,,Lorius lory,Aves,,Psittaciformes,excluded,absent_from_vincze
+lutra lutra,Lutra_lutra,,,Carnivora,,excluded,absent_from_compton
+lycaon pictus,Lycaon_pictus,Lycaon pictus,Mammalia,Carnivora,Carnivora,included,
+macaca fascicularis,Macaca_fascicularis,,,Primates,,excluded,absent_from_compton
+macaca fuscata,Macaca_fuscata,,,Primates,,excluded,absent_from_compton
+macaca mulatta,Macaca_mulatta,,,Primates,,excluded,absent_from_compton
+macaca nigra,,Macaca nigra,Mammalia,,Primates,excluded,absent_from_vincze
+macropus eugenii,,Macropus eugenii,Mammalia,,Diprotodontia,excluded,absent_from_vincze
+macropus fuliginosus,Macropus_fuliginosus,,,Diprotodontia,,excluded,absent_from_compton
+macropus giganteus,Macropus_giganteus,,,Diprotodontia,,excluded,absent_from_compton
+macroscelides proboscideus,,Macroscelides proboscideus,Mammalia,,Macroscelidea,excluded,absent_from_vincze
+macrotus californicus,,Macrotus californicus,Mammalia,,Chiroptera,excluded,absent_from_vincze
+madoqua kirkii,Madoqua_kirkii,,,Artiodactyla,,excluded,absent_from_compton
+mandrillus sphinx,Mandrillus_sphinx,Mandrillus sphinx,Mammalia,Primates,Primates,included,
+mantella aurantiaca,,Mantella aurantiaca,Amphibia,,Anura,excluded,absent_from_vincze
+megascops asio,,Megascops asio,Aves,,Strigiformes,excluded,absent_from_vincze
+megophrys nasuta,,Megophrys nasuta,Amphibia,,Anura,excluded,absent_from_vincze
+meleagris gallopavo,,Meleagris gallopavo,Aves,,Galliformes,excluded,absent_from_vincze
+melopsittacus undulatus,,Melopsittacus undulatus,Aves,,Psittaciformes,excluded,absent_from_vincze
+meriones unguiculatus,Meriones_unguiculatus,,,Rodentia,,excluded,absent_from_compton
+mico argentatus,,Mico Argentatus,Mammalia,,Primates,excluded,absent_from_vincze
+microcebus murinus,Microcebus_murinus,,,Primates,,excluded,absent_from_compton
+micromys minutus,,Micromys minutus,Mammalia,,Rodentia,excluded,absent_from_vincze
+microtus agrestis,,Microtus agrestis,Mammalia,,Rodentia,excluded,absent_from_vincze
+milvus milvus,,Milvus milvus,Aves,,Accipitriformes,excluded,absent_from_vincze
+momotus momota,,Momotus momota,Aves,,Coraciiformes,excluded,absent_from_vincze
+monodelphis domestica,Monodelphis_domestica,,,Didelphimorphia,,excluded,absent_from_compton
+morelia spilota,,Morelia spilota,Reptilia,,Squamata,excluded,absent_from_vincze
+morelia viridis,,Morelia viridis,Reptilia,,Squamata,excluded,absent_from_vincze
+mungos mungo,Mungos_mungo,,,Carnivora,,excluded,absent_from_compton
+muntiacus muntjak,Muntiacus_muntjak,,,Artiodactyla,,excluded,absent_from_compton
+muntiacus reevesi,Muntiacus_reevesi,,,Artiodactyla,,excluded,absent_from_compton
+mus musculus,,Mus musculus,Mammalia,,Rodentia,excluded,absent_from_vincze
+muscardinus avellanarius,,Muscardinus avellanarius,Mammalia,,Rodentia,excluded,absent_from_vincze
+musophaga violacea,,Musophaga violacea,Aves,,Musophagiformes,excluded,absent_from_vincze
+mustela nigripes,,Mustela nigripes,Mammalia,,Carnivora,excluded,absent_from_vincze
+mustela putorius,,Mustela putorius,Mammalia,,Carnivora,excluded,absent_from_vincze
+myocastor coypus,Myocastor_coypus,,,Rodentia,,excluded,absent_from_compton
+myrmecophaga tridactyla,Myrmecophaga_tridactyla,,,Pilosa,,excluded,absent_from_compton
+naja annulifera,,Naja annulifera,Reptilia,,Squamata,excluded,absent_from_vincze
+nanger dama,,Nanger dama,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+nanger granti,Nanger_granti,,,Artiodactyla,,excluded,absent_from_compton
+nasua narica,Nasua_narica,,,Carnivora,,excluded,absent_from_compton
+nectophrynoides asperginis,,Nectophrynoides asperginis,Amphibia,,Anura,excluded,absent_from_vincze
+neofelis nebulosa,Neofelis_nebulosa,,,Carnivora,,excluded,absent_from_compton
+neophema splendida,,Neophema splendida,Aves,,Psittaciformes,excluded,absent_from_vincze
+netta rufina,,Netta rufina,Aves,,Anseriformes,excluded,absent_from_vincze
+nettapus auritus,,Nettapus auritus,Aves,,Anseriformes,excluded,absent_from_vincze
+notamacropus parma,,Notamacropus parma,Mammalia,,Diprotodontia,excluded,absent_from_vincze
+notamacropus rufogriseus,,Notamacropus rufogriseus,Mammalia,,Diprotodontia,excluded,absent_from_vincze
+notophthalmus perstriatus,,Notophthalmus perstriatus,Amphibia,,Caudata,excluded,absent_from_vincze
+numida meleagris,,Numida meleagris,Aves,,Galliformes,excluded,absent_from_vincze
+nyctimystes infrafrenatus,,Nyctimystes infrafrenatus,Amphibia,,Anura,excluded,absent_from_vincze
+nymphicus hollandicus,,Nymphicus hollandicus,Aves,,Psittaciformes,excluded,absent_from_vincze
+octodon degus,Octodon_degus,Octodon degus,Mammalia,Rodentia,Rodentia,included,
+odocoileus virginianus,Odocoileus_virginianus,,,Artiodactyla,,excluded,absent_from_compton
+okapia johnstoni,Okapia_johnstoni,,,Artiodactyla,,excluded,absent_from_compton
+oreamnos americanus,Oreamnos_americanus,,,Artiodactyla,,excluded,absent_from_compton
+oryctolagus cuniculus,,Oryctolagus cuniculus,Mammalia,,Lagomorpha,excluded,absent_from_vincze
+oryx dammah,Oryx_dammah,,,Artiodactyla,,excluded,absent_from_compton
+oryx gazella,Oryx_gazella,,,Artiodactyla,,excluded,absent_from_compton
+oryx leucoryx,,Oryx leucoryx,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+osphranter robustus,,Osphranter robustus,Mammalia,,Diprotodontia,excluded,absent_from_vincze
+osphranter rufus,,Osphranter rufus,Mammalia,,Diprotodontia,excluded,absent_from_vincze
+ovis aries,,Ovis aries,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+ovis canadensis,Ovis_canadensis,Ovis canadensis,Mammalia,Artiodactyla,Artiodactyla,included,
+ovis orientalis,Ovis_orientalis,,,Artiodactyla,,excluded,absent_from_compton
+oxyura jamaicensis,,Oxyura jamaicensis,Aves,,Anseriformes,excluded,absent_from_vincze
+pachyuromys duprasi,Pachyuromys_duprasi,,,Rodentia,,excluded,absent_from_compton
+padda oryzivora,,Padda oryzivora,Aves,,Passeriformes,excluded,absent_from_vincze
+paleosuchus palpebrosus,,Paleosuchus palpebrosus,Reptilia,,Crocodilia,excluded,absent_from_vincze
+pan troglodytes,Pan_troglodytes,Pan troglodytes,Mammalia,Primates,Primates,included,
+panthera leo,Panthera_leo,Panthera leo,Mammalia,Carnivora,Carnivora,included,
+panthera onca,Panthera_onca,Panthera onca,Mammalia,Carnivora,Carnivora,included,
+panthera pardus,Panthera_pardus,Panthera pardus,Mammalia,Carnivora,Carnivora,included,
+panthera tigris,Panthera_tigris,Panthera tigris,Mammalia,Carnivora,Carnivora,excluded,missing:MHC I gene family size
+panthera uncia,Panthera_uncia,Panthera uncia,Mammalia,Carnivora,Carnivora,included,
+pantherophis guttatus,,Pantherophis guttatus,Reptilia,,Squamata,excluded,absent_from_vincze
+papio hamadryas,Papio_hamadryas,Papio hamadryas,Mammalia,Primates,Primates,excluded,missing:MHC I gene family size
+paroaria coronata,,Paroaria coronata,Aves,,Passeriformes,excluded,absent_from_vincze
+pavo cristatus,,Pavo cristatus,Reptilia,,Galliformes,excluded,absent_from_vincze
+pecari tajacu,,Pecari tajacu,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+pelecanus occidentalis,,Pelecanus occidentalis,Aves,,Pelecaniformes,excluded,absent_from_vincze
+peltophryne lemur,,Peltophryne lemur,Amphibia,,Anura,excluded,absent_from_vincze
+peromyscus polionotus,Peromyscus_polionotus,,,Rodentia,,excluded,absent_from_compton
+petaurus breviceps,,Petaurus breviceps,Mammalia,,Diprotodontia,excluded,absent_from_vincze
+phacochoerus africanus,,Phacochoerus africanus,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+phascolarctos cinereus,Phascolarctos_cinereus,Phascolarctos cinereus,Mammalia,Diprotodontia,Diprotodontia,included,
+phelsuma grandis,,Phelsuma grandis,Reptilia,,Squamata,excluded,absent_from_vincze
+phelsuma standingi,,Phelsuma standingi,Reptilia,,Squamata,excluded,absent_from_vincze
+phoca vitulina,Phoca_vitulina,Phoca vitulina,Mammalia,Carnivora,Carnivora,included,
+phocoena phocoena,,Phocoena phocoena,Mammalia,,Cetacea,excluded,absent_from_vincze
+phoenicopterus chilensis,,Phoenicopterus chilensis,Aves,,Phoenicopteriformes,excluded,absent_from_vincze
+phoenicopterus ruber,,Phoenicopterus ruber,Aves,,Phoenicopteriformes,excluded,absent_from_vincze
+phrynosoma asio,,Phrynosoma asio,Reptilia,,Squamata,excluded,absent_from_vincze
+phyllobates bicolor,,Phyllobates bicolor,Amphibia,,Anura,excluded,absent_from_vincze
+phyllobates terribilis,,Phyllobates terribilis,Amphibia,,Anura,excluded,absent_from_vincze
+phyllomedusa bicolor,,Phyllomedusa bicolor,Amphibia,,Anura,excluded,absent_from_vincze
+phyllostomus discolor,,Phyllostomus discolor,Mammalia,,Chiroptera,excluded,absent_from_vincze
+pipa pipa,,Pipa pipa,Amphibia,,Anura,excluded,absent_from_vincze
+pithecia pithecia,Pithecia_pithecia,Pithecia pithecia,Mammalia,Primates,Primates,included,
+pitta sordida,,Pitta sordida,Aves,,Passeriformes,excluded,absent_from_vincze
+pituophis catenifer,,Pituophis catenifer,Reptilia,,Squamata,excluded,absent_from_vincze
+platalea ajaja,,Platalea ajaja,Aves,,Pelecaniformes,excluded,absent_from_vincze
+plica plica,,Plica plica,Reptilia,,Squamata,excluded,absent_from_vincze
+ploceus castaneiceps,,Ploceus castaneiceps,Aves,,Passeriformes,excluded,absent_from_vincze
+ploceus cucullatus,,Ploceus cucullatus,Aves,,Passeriformes,excluded,absent_from_vincze
+podargus strigoides,,Podargus strigoides,Aves,,Caprimulgiformes,excluded,absent_from_vincze
+pogona vitticeps,,Pogona vitticeps,Reptilia,,Squamata,excluded,absent_from_vincze
+polihierax semitorquatus,,Polihierax semitorquatus,Aves,,Falconiformes,excluded,absent_from_vincze
+pongo pygmaeus,Pongo_pygmaeus,,,Primates,,excluded,absent_from_compton;missing:MHC I gene family size
+potos flavus,Potos_flavus,,,Carnivora,,excluded,absent_from_compton
+prionailurus bengalensis,Prionailurus_bengalensis,,,Carnivora,,excluded,absent_from_compton
+procavia capensis,Procavia_capensis,Procavia capensis,Mammalia,Hyracoidea,Hyracoidea,included,
+procyon lotor,Procyon_lotor,Procyon lotor,Mammalia,Carnivora,Carnivora,included,
+propithecus coquereli,Propithecus_coquereli,,,Primates,,excluded,absent_from_compton
+pteroglossus aracari,,Pteroglossus aracari,Aves,,Piciformes,excluded,absent_from_vincze
+pteropus rodricensis,,Pteropus rodricensis,Mammalia,,Chiroptera,excluded,absent_from_vincze
+pteropus vampyrus,Pteropus_vampyrus,,,Chiroptera,,excluded,absent_from_compton
+ptilinopus jambu,,Ptilinopus jambu,Aves,,Columbiformes,excluded,absent_from_vincze
+ptilinopus melanospilus,,Ptilinopus melanospilus,Aves,,Columbiformes,excluded,absent_from_vincze
+ptilinopus superbus,,Ptilinopus superbus,Aves,,Columbiformes,excluded,absent_from_vincze
+puma concolor,Puma_concolor,Puma concolor,Mammalia,Carnivora,Carnivora,included,
+pusa hispida,,Pusa hispida,Mammalia,,Carnivora,excluded,absent_from_vincze
+pygathrix nemaeus,Pygathrix_nemaeus,,,Primates,,excluded,absent_from_compton
+python bivittatus,,Python bivittatus,Reptilia,,Squamata,excluded,absent_from_vincze
+ramphastos swainsonii,,Ramphastos swainsonii,Aves,,Piciformes,excluded,absent_from_vincze
+ramphocelus carbo,,Ramphocelus carbo,Aves,,Passeriformes,excluded,absent_from_vincze
+rana sierrae,,Rana sierrae,Amphibia,,Anura,excluded,absent_from_vincze
+rana temporaria,,Rana temporaria,Amphibia,,Anura,excluded,absent_from_vincze
+rangifer tarandus,Rangifer_tarandus,Rangifer tarandus,Mammalia,Artiodactyla,Artiodactyla,included,
+rattus norvegicus,,Rattus norvegicus,Mammalia,,Rodentia,excluded,absent_from_vincze
+rhea americana,,Rhea americana,Aves,,Rheiformes,excluded,absent_from_vincze
+rhinella marina,,Rhinella marina,Amphibia,,Anura,excluded,absent_from_vincze
+rhynchopsitta pachyrhyncha,,Rhynchopsitta pachyrhyncha,Aves,,Psittaciformes,excluded,absent_from_vincze
+rollulus rouloul,,Rollulus rouloul,Aves,,Galliformes,excluded,absent_from_vincze
+rousettus aegyptiacus,Rousettus_aegyptiacus,Rousettus aegyptiacus,Mammalia,Chiroptera,Chiroptera,included,
+rousettus lanosus,,Rousettus lanosus,Mammalia,,Chiroptera,excluded,absent_from_vincze
+rousettus leschenaultii,Rousettus_leschenaultii,,,Chiroptera,,excluded,absent_from_compton
+saguinus imperator,Saguinus_imperator,Saguinus imperator,Mammalia,Primates,Primates,included,
+saguinus labiatus,Saguinus_labiatus,,,Primates,,excluded,absent_from_compton;missing:MHC I gene family size
+saguinus oedipus,Saguinus_oedipus,Saguinus oedipus,Mammalia,Primates,Primates,excluded,missing:MHC I gene family size
+saimiri boliviensis,Saimiri_boliviensis,Saimiri boliviensis,Mammalia,Primates,Primates,included,
+saimiri sciureus,Saimiri_sciureus,Saimiri sciureus,Mammalia,Primates,Primates,excluded,missing:MHC I gene family size
+sanzinia madagascariensis,,Sanzinia madagascariensis,Reptilia,,Squamata,excluded,absent_from_vincze
+sapajus apella,Sapajus_apella,,,Primates,,excluded,absent_from_compton
+sarcophilus harrisii,Sarcophilus_harrisii,,,Dasyuromorphia,,excluded,absent_from_compton
+sauromalus ater,,Sauromalus ater,Reptilia,,Squamata,excluded,absent_from_vincze
+sceloporus cyanogenys,,Sceloporus cyanogenys,Reptilia,,Squamata,excluded,absent_from_vincze
+sciurus carolinensis,,Sciurus carolinensis,Mammalia,,Rodentia,excluded,absent_from_vincze
+sciurus vulgaris,Sciurus_vulgaris,,,Rodentia,,excluded,absent_from_compton
+scopus umbretta,,Scopus umbretta,Aves,,Ciconiiformes,excluded,absent_from_vincze
+sicalis flaveola,,Sicalis flaveola,Aves,,Passeriformes,excluded,absent_from_vincze
+simalia boeleni,,Simalia boeleni,Reptilia,,Squamata,excluded,absent_from_vincze
+sistrurus miliarius,,Sistrurus miliarius,Reptilia,,Squamata,excluded,absent_from_vincze
+spatula hottentota,,Spatula hottentota,Aves,,Anseriformes,excluded,absent_from_vincze
+spheniscus demersus,,Spheniscus demersus,Aves,,Sphenisciformes,excluded,absent_from_vincze
+spheniscus humboldti,,Spheniscus humboldti,Aves,,Sphenisciformes,excluded,absent_from_vincze
+spilotes pullatus,,Spilotes pullatus,Reptilia,,Squamata,excluded,absent_from_vincze
+stellagama stellio,,Stellagama stellio,Reptilia,,Squamata,excluded,absent_from_vincze
+suricata suricatta,Suricata_suricatta,Suricata suricatta,Mammalia,Carnivora,Carnivora,included,
+sus scrofa,,Sus scrofa,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+sylvilagus transitionalis,,Sylvilagus transitionalis,Mammalia,,Lagomorpha,excluded,absent_from_vincze
+syncerus caffer,Syncerus_caffer,,,Artiodactyla,,excluded,absent_from_compton
+tadorna radjah,,Tadorna radjah,Aves,,Anseriformes,excluded,absent_from_vincze
+taeniopygia bichenovii,,Taeniopygia bichenovii,Aves,,Podicipediformes,excluded,absent_from_vincze
+taeniopygia guttata,,Taeniopygia guttata,Aves,,Passeriformes,excluded,absent_from_vincze
+tapirus indicus,Tapirus_indicus,,,Perissodactyla,,excluded,absent_from_compton
+tapirus terrestris,Tapirus_terrestris,,,Perissodactyla,,excluded,absent_from_compton
+tauraco erythrolophus,,Tauraco erythrolophus,Aves,,Musophagiformes,excluded,absent_from_vincze
+taurotragus derbianus,,Taurotragus derbianus,Mammalia,,Artiodactyla,excluded,absent_from_vincze
+testudo kleinmanni,,Testudo kleinmanni,Reptilia,,Testudines,excluded,absent_from_vincze
+theloderma corticale,,Theloderma corticale,Amphibia,,Anura,excluded,absent_from_vincze
+theristicus melanopis,,Theristicus melanopis,Aves,,Pelecaniformes,excluded,absent_from_vincze
+theropithecus gelada,Theropithecus_gelada,,,Primates,,excluded,absent_from_compton
+thraupis episcopus,,Thraupis episcopus,Aves,,Passeriformes,excluded,absent_from_vincze
+threskiornis aethiopicus,,Threskiornis aethiopicus,Aves,,Pelecaniformes,excluded,absent_from_vincze
+tiliqua scincoides,,Tiliqua scincoides,Reptilia,,Squamata,excluded,absent_from_vincze
+tolypeutes matacus,Tolypeutes_matacus,,,Cingulata,,excluded,absent_from_compton
+trachycephalus resinifictrix,,Trachycephalus resinifictrix,Amphibia,,Anura,excluded,absent_from_vincze
+trachypithecus francoisi,Trachypithecus_francoisi,,,Primates,,excluded,absent_from_compton
+tragelaphus imberbis,Tragelaphus_imberbis,,,Artiodactyla,,excluded,absent_from_compton
+tragelaphus strepsiceros,Tragelaphus_strepsiceros,Tragelaphus strepsiceros,Mammalia,Artiodactyla,Artiodactyla,included,
+tragulus javanicus,Tragulus_javanicus,,,Artiodactyla,,excluded,absent_from_compton
+tribolonotus pseudoponceleti,,Tribolonotus pseudoponceleti,Reptilia,,Squamata,excluded,absent_from_vincze
+trichoglossus haematodus,,Trichoglossus haematodus,Aves,,Psittaciformes,excluded,absent_from_vincze
+trichoglossus moluccanus,,Trichoglossus moluccanus,Aves,,Psittaciformes,excluded,absent_from_vincze
+tropidolaemus wagleri,,Tropidolaemus wagleri,Reptilia,,Squamata,excluded,absent_from_vincze
+tupaia belangeri,Tupaia_belangeri,,,Scandentia,,excluded,absent_from_compton
+tylototriton shanjing,,Tylototriton shanjing,Amphibia,,Caudata,excluded,absent_from_vincze
+tympanuchus cupido,,Tympanuchus cupido,Aves,,Galliformes,excluded,absent_from_vincze
+typhlonectes natans,,Typhlonectes natans,Amphibia,,Gymnophiona,excluded,absent_from_vincze
+uraeginthus bengalus,,Uraeginthus bengalus,Aves,,Passeriformes,excluded,absent_from_vincze
+uraeginthus cyanocephalus,,Uraeginthus cyanocephalus,Aves,,Passeriformes,excluded,absent_from_vincze
+uromastyx geyri,,Uromastyx geyri,Reptilia,,Squamata,excluded,absent_from_vincze
+uroplatus phantasticus,,Uroplatus phantasticus,Reptilia,,Squamata,excluded,absent_from_vincze
+uroplatus sikorae,,Uroplatus sikorae,Reptilia,,Squamata,excluded,absent_from_vincze
+ursus americanus,Ursus_americanus,,,Carnivora,,excluded,absent_from_compton
+ursus maritimus,Ursus_maritimus,Ursus maritimus,Mammalia,Carnivora,Carnivora,included,
+ursus thibetanus,Ursus_thibetanus,,,Carnivora,,excluded,absent_from_compton
+varanus beccarii,,Varanus beccarii,Reptilia,,Squamata,excluded,absent_from_vincze
+varanus prasinus,,Varanus prasinus,Reptilia,,Squamata,excluded,absent_from_vincze
+varanus salvadorii,,Varanus salvadorii,Reptilia,,Squamata,excluded,absent_from_vincze
+varecia variegata,Varecia_variegata,Varecia variegata,Mammalia,Primates,Primates,excluded,missing:MHC I gene family size
+vicugna vicugna,Vicugna_vicugna,,,Artiodactyla,,excluded,absent_from_compton
+vini australis,,Vini australis,Aves,,Psittaciformes,excluded,absent_from_vincze
+vulpes lagopus,Vulpes_lagopus,,,Carnivora,,excluded,absent_from_compton
+vulpes zerda,,Vulpes zerda,Mammalia,,Carnivora,excluded,absent_from_vincze
+xenopus longipes,,Xenopus longipes,Amphibia,,Anura,excluded,absent_from_vincze
+zalophus californianus,Zalophus_californianus,Zalophus californianus,Mammalia,Carnivora,Carnivora,included,
+zenaida graysoni,,Zenaida graysoni,Aves,,Columbiformes,excluded,absent_from_vincze
