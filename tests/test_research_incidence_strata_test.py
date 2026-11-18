@@ -463,6 +463,29 @@ class IncidenceStrataTest(unittest.TestCase):
                 self.assertIn(result["best_grid_k"], {k for k, _ in winners})
 
     def test_07_primary_verdict_and_prior_44_rate_benchmark(self):
+        # Fixed external-to-implementation regression targets: the six exact
+        # squared thresholds in the published-results table, independently
+        # rederived here from the transcribed CSVs. Changes to any selected
+        # printed rate or to the shape verdict cannot silently change these.
+        expected_failing_ratios = {
+            "female_breast__all_races__females": F(9403, 8271),
+            "female_breast__whites__females": F(3263, 2889),
+            "female_breast__blacks__females": F(8791, 7869),
+            "lung_and_bronchus__blacks__both_sexes": F(7187, 6855),
+            "lung_and_bronchus__blacks__males": F(9529, 9439),
+            "lung_and_bronchus__blacks__females": F(5677, 5407),
+        }
+        recalculated_failures = {
+            group_id: ratio
+            for group_id, rows in self.rows.items()
+            if (ratio := monotone_reference(rows)[0]) > 1
+        }
+        self.assertEqual(recalculated_failures, expected_failing_ratios)
+        for group_id, expected_ratio in expected_failing_ratios.items():
+            self.assertEqual(
+                self.results["groups"][group_id]["monotonicity"]["rho_squared"],
+                expected_ratio,
+            )
         breast = {
             race: monotone_reference(self.rows[f"female_breast__{race}__females"])[0]
             for race in ("all_races", "whites", "blacks")
