@@ -1,0 +1,66 @@
+{
+  "analysis_status": "partial_published_count_reanalysis_raw_archive_blocked",
+  "nonclinical": true,
+  "raw_archive_verified": false,
+  "raw_population_calibration_completed": false,
+  "access_date": "2026-11-18",
+  "protocol_commit": "cb76f03",
+  "prefit_deviation_commit": "431881a",
+  "mendeley": {
+    "access_date": "2026-11-18",
+    "dataset_doi": "10.17632/mvfm7hs9kw.2",
+    "dataset_url": "https://data.mendeley.com/datasets/mvfm7hs9kw/2",
+    "version": 2,
+    "published_date": "2022-05-25",
+    "file_name": "Russo_et_al_v2.zip",
+    "file_id": "9ad3d76b-6ef6-4981-a6ca-1809d70f4205",
+    "file_page_url": "https://data.mendeley.com/datasets/mvfm7hs9kw/2/files/9ad3d76b-6ef6-4981-a6ca-1809d70f4205",
+    "download_url": "https://data.mendeley.com/public-files/datasets/mvfm7hs9kw/files/9ad3d76b-6ef6-4981-a6ca-1809d70f4205/file_downloaded",
+    "displayed_size": "3.05 GB",
+    "uploaded_date": "2022-05-24",
+    "advertised_sha256": "2f594e2a76e328d82d954102bc89936edd0932e9d01a8daf8a67e463033d3d4f",
+    "checksum_source": "Public file-information panel observed in browser; archive bytes not retrieved or verified.",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "licence_evidence": "Both the dataset page and public file-information panel explicitly identify CC BY 4.0.",
+    "reuse_note": "Licence permits sharing/adaptation with appropriate attribution, a licence link, and an indication of changes. Does not imply author endorsement.",
+    "download_status": "blocked; no usable completed archive",
+    "blocker": "Shell public download and documented API requests returned HTTP 403, Cloudflare error code1010. The internal browser error URL was not inspected or bypassed. A separately supported connected-browser download attempt also timed out without returning a file.",
+    "documented_api_attempt": {
+      "url": "https://api.data.mendeley.com/datasets/mvfm7hs9kw?version=2",
+      "documentation_url": "https://data.mendeley.com/api/docs/",
+      "outcome": "HTTP 403; text/plain; error code: 1010; no metadata/download URL returned"
+    },
+    "additional_download_attempt": "Supported connected Browser downloadMedia operation timed out without returning a path; no archive bytes obtained."
+  },
+  "paper": {
+    "doi": "10.1038/s41588-022-01105-z",
+    "licence": "CC BY 4.0",
+    "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+    "licence_evidence": "Article XML permissions contains Creative Commons Attribution 4.0 licence; no contrary credit line on selected material.",
+    "article_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9279152/",
+    "xml_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9279152/fullTextXML",
+    "supplement_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9279152/supplementaryFiles",
+    "source_byte_hashes": {
+      "paper.xml": {
+        "sha256_bytes": "c3542a632b7677607186084884afe14eb680dbdb50085d3db380c277ec71fd5b",
+        "bytes": 201455,
+        "sha256_newline_normalised": "c3542a632b7677607186084884afe14eb680dbdb50085d3db380c277ec71fd5b"
+      },
+      "41588_2022_1105_MOESM4_ESM.xlsx": {
+        "sha256_bytes": "12a201b7ef42678daca80c57e972558a383dba9fedf48366a1aa7177cc775b4f",
+        "bytes": 102701
+      },
+      "41588_2022_1105_MOESM1_ESM.pdf": {
+        "sha256_bytes": "971e5d468ca2263789400feb02ca73690a197fe88fcf6b143812c0c335a9696c",
+        "bytes": 5194367
+      },
+      "41588_2022_1105_Fig3_HTML.jpg": {
+        "sha256_bytes": "78d45c3a575b0b2bff873547ad2aa83db0f4cb51606cddeec3282c3cde2562a7",
+        "bytes": 116620
+      }
+    }
+  },
+  "changes": "Exact figure annotations transcribed; weeks converted to days; selected supplementary numeric cells extracted as tidy rows. No source raw archive, images, genomes, or patient data redistributed. Original data remain CC BY 4.0, not MIT.",
+  "publication_transport": "Authenticated GitHub Git Data API. Original pre-fit local commit objects and tree evidence are preserved in protocol_freeze.json; server publication commits have different identifiers."
+}

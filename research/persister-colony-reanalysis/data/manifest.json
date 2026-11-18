@@ -1,0 +1,22 @@
+{
+  "nonclinical": true,
+  "purpose": "Offline integrity and reproduction checks; raw source audit remains incomplete.",
+  "hash_rule": "SHA-256 of decoded UTF-8 after CRLF and CR normalization to LF; binary original source hashes are separately recorded in sources.json.",
+  "path_rule": "Repository-relative Path.as_posix()",
+  "protocol_sha256": "a2a2b44d24977626c5cb395e8832e45378d0db2f9e898c9db23a2cda5b6b35e2",
+  "protocol_commit": "cb76f03",
+  "prefit_deviation_commit": "431881a",
+  "base_commit": "44c7689e6e11458a341dcc0708f5df2ef521c414",
+  "normalized_sha256": {
+    "research/persister-colony-reanalysis/PROTOCOL.md": "a2a2b44d24977626c5cb395e8832e45378d0db2f9e898c9db23a2cda5b6b35e2",
+    "research/persister-colony-reanalysis/analysis.py": "5a7673d18004395ceba57210171b2ec83a1c8fcc1daf9d357ec00c730b258d44",
+    "research/persister-colony-reanalysis/data/README.md": "0d465f410ba7fa575ecc54a9e1c731491551878904c8a352b4cf55818d23a820",
+    "research/persister-colony-reanalysis/data/colony_counts.csv": "3e0fae21833c05225c8c6c475fdfb965ad89830b4d65d90cfcf0bb21b3aa67d3",
+    "research/persister-colony-reanalysis/data/protocol_freeze.json": "870bf2bd780e6eb7cc03d86ef2628c11936cec4e7efad51697ec1fad8bccb5de",
+    "research/persister-colony-reanalysis/data/published_parameters.csv": "03765319e906372474f047231bfcb3e0befac70655954e1fc932a5e94aea7757",
+    "research/persister-colony-reanalysis/data/sources.json": "c49aef3186fe477dbfbf363c4ae92964b2f835bb2f52819497c3fa852a8f98f5",
+    "research/persister-colony-reanalysis/extract_supplement.py": "2894ff0b457e9b65e67acbe29a84df2b0f690c445db5c9bc17fcf2592da94143",
+    "research/persister-colony-reanalysis/fetch_sources.py": "4d27e443ef7bc55bca30ba656d73c4bb37ba5e4cfc57e1ba59698e5772aef48b",
+    "tests/test_research_persister_colony_reanalysis.py": "49fccc1f1fa43d5663e1cffe19c6905bd5bcedcf0700b357ba61f7dccc7e8978"
+  }
+}
