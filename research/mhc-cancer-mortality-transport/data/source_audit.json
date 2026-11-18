@@ -1,0 +1,129 @@
+{
+  "count_audit": {
+    "ambiguous_count_species": [
+      {
+        "cmr_decimal": "0.1",
+        "known_cause_deaths": 40,
+        "lower": 2,
+        "nominal": 4,
+        "species": "Eulemur_macaco",
+        "upper": 6
+      },
+      {
+        "cmr_decimal": "0.1",
+        "known_cause_deaths": 20,
+        "lower": 1,
+        "nominal": 2,
+        "species": "Myrmecophaga_tridactyla",
+        "upper": 3
+      }
+    ],
+    "maximum_nominal_integer_residual": "1.7E-7",
+    "maximum_residual_species": "Lama_guanicoe",
+    "method": "Half last decimal unit plus fixed probability tolerance; zero/one exact; nominal ties ROUND_HALF_EVEN; interval endpoints included.",
+    "probability_export_tolerance": "2E-15",
+    "unique_count_species": 123
+  },
+  "count_lower_total": 694,
+  "count_upper_total": 700,
+  "derived_file_hashes_lf": {
+    "exclusions.csv": "0b9c287426ae8017ecf6dc0903d39851869eb7a926c5ecd115ea90d23529f1fe",
+    "species_aggregates.csv": "d06e6807da107eadd634d5e4e5048369107254113b44acfe1204f0bcb04c990c"
+  },
+  "excluded_species": 14,
+  "known_cause_deaths": 12033,
+  "nominal_cancer_deaths": 697,
+  "orders": 16,
+  "paper_doi": "https://doi.org/10.1038/s41467-025-65286-x",
+  "phylogeny": {
+    "clade_blocks": {
+      "all_branch_lengths_nonnegative_and_finite": true,
+      "half_height_threshold": 92.82233707010002,
+      "initial_crossing_edge_groups": 2,
+      "maximum_primary_root_to_tip_depth": 191.961244783,
+      "median_primary_root_to_tip_depth": 185.64467414020004,
+      "merged_block_count": 2,
+      "method": "First edge crossing half the median primary-panel tip depth; union groups sharing any order; labels ordered by smallest species identifier.",
+      "minimum_primary_root_to_tip_depth": 185.406062146,
+      "orders_are_not_split": true,
+      "orders_per_block": {
+        "clade_001": [
+          "Afrosoricida",
+          "Artiodactyla",
+          "Carnivora",
+          "Chiroptera",
+          "Cingulata",
+          "Hyracoidea",
+          "Lagomorpha",
+          "Perissodactyla",
+          "Pilosa",
+          "Primates",
+          "Proboscidea",
+          "Rodentia",
+          "Scandentia"
+        ],
+        "clade_002": [
+          "Dasyuromorphia",
+          "Didelphimorphia",
+          "Diprotodontia"
+        ]
+      },
+      "root_stem_ignored": true,
+      "root_stem_length": 0.0,
+      "species_per_block": {
+        "clade_001": 119,
+        "clade_002": 6
+      }
+    },
+    "matched_primary_tips": 125,
+    "method": "Incoming edge length divided by primary-panel descendants, summed root-to-tip; phylogenetic reweighting only, not covariance adjustment.",
+    "missing_primary_tips": [],
+    "retained_branch_length": 3148.5455775353003,
+    "source_format": "Nexus with TRANSLATE and rooted Newick",
+    "source_tip_count": 313,
+    "sum_fair_proportion": 3148.5455775353003
+  },
+  "primary_species": 125,
+  "reuse": {
+    "access_method": "GitHub API/plain UTF-8 text; no browser download",
+    "article_license": "CC-BY-NC-ND-4.0",
+    "individual_records": "Restricted Species360 records neither requested nor accessed.",
+    "license_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "pinned_repository_license_file": false,
+    "repository_license": null,
+    "scope": "Original code and derived numerical species aggregates only; no upstream assets mirrored or relicensed."
+  },
+  "source_commit": "2c8a5c5b5fda6fb34c86b0e5a2b6a58dcc85cc3e",
+  "source_files": {
+    "SourceData_FINAL.csv": {
+      "git_blob_sha1": "8a937a2c8d4f1749ae33c1b12d2ed52e895852f9",
+      "sha256_lf": "b9d6dedc9447e9f99b275cbfbdb54e3b0e318d08c12f0384572a65101d057744"
+    },
+    "phylogeny.tre": {
+      "git_blob_sha1": "64970f63fc167b7fdbadb5ebabbe3833dfb07c82",
+      "sha256_lf": "23dab5f42ff4c6e736486fd54d115fff67b4b82d12a57a755f6577607b596c6a"
+    }
+  },
+  "source_repository": "OrsolyaVincze/VinczeEtalNatComm_MHC-cancer",
+  "source_rows": 139,
+  "species_per_order": {
+    "Afrosoricida": 1,
+    "Artiodactyla": 37,
+    "Carnivora": 27,
+    "Chiroptera": 6,
+    "Cingulata": 1,
+    "Dasyuromorphia": 1,
+    "Didelphimorphia": 2,
+    "Diprotodontia": 3,
+    "Hyracoidea": 1,
+    "Lagomorpha": 1,
+    "Perissodactyla": 4,
+    "Pilosa": 2,
+    "Primates": 21,
+    "Proboscidea": 1,
+    "Rodentia": 16,
+    "Scandentia": 1
+  },
+  "status": "nonclinical_unreviewed_research_no_medical_or_veterinary_advice",
+  "zero_case_species": 17
+}

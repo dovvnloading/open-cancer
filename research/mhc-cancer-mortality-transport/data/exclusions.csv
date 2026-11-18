@@ -1,0 +1,15 @@
+species,order,reason
+Ateles_fusciceps,Primates,missing:MHC I gene family size
+Bison_bonasus,Artiodactyla,missing:MHC I gene family size
+Bos_gaurus,Artiodactyla,missing:CMR
+Cervus_nippon,Artiodactyla,missing:MHC I gene family size
+Galago_senegalensis,Primates,missing:MHC I gene family size
+Leopardus_pardalis,Carnivora,missing:MHC I gene family size
+Ovis_orientalis,Artiodactyla,missing:CMR
+Panthera_tigris,Carnivora,missing:MHC I gene family size
+Papio_hamadryas,Primates,missing:MHC I gene family size
+Pongo_pygmaeus,Primates,missing:MHC I gene family size
+Saguinus_labiatus,Primates,missing:MHC I gene family size
+Saguinus_oedipus,Primates,missing:MHC I gene family size
+Saimiri_sciureus,Primates,missing:MHC I gene family size
+Varecia_variegata,Primates,missing:MHC I gene family size
