@@ -1,23 +1,26 @@
 # Research programme: claims, evidence and next decisions
 
 **Nonclinical, unreviewed research. No treatment, diagnosis, surveillance or
-patient-selection advice.** This index covers all **24 research notes merged
-through PR #78**, including #71's explicitly partial deliverable, audited against
+patient-selection advice.** This index covers all **28 research notes merged
+through PR #82**, including #71's explicitly partial deliverable, audited against
 `main` at
-[`ff08fb2`](https://github.com/dovvnloading/open-cancer/commit/ff08fb20b9a3c723c11187b5f68d75b5bf07002b).
+[`ca4e770`](https://github.com/dovvnloading/open-cancer/commit/ca4e770c9b6531838902a0804c987cee6083a9dc).
 It records mathematical results, their observation assumptions, and what the
 available data actually tested. No entry establishes a new biological discovery,
 clinical validity, external peer review or bibliographic priority.
 
-**Where a discovery is most plausible next:** test restrictions using published
-counts, matched measurement/outcome groups and observations from different
-tissues or endpoints. The ranked jobs below specify the exact readable inputs
-and the decision each can change. More endpoint replication cannot break
-[#71](persister-colony-reanalysis/)'s exact origin alias; a better point score
-does not identify [#72](merkel-viral-antigen-test/)'s viral mechanism. The
-programme's strongest results remain conditional mathematics and explicit
-limits on inference. Its next advance needs an observation that constrains a
-missing mechanism or measurement assumption, with a result that could fail.
+**Where a discovery is most plausible next:** follow the observable signal in
+[#80](breast-incidence-decline-stage/) with additional temporal or molecular
+contrasts, and test measurement assumptions using matched or repeated
+observations. The ranked jobs below specify readable inputs and failure
+criteria. [#79](mhc-cancer-mortality-transport/) has not established portable
+MHC-I predictive gain; [#81](mutation-clock-separability/) rejects a separable
+passenger-clock proxy only under its stated measurement assumptions. More late
+colony counts cannot break [#71](persister-colony-reanalysis/)'s exact origin
+alias, and a better point score cannot identify
+[#72](merkel-viral-antigen-test/)'s viral mechanism. The next advance needs an
+observation that distinguishes explanations, rather than additional flexibility
+in an already non-identifying fit.
 
 ## Negative results and what they teach
 
@@ -30,6 +33,10 @@ The linked notes retain the individual falsification fixtures and review logs.
 
 | Result retained | What it teaches |
 | --- | --- |
+| **[Matched Merkel TMB bins (#82)](merkel-tmb-bin-test/): identity and the narrow assay-scale band fail, while broad-interval compatibility survives with latitude.** For the primary frozen reciprocal curve, the common finite-positive-scale region is **(4.050433, infinity)**, with the lower endpoint open and displayed rounded. It misses **c=1** and **[1,2]**, but intersects **[0.5,5]** in **(4.050433,5]**. Both reciprocal curves fail exact printed point-ORR matching through their ceilings; the primary ceiling is **48.718323%**, below Part B's **50.0%** high-bin point by **1.281677 pp**. | The primary printed-marginal-interval rule is **consistent only with the stated latitude**, not a calibrated significance test or assay estimate. Arbitrary different within-bin TMB distributions, a common uncalibrated scale and broad marginal intervals remain allowed. Matching the bin outcomes removes #72's specific median/denominator substitution, but does not identify viral antigen supply, independently replicate the reused JAVELIN cohorts, or reverse [#67](immune-escape-pancancer-test/)'s earlier comparison. |
+| **[MHC-I order transport (#79)](mhc-cancer-mortality-transport/): the incremental gain is inconclusive.** The order-balanced log-loss improvement **+0.002542709** has an approximate complete-refit jackknife 95% interval **[−0.005071459, +0.015172375]**, crossing zero; the separate death-weighted contrast is negative (**−0.000180594**). Removing the singleton Cingulata order reduces the gain to **+0.000075771**; deleting Primates reverses it (**−0.000921585**). | The failed uncertainty gate prevents a positive transport claim despite improvement in **10/16** orders. The interval uses a bias-corrected center, not the full-panel point gain. Neither absence of an MHC effect nor failure of immune surveillance is established. Gene-family size is not functional antigen presentation, and shared Species360/ZIMS mortality provenance prevents independent mortality validation relative to [#75](petos-paradox-mutation-rates/). |
+| **[Breast incidence decline/stage (#80)](breast-incidence-decline-stage/): older-age net declines are carried mainly by recorded localized disease.** On **70–74 → 75–79** and **75–79 → 80–84**, localized signed shares are **114.325% / 92.133%**. No regional or distant decline is established by the primary two-sided simultaneous rule; distant incidence rises on the earlier edge. Only the later localized decline survives adverse unknown-stage/residual allocation plus count-model uncertainty. | The common-decline interpretation across stages is unsupported. A later regional decline appears under the prespecified one-sided sensitivity, so “not established” does not mean absent. Localized stage is not observed screen detection. The later localized majority survives allocation descriptively, without a sampling-confidence claim for that share. Age, cohort, diagnosis and latent-onset explanations remain distinct; USCS/SEER overlap prevents fully independent replication. |
+| **[Mutation-clock separability (#81)](mutation-clock-separability/): the separable passenger-clock proxy is rejected under its stated measurement assumptions.** Blood/colon ratio-of-ratios **Q=0.159211**, with conditional printed-blood-interval box **[0.145714,0.173199]** and colon points fixed, excludes separability. The sharp minimum symmetric allowance per species–tissue matrix entry is **rho_min=1.55011**. Rounding does not rescue it; a hypothetical measurement-interaction band **[1/8,8]** does. The ferret intestinal sample was **small intestine, not colon**. | This is deterministic compatibility, not a significance test or rejection of mutation-based cancer models or functional driver clocks. Missing colon uncertainty and unrestricted assay, genotype and age-window interactions prevent an unconditional biological verdict. Ferret neuronal overprediction remains a substituted-tissue proxy diagnostic; strictly matched ferret colon-to-neuron transport is **untestable**. Repeating these ratios alone cannot identify the missing calibration. |
 | **[CH age-prevalence transport (#78)](ch-age-prevalence-test/): the frozen compound model fails specified substituted-endpoint compatibility, but fitness alone remains untestable.** The pooled Watson-derived, unchanged-supply age curves are compared with **different** curated-driver CHIP assays/panels and age supports, not the matched nonsynonymous-SNV/VAF endpoint. In Qiu's CNSR-III cohort a common-supply intersection is empty: lower multiplier **297.545536** exceeds upper **0.628432** under all recorded age supports; the post-score finite-age-band sensitivity also fails (**5.319347 > 0.648814**). Independently, the separately published gene and pooled fitted curves violate gene-event subset inclusion in **10/24** frozen grid comparisons, maximum excess **3.3762 pp**. | **Empirical: the substituted compound transport is falsified only under its declared interval-compatibility rule; conditional model-only pooled inclusion fails.** The matched biological fitness-only claim is **untestable** from these public aggregates because gene-by-age counts, mutation panels, effective thresholds, callers and joint supply are not aligned. The internal mismatch is between separately fitted curves, not disproof of known CH age associations or a clinical progression-risk test of [#68](clonal-hematopoiesis-progression/). Source percentage conflicts and possible parent-cohort overlap remain unresolved. |
 | **[Viral-antigen transport (#76)](viral-antigen-transport-test/): the frozen Merkel offset fails the declared numerical transport rule, without an independent comparative test.** Under the primary Part-A-trained offset at assay scale `c=1`, the model's minimum viral-positive ORR is **27.534051%**, above the KEYNOTE-040 HPV-positive published 95% upper limit **22.2%** (source-rounding-widened to **22.25%**): a **5.284051 percentage-point** necessary-range gap for any nonnegative TMB. It persists at every inherited point-offset scale; low-endpoint calibration sensitivity can remove it. The eligible EBV-positive no-response stratum has adverse single-point errors but no published ORR interval. | **Empirical: the fixed-offset range rule is falsified conditionally**, not viral immunogenicity. No eligible complete HPV/EBV positive/negative ORR–TMB pair permits a status-balanced comparison against TMB-only; the relative predictive gain is **untestable**. The original pan-cancer training parent may overlap KEYNOTE-040, so the strict independent-transport verdict is **untestable** as well. Missing viral status, assay, context and paired medians are not zero effects or permission to fit an offset after seeing the target. |
 | **[Stem-cell divisions and risk (#70)](stem-cell-divisions-risk/): the association reproduces, but the tested homogeneous specifications fail.** The historical log-risk slope is **0.532638**; on the primary **25-row/15-group** panel, group-held-out log10-H RMSE is **0.647456** for descriptive log D versus **1.254919** for the homogeneous one-step limiting model. The tested common division-scaled expansion grid selects no growth. The smallest exact symmetric per-stage intensity allowance among `k=1,...,8` is **45.214277**, or **12.421121** in the declared stress box. | The common-rate point specification fails separately from poor limiting-model prediction; high-k approximation error prevents conflating them. Free tissue rates fit every k, and a minimum allowance across different k scales does not identify drivers. The stress box is not a confidence region. Neither correlation nor residuals identify expansion or preventable fractions; the international risk-plus-divisions replication remains unavailable. |
@@ -46,27 +53,50 @@ The linked notes retain the individual falsification fixtures and review logs.
 | **[Metastatic timing (#62)](metastatic-seeding-timing/): optional broad-witness model fails conditionally.** TRACERx reports 75/90 late-divergence cases called early after single-region downsampling; under independent trials and per-case miss probability at most 1/2, the upper tail is about **4.59 × 10⁻¹¹**. Secondary-seeding aggregates also contradict universal primary-only seeding. Matched two-/three-region predictions remain externally untested. | This is a post-hoc conditional model check, not a migration-date measurement. Divergence is not migration. A one-region summary cannot calibrate two-moment designs; different pool sizes and sampling without replacement require different laws. |
 | **[Incidence identifiability (#64)](multistage-incidence-identifiability/): female-breast rounded means fail the homogeneous monotone-mean condition.** The minimum abstract monotonicity calibration factor is **1.066238**; none of four sites identifies a biological transition count under unrestricted age-bin calibration. | This is a descriptive shape failure, not a significance test or rejection of multistage carcinogenesis. Counts/exposures are absent, period rates mix observation effects, and grid indices are not genomic driver counts. |
 
-**Pattern across the programme.** Shared-parameter models repeatedly fail
-their specified observable restrictions, while broader nuisance families can
-accommodate the summaries or leave distinct mechanisms observationally
-equivalent without identifying the biology. The newer checks have
-closed several easy explanations: race pooling alone does not remove the
-breast shape failure, adding the tested common expansion does not rescue the
-division-risk fits, and inverse-lifespan mutation scaling leaves a target-cell
-factor. [#78](ch-age-prevalence-test/)'s unchanged fitness-plus-supply curves
-also fail a substituted prevalence target and separate gene/pooled fits violate
-an event-inclusion condition; neither observation isolates fitness itself.
-Other checks expose missing information rather than refute mechanisms:
-late colonies do not timestamp acquisition, marginal TMB does not measure
-functional antigen supply, and rejection counts do not calibrate microscopy.
-The frozen Merkel viral offset also fails a necessary cross-virus response-range
-check in [#76](viral-antigen-transport-test/), even though historical
-independence and comparative improvement remain untestable.
-The programme has accumulated more conditional exclusions and identification
-limits than independent mechanistic evidence. Another flexible fit to the same
-proxies is unlikely to change that. The next jobs therefore seek count-based
-uncertainty, matched subgroups and distinct observation channels; null results
-and failures of those measurement assumptions are valuable outcomes too.
+**Pattern across the programme.** The clearest new **positive, data-backed
+observable finding** is [#80](breast-incidence-decline-stage/): both older-age
+overall declines survive its specified count model, recorded localized disease
+supplies most of the net decline, and the later localized decline survives
+worst-case missing-stage allocation plus sampling uncertainty. The underlying
+age/stage pattern is published prior work; its cause remains unidentified.
+The weaker clonal-burden association in [#63](prediction-confrontation/), the
+division–risk association reproduced in [#70](stem-cell-divisions-risk/), and
+[#72](merkel-viral-antigen-test/)'s conditional held-out point-score gains are
+also positive observations, with none establishing the programme's mechanisms.
+There is **no demonstrated portable MHC-I gain** in
+[#79](mhc-cancer-mortality-transport/). Shared-parameter specifications fail
+several observation tests: [#76](viral-antigen-transport-test/)'s fixed viral
+offset, [#78](ch-age-prevalence-test/)'s substituted fitness-plus-supply curves,
+and [#81](mutation-clock-separability/)'s separable passenger clock.
+[#82](merkel-tmb-bin-test/) removes one median/denominator substitution, but
+its surviving broad-interval rule requires assay/distribution latitude;
+identity/narrow-scale and exact reciprocal point matching fail. This is
+compatibility, not an additional positive biological finding. These outcomes
+do not select a biological explanation.
+
+**Exhausted with the currently located public aggregates:** identifying
+acquisition versus delayed resistance from [#71](persister-colony-reanalysis/)'s
+colony endpoint; functional antigen load or viral attribution from the
+unmatched marginals in [#67](immune-escape-pancancer-test/)/
+[#72](merkel-viral-antigen-test/)/[#76](viral-antigen-transport-test/);
+calibrating ecDNA test size/dependence from [#74](ecdna-rejection-robustness/)'s
+rejection counts; isolating CH fitness from [#68](clonal-hematopoiesis-progression/)/
+[#78](ch-age-prevalence-test/)'s mismatched assays; and identifying a universal
+functional clock or cancer-defense mechanism from
+[#75](petos-paradox-mutation-rates/)/[#81](mutation-clock-separability/)'s
+sparse passenger proxies. Likewise, [#66](containment-evidence/)'s all-cause
+outcomes do not identify a mutation-supply threshold, and [#62](metastatic-seeding-timing/)'s
+one-region aggregate cannot calibrate its two-moment sampling predictions.
+These are stopping rules for those inputs and questions, not claims that the
+biological fields are exhausted. **Discriminating tests remain available**
+when the observable changes: terminal-cause composition, calendar-by-stage
+incidence, repeated ctDNA calls, receptor composition and separately counted
+pathology endpoints with additional measured predictors. Matched Merkel bins
+are now audited in #82; further copies of those same broad summaries cannot
+calibrate the surviving assay/distribution latitude. The ranking below
+prioritizes fresh contrasts and states
+what would count against each prediction; it makes no mechanistic or clinical
+upgrade from a successful descriptive test.
 
 ### Mathematical failures and limits on stronger claims
 
@@ -85,7 +115,6 @@ and failures of those measurement assumptions are valuable outcomes too.
 | [#68: clonal haematopoiesis progression](clonal-hematopoiesis-progression/) | For every integer `n>=1`, positive `q,T` and `c>0`, the same founder count and net fitness `s=0` but `b=d=0` versus `b=d=c` produce different cumulative hazards; hidden advanced stages similarly break fitness-only sufficiency. Exact cumulative hazard is linear in founder count, but risk is nonlinear and replacing stochastic clone exposure by its mean at finite `q` need not be exact (the error has an explicit bound). VAF-to-stem-cell count and a terminal mark-to-diagnosis link require separate assumptions. **Neither marginal Cox HR nor pooled VAF identifies the matched conditional progression law.** |
 | [#70: divisions/risk](stem-cell-divisions-risk/), [#75: Peto scaling](petos-paradox-mutation-rates/) | Free tissue/species rates reproduce every proposed transition count. At one endpoint, initiation and integrated clone success alias; common chronological expansion is absorbed in amplitude in #70's stated limit. #70's fixed-D and source-consistent uncertainty geometries have different N effects. #75's pairwise compatibility is not sufficient for a common multi-species calibration; finite-rate boundary values may only be limiting infima. A known mean other-cause lifetime does not determine cancer-first probability. **A fitted count, rate allowance or missing hazard multiplier is not an identified biological mechanism.** |
 | [#71](persister-colony-reanalysis/), [#72](merkel-viral-antigen-test/), [#74](ecdna-rejection-robustness/), [#76](viral-antigen-transport-test/) | #71's broad delayed-kernel construction preserves the complete joint observation law, even before binary occupancy coarsening. #72's nonlinear median plug-in can fail when distributions with the same medians remain compatible. #74's pairwise-uncorrelated witness is not mutually independent, and the pointwise beta-binomial rejection can disappear and re-enter as dependence rises. #76's inherited positive viral offset creates a nonzero response floor that conflicts with one target interval, but overlap and measurement bridges limit inference. **Do not replace an observation family, a distribution or a dependence cap with a convenient point surrogate.** |
-
 | [#78: CH age-prevalence](ch-age-prevalence-test/) | A gene-specific carrier event must lie within the corresponding pooled-carrier event, yet the **separately published** frozen gene and pooled predictions violate that subset inequality in 10 of 24 specified age/gene calculations (maximum 3.3762 pp). A free common mutation-supply factor can alias caller thinning; net clone fitness without turnover does not determine exact branching detection tails. **Do not treat separately fitted curves as a coherent joint distribution or an unmatched assay as a fitness-only test.** |
 
 ## Claim/status index
@@ -93,8 +122,12 @@ and failures of those measurement assumptions are valuable outcomes too.
 **Status key.** “Proved within model” refers to written assumptions and proof,
 including declared computer-assisted components. “Known prior result” credits
 established ingredients; “conjecture” is unproved. Empirical **consistent**,
-**falsified**, **untestable** and **not identifiable** apply only to the specified
-observable/criterion. “Not identifiable” means distinct allowed latent
+**falsified**, **rejected under stated assumptions**, **inconclusive**,
+**untestable** and **not identifiable** apply only to the specified
+observable/criterion. “Inconclusive” retains an executed test's unresolved
+direction; it is not evidence of no effect. “Rejected under stated assumptions”
+keeps deterministic compatibility failures distinct from calibrated significance
+tests. “Not identifiable” means distinct allowed latent
 explanations share the observations; “untestable” means required observables or
 calibration are unavailable. **Partial** records unfinished requested work,
 even when the restricted analysis and its tests are complete.
@@ -126,172 +159,179 @@ Symbols are local to their note; identical letters need not mean the same thing.
 | [Incidence strata test](incidence-strata-test/) (#73) | Applies [#64](multistage-incidence-identifiability/)'s necessary nondecreasing-bin-mean condition to **330 SEER 2013–2017 rates / 30 site–sex–race curves**, ages 30–84, with printed one-decimal rates represented only by rounding intervals. **Six fail:** female breast in All Races, Whites and Blacks, plus Black lung/bronchus in Both Sexes, Males and Females. Breast minimum abstract calibration allowances are **1.066238 / 1.062759 / 1.056962**; all colon/rectum and pancreas curves pass the necessary condition. | **Empirical: descriptive shape falsification within the stated rounding rule; consistency only with a necessary condition for passing curves.** Race pooling alone does not remove the breast failure. Population-hazard significance and causal explanation remain **untestable**, with no counts/exposures or identified biological step count. | Low: reproducible within-stratum and constraint-age audit extending #64, **no new theorem**. The overlapping race/sex columns are not independent samples or replications. | [test_research_incidence_strata_test.py](../tests/test_research_incidence_strata_test.py) | Tests [#64](multistage-incidence-identifiability/)'s observable homogeneous-model restriction; [#70](stem-cell-divisions-risk/) is a methodological precedent, not a separately validated theory here. |
 | [ecDNA rejection robustness](ecdna-rejection-robustness/) (#74) | For the three untreated Lundberg lines, computes **sharp attained** upper tails over finite exchangeable binary rejection indicators with actual null-size cap `p<=A` and between-mother correlation cap `Corr<=R`, then applies Holm at family level 0.05, equality rejecting. At `A=0.01`, LA-N-5 alone rejects exactly when **`0<=R<=17/3267`**. The zero-correlation-cap tail is not the mutually independent tail. An exact-r beta-binomial sensitivity has nonmonotone rejection re-entry; it is not robustness under a cap allowing smaller r. | **Proved within the declared sensitivity model. Empirical: fair-segregation rejection conditional; actual size/dependence caps not identifiable from these counts.** Loss of rejection does not establish fair segregation. | Narrow repository robustness/frontier audit with **known prior** finite-moment, exchangeability, Holm and polynomial-certification tools; no new segregation estimate, biological experiment or general statistical-method priority claim. | [test_research_ecdna_rejection_robustness.py](../tests/test_research_ecdna_rejection_robustness.py) | Extends the Lundberg rejection-count endpoints in [#65](ecdna-segregation-clustering-data/) and [#63](prediction-confrontation/). Does not recalculate #65's separate Shibata-fit transport or refute [#55](ecdna-segregation-therapy/)/[#60](ecdna-killing-laws-and-clustering/)'s conditional mathematics. |
 | [Peto's paradox / mutation rates](petos-paradox-mutation-rates/) (#75) | In the ordered equal-rate independent-target chain, `H=N psi_k(x)` exactly, so equal lifetime **functional** clocks leave H proportional to target number. For positive M,m,L, direct onset risks `0<R_i,R_j<1`, fixed a, unrestricted positive finite common c,nu and **real effective targets** `N=nu M^a`, impose passenger-to-functional calibration `x=c mL`. A two-species pair with `b=(m_i L_i)/(m_j L_j)!=1`, `y=(H_i/H_j)/(M_i/M_j)^a` and integer `k>1` admits positive finite common c,nu iff **`min(b,b^k)<y<max(b,b^k)`**; endpoints are only limits. The note treats the k=1 and b=1 cases separately and derives a sharp interval-modulation infimum. The six-species mortality-matched proxy's cell-aware limiting models predict worse than the intercept for every tested k=1,...,8. | **Proved within model. Empirical: unmodulated shared-k proxy fails under the stated mapping/primary boxes; biological compensation not identifiable.** The hypothetical factor-two rate/lifespan stress gives `F_inf=1` for the **giraffe/naked-mole-rat pair** at tested k=3,...,8; no extra biological steps, repair or immune defense are measured. | Reproducible synthesis plus **candidate narrow exact pair-compatibility/modulation refinement; priority unestablished**. Peto tradeoffs, mutation/cancer joins, the exact chain and interval geometry are **known prior results**. | [test_research_petos_paradox_mutation_rates.py](../tests/test_research_petos_paradox_mutation_rates.py) | Reuses [#70](stem-cell-divisions-risk/)'s exact chain and [#64](multistage-incidence-identifiability/)/[#70](stem-cell-divisions-risk/)'s compatibility geometry. Passenger clocks, target proxies and mortality are observation assumptions; pairwise compatibility does not establish a single all-species calibration. |
-
 | [Viral-antigen offset transport](viral-antigen-transport-test/) (#76) | Transport the **unchanged** [#72](merkel-viral-antigen-test/) Part-A-calibrated one-parameter offset of [#67](immune-escape-pancancer-test/)'s frozen Merkel-held-out reciprocal TMB curve across the specified HPV/EBV-labelled cancer strata, with the five inherited assay scales and no target refit. At the primary point offset and `c=1`, the viral-positive response range has lower limit **27.534051%** and upper ceiling **48.718323%**; the selected KEYNOTE-040 HPV-positive ORR 95% interval **[4.7%,22.2%]**, widened for printed rounding to **[4.65%,22.25%]**, is below the minimum by **5.284051 pp**. This is a necessary range contradiction for **all nonnegative TMB**, not a paired predictive-error test; all inherited point scales retain the contradiction, while a low-endpoint training sensitivity may not. | **Empirical: frozen point-offset transport falsified under the declared range criterion.** A strict historically independent out-of-sample verdict is **untestable** owing to possible training-cohort overlap; comparative offset-versus-TMB predictive gain is **untestable** because **zero complete eligible positive/negative ORR–TMB pairs** are available. The EBV result is adverse single-stratum point evidence only. Neither finding identifies viral antigen supply. | Limited repository-specific source/transport audit and numerical counterexample using **known prior** viral biology and elementary response-range bounds; priority for any narrow synthesis unestablished. No new viral mechanism, independent external validation or biomarker. | [test_research_viral_antigen_transport_test.py](../tests/test_research_viral_antigen_transport_test.py) | Tests the measurement/offset extension in [#72](merkel-viral-antigen-test/) of [#67](immune-escape-pancancer-test/)'s ecological proxy; [#59](immune-escape-neoantigen-clonality/)'s functional-load model is not measured or falsified. |
-
 | [CH age-prevalence transport](ch-age-prevalence-test/) (#78) | Under a frozen Watson-derived truncated stretched-exponential distribution of fitness effects, the specified positive Poisson mutation supply, cross-sectional clone-threshold observation and true-VAF reference, the note derives a one-dimensional age-prevalence integral, an exact integer birth–death cross-sectional tail, sharp age-support/common-supply compatibility bounds and necessary gene-in-pooled event inclusion (numbered results 1–7). At the unchanged supplied parameters the **substituted** curated-driver CHIP aggregate endpoint fails the frozen interval-compatibility criterion; in Qiu/CNSR-III the primary common-supply bounds are **[297.545536,0.628432]** (empty) and the post-score finite-band sensitivity remains empty (**[5.319347,0.648814]**). Separate gene and pooled model fits violate the necessary event-inclusion condition in **10/24** frozen grid comparisons (largest **3.3762 pp**). | **Proved within stated model** (calculus, conditional branching and identification results). **Empirical: substituted compound transport falsified under the declared descriptive criterion; fitness alone untestable.** A necessary internal fit-consistency test fails, but published broad gene marginals are **not** matched gene-by-age curves; different variant panels, VAF thresholds, callers, age distributions, supply and possible cohort overlap prevent causal or mechanistic attribution. | Limited numerical transport and source/eligibility audit, plus a model-only necessary subset check; Watson's age-prevalence/fitness framework, CH age associations and core branching/Poisson tools are **known prior results**. Neither a new CH mechanism, a first external comparison, clinical predictor nor priority claim. | [test_research_ch_age_prevalence_test.py](../tests/test_research_ch_age_prevalence_test.py) | Separately interrogates the age-prevalence observation bridge motivated by CH fitness studies; related to but **not a test of** [#68](clonal-hematopoiesis-progression/)'s conditional progression-hazard theorem. [#64](multistage-incidence-identifiability/) supplies a distinct observation/calibration precedent; [#70](stem-cell-divisions-risk/) similarly illustrates nonidentification from aggregate endpoints. |
+| [MHC-I cancer-mortality transport](mhc-cancer-mortality-transport/) (#79) | Tests one added `log(MHC-I family size + 1)` term beyond log body mass, log adult life expectancy and mammal-prey diet in whole-order-held-out ridge binomial models. The common panel has **125 species / 16 orders**, including **17 recorded zero-case species**. Order-balanced cancer-death log-loss gain is **+0.002542709**, with approximate complete-refit order-jackknife 95% interval **[−0.005071459, +0.015172375]** around the separately reported bias-corrected center **+0.005050458**. The death-weighted gain is **−0.000180594**. | **Empirical: inconclusive**; the frozen label is **“untestable: inconclusive on the available panel.”** The uncertainty gate fails. Neither portable improvement nor absence of improvement is established; selected managed populations and shared outcome provenance limit transport. | Bounded repository-specific predictive-transport and count-rounding audit. The MHC-family-size/cancer association is a **known prior result**; no new immune mechanism, functional-repertoire measurement, independent mortality validation or priority claim. | [test_research_mhc_cancer_mortality_transport.py](../tests/test_research_mhc_cancer_mortality_transport.py) | Tests an additional measured proxy motivated by [#75](petos-paradox-mutation-rates/)'s unresolved target-cell factor and [#59](immune-escape-neoantigen-clonality/)'s immune line. Mortality shares #75's Species360/ZIMS provenance; gene-family size does not measure #59's functional antigen load. |
+| [Breast incidence decline and stage](breast-incidence-decline-stage/) (#80) | In printed 2016 USCS counts/exposures, the frozen **15-comparison**, two-sided Bonferroni family under a fixed-exposure Poisson model establishes overall and recorded-localized declines on **70–74 → 75–79** and **75–79 → 80–84**. Recorded localized losses supply **114.325% / 92.133%** of the respective net declines. No regional or distant decline is established under the primary rule; distant incidence increases on the earlier edge. The later localized decline survives adverse unknown-stage/residual allocation plus sampling uncertainty (**RR upper 0.933298**); the earlier one does not (**1.013326**). The later localized majority survives allocation descriptively, without a sampling-confidence claim for the share. | **Empirical: the compound nondecreasing observed-rate restriction is falsified under the stated count model; recorded localized predominance is consistent with the published pattern.** The later regional decision changes under the prespecified one-sided sensitivity. Screening effects, age/cohort attribution, latent onset hazards and biological transition counts remain **untestable** from this table. | Incremental uncertainty, count/exposure and missing-stage audit. The age peak, decline and stage pattern are **known prior results** in Turbow et al.; exact conditional intervals and Bonferroni are established statistics. No new epidemiological mechanism, independent replication or priority claim. | [test_research_breast_incidence_decline_stage.py](../tests/test_research_breast_incidence_decline_stage.py) | Tests [#64](multistage-incidence-identifiability/)'s observable restriction following [#73](incidence-strata-test/), with different but partly overlapping aggregates. USCS includes SEER; pooled counts do not supply #73's missing race-specific denominators. |
+| [Mutation-clock separability](mutation-clock-separability/) (#81) | For positive rates, `r(species,tissue)=species_factor*tissue_factor` requires the mouse/human blood-to-colon ratio-of-ratios **Q=1**. Printed proxy rates give **Q=0.159211**; the printed-blood-interval box with colon points fixed is **[0.145714,0.173199]**, requiring sharp minimum symmetric allowance **rho_min=1.55011** per species–tissue matrix entry. Outward rounding still excludes 1; a hypothetical measurement-interaction band **[1/8,8]** rescues compatibility. Frozen human/mouse neuronal calibration predicts **46.959** ferret SNVs/genome/year versus **24** observed, but its intestinal predictor is **small intestine, not colon**. | **Proved within the positive multiplicative model** (sharp departure bounds). **Empirical: separable passenger-clock proxy rejected under stated measurement assumptions**, by deterministic compatibility, not a significance test. Biological separability with unrestricted assay/genotype/age-window interactions, and strictly matched ferret colon-to-neuron transport, are **untestable**. Missing colon uncertainty and descriptive SEM boxes are not confidence guarantees. | Reproducible quantitative/source-eligibility audit using elementary interaction bounds. Tissue contrasts are **known prior results**; no new biological discovery, general species-clock validation or priority claim. | [test_research_mutation_clock_separability.py](../tests/test_research_mutation_clock_separability.py) | Tests the passenger-clock transport bridge in [#75](petos-paradox-mutation-rates/). Neither mutation-based cancer models nor functional driver clocks are rejected; postmitotic neurons are a transport negative control, not cancer targets. |
+| [Matched Merkel TMB-bin test](merkel-tmb-bin-test/) (#82) | Tests the frozen bridge `ORR_bin=E[f(c*T) given cohort,bin]` on matched JAVELIN Parts A/B bins **TMB <2 / >=2 NSSV/Mb**, allowing arbitrary distinct distributions on finite TMB values within bins and one common finite positive assay scale. Sharp mean ranges give primary reciprocal common region **(4.050433, infinity)**: identity and **[1,2]** fail; only **(4.050433,5]** survives within **[0.5,5]**. The displayed lower boundary is rounded and excluded. All four frozen curves have the same primary domain verdict. Both reciprocal curves fail exact printed point-ORR matching through their finite-load ceilings. | **Proved within the stated observation model** (sharp attainable ranges). **Empirical: consistent with the broad printed-interval rule only with stated latitude; identity/narrow-scale bridge rejected under that rule.** Marginal-interval intersection is not a joint confidence test; broad-interval survival and adverse exact-point sensitivity remain separate. | Limited repository-specific sharp-feasibility and source audit. The trial bin analyses, ecological regressions and elementary inverse/range tools are **known prior results**; no biological mechanism, calibrated assay, independent replication or priority claim. | [test_research_merkel_tmb_bin_test.py](../tests/test_research_merkel_tmb_bin_test.py) | Tests [#72](merkel-viral-antigen-test/)'s observation extension of [#67](immune-escape-pancancer-test/)'s frozen curves, removing its median substitution and broad-ORR/TMB-subset mismatch. Reuses the same JAVELIN cohorts; neither tests [#59](immune-escape-neoantigen-clonality/)'s functional-load theorem nor reverses #67's earlier predictive comparison. |
 
 ## Five next jobs, ranked by expected scientific value
 
-### Disposition of the previous ranking
+### Disposition of the ranking through #78
 
-| Previous rank / question | State after this integration |
+These are the five jobs in the preceding index, not the older queue already
+closed by #71–#74. “Done” describes the requested computation, not confirmation
+of its hypothesis. Open PRs are not merged evidence.
+
+| Previous rank / question | State at the main revision recorded above |
 | --- | --- |
-| 1. Russo raw resistance-origin reanalysis | **Partial in [#71](persister-colony-reanalysis/), not done.** The published-count alias/holdout audit is complete; original Mendeley archive verification, raw-data tracing and independent population recalibration remain open. Those unavailable raw inputs are not prerequisites for any new ranked job. |
-| 2. Merkel assay/viral-status surrogate | **Done within the available aggregate scope in [#72](merkel-viral-antigen-test/).** The scale/median audit and Part-A-fixed offset transfer are reported; mechanistic attribution remains untestable. New job 3 asks a different question using matched TMB bins already printed in the articles. |
-| 3. ecDNA miscalibration/dependence frontier | **Done in [#74](ecdna-rejection-robustness/).** The sharp frontier and contrary beta-binomial sensitivity are retained; actual size/dependence calibration is still missing. |
-| 4. Within-demographic-stratum incidence shape | **Done in [#73](incidence-strata-test/).** Breast failure persists in both printed race-specific strata. New job 2 adds count denominators and stage information from a different published aggregate table. |
-| 5. Seyedi terminal-cause composition | **Not done; retained as new job 5.** [#66](containment-evidence/)'s toxicity warning is not the proposed cause-composition/reclassification analysis. |
+| 1. MHC-I information beyond mass, lifespan and diet | **Done in [#79](mhc-cancer-mortality-transport/): inconclusive.** The whole-order test, rounding grid and sensitivities are complete; the gain interval crosses zero and the death-weighted result is negative. |
+| 2. Count-based breast decline and stage decomposition | **Done in [#80](breast-incidence-decline-stage/).** Overall/localized declines and adverse stage-completion bounds are reported. No regional/distant decline is established by the primary two-sided family; no detection-mode or causal claim follows. |
+| 3. Outcome-matched Merkel TMB bins | **Done in [#82](merkel-tmb-bin-test/).** The common-scale feasibility sets and point/rounding sensitivities are complete. The primary broad-interval rule survives only with latitude; identity and [1,2] fail, and reciprocal exact-point matching fails. |
+| 4. Species-by-tissue mutation-clock separability | **Done as the proxy audit in [#81](mutation-clock-separability/); matched ferret component untestable.** The primary conditional rejection and measurement rescue are reported. The ferret predictor is small intestine, so a true matched-colon validation was not completed. |
+| 5. Seyedi terminal-cause composition | **Partial at this cutoff.** [#66](containment-evidence/) supplies the evidence/eligibility audit and toxicity warning; the cause-composition and reclassification calculation is in [open PR #83](https://github.com/dovvnloading/open-cancer/pull/83), not yet a merged result. Its conclusions are not promoted here. |
+
+The original Russo archive task remains **partial** in
+[#71](persister-colony-reanalysis/); more copies of its published colony endpoint
+cannot identify origin. Completion of earlier aggregate tasks does not erase
+missing raw-data verification or create new permissions to obtain records.
 
 ### New ranking
 
-This is a prioritization judgment, not a forecast of discovery. The highest
-value is a new observable that can distinguish explanations or make a
-prediction fail, with an explicit comparison and an affordable stopping rule.
-All five jobs use existing public article text, printed tables or a directly
-readable aggregate text table; **none requires browser file downloads,
-controlled data, individual records or new experiments**. The sources and
-outcomes are already visible: freeze the new question, population, exclusions,
-uncertainty assumptions and scoring before analysis, without calling that
-blinding or independent preregistration. A failed data reconciliation or a
-non-identifying observation map is a reported result, not permission to fill
-missing cells or tune the question after fitting.
+This ordering is a scientific-value judgment: favor another observation axis
+for a supported signal, then a distinct endpoint, then quantitative tests of
+observation assumptions. Every job below uses **existing public article text,
+printed tables or pinned plain-text repositories**. None requires browser file
+downloads, individual records, controlled data or new experiments. Freeze the
+question, source revision, eligible panel, primary contrast, uncertainty and
+failure rule before computing; the sources are already visible, so this is
+neither blinded testing nor independent preregistration. Preserve failures,
+missing inputs, source contradictions and prior-work credit. The terminal-cause
+test is already in open PR #83, so the new ranking avoids a duplicate assignment.
 
-1. **Highest: does antigen-presentation architecture add portable predictive
-   information beyond size and lifespan?** Use **Vincze et al. (2025),
-   [Immunological surveillance against cancer across mammals](https://doi.org/10.1038/s41467-025-65286-x)**,
-   Methods “Cancer mortality risk,” and the paper-linked, pinned
-   [SourceData_FINAL.csv](https://github.com/OrsolyaVincze/VinczeEtalNatComm_MHC-cancer/blob/2c8a5c5b5fda6fb34c86b0e5a2b6a58dcc85cc3e/SourceData_FINAL.csv)
-   and [phylogeny.tre](https://github.com/OrsolyaVincze/VinczeEtalNatComm_MHC-cancer/blob/2c8a5c5b5fda6fb34c86b0e5a2b6a58dcc85cc3e/phylogeny.tre).
-   Freeze a common species panel; compare a body-mass/adult-lifespan/diet
-   baseline with one added `log(MHC-I gene-family size + 1)` term, holding out
-   entire taxonomic orders. Freeze zero-aware cancer-death scoring, order-level
-   uncertainty and a phylogeny sensitivity using the pinned tree; retain
-   zero-case species, naked mole rat and Patagonian mara
-   in the primary panel, with source exclusions only as a declared sensitivity.
-   Audit rounding before recovering integer cancer deaths from `CMR * RDI`
-   (RDI is deaths with known cause); **ICM is a separate estimator, never a
-   count recovered by that multiplication**. The published association is
-   prior work; the new question is incremental predictive transport under
-   this inclusive specification. Gain or failure would constrain a measured
-   antigen-presentation proxy motivated by [#59](immune-escape-neoantigen-clonality/)
-   after [#75](petos-paradox-mutation-rates/)'s mutation-only deficit. Mortality
-   provenance overlaps #75; this is not independent mortality validation,
-   functional-repertoire measurement or identification of immune causation.
+1. **Highest: does the breast age pattern transport across calendar time in
+   the same way at each stage?** Follow [#80](breast-incidence-decline-stage/)
+   using **Lee Argov et al. (2025),
+   [Breast Cancer Incidence Trends in Older US Women by Race, Ethnicity, Geography, and Stage](https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2835519)**,
+   main HTML **Table 2**, stage rows and age columns 65–74, 75–84 and 85+;
+   Table 1 supplies definitions and the separate rate summaries. Table 2 prints
+   2001–2019 average annual percentage changes (AAPCs) and marginal 95%
+   intervals for localized, regional, distant and unknown stage. The explicit
+   observable restriction `I_s(age,period)=A_s(age)*P_s(period)`, for each fixed
+   stage s, requires a common average log-period change across age groups.
+   **Failure observable:** an empty intersection of the rounding-widened
+   `log(1+AAPC/100)` intervals for a stage. Quantify the smallest additive
+   log-trend allowance restoring compatibility; retain all stages and the
+   unknown-stage trend, including passing restrictions. This directly tests
+   whether one period multiplier can preserve a stage's age profile.
+   Published trends are prior findings; interval intersection is a descriptive
+   compatibility rule, not a new simultaneous significance test. No annual
+   counts, joint covariance, age midpoints for 85+, or stage-reclassification
+   histories may be invented from these summaries. Period slopes differ from
+   #80's cross-sectional age slopes; shared USCS populations and different age
+   bins prevent an independent replication or an age/cohort/screening attribution.
 
-2. **High: which breast-incidence declines survive sampling uncertainty and
-   stage decomposition?** Use **Turbow et al. (2021),
-   [Mammography use and breast cancer incidence among older U.S. women](https://doi.org/10.1007/s10549-021-06160-4)**,
-   **Table 1**, printed manuscript **pp. 12–13** in the openly readable
-   [CDC author manuscript](https://stacks.cdc.gov/view/cdc/147747/cdc_147747_DS1.pdf)
-   ([article text](https://pmc.ncbi.nlm.nih.gov/articles/PMC10846538/)). It prints
-   2016 USCS age-bin case counts, population denominators, rates/intervals and
-   localized/regional/distant/unknown-stage counts. First reconcile each
-   count/exposure pair with the table's rate and age-adjustment labels; retain
-   unassigned residual counts and source inconsistencies explicitly. Freeze
-   adjacent-age contrasts for finite bins 65–84, with 85+ separate, and use
-   a declared count/exposure sampling model and simultaneous uncertainty.
-   Then ask which stage-specific declines remain under worst-case allocation
-   of unknown stage and small unreconciled residuals. This can test
-   [#73](incidence-strata-test/)'s shape restriction statistically in these
-   different aggregates and locate the observable stage contribution; failure of
-   reconciliation limits the claim. USCS includes SEER, so this is not a fully
-   independent replication. Stage at diagnosis, screening and cohort effects
-   remain distinct; neither the table nor its separate 2018 screening survey
-   identifies the cause of a 2016 age pattern or a biological transition count.
+2. **High: does the MHC-I proxy predict pathology prevalence, a different
+   observable from attributed cancer death?** Join **Vincze et al.'s pinned
+   [SourceData_FINAL.csv](https://github.com/OrsolyaVincze/VinczeEtalNatComm_MHC-cancer/blob/2c8a5c5b5fda6fb34c86b0e5a2b6a58dcc85cc3e/SourceData_FINAL.csv)**
+   with **Compton et al., [Cancer Prevalence across Vertebrates](https://pmc.ncbi.nlm.nih.gov/articles/PMC11726020/)**,
+   pinned [species-cancer-prevalence-data.csv](https://github.com/zacharycompton/cancerAcrossVertebrates/blob/4819e0933358c5fc7eab483a0c05161ea8c074b7/species-cancer-prevalence-data.csv)
+   and [data dictionary](https://github.com/zacharycompton/cancerAcrossVertebrates/blob/4819e0933358c5fc7eab483a0c05161ea8c074b7/data-description-species-cancer-prevalence-data.txt).
+   The primary outcome is explicitly denominator-linked
+   `NeoplasiaWithDenominators / RecordsWithDenominators`. Freeze species-name
+   reconciliation and a common panel; retain zero-neoplasm species. Compare
+   the mass/adult-lifespan/diet baseline with one added `log(1+MHC-I)` term,
+   with complete held-order refits, training-only transformations, equal-order
+   log-loss scoring and order-level uncertainty as in [#79](mhc-cancer-mortality-transport/).
+   **Failure observable:** nonpositive gain; an uncertainty interval spanning
+   zero leaves directional transport inconclusive, while an upper bound below
+   zero contradicts improvement under that procedure. Malignancy is a separate
+   secondary endpoint only after resolving numerator provenance: the dictionary's
+   `MalignancyKnown` description conflicts with prevalence arithmetic using
+   `Malignant`. Do not reinterpret `PropMalignant` as a progression probability.
+   This tests endpoint portability of a measured proxy after #79, not the
+   functional-load theorem in [#59](immune-escape-neoantigen-clonality/).
+   Pathology prevalence is neither onset risk nor cause-specific death; ascertainment,
+   shared zoos and possible animal overlap remain limitations. Reusing source
+   associations or a new endpoint does not establish immune causation.
 
-3. **High: does the frozen TMB-only surrogate survive outcome-matched TMB
-   bins without substituting a median?** Use **JAVELIN Merkel 200 Part A,
-   [D'Angelo et al. (2020)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7239697/)**,
-   Results “Exploratory biomarker analyses,” high/low-TMB ORR paragraph, and
-   **Part B, [D'Angelo et al. (2021)](https://pmc.ncbi.nlm.nih.gov/articles/PMC8311489/)**,
-   Results “Tumor mutational burden.” Both print ORRs and 95% intervals for
-   **TMB <2 versus >=2 NSSV/Mb within the TMB-evaluable cohort**. For each
-   frozen monotone curve `f` from [#72](merkel-viral-antigen-test/) and common
-   positive assay scale c, add the explicit mean-response bridge
-   `ORR_bin = E[f(cT) given bin]`: low-bin mean response is at most `f(2c)`
-   and high-bin mean response is at least `f(2c)`. That bridge is an additional
-   assumption for an ecologically fitted curve. Compute the sharp scale region
-   over arbitrary within-bin TMB distributions, retaining each curve's full
-   response range and finite-TMB/open-endpoint limits. Intersect it across
-   Parts A/B and compare the already-declared scale bands; fit no Part B
-   outcome parameter. Preserve the printed marginal
-   intervals without calling their intersection a simultaneous confidence test
-   or inferring counts from rounded percentages. This uses matched
-   measurement/outcome subsets to remove #72's median substitution and broad
-   ORR/TMB denominator mismatch. It can falsify that observation bridge or
-   show its latitude; it does not isolate viral antigens or test
-   [#59](immune-escape-neoantigen-clonality/)'s functional-load theorem.
-   The same trial cohorts remain reused evidence.
+3. **Moderate: how much imperfect observation is required by paired ctDNA
+   calls before a persistent-threshold model becomes compatible?** Use
+   **Tie et al. (2025), [DYNAMIC five-year report](https://pmc.ncbi.nlm.nih.gov/articles/PMC12974608/)**,
+   Results **“OS, DSS and RFS in the ctDNA-guided population,” first paragraph**,
+   **Extended Data Table 1** ctDNA-status rows, Figure 1 caption and Methods
+   “Study design and participants.” Printed aggregates supply the week-4/week-7
+   positive-call categories: **31 +/+, 8 +/− and 6 −/+**, with **291** successful
+   analyses among **294** guided-arm cases and **246** negative by the reported
+   two-timepoint classification. Confirm complete paired-call availability
+   before treating that last category as a −/− cell. Both draws were analyzed together
+   and results released at weeks 8–10; individual intervention dates are not
+   thereby verified. For latent persistent threshold status, let e4/e7 be
+   unconditional per-occasion error probabilities and b the unconditional
+   probability of genuine threshold reversal. **Failure observable:** the
+   lower uncertainty bound for the observed +/− probability exceeds a
+   hypothetical, prespecified cap on `e4+e7+b`; derive the sharp
+   compatibility frontier and bound the three unsuccessful analyses without
+   assuming missing at random. Separately, under a frozen comparable assay
+   observation kernel and nondecreasing detectable burden without an
+   intervention-induced change, test `P(+/−)<=P(−/+)` using the paired
+   discordants. This restriction requires nondecreasing marginal detection
+   probability; latent persistence with unrestricted occasion-specific errors
+   alone does not imply it. Preserve a nonrejection if this noisy-observation
+   restriction survives: [#58](ctdna-surveillance-schedule/) already permits
+   finite-molecule misses. This adds an observation channel
+   beyond [#63](prediction-confrontation/)'s lead-time summaries. It cannot
+   distinguish assay error, shedding or biological clearance, estimate recurrence
+   sensitivity, validate a schedule optimum, or imply a treatment decision.
 
-4. **Moderate: how much species-by-tissue variation does the mutation-clock
-   bridge require?** Use **Kapadia et al. (2025),
-   [Clonal dynamics and somatic evolution of haematopoiesis in mouse](https://doi.org/10.1038/s41586-025-08625-8)**,
-   Results “Somatic mutation accumulation,” with **Mitchell et al. (2022),
-   [Clonal dynamics of haematopoiesis across the human lifespan](https://doi.org/10.1038/s41586-022-04786-y)**,
-   abstract/Results for the human blood rate, and **Cagan et al. (2022),
-   [Somatic mutation rates scale with lifespan across mammals](https://pmc.ncbi.nlm.nih.gov/articles/PMC9021023/)**,
-   Results “Correlation with life-history traits,” the printed human/mouse
-   colon-rate comparison. Freeze the separable restriction
-   `rate(species,tissue)=species_factor * tissue_factor`; it predicts a
-   mouse/human rate ratio that is identical in blood and colon. Compare the
-   ratio of those ratios with one and bound the minimum multiplicative
-   departure, using printed intervals only where supplied and a separately
-   labeled assay/normalization sensitivity elsewhere. Add a predeclared
-   three-species negative control from **Caglayan et al., September 2026
-   [preprint, version 1](https://pmc.ncbi.nlm.nih.gov/articles/PMC13622217/)**,
-   Results accompanying Figs. 1f and 2i–l: printed human/mouse/ferret
-   glutamatergic-neuron annual SNV rates. The additional ferret colon input
-   is the `Ferret` mutation-rate row in the exact
-   [Compton-hosted Cagan aggregate table](https://github.com/zacharycompton/cancerAcrossVertebrates/blob/3b4db10c7c38c63aeebfc9a48ce4bfa376dfd2bc/Mutation_Data.csv),
-   already transcribed with missing uncertainty in
-   [#75's source audit](petos-paradox-mutation-rates/data/PROVENANCE.md).
-   Freeze human/mouse calibration and score ferret transfer without fitting
-   its neuronal outcome. Keep SEMs distinct from confidence limits and the
-   preprint check distinct from the peer-reviewed blood/colon comparison. Keep
-   cultured stem-cell estimates, duplex blood estimates, per-genome/per-base
-   units and genotype effects distinct. This is a quantitative transport check
-   for [#75](petos-paradox-mutation-rates/)'s colon-to-whole-animal bridge,
-   not a new discovery that tissues differ: that observation is prior work.
-   Postmitotic neurons are a transport negative control, not cancer targets;
-   the sparse panel does not support a general species-level validation.
-   A failure rejects the separable passenger-clock proxy under its measurement
-   assumptions, not mutation-based cancer models or functional driver clocks.
+4. **Moderate: can one proportional age effect explain both breast receptor
+   categories once missing status is allowed for?** Use **Turbow et al. (2021),
+   [Table 1 in the article](https://pmc.ncbi.nlm.nih.gov/articles/PMC10846538/#T1)**,
+   “Receptor Status” rows (also printed on pp. 12–13 of the readable
+   [CDC manuscript](https://stacks.cdc.gov/view/cdc/147747/cdc_147747_DS1.pdf)).
+   The categories are **ER-positive OR PR-positive**, including borderline,
+   versus **ER-negative AND PR-negative**, plus unknown. Freeze adjacent finite
+   ages 65–84 and use case composition, with 85+ descriptive: if both observed
+   receptor-specific rates change by one common proportional age factor, the
+   ratio `(positive/negative)_older / (positive/negative)_younger` is one.
+   **Failure observable:** a multiplicity-aware conditional interval excluding
+   one even after all allowed allocations of unknown receptor and separately
+   recorded residual counts. Report the minimum completion that restores
+   compatibility if the stronger claim fails. First reconcile the partition:
+   some unknown-receptor rate/count pairs disagree, and category sums leave
+   residuals. Treat allocation as conditional on correct total/known-category
+   counts, not a repair of source truth. This adds a molecular-category contrast
+   to [#80](breast-incidence-decline-stage/), whose original data source is reused.
+   Stage-by-receptor cells are absent, so localized and receptor-specific losses
+   cannot be assigned to the same cases. The source's receptor age pattern is
+   prior work; receptor-neutral detection alone does not imply equal underlying
+   subtype trends, and no screening or hormonal mechanism is identified.
 
-5. **Moderate: does a schedule-associated terminal-cause contrast survive
-   attribution uncertainty?** Use **Seyedi et al. (2024),
-   [Cancers 16:257](https://www.mdpi.com/2072-6694/16/2/257)**,
-   [public supplement](https://www.mdpi.com/article/10.3390/cancers16020257/s1),
-   **`cancers-2752834-supplementary.pdf`, Table S4 (pp. 32–33)** for the
-   primary combination/vehicle comparison, with the cause-definition narrative
-   on p. 32. The public supplement is a ZIP containing that printed PDF and
-   can be read through ordinary HTTP/archive parsing without a browser
-   download. Table S1 states attribution reasons; S5 gives dose means.
-   **Reconcile denominators first:** the adaptive rows of single-drug
-   Tables S2/S3 each sum to 13, although the listed pooled groups contain 12
-   animals. Keep those discrepancies visible; do not silently subtract a case
-   or treat those totals as randomized sample sizes. S4's group totals agree
-   with the stated combination/vehicle sizes and supply the executable
-   primary contrast. Freeze exact small-sample cause-composition comparisons
-   and the number/fraction of cause reclassifications needed to erase each
-   contrast, preserving source-pooled arms and counting the shared combination
-   control once. Use S2/S3 only after a documented reconciliation or explicit
-   partial-identification bounds. Report effects and multiplicity-aware
-   uncertainty with every adverse or null contrast. This
-   would quantify how much [#66](containment-evidence/)'s toxicity explanation
-   depends on attribution, rather than treating an all-cause outcome as
-   evidence for [#61](containment-at-tumour-scale/)'s mechanism. Unequal
-   follow-up and competing risks prevent interpretation as equal-horizon
-   cancer mortality, cause-specific survival or an identified mutation-supply
-   threshold. No schedule or dose recommendation follows.
+5. **Exploratory: does the SINE annotation proxy add transportable neoplasia
+   information beyond L1?** Use **Nikoonejad Fard and Tollis (2025),
+   [Recent Non-LTR Retrotransposon Activity Predicts Cancer Prevalence in Mammals](https://pmc.ncbi.nlm.nih.gov/articles/PMC12424770/)**,
+   the cited preprint version, and pinned
+   [Supplementary Data S1.csv](https://github.com/VNF1981/Non-LTR-Retrotransposons-Cancer-Project/blob/792af204b4113238276b3ac43e511b62872dd368/Supplementary%20Data%20S1.csv).
+   The file has **55 species / 11 orders**. Freeze one comparison: add
+   `log(1+SINEs_Counts)` to a baseline with `log(1+L1_Counts)`, maximum
+   longevity and declared assembly-quality covariates (`Assembly_BUSCO_Scores`
+   and `Contig_N50`), using training-only transformations and whole-order
+   refits. Primary outcome: `NeoplasiaPrevalence`; secondary:
+   `MalignancyPrevalence` only after reconciling the numerator issue described
+   in job 2, with multiplicity handled explicitly. Audit the
+   `Necropsies` denominator and all rounding-compatible numerators before
+   using binomial log loss; incompatible counts remain a data gate.
+   **Failure observable:** nonpositive equal-order held-out gain, an interval
+   crossing zero leaving improvement inconclusive, or loss of the claimed
+   gain under prespecified order deletions and assembly-quality sensitivity.
+   Report effect uncertainty, including an upper bound below zero if present.
+   Keep L1-zero species with `log1p`; do not search across the paper's many
+   annotation metrics after scoring. The published association is prior work;
+   this tests incremental transport in a panel that **excludes species with
+   zero recorded neoplasia or malignancy**,
+   not general mammalian cancer risk. These inherited genome annotations do
+   not measure ongoing somatic retrotransposition or a transition from benign
+   to malignant disease. Pathology provenance overlaps job 2; no independent
+   outcome replication, causal progression mechanism or new association is
+   established by reproducing the source fits. The source's malignancy
+   abundance associations already lose significance after longevity adjustment.
 
-The original index's laboratory/new-sampling proposals are not executable
-with these public inputs. A new 100-mother ecDNA experiment, matched ctDNA
-schedule outcomes, calibrated metastatic lag/pairwise downsampling release,
-or real-tumour `lambda/lambda*` estimation is not an existing-data job.
-#60's solved linear threshold is also no longer an open task. Repeating #71's
-endpoint alone, fitting more offsets to #72's unmatched marginals, or treating
-#74's caps as measured parameters would not resolve their identification limits.
+Matched ctDNA schedule outcomes, calibrated metastatic lag/pairwise sampling,
+a new ecDNA mother-cell experiment and real-tumour `lambda/lambda*` estimation
+remain unavailable as existing-public-aggregate jobs. #60's linear threshold
+is solved. More fitted offsets, uncalibrated error caps, or repetitions of an
+exactly aliased endpoint do not substitute for a new discriminating observable.
 
 ## Verification boundaries and reproducibility
 
@@ -326,8 +366,19 @@ conditional transport failure from the untestable independent comparison.
 #78 checks frozen supply/panel joins, all age-bin predictions, common-multiplier
 and gene-subset contradictions, with matched-assay and cohort-independence
 failures kept separate from any biological fitness conclusion.
+#79 independently checks rounding-compatible deaths, training-only transformations,
+held-out-label isolation, complete-refit order uncertainty and every score;
+optimizer stopping diagnostics are bounds, not portable bit patterns. #80
+checks exact conditional interval tails, all 15 primary comparisons, signed
+stage accounting and adverse completion extrema; the one-sided family stays
+separate. #81 checks ratio interactions, sharp-bound attainment, assay rescue,
+ferret-outcome isolation and the small-intestine correction; missing uncertainty
+and descriptive SEM ranges remain distinct from confidence statements. #82
+checks frozen curve replay, missing bin denominators, open endpoints, ceiling
+and plateau cases, sharp feasibility witnesses and every interval/point/rounding
+region; a zero distance to an excluded endpoint is not attainable compatibility.
 
-Empirical tests in #63/#65–#68/#70–#76/#78 recompute source joins, exclusions,
+Empirical tests in #63/#65–#68/#70–#76/#78–#82 recompute source joins, exclusions,
 denominators, uncertainty conventions and generated blocks. They do not
 establish source truth, search completeness, undocumented sampling assumptions,
 independent replication or biological validity. Respect the frozen protocols
@@ -375,6 +426,10 @@ python -B research/petos-paradox-mutation-rates/verifier.py
 python -B research/viral-antigen-transport-test/analysis.py --check
 python -B research/ch-age-prevalence-test/analysis.py
 python -B research/ch-age-prevalence-test/verify.py
+python -B research/mhc-cancer-mortality-transport/analysis.py
+python -B research/breast-incidence-decline-stage/analysis.py --check
+python -B research/mutation-clock-separability/analysis.py --check
+python -B research/merkel-tmb-bin-test/analysis.py --check
 ```
 
 Repository gates use the existing dependency in
