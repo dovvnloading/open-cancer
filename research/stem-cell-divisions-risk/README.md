@@ -398,10 +398,17 @@ A common-u model cannot fit both aggregates. The unique rate ratio obeys
 
     (H_b/H_a)^(1/k) <= u_b/u_a <= H_b/H_a.
 
-For k>1 both inequalities are strict. With interval risks, replace H_b by
-its lower bound and H_a by its upper bound if they are separated. If the
-same shared N,D varies jointly within uncertainty bounds, the lower ratio
-bound remains valid because it holds for every common realization.
+For k>1 both pointwise inequalities are strict. For separated risk
+intervals 0<R_a^-<=R_a^+<R_b^-<=R_b^+<1, write
+H_x^\pm=-log(1-R_x^\pm). A valid uniform (not necessarily sharp) envelope is
+
+    (H_b^-/H_a^+)^(1/k) <= u_b/u_a <= H_b^+/H_a^-.
+
+Using lower H_b and upper H_a supplies **only** a lower bound; it
+cannot be used for the upper bound. If the common N,D itself varies
+jointly within uncertainty bounds, this envelope remains valid for
+each common realization. It does not apply if N,D can differ between
+the two observations.
 
 Proof. Equal inputs and u give equal R by Theorem 1, contradiction. Let
 x_b=u_bv>x_a=u_av. Integrating 1<=dlogpsi/dlogx<=k gives
@@ -604,10 +611,14 @@ identified. Do not present the asymptotic shape as an exact finite-rate risk.
 
 ### Theorem 7 — extrinsic attribution is observationally confounded
 
-Assumptions: Theorem 1's sequential chain; at every transition a total intensity
-u_i is the sum u_i^I+u_i^E of nonnegative intrinsic and extrinsic independent
-Poisson hazards. Only (R_i,N_i,D_i) is observed; there are no cause labels,
-known interventions, exogenous exposure constraints or mutation spectra.
+Assumptions: For each tissue i use Theorem 1's **equal-rate** sequential
+chain: all k transitions in that tissue have the same positive total
+intensity u_i=u_i^I+u_i^E, with nonnegative independent intrinsic and
+extrinsic Poisson hazards. The split is constant across steps *within*
+a tissue but may differ between tissues. Only (R_i,N_i,D_i) is observed;
+there are no cause labels, known interventions, exogenous exposure
+constraints or mutation spectra. Arbitrary step-specific intrinsic splits
+are not covered by the displayed counterfactual formula.
 
 For every alpha_i in [0,1] (allowing zero intensity by continuous extension), the split
 u_i^I=alpha_i u_i, u_i^E=(1-alpha_i)u_i has exactly the same observed law.
@@ -983,6 +994,8 @@ stronger restriction than the single endpoint. No such data are supplied here.
 | Use exact finite-rate inversion instead of a rare-event approximation. | Independent high-precision inversion reproduces the key certificates. Large high-k limiting-fit discrepancies prevent an unsupported rejection of exact models from those prediction scores. |
 | Treat N and D perturbations as independent clocks. | Rejected. Theorem 3 preserves v=D/N; Corollary 3.1 shows the opposite N effect under a source-consistent formula. |
 | Interpret a printed probability of one as a finite cumulative hazard. | Rejected. It is retained in historical log-risk replication and excluded from finite-risk inversion without clipping. |
+| Apply an interval lower-risk substitution to both sides of a rate-ratio inequality. | Rejected on merge review: the lower-rate bound uses (H_b^-/H_a^+)^(1/k), but the upper-rate bound needs H_b^+/H_a^-; the original wording was ambiguous. |
+| Treat a shared intrinsic fraction as a different value at every stage while keeping the equal-rate counterfactual formula. | Rejected: Theorem 7 now states the within-tissue equal-rate and equal-split assumptions explicitly. |
 | Treat residual ratios as absolute clone probabilities or synchronized clone survival as the endpoint factor. | Rejected. Relative thinning probabilities and the same clone-age weighting are required. The mechanistic prediction is conditional on an independently validated reference. |
 | Use a convenient online transcription or infer missing annual/lifetime values. | Rejected. Printed table checks caught esophageal/thyroid transcription pitfalls and preserved source inconsistencies. |
 | Combine the later international sorted risk columns with old division inputs. | Rejected because endpoints, input versions and joint registry identities do not match. Coverage remains explicitly incomplete. |

@@ -79,6 +79,46 @@ CC0 source: all 155 numeric fields in `little2016.csv` matched its five
 source columns. Source lexical numerical strings are retained where
 possible; scientific notation and decimal notation are compared by value.
 
+### Merge-review independent source spot check (2026-11-18)
+
+The following **12 original TV2015 rows** were checked afresh against the
+three-page **printed Table S1 scan linked in section 2**, including all five
+numeric fields per row (risk, N, annual divisions, lifetime divisions, D).
+The table below reproduces only a short identifier, the risk and N as
+cross-check identifiers; the other three fields are checked against the
+committed CSV, not recopied here. This is an independent source *spot
+check*, not a second 155-field whole-table transcription.
+
+| Original Table S1 row | Risk | N | Check |
+| --- | ---: | ---: | --- |
+| Acute myeloid leukemia | 0.0041 | 1.35e8 | matched |
+| Basal cell carcinoma | 0.3 | 5.82e9 | matched |
+| Chronic lymphocytic leukemia | 0.0052 | 1.35e8 | matched |
+| Colorectal adenocarcinoma | 0.048 | 2e8 | matched |
+| Colorectal adenocarcinoma with FAP | 1 | 2e8 | matched |
+| Duodenum adenocarcinoma | 0.0003 | 4e6 | matched |
+| Esophageal squamous cell carcinoma | 0.001938 | 8.64e5 | matched |
+| Glioblastoma | 0.00219 | 1.35e8 | matched |
+| Hepatocellular carcinoma | 0.0071 | 3.01e9 | matched |
+| Lung adenocarcinoma (nonsmokers) | 0.0045 | 1.22e9 | matched |
+| Ovarian germ cell | 0.000411 | 1.1e7 | matched |
+| Thyroid papillary/follicular carcinoma | 0.01026 | 6.5e7 | matched |
+
+Additional version checks on those same source rows: the Little2016
+reanalysis retains the original risk, N and D, and the documented
+glioblastoma/ovarian maintenance fields become annual 0.025 and lifetime 2;
+this agrees with Little et al.'s stated division-by-N then division-by-80
+method. The Nunney2020 *derived sensitivity* entries for AML, glioblastoma
+and thyroid papillary/follicular recompute respectively to
+129734999999, 134999999 and 519999999 by N*(L+1)-1. These three
+values are **our arithmetic**, not values claimed as a published Nunney
+table. The 2022 source's published supplementary workbook, its exact cell
+locators and its data CC0 reuse statement were checked in the original
+source audit. This merge review rechecked the publisher's workbook listing,
+age endpoint and rights but could not independently inspect the binary XLSX
+values; the Liu numeric entries therefore retain the original documented
+transcription audit and are not mislabelled as newly verified here.
+
 ## 3. The three later division-clock changes
 
 Original Table S1 and Little's republication agree on risk, stem-cell
