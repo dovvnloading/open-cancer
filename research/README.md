@@ -1,10 +1,10 @@
 # Research programme: claims, evidence and next decisions
 
 **Nonclinical, unreviewed research. No treatment, diagnosis, surveillance or
-patient-selection advice.** This index covers all **28 research notes merged
-through PR #82**, including #71's explicitly partial deliverable, audited against
+patient-selection advice.** This index covers all **29 research notes merged
+through PR #83**, including #71's explicitly partial deliverable, audited against
 `main` at
-[`ca4e770`](https://github.com/dovvnloading/open-cancer/commit/ca4e770c9b6531838902a0804c987cee6083a9dc).
+[`2a6d357`](https://github.com/dovvnloading/open-cancer/commit/2a6d357224a286a05dbae03d6d3ad88ed622d552).
 It records mathematical results, their observation assumptions, and what the
 available data actually tested. No entry establishes a new biological discovery,
 clinical validity, external peer review or bibliographic priority.
@@ -33,6 +33,7 @@ The linked notes retain the individual falsification fixtures and review logs.
 
 | Result retained | What it teaches |
 | --- | --- |
+| **[Terminal-cause attribution (#83)](schedule-terminal-cause/): the primary toxicity-label contrast fails the frozen robustness rule.** In Seyedi et al.'s source-pooled S4 mouse-xenograft comparison, combination MTD has **6/6** toxicity-labelled terminal events versus **3/12** under ping-pong adaptive therapy (**+75 pp**). Unadjusted exact three-cause composition and toxicity-versus-rest p-values **0.016484 / 0.009050** reject under an unadjusted 0.05 criterion, but their fixed-family Holm values **0.181319 / 0.108597** do not. The primary rule fails already at **zero relabellings**; one MTD toxicity-to-cancer relabelling removes raw composition rejection, two remove raw toxicity rejection, and five erase/reverse the printed direction. | **Empirical: rejected under the declared attribution/multiplicity robustness rule**, not evidence of no toxicity, no schedule association or no survival difference. Both CAP and GEM single-drug adaptive rows print **13** cause assignments for **12** allocated animals, making their unconditional comparisons **untestable**; hypothetical one-cell decrements are conditional partial-identification bounds, not repaired source data. The cause label is not established drug-caused death; unequal observation times and competing risks prohibit equal-horizon or causal mortality interpretation. |
 | **[Matched Merkel TMB bins (#82)](merkel-tmb-bin-test/): identity and the narrow assay-scale band fail, while broad-interval compatibility survives with latitude.** For the primary frozen reciprocal curve, the common finite-positive-scale region is **(4.050433, infinity)**, with the lower endpoint open and displayed rounded. It misses **c=1** and **[1,2]**, but intersects **[0.5,5]** in **(4.050433,5]**. Both reciprocal curves fail exact printed point-ORR matching through their ceilings; the primary ceiling is **48.718323%**, below Part B's **50.0%** high-bin point by **1.281677 pp**. | The primary printed-marginal-interval rule is **consistent only with the stated latitude**, not a calibrated significance test or assay estimate. Arbitrary different within-bin TMB distributions, a common uncalibrated scale and broad marginal intervals remain allowed. Matching the bin outcomes removes #72's specific median/denominator substitution, but does not identify viral antigen supply, independently replicate the reused JAVELIN cohorts, or reverse [#67](immune-escape-pancancer-test/)'s earlier comparison. |
 | **[MHC-I order transport (#79)](mhc-cancer-mortality-transport/): the incremental gain is inconclusive.** The order-balanced log-loss improvement **+0.002542709** has an approximate complete-refit jackknife 95% interval **[−0.005071459, +0.015172375]**, crossing zero; the separate death-weighted contrast is negative (**−0.000180594**). Removing the singleton Cingulata order reduces the gain to **+0.000075771**; deleting Primates reverses it (**−0.000921585**). | The failed uncertainty gate prevents a positive transport claim despite improvement in **10/16** orders. The interval uses a bias-corrected center, not the full-panel point gain. Neither absence of an MHC effect nor failure of immune surveillance is established. Gene-family size is not functional antigen presentation, and shared Species360/ZIMS mortality provenance prevents independent mortality validation relative to [#75](petos-paradox-mutation-rates/). |
 | **[Breast incidence decline/stage (#80)](breast-incidence-decline-stage/): older-age net declines are carried mainly by recorded localized disease.** On **70–74 → 75–79** and **75–79 → 80–84**, localized signed shares are **114.325% / 92.133%**. No regional or distant decline is established by the primary two-sided simultaneous rule; distant incidence rises on the earlier edge. Only the later localized decline survives adverse unknown-stage/residual allocation plus count-model uncertainty. | The common-decline interpretation across stages is unsupported. A later regional decline appears under the prespecified one-sided sensitivity, so “not established” does not mean absent. Localized stage is not observed screen detection. The later localized majority survives allocation descriptively, without a sampling-confidence claim for that share. Age, cohort, diagnosis and latent-onset explanations remain distinct; USCS/SEER overlap prevents fully independent replication. |
@@ -71,8 +72,12 @@ and [#81](mutation-clock-separability/)'s separable passenger clock.
 [#82](merkel-tmb-bin-test/) removes one median/denominator substitution, but
 its surviving broad-interval rule requires assay/distribution latitude;
 identity/narrow-scale and exact reciprocal point matching fail. This is
-compatibility, not an additional positive biological finding. These outcomes
-do not select a biological explanation.
+compatibility, not an additional positive biological finding.
+[#83](schedule-terminal-cause/)'s printed-label toxicity contrast likewise fails
+its prespecified multiplicity/attribution rule; unreconciled single-drug cause
+totals prevent unconditional tests. The result does not identify drug-caused
+toxicity or clone-level schedule mechanisms. These outcomes do not select a
+biological explanation.
 
 **Exhausted with the currently located public aggregates:** identifying
 acquisition versus delayed resistance from [#71](persister-colony-reanalysis/)'s
@@ -85,13 +90,14 @@ rejection counts; isolating CH fitness from [#68](clonal-hematopoiesis-progressi
 functional clock or cancer-defense mechanism from
 [#75](petos-paradox-mutation-rates/)/[#81](mutation-clock-separability/)'s
 sparse passenger proxies. Likewise, [#66](containment-evidence/)'s all-cause
-outcomes do not identify a mutation-supply threshold, and [#62](metastatic-seeding-timing/)'s
+outcomes and [#83](schedule-terminal-cause/)'s attributed terminal causes do not
+identify a mutation-supply threshold or causal toxicity, and [#62](metastatic-seeding-timing/)'s
 one-region aggregate cannot calibrate its two-moment sampling predictions.
 These are stopping rules for those inputs and questions, not claims that the
 biological fields are exhausted. **Discriminating tests remain available**
-when the observable changes: terminal-cause composition, calendar-by-stage
-incidence, repeated ctDNA calls, receptor composition and separately counted
-pathology endpoints with additional measured predictors. Matched Merkel bins
+when the observable changes: calendar-by-stage incidence, separately counted
+pathology endpoints with additional measured predictors, repeated ctDNA calls,
+receptor composition and incremental SINE annotation transport. Matched Merkel bins
 are now audited in #82; further copies of those same broad summaries cannot
 calibrate the surviving assay/distribution latitude. The ranking below
 prioritizes fresh contrasts and states
@@ -165,6 +171,7 @@ Symbols are local to their note; identical letters need not mean the same thing.
 | [Breast incidence decline and stage](breast-incidence-decline-stage/) (#80) | In printed 2016 USCS counts/exposures, the frozen **15-comparison**, two-sided Bonferroni family under a fixed-exposure Poisson model establishes overall and recorded-localized declines on **70–74 → 75–79** and **75–79 → 80–84**. Recorded localized losses supply **114.325% / 92.133%** of the respective net declines. No regional or distant decline is established under the primary rule; distant incidence increases on the earlier edge. The later localized decline survives adverse unknown-stage/residual allocation plus sampling uncertainty (**RR upper 0.933298**); the earlier one does not (**1.013326**). The later localized majority survives allocation descriptively, without a sampling-confidence claim for the share. | **Empirical: the compound nondecreasing observed-rate restriction is falsified under the stated count model; recorded localized predominance is consistent with the published pattern.** The later regional decision changes under the prespecified one-sided sensitivity. Screening effects, age/cohort attribution, latent onset hazards and biological transition counts remain **untestable** from this table. | Incremental uncertainty, count/exposure and missing-stage audit. The age peak, decline and stage pattern are **known prior results** in Turbow et al.; exact conditional intervals and Bonferroni are established statistics. No new epidemiological mechanism, independent replication or priority claim. | [test_research_breast_incidence_decline_stage.py](../tests/test_research_breast_incidence_decline_stage.py) | Tests [#64](multistage-incidence-identifiability/)'s observable restriction following [#73](incidence-strata-test/), with different but partly overlapping aggregates. USCS includes SEER; pooled counts do not supply #73's missing race-specific denominators. |
 | [Mutation-clock separability](mutation-clock-separability/) (#81) | For positive rates, `r(species,tissue)=species_factor*tissue_factor` requires the mouse/human blood-to-colon ratio-of-ratios **Q=1**. Printed proxy rates give **Q=0.159211**; the printed-blood-interval box with colon points fixed is **[0.145714,0.173199]**, requiring sharp minimum symmetric allowance **rho_min=1.55011** per species–tissue matrix entry. Outward rounding still excludes 1; a hypothetical measurement-interaction band **[1/8,8]** rescues compatibility. Frozen human/mouse neuronal calibration predicts **46.959** ferret SNVs/genome/year versus **24** observed, but its intestinal predictor is **small intestine, not colon**. | **Proved within the positive multiplicative model** (sharp departure bounds). **Empirical: separable passenger-clock proxy rejected under stated measurement assumptions**, by deterministic compatibility, not a significance test. Biological separability with unrestricted assay/genotype/age-window interactions, and strictly matched ferret colon-to-neuron transport, are **untestable**. Missing colon uncertainty and descriptive SEM boxes are not confidence guarantees. | Reproducible quantitative/source-eligibility audit using elementary interaction bounds. Tissue contrasts are **known prior results**; no new biological discovery, general species-clock validation or priority claim. | [test_research_mutation_clock_separability.py](../tests/test_research_mutation_clock_separability.py) | Tests the passenger-clock transport bridge in [#75](petos-paradox-mutation-rates/). Neither mutation-based cancer models nor functional driver clocks are rejected; postmitotic neurons are a transport negative control, not cancer targets. |
 | [Matched Merkel TMB-bin test](merkel-tmb-bin-test/) (#82) | Tests the frozen bridge `ORR_bin=E[f(c*T) given cohort,bin]` on matched JAVELIN Parts A/B bins **TMB <2 / >=2 NSSV/Mb**, allowing arbitrary distinct distributions on finite TMB values within bins and one common finite positive assay scale. Sharp mean ranges give primary reciprocal common region **(4.050433, infinity)**: identity and **[1,2]** fail; only **(4.050433,5]** survives within **[0.5,5]**. The displayed lower boundary is rounded and excluded. All four frozen curves have the same primary domain verdict. Both reciprocal curves fail exact printed point-ORR matching through their finite-load ceilings. | **Proved within the stated observation model** (sharp attainable ranges). **Empirical: consistent with the broad printed-interval rule only with stated latitude; identity/narrow-scale bridge rejected under that rule.** Marginal-interval intersection is not a joint confidence test; broad-interval survival and adverse exact-point sensitivity remain separate. | Limited repository-specific sharp-feasibility and source audit. The trial bin analyses, ecological regressions and elementary inverse/range tools are **known prior results**; no biological mechanism, calibrated assay, independent replication or priority claim. | [test_research_merkel_tmb_bin_test.py](../tests/test_research_merkel_tmb_bin_test.py) | Tests [#72](merkel-viral-antigen-test/)'s observation extension of [#67](immune-escape-pancancer-test/)'s frozen curves, removing its median substitution and broad-ORR/TMB-subset mismatch. Reuses the same JAVELIN cohorts; neither tests [#59](immune-escape-neoantigen-clonality/)'s functional-load theorem nor reverses #67's earlier predictive comparison. |
+| [Schedule terminal-cause attribution](schedule-terminal-cause/) (#83) | In Seyedi et al.'s Table S4 of mouse-xenograft attributed terminal events, compares source-pooled arms under six pairwise exact three-cause composition tests and toxicity-versus-rest tests in a fixed 12-test Holm family; tests a declared coherent reclassification envelope. Primary combination MTD minus ping-pong adaptive therapy: **6/6 versus 3/12** toxicity labels (**+75 pp**). Unadjusted composition **p=0.016484** and toxicity **p=0.009050** do not pass Holm (**0.181319** and **0.108597**). The frozen robustness rule fails even with no relabellings; one/two/five MTD-to-cancer relabellings respectively remove raw composition rejection, remove raw toxicity rejection, and erase/reverse the point direction. CAP and GEM adaptive single-drug rows each contain 13 printed cause assignments against 12 allocated mice. | **Empirical: rejected under the stated attribution/multiplicity robustness rule.** Single-drug comparisons are **untestable** unconditionally owing to unreconciled cause totals; one-cell-decrement results are conditional partial-identification sensitivities only. Unequal terminal times, attribution uncertainty and competing risks preclude equal-horizon cause-specific death, drug-caused toxicity and mechanistic conclusions. | Narrow repository-specific exact-test/attribution-robustness audit of published preclinical schedule evidence and an ambiguity already discussed by the authors. Exact enumeration and Holm correction are **known prior statistical tools**; not a new experiment, biological replication, causal effect or clinical predictor. | [test_research_schedule_terminal_cause.py](../tests/test_research_schedule_terminal_cause.py) | Quantifies the terminal-cause warning in [#66](containment-evidence/). Does **not** test [#61](containment-at-tumour-scale/)'s mutation-supply threshold or confirm its competition mechanism. |
 
 ## Five next jobs, ranked by expected scientific value
 
@@ -180,7 +187,7 @@ of its hypothesis. Open PRs are not merged evidence.
 | 2. Count-based breast decline and stage decomposition | **Done in [#80](breast-incidence-decline-stage/).** Overall/localized declines and adverse stage-completion bounds are reported. No regional/distant decline is established by the primary two-sided family; no detection-mode or causal claim follows. |
 | 3. Outcome-matched Merkel TMB bins | **Done in [#82](merkel-tmb-bin-test/).** The common-scale feasibility sets and point/rounding sensitivities are complete. The primary broad-interval rule survives only with latitude; identity and [1,2] fail, and reciprocal exact-point matching fails. |
 | 4. Species-by-tissue mutation-clock separability | **Done as the proxy audit in [#81](mutation-clock-separability/); matched ferret component untestable.** The primary conditional rejection and measurement rescue are reported. The ferret predictor is small intestine, so a true matched-colon validation was not completed. |
-| 5. Seyedi terminal-cause composition | **Partial at this cutoff.** [#66](containment-evidence/) supplies the evidence/eligibility audit and toxicity warning; the cause-composition and reclassification calculation is in [open PR #83](https://github.com/dovvnloading/open-cancer/pull/83), not yet a merged result. Its conclusions are not promoted here. |
+| 5. Seyedi terminal-cause composition | **Done in [#83](schedule-terminal-cause/) under the frozen robustness question; it fails.** The two corrected exact tests fail at the printed labels; CAP/GEM single-drug adaptive totals are unreconciled, making their unconditional comparisons untestable. [#66](containment-evidence/) supplied the earlier comparator warning; no causal toxicity, survival or [#61](containment-at-tumour-scale/) mutation-threshold claim follows. |
 
 The original Russo archive task remains **partial** in
 [#71](persister-colony-reanalysis/); more copies of its published colony endpoint
@@ -198,7 +205,8 @@ question, source revision, eligible panel, primary contrast, uncertainty and
 failure rule before computing; the sources are already visible, so this is
 neither blinded testing nor independent preregistration. Preserve failures,
 missing inputs, source contradictions and prior-work credit. The terminal-cause
-test is already in open PR #83, so the new ranking avoids a duplicate assignment.
+audit is now merged as [#83](schedule-terminal-cause/), so the new ranking
+avoids a duplicate assignment.
 
 1. **Highest: does the breast age pattern transport across calendar time in
    the same way at each stage?** Follow [#80](breast-incidence-decline-stage/)
@@ -377,8 +385,13 @@ and descriptive SEM ranges remain distinct from confidence statements. #82
 checks frozen curve replay, missing bin denominators, open endpoints, ceiling
 and plateau cases, sharp feasibility witnesses and every interval/point/rounding
 region; a zero distance to an excluded endpoint is not attainable compatibility.
+#83 checks printed S2–S4 cause/assignment discrepancies, independent exact
+three-cause and toxicity p-values, twelve-test Holm correction, coherent
+attribution envelopes and their attaining witnesses; its single-drug
+completions remain explicitly conditional. These checks validate software,
+not the causal meaning of terminal-event labels.
 
-Empirical tests in #63/#65–#68/#70–#76/#78–#82 recompute source joins, exclusions,
+Empirical tests in #63/#65–#68/#70–#76/#78–#83 recompute source joins, exclusions,
 denominators, uncertainty conventions and generated blocks. They do not
 establish source truth, search completeness, undocumented sampling assumptions,
 independent replication or biological validity. Respect the frozen protocols
@@ -430,6 +443,7 @@ python -B research/mhc-cancer-mortality-transport/analysis.py
 python -B research/breast-incidence-decline-stage/analysis.py --check
 python -B research/mutation-clock-separability/analysis.py --check
 python -B research/merkel-tmb-bin-test/analysis.py --check
+python -B research/schedule-terminal-cause/analysis.py --check
 ```
 
 Repository gates use the existing dependency in
