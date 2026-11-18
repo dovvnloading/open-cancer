@@ -933,8 +933,8 @@ so the condition in (9) must remain strict. At \(p=1\) or \(\mu=0\), the stated 
 is guaranteed **from sensitive-only initial populations**; an initially
 A-resistant cell can break either equality. If \(k=0\), however, drug
 death rates are dose independent, so **all** initial populations tie.
-The added regression distinguishes the p=1 initial-state boundary. A dedicated regression now distinguishes
-these cases. The parameter \(p\) redistributes mutant offspring toward
+The new regression checks the p=1 initial-state boundary.
+The parameter \(p\) redistributes mutant offspring toward
 the directly doubly resistant type; it is not proof that measured
 cross-resistance is beneficial. Equation (28) compares two analytic
 thresholds in a specified *short-course* limit; it does not order their
