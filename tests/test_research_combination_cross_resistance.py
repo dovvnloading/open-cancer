@@ -346,6 +346,38 @@ class CombinationCrossResistanceTests(unittest.TestCase):
                 distribution = _apply_generator(distribution, model, fraction_a)
                 self.assertTrue(all(state[1] == state[2] == 0 for state in distribution))
 
+    def test_direct_double_resistance_tie_requires_sensitive_only_start(self):
+        # At p=1 the only reachable types from S are S and D: both have
+        # dose-independent death rates and birth channels. The exact tie
+        # does NOT extend to a pre-existing A-resistant founder.
+        model = verifier.Model(p=Q(1))
+        offspring = model.births()
+        self.assertEqual(offspring[0][1:3], (0, 0))
+        self.assertEqual(offspring[0][3], model.mu)
+        for u in (Q(0), Q(1, 3), Q(1, 2), Q(1)):
+            deaths = model.deaths(u)
+            self.assertEqual((deaths[0], deaths[3]),
+                             (model.d + model.k, model.d))
+        reference_series = _ctmc_extinction_coefficients(
+            model, ((Q(1), Q(1, 2)),), order=5)
+        for cycles in (1, 2, 3):
+            for first in ("A", "B"):
+                self.assertEqual(
+                    _ctmc_extinction_coefficients(
+                        model, _independent_phases(cycles, first), order=5),
+                    reference_series,
+                )
+        duration = Q(1, 3)
+        combination = _bounds(model, verifier.combination(duration))
+        sequential = _bounds(model, verifier.alternating(duration))
+        # Overlapping enclosures for S are a consistency check, not the
+        # proof of exact equality (given by the reachable event rates).
+        sensitive_gap = sequential[0] - combination[0]
+        self.assertLessEqual(sensitive_gap.lower, 0)
+        self.assertGreaterEqual(sensitive_gap.upper, 0)
+        resistant_gap = sequential[1] - combination[1]
+        self.assertLess(resistant_gap.upper, 0)
+
     def test_doubly_resistant_component_matches_scalar_birth_death_solution(self):
         duration = Q(2, 3)
         for birth, death in ((Q(2, 5), Q(1, 10)), (Q(1, 10), Q(2, 5)),

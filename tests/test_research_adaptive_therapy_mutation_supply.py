@@ -162,6 +162,37 @@ class MutationSupplyMathematicsTests(unittest.TestCase):
                               - verifier.markov_laplace(mu, "M", rates))
                 self.assertGreater(difference * desired_sign, 0)
 
+    def test_cancelled_high_mutation_cubic_is_not_a_tie(self):
+        # Real leading-coefficient cancellation: both signs of the quadratic
+        # are possible. This guards the boundary excluded from the cubic
+        # high-rate winner rule and the direction U_M-U_C.
+        witnesses = (
+            (verifier.Rates(a=2, b=1, d=1, k=F(1, 2), z=1),
+             (-F(9, 4), -F(15, 4), -F(3, 2)), -1),
+            (verifier.Rates(a=100, b=1, d=3, k=F(13, 2), z=1),
+             (F(28765, 52), F(45197, 52), F(2633, 26)), 1),
+        )
+        for rates, expected, winner in witnesses:
+            with self.subTest(rates=rates):
+                q, h, *_ = verifier.reduced_constants(rates)
+                self.assertEqual(4 * rates.k * (1 - q) - rates.z, 0)
+                polynomial = verifier.comparison_polynomial(rates)
+                self.assertEqual(polynomial, expected)
+                self.assertEqual(len(polynomial), 3)
+                for mu in (F(1, 1000), F(1), F(10**8)):
+                    gap = (verifier.formula_control_time(mu, "M", rates)
+                           - verifier.formula_control_time(mu, "C", rates))
+                    independent = (verifier.markov_laplace(mu, "C", rates)
+                                   - verifier.markov_laplace(mu, "M", rates)) / rates.z
+                    self.assertEqual(gap, independent)
+                    self.assertGreater(winner * gap, 0)
+                # With cubic term zero the decay is mu^-2, not mu^-1.
+                mu = F(10**8)
+                observed = mu**2 * (verifier.formula_control_time(mu, "M", rates)
+                                    - verifier.formula_control_time(mu, "C", rates))
+                self.assertLess(abs(observed - h * polynomial[2] / (2 * rates.z)),
+                                F(1, 100))
+
     def test_fixed_horizon_changes_ranking_with_exact_error_bounds(self):
         c = verifier.fixed_horizon_interval(F(5, 2), "C", F(1))
         m = verifier.fixed_horizon_interval(F(5, 2), "M", F(1))

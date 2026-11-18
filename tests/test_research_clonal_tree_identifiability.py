@@ -318,6 +318,27 @@ class ClonalTreeIdentifiabilityTests(unittest.TestCase):
                     self.assertGreater(worst_violation, n * radius,
                                        (target, alternative, frequencies))
 
+    def test_closed_radius_corners_preserve_every_three_clone_design(self):
+        # The theorem covers a full closed L-infinity ball, not merely the
+        # unperturbed design or a scalar shift of every frequency.
+        # Check all 2**(samples*3) corners with a separate parent-map and
+        # rational matrix-inversion oracle, including nonstandard root labels.
+        for parents, inverse_columns in independent_candidates(3):
+            details = verifier.design_details(parents)
+            original, radius = details["F"], details["radius"]
+            sample_count = len(original)
+            for signs in product((-1, 1), repeat=3 * sample_count):
+                perturbed = tuple(
+                    tuple(original[s][v] + signs[3 * s + v] * radius
+                          for v in range(3))
+                    for s in range(sample_count)
+                )
+                self.assertEqual(independent_solutions(perturbed), (parents,))
+                usage = independent_usages(perturbed, inverse_columns)
+                self.assertTrue(all(value > 0 for row in usage for value in row))
+                self.assertTrue(all(sum(row) < 1 for row in usage))
+                self.assertTrue(all(0 < value < 1 for row in perturbed for value in row))
+
     def test_fixed_normal_root_translation_independently(self):
         # N includes the normal vertex 0; n = N - 1 counts observed mutations.
         for augmented_n in range(2, 6):

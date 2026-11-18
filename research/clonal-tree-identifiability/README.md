@@ -16,10 +16,10 @@ after imposing distinct frequencies, strictly positive clone usages, and maximal
 matrix rank. Ambiguity occupies an open set, so removing a measure-zero set of
 degenerate inputs does not repair that guarantee.
 
-The candidate contribution is the universal, rational, strictly positive
-two-sample construction, its proof of uniqueness against *all* alternative trees,
-and its explicit perturbation radius. Several ingredients and supporting bounds
-are already known. The literature review below explains that distinction before
+The unverified candidate mathematical refinement is the universal, rational,
+strictly positive two-sample construction, its proof of uniqueness against
+*all* alternative trees, and its explicit perturbation radius. Several
+ingredients and supporting bounds are already known. The literature review below explains that distinction before
 the new arguments.
 
 ## 1. Literature first: what is established, and the precise pivot
@@ -33,7 +33,7 @@ the new arguments.
 | Satas and Raphael (2017), [PASTRI][pastri] | Tree-specific feasible frequency regions, importance sampling, and enumeration of compatible trees. | Feasible-region geometry and enumeration are not new here. |
 | Pradhan and El-Kebir (2018), [Theorem 2][pradhan]; Qi, Pradhan and El-Kebir (2019), [Theorems 10–11][qi] | A product-of-indegrees upper bound for distinct columns; the 2019 extension proves counting is #P-complete even for two samples and studies approximation/sampling hardness. | The factorial upper bound in Theorem 3 is an elementary extremal consequence of their bound. Our attainment witnesses and boundary distinctions should not be mistaken for a new counting-hardness result. |
 | Sundermann et al. (2021), [SubMARine][submarine] | Partial clone trees and sound inference of common ancestral relations, with experimental unique-solution recovery. | The inspected claims do not establish a universal minimum number of designed samples. |
-| Marangola, Sheikholeslami and Bento (2026), [arXiv version 2][degeneracy], Theorems 1–3 | Ensemble results on longitudinal constraints and degeneracy, and bounds for dynamic constraints in a restricted family of alternative trees. | Essential recent prior art. This note makes no claim to be the first theoretical or ensemble analysis of ambiguity. |
+| Marangola, Sheikholeslami and Bento (2026), [published journal article](https://doi.org/10.1109/TCBBIO.2026.3726506) and [arXiv v2][degeneracy], Theorems 1–3 | Ensemble results on longitudinal constraints and degeneracy, and bounds for dynamic constraints in a restricted family of alternative trees. | Essential recent prior art. This note makes no claim to be the first theoretical or ensemble analysis of ambiguity. |
 | Brualdi, Jung and Trotter (1994), [Lemma 2.3][posets], attributing the result to Wolk | Rooted-tree orders have order dimension at most two. | Encoding an ancestor order with two opposite orderings is classical. Additive feasibility and exclusion of skipped parents are the additional issues addressed here. |
 
 **Pivot.** A finite worst-case threshold for unrestricted observations is not the
@@ -545,6 +545,78 @@ checks mathematical implementation through a different algorithm; CI success
 establishes neither bibliographic novelty nor biological or clinical validity.
 The novelty assessment remains provisional and should be revised if an earlier
 equivalent construction or theorem is identified.
+
+## 11. Independent referee derivation and dependency/novelty ledger (17 November 2026)
+
+**Disposition: Theorem 1 is proved under assumptions 1–6.** It is a
+*designed-data existence* result, not a generic or observational sample-size
+guarantee. The independent argument below starts from the frequency constraints
+rather than assuming the result of the verifier's search.
+
+**Alternative derivation.** For any candidate rooted tree and row of
+frequencies, invert the descendant-sum transform by subtracting the immediately
+child-descendant sums. Thus feasibility is equivalent to nonnegative
+\(f_v-\sum_{c\text{ child of }v}f_c\), and the root's frequency is the sum
+of all inferred malignant usages. This is an already-known sum condition
+(El-Kebir et al. 2015).
+
+For the proposed design, multiply each frequency by \(D\). The leaf weights
+are \(W2^i\) and \(W2^{L-1-i}\), with unit weights at internal vertices.
+If disjoint subtrees \(A,B\) have ordered depth-first leaf blocks, then
+the first block's total numerator is at most
+\(W(2^j-1)+(n-L)\), while the later block contains at least \(W2^j\).
+Thus the later block is larger by at least \(W-(n-L)=L+1\);
+reverse weights force the opposite inequality in the other row. Conversely,
+if \(a\) is an ancestor of \(v\), the subtree at \(a\) includes at least
+one positive usage outside the subtree at \(v\). Therefore the *only*
+coordinatewise permitted edges are the actual ancestor pairs. The margins
+are at least \(1/D\) for ancestor comparisons and \((L+1)/D\) for
+incomparables.
+
+Now suppose another feasible parent map used only those permitted edges.
+Choose a vertex \(a\) of smallest original depth that acquires an original
+nondirect descendant as a new child. Its old direct children cannot leave,
+because their alternative parents would be **shallower receivers**.
+Consequently its candidate residual is at most
+\(u_a-f_v\le(1-W)/D=-n/D<0\), a contradiction. A path works with one
+row because all pairs are comparable. Every single row also admits a sorted
+chain with nonnegative consecutive differences, so a branching target
+cannot be identified by one row. This independently establishes (3).
+
+**Boundary and perturbation audit.** Changing one entry of \(F\) by at most
+\(\rho=1/(4nD)\) changes any residual involving at most \(n\) frequency
+entries by no more than \(1/(4D)\), and any pairwise difference by
+no more than \(2\rho\). Thus the true positive usages and their row sum
+margin persist, all permitted-edge comparisons persist, and the negative
+residual at every shallowest receiver remains negative. This includes
+the closed-radius endpoints, nonfounder root labels, unary vertices, and
+the one-vertex case. The new rational-corner regression checks this full
+closed perturbation claim for all nine three-vertex targets independently
+of the verifier's sum-condition checker. The all-size assertion rests on
+these inequalities, **not** on finite enumeration.
+
+**Dependency and priority ledger.** The sum condition, one-row chain
+obstruction, two-order representation of rooted-tree ancestry, and
+indegree-product counting bound are established earlier results, not new
+theorems of this programme. In particular, Pradhan–El-Kebir (2018) and
+Qi et al. (2019) precede the maximum-count discussion, and
+Marangola–Sheikholeslami–Bento had a **published** IEEE TCBB article on
+PPM degeneracy dated 21 August 2026; its October arXiv revision is not the
+sole primary record. After rechecking these sources, there is no support
+for claims of the *first* identifiability or ambiguity analysis.
+The positive two-row construction and its radius are a **narrow
+candidate synthesis with unestablished priority**, not a demonstrated novel
+biological finding. The exact one-row criterion is an elementary special
+case of sum conditions and should not be advertised as a new inference
+method. No counterexample to the stated Theorem 1 was found.
+
+**What the software actually establishes.** The distinct parent-map
+enumerator and Gauss–Jordan inversion check designed examples through
+five vertices, 4,096 small-grid matrices for the conditional criterion,
+and independent positive-margin checks. They do not enumerate arbitrary
+real matrices, certify a biological sampling distribution, or establish
+bibliographic priority. Real-world bounds under finite reads, copy-number
+changes, uncertain purity, and inaccessible physical mixtures remain open.
 
 ## References
 

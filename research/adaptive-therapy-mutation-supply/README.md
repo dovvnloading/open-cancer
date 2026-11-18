@@ -72,7 +72,7 @@ Martin et al. (1992),
 resistant to chemotherapy*](https://doi.org/10.1016/0025-5564(92)90038-X),
 is an earlier optimal-control predecessor to the containment literature.
 
-**Specific candidate contribution.** We did not locate the exact general cubic
+**Specific candidate contribution.** We did not locate the model-specific cubic
 reduction below, its high-mutation sign criterion, or the corrected
 finite-clearance, zero-initial-resistance example with two ranking reversals
 and no sensitive-cell resurrection in the primary sources inspected.
@@ -226,9 +226,18 @@ $$
 $$
 
 Consequently, if `4k(z+d)>z(z+a+d)`, M has larger `U` at all sufficiently
-large finite `mu`; if the inequality is reversed, C does. On equality,
-the lower-degree terms of (2) decide; no conclusion is obtained by dropping
-them. This is a criterion inside this model family, not a rule for patients.
+large finite `mu`; if the inequality is reversed, C does. On equality, the lower-degree terms of (2) decide; no conclusion is obtained
+by dropping them. More precisely, if \(\ell=0\) and
+\(A_2=[\mu^2]\Psi\), the same exact subtraction gives
+
+$
+\lim_{\mu\to\infty}\mu^2(U_M-U_C)=\frac{h A_2}{2z}. \tag{4a}
+$
+
+Only when \(A_2\ne0\) does this second-order coefficient decide the eventual
+sign; otherwise continue to the linear and constant coefficients. In
+particular, \(\ell=0\) does **not** mean a tie or a universal winner. This is
+a criterion inside this model family, not a rule for patients.
 
 For every finite `mu>0`, **both ordinary expectations `E_C[T]` and `E_M[T]`
 are infinite**. At `mu=0`, both policies have `T=infinity` almost surely,
@@ -689,3 +698,71 @@ implicitly accepted conjectures. No numerical evidence here establishes them.
 The result is scoped entirely to the new directory and its dedicated test;
 it does not publish a biological finding into the repository's catalog or
 results registry.
+
+
+## 9. Independent referee audit (17 November 2026)
+
+**Disposition: Theorems 1 and 2 are confirmed for A1–A8, not for an uncensored
+or clinically realistic treatment comparison.** The following is an independent
+algebraic route and a claim ledger; reproducing a number by the verifier alone
+would not be a re-derivation.
+
+**Re-derivation by transient-generator elimination.** Put an independent
+rate-\(z\) killing/censor transition at every living occupancy state. In the
+subsystem \((0,1),(0,2)\), the two diagonal resolvent entries are
+\(z+a+d\) and \(z+2b+2d\), with off-diagonal rates \(a,2d\) and an
+absorbing-success rate \(2b\). Eliminating \((0,1)\) gives the success transform
+\(h=2b/[z+2b+2d-2da/(z+a+d)]\). For C, eliminating \((1,1)\) from the
+remaining two-state system gives determinant
+\((z+2\mu)(z+\mu+b+d)-2\mu d\), with successful numerator
+\(2\mu(\mu+b)h\). For M, elimination in the distinct order
+\((1,0)\), \((1,1)\), \((2,0)\) gives successive diagonal factors
+\(\mu+K_1,\mu+K_2,2\mu+K_3\), exactly the second rational expression
+in (1). This checks that the C return transition at R death and M's
+uncompensated \((1,1)\) R birth have not been interchanged.
+
+Subtracting the resolvents over their **positive** denominators produces
+\(2\mu h\Psi\); hence \(\Psi>0\) means \(h_C>h_M\), but because
+\(U=(1-h)/z\), means **\(U_M>U_C\)**. Expansion at large \(\mu\)
+cancels the quartic and leaves cubic coefficient
+\(4k(z+d)/(z+a+d)-z\). If that coefficient vanishes, the denominator
+still grows as \(4\mu^5\); dividing the quadratic numerator proves (4a).
+Two exact cancellation witnesses show why the boundary cannot be assigned a
+fixed winner:
+
+| Rates \((a,b,d,k,z)\), both with \(\ell=0\) | \(\Psi(\mu)\) | Strict winner for every \(\mu>0\) |
+| --- | --- | --- |
+| \((2,1,1,1/2,1)\) | \(-3\mu^2/2-15\mu/4-9/4\) | C |
+| \((100,1,3,13/2,1)\) | \(2633\mu^2/26+45197\mu/52+28765/52\) | M |
+
+For the specified Theorem 2 rates, direct substitution instead gives
+\(\Psi=-P/26\). The signs of \(P(0),P(1),P(13)\), together with the
+two Descartes variations, prove there are exactly two positive simple roots;
+decimal brackets only locate them. These independent eliminations confirm
+the two ranking reversals without fitting a plot.
+
+**Dependency/edge audit.** The strict diagonal-dominance proof of
+uniqueness uses \(z>0\), as do the positive-denominator estimates for the
+censored formulas. Absorbing chains can sometimes be solved at \(z=0\),
+but then the finite objective changes, and the algebraic resolvent comparison cannot silently be relabelled
+an ordinary mean. The mass at \(T=\infty\) is positive under both policies:
+two M kills can precede conversion, while C reaches pure R at positive \(\mu\)
+and can undergo two R deaths. At \(\mu=0\), C is stuck at \((2,0)\);
+the eventual-progression limit is discontinuous, although the discounted
+formula is continuous. Conversion is **per unit time and conserves burden**;
+it is not a genomic per-division mutation probability. The fixed-horizon
+counterexample is a separate objective with a separate exact enclosure.
+
+**Evidence and remaining gaps.** The symbolic polynomial, exact occupancy
+resolvent, and independently enumerated jump-chain bounds test the stated
+finite chain; simulations only assess implementation consistency. The new
+leading-coefficient-cancellation regression test checks a previously untested
+boundary of the analytic sign criterion. None of these tests checks a
+large-population mutation process, shared admissible dose controls, clinical
+parameters, or bibliographic priority. Hansen–Woods–Read (2017),
+Hansen–Read (2020), and Alvarez–Viossat (2024) already establish that
+mutation supply versus competition is a treatment-modeling trade-off.
+Accordingly the novelty level is **low, model-specific algebraic
+counterexample; priority unverified**, not the first stochastic mutation
+model, the first nonmonotonic therapy effect, or a treatment threshold for
+patients. No counterexample to the narrow stated theorems was found.
