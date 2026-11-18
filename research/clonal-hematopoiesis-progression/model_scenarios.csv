@@ -1,0 +1,7 @@
+scenario_id,n,birth,death,hit,horizon_years,replicates,seed,basis
+no_growth,3,0,0,0.03,5,6000,91701,Synthetic mathematical check; not biological parameters
+pure_death,3,0,0.10,0.03,5,6000,91702,Synthetic mathematical check; not biological parameters
+critical,3,0.10,0.10,0.03,5,6000,91703,Synthetic mathematical check; not biological parameters
+supercritical,3,0.12,0.07,0.03,5,6000,91704,Synthetic mathematical check; not biological parameters
+same_s_high_turnover,3,0.52,0.47,0.03,5,6000,91705,Synthetic mathematical check; net fitness equals supercritical
+subcritical,3,0.04,0.12,0.03,5,6000,91706,Synthetic mathematical check; not biological parameters

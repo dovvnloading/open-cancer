@@ -1,0 +1,25 @@
+{
+  "base_main_commit": "e6558b46e1f7c3ee59f590e0b93ceae48cea2f1c",
+  "files": {
+    "research/clonal-hematopoiesis-progression/PRESPEC.md": "2af2975317ac1c20d4a8302a71ce0a53ca0e13ad79af8b2167855e40695fdd8f",
+    "research/clonal-hematopoiesis-progression/PRESPEC_COMMIT.txt": "f73831e5dbc88ef1d0be2069636b9244e32c1d3bbdd9fba982e52ffba290285e",
+    "research/clonal-hematopoiesis-progression/README.md": "6a0abb405597e5530b8f9bd69ae2924b5b74820ca2b60355b7ccd6b765ddc1ba",
+    "research/clonal-hematopoiesis-progression/SOURCE_AUDIT.md": "6ef6c3400e681fdf05e6e1de4d6e70fb5ee9782d936d7babc4290f45a39808c3",
+    "research/clonal-hematopoiesis-progression/THEOREMS.md": "a241d7297f5957be81f164f0ed2f2cddd6bae092a7b9752052f1bdbeaed238cd",
+    "research/clonal-hematopoiesis-progression/analysis.py": "151c464887e6fc923462c0b5a1139122644324dfd9eb9933b89f6bd1e4f43b3b",
+    "research/clonal-hematopoiesis-progression/analysis_scenarios.csv": "043aa9383112f256ab388c25f0ab040d103fb5e4ef863d47b0e596aed7ae548b",
+    "research/clonal-hematopoiesis-progression/data/cohorts_fitness.csv": "c0c565963263080deb2537e907d81900fff7029468122c9e8bb6737a38352bc7",
+    "research/clonal-hematopoiesis-progression/data/cohorts_outcomes.csv": "b2a12d412cd1c459169fe3970ff3aa49a1e110fd2bcb4a378a0ff3f562f0f631",
+    "research/clonal-hematopoiesis-progression/data/fitness.csv": "60a601a9df988075515233e6e17e0d2e9f890692ead8e7445433a97290c4bf81",
+    "research/clonal-hematopoiesis-progression/data/literature.csv": "f3ff8b171db692072485350513b5640db33a320204ea2511aeb2be8a04b49e77",
+    "research/clonal-hematopoiesis-progression/data/outcomes.csv": "b3f6e2ecebe71d1ba7ef953b334d0d7d4e4948bad4ac2fe22322b4cb26a9649f",
+    "research/clonal-hematopoiesis-progression/model.py": "5d98fa9783b9a9912296459b3f74a25a041bb136cca3d12ca6158c1552c42df4",
+    "research/clonal-hematopoiesis-progression/model_scenarios.csv": "3f2a07d4302fdbdeabee6fe25694626dff2d39758a551274a77d436c6d666815",
+    "research/clonal-hematopoiesis-progression/simulate.py": "23d3218fd019691cb58c7c3f4f31b616d70145ffc30c5b58443fa776af440542",
+    "research/clonal-hematopoiesis-progression/verify.py": "18fd2f595672145b7a9bf066fa1a6dc5a446a9c27a7e6f350cca9afe11517012",
+    "tests/test_research_clonal_hematopoiesis_progression.py": "d5b0f40f209c97e3609edc9c2b510accd640d916d412e073a10ebebdc266f618"
+  },
+  "format": "utf8-lf-sha256-v1",
+  "meaning": "integrity of local textual artifacts; not source truth or clinical validity",
+  "prespec_commit": "7409aa2"
+}
