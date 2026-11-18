@@ -126,7 +126,12 @@
     ],
     "secondary_gate_pass": false,
     "secondary_note": "The source Ratio is often computed from displayed decimals; its 9-digit precision does not generally equal the exact integer ratio. Frozen strict numerator reconciliation fails; secondary withheld rather than repaired after scoring.",
-    "original_zero_neoplasia_or_malignancy_species_excluded_by_upstream": true
+    "original_zero_neoplasia_or_malignancy_species_excluded_by_upstream": true,
+    "total_nominal_note": "Includes all 55 nominal rows, including 3 rows with nonunique compatible neoplasia counts. Initial descriptive prefit sum mistakenly omitted these 3 rows; corrected in the branch before scoring/report submission.",
+    "secondary_gate_fail_reasons": [
+      "Three source neoplasia rates and two malignancy rates permit multiple numerator assignments, so all 55 endpoints are not uniquely reconciled",
+      "31 displayed Ratio tokens fail exact-precision comparison with the arithmetic integer malignancy/neoplasia ratios; ratios may have been calculated from displayed rounded rates"
+    ]
   },
   "method": "Literal decimal precision half-unit plus 2e-15; per-species integer numerator sets; nominal nearest integer. All 45 primary assignments retained. log1p transformations are derived, not a raw CSV replica.",
   "clinical": "Nonclinical unreviewed research, not medical or veterinary advice"
