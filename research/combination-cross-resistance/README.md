@@ -39,9 +39,9 @@ lengths below. For arbitrary specified finite courses, `verifier.py` instead
 returns rigorous rational probability enclosures and, when separated, a strict
 comparison certificate. It never labels overlapping intervals a tie.
 
-The proposed new content is the particular analytic threshold, its strict
+The candidate model-specific refinement is the particular analytic threshold, its strict
 boundary coefficient and period dependence, the accompanying bounded
-finite-course threshold theorem, and the third-order cross-resistance correction
+finite-course threshold theorem, and the leading nonzero cross-resistance correction to that local curve,
 certified by an exact polynomial identity. We found no matching result in the primary
 sources audited through **17 November 2026**. This is a qualified novelty
 assessment, not proof of exhaustive priority.
@@ -591,7 +591,7 @@ so do the propagated bounds. Products as in (6) preserve enclosures. A strictly
 positive gap eventually exceeds the shrinking total width; separated intervals
 conversely prove its sign. This proves Theorem 4.
 
-## 8. Theorem 5: the first cross-resistance correction to the threshold
+## 8. Theorem 5: the leading model-specific cross-resistance correction to the threshold
 
 Under Theorem 2's assumptions, specialize to symmetric single-mutant supply
 `w=1/2` and one A-then-B pair `m=1`. For any fixed
@@ -871,3 +871,86 @@ reasoning. The existence of a globally monotone threshold in `c` or `p` is
 Only original mathematical text, original stdlib code, synthetic parameters,
 and source links are included. No patient data or copied source datasets enter
 this contribution.
+
+
+## 12. Independent hostile referee audit (17 November 2026)
+
+**Disposition: Theorem 1's fixed-period local equivalence is confirmed; the
+finite-course extension (Theorem 2) and the computer-assisted sixth-order
+identity (Theorem 5) retain their stated scopes.** None is an arbitrary-course
+or biologically calibrated treatment theorem.
+
+**Independent forward-process route.** Instead of differentiating the backward
+PGF, form the continuous-time generator \(Q_u\) on *population-count*
+states. One death removes one cell, and an offspring event retains the
+parent and adds the child. For one sensitive founder the probability of
+extinction after an A-first/B-second course is the \((S,0)\) entry of
+
+\[
+e^{(T/(2m))Q_A}e^{(T/(2m))Q_B}\cdots
+e^{(T/(2m))Q_A}e^{(T/(2m))Q_B};
+\]
+
+for combination it is the corresponding entry of \(e^{TQ_{1/2}}\).
+Because the generator is affine in dose, \(Q_{1/2}=(Q_A+Q_B)/2\).
+Expand both matrix products as formal Taylor series. For coefficient \(T^j\),
+at most \(j\) cell events can contribute; no population truncation is needed
+to calculate that coefficient from one initial cell. Enumerating death,
+clonal offspring, and all five distinct mutant-offspring channels gives
+identical coefficients at orders one and two and the difference
+
+\[
+[T^3](P_{AB_m}-P_C)=\frac{(d+k)k(ac-r)}{16m}.
+\]
+
+At \(ac=r>0\), the next coefficient reduces to the negative rational
+quantity in (8): its bracket consists of a nonnegative
+\((c-1)(8m^2-1)\) plus the strictly positive \(2m(c+1)\).
+The sign of the first *nonzero* coefficient therefore gives precisely the
+strict, fixed-\(m\), sufficiently-short-\(T\) ordering (9). The original
+PGF proof supplies the crucial **convergent remainder**; a formal
+generator coefficient without that bound would not prove the strict
+all-small-\(T\) claim. The independent forward-CTMC test implements this
+calculation for multiple rational rate regimes and both phase orders.
+The analytic bound, rather than sampled intervals, covers all admissible
+parameters.
+
+**Remaining dependency chain.** Theorem 2 divides the gap by
+\((1-p)T^3\) before applying compactness and the implicit function theorem;
+without that normalization a claim of uniformity near \(p=1\) would be
+unjustified. Its explicit bound relies on a coefficient majorant in complex
+\(p,c\) disks and requires a fixed finite \(m\), finite upper \(C>c_0\),
+and \(p<1\). Theorem 5 uses a **finite symbolic Lie-polynomial
+certificate**, not a closed-form elementary hand reduction of all sixth-order
+terms. The separate forward-generator test checks rational examples and
+the predicted \(p\)-slope, but only the generic polynomial identities
+in \`algebra_certificate.py\` address all algebraic rate values. This is
+an explicitly computer-assisted proof component, not a peer-reviewed
+symbolic-algebra theorem.
+
+**Quantifier and boundary audit.** At \(ac=r\), A-first loses at order four,
+so the condition in (9) must remain strict. At \(p=1\), or when \(\mu=0\)
+or \(k=0\), all A/B schedules are identical **only from sensitive-only
+initial populations**; if an A-resistant cell is initially present, even
+\(p=1\) need not imply equality. A dedicated regression now distinguishes
+these cases. The parameter \(p\) redistributes mutant offspring toward
+the directly doubly resistant type; it is not proof that measured
+cross-resistance is beneficial. Equation (28) compares two analytic
+thresholds in a specified *short-course* limit; it does not order their
+underlying eradication probabilities or apply at \(p=1\).
+
+**Prior art and novelty downgrade.** Four-type cross-resistance, PGF
+extinction, cycle-order effects and toxicity-budget comparisons appear
+already in Katouli–Komarova (2011); collateral-sensitivity scheduling is
+studied by Yoon et al. (2018, 2021); and Dabi et al. (September 2026)
+already report simulated extinction-therapy advantages over combination
+in the presence of cross-resistance. Molina-Hernández et al. (2026)
+also study four-genotype extinction with collateral sensitivity.
+Accordingly the broad advantages and machinery are **known prior results**.
+The narrow coefficients (7)–(8), finite local threshold, and (28) are
+**unverified-priority mathematical refinements**. "Sharp" is justified
+only as the exact local *if and only if* with its equality case; "leading"
+means the first nonzero term in this model's expansion, not first
+discovery in the literature. The numerical finite-horizon enclosures
+are witnesses, never a universal global classification. No contradiction
+to the narrow theorems was identified.
