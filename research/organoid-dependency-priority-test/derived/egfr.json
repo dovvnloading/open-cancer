@@ -1,0 +1,43 @@
+{
+  "research_status": "nonclinical, unreviewed computational research",
+  "access_date": "2026-11-22",
+  "source_base_url": "https://cog.sanger.ac.uk/cmp/download/",
+  "inputs_sha256": {
+    "Organoids_fitness_scores_20260723.zip/Organoids_fitness_scores_binary_matrix_20260723.tsv": "b2231352cbf2b0a70c86b1d3b1bdb237f28f0ea99306a3dc3a9515d617d00768",
+    "model_list_20261013.csv": "5e2868d7c063dfd83b8965cbab60f7531f5089968107999e316a2a38e07da6d9",
+    "model_dataset_availability_20260727.csv": "4fc3a65df0c48f1ea6a01ff87fc5d77c20eb83e90b148a857c4c1cadd6c28159",
+    "mutations_summary_20260724.zip/mutations_summary_20260724.csv": "998344a90cb7d9fc0e052c967a064e03b8e03eb80d5a73e6d9be3e09b76f06ef"
+  },
+  "attrition": {
+    "input_screen_columns": 162,
+    "non_sanger_or_failed_qc": 0,
+    "missing_model_metadata": 0,
+    "outside_crc_organoids": 78,
+    "missing_donor": 0,
+    "no_confirmed_organoid_wgs": 0,
+    "ras_driver": 36,
+    "other_or_ambiguous_braf": 2,
+    "extra_cultures_from_same_donor": 3,
+    "missing_selected_egfr_call": 0,
+    "evaluable_donors": 43
+  },
+  "groups": {
+    "BRAF_V600E": {
+      "essential": 6,
+      "tested": 8
+    },
+    "BRAF_reference": {
+      "essential": 31,
+      "tested": 35
+    }
+  },
+  "statistics": {
+    "risk_difference": -0.13571428571428568,
+    "risk_difference_ci95": [
+      -0.483342129605587,
+      0.09441855818033804
+    ],
+    "fisher_p_two_sided": 0.30775890378242826
+  },
+  "verdict": "inconclusive"
+}
