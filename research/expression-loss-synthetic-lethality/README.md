@@ -3,8 +3,17 @@
 **Nonclinical computational research. Unreviewed. No treatment advice.** Record-level
 public cell-line data only (DepMap 24Q4, DEMETER2, PRISM 24Q2: CC BY 4.0; Sanger Project
 Score: research-use licence, summary statistics only). No patient-level or controlled data.
-Literature novelty of the candidates below has **not** yet been assessed; nothing here is a
-claim of priority.
+**Priority (checked in PR #95, 2026-11-22): the two headline findings are already
+published.** H1 confirms and extends Dvir et al., *Genetics* 2022 (doi:10.1093/genetics/iyac134),
+who linked higher GJA1 expression to weaker CRISPR effects for small-molecule-metabolism genes
+and proposed rescue by neighbouring cells. H2 extends Yang et al., *Cancer Discovery* 2021
+(doi:10.1158/2159-8290.CD-20-1542), who showed ALDH2 silencing confers Fanconi-pathway
+dependency in AML. Most strict-queue pairs appear in published DepMap prediction models
+(Shi et al., *Nature Cancer* 2024; Rosenski et al., *BMC Med Genomics* 2023). What this note
+adds is replication and falsification structure: drug-level attenuation on matched lines,
+the adherent/suspension split, protein-machine controls, independent Sanger replication of
+both pathway sets, and pan-lineage extension of H2. It is **not** new discovery. Lesson
+for the programme: biomarker mining of DepMap alone is a saturated route to novelty.
 
 This is the programme's first **record-level, genome-wide discovery screen**. Earlier notes
 confronted theory with published aggregates. Here the unit of observation is the cell line,
@@ -26,7 +35,7 @@ synthetic-lethal targets for tumours that silence or delete B.
 | **H1: GJA1 (connexin-43) expression masks nucleotide-synthesis dependencies in pooled CRISPR screens.** GJA1-off lines are more dependent on 15 held-out de novo purine/pyrimidine enzymes (mean r=0.106, p<1e-4; 14/15 positive on adherent lines). The effect is (i) in adherent lines (0.144), not suspension lines (0.021); (ii) absent from four essential **protein-machine** control sets (ribosome, proteasome, spliceosome, Pol II, all ≈0); (iii) replicated in RNAi (0.064) and in independent Sanger CRISPR screens (0.135, p<1e-4); (iv) **attenuated ~5× for drugs inhibiting the same enzymes on the same 625 cell lines** (paired line bootstrap: CRISPR−drug difference 95% CI [0.064, 0.174]; drug effect CI [−0.006, 0.060]); (v) genome-wide, GJA1-protected essential genes are enriched for metabolic enzymes (4.7×, p=1.1e-4), headed by nucleotide, hexosamine, pentose-phosphate, one-carbon, CoA and FMN synthesis. | `HYPOTHESES.md` H1 + Addenda A–C | **Supported**: best explained by gap-junction metabolic cross-feeding from neighbouring cells in pooled screens, i.e. a systematic bias in pooled-screen dependency estimates for small-metabolite pathways |
 | **H2: ALDH2 loss → Fanconi anaemia pathway dependency.** 16 held-out FA/ICL-repair genes shift in DepMap CRISPR (mean r=0.085, p<1e-4, 15/16 positive) and in independent Sanger CRISPR (0.111, p<1e-4, only 30 ALDH2-off models); MCM2-7 negative control ≈0 in both. Not seen in RNAi (−0.001). | `HYPOTHESES.md` H2 | **Supported in two independent CRISPR screens; RNAi non-replication recorded.** Mechanistically matches acetaldehyde-induced interstrand crosslinks (shown in mice; Langevin et al. 2011) |
 | **H3: ACOT9 loss → succinyl-CoA metabolism.** Seed pairs do not generalise to the set (−0.014, p=0.81). | | **Falsified** |
-| **Strict candidate queue.** 51 non-paralog pairs are lineage-robust and replicate in RNAi or in Sanger (≥5 B-off models); 33 are explained by known proxies (NAA11 co-activation with cancer-testis antigens, MSI markers → WRN, 9p21 co-deletion with FOCAD, H1). **18 remain unexplained**, led by ITPA←PUDP (r=0.40; Sanger 0.42), SRD5A3←HTATIP2, HSD17B12←LDAH, WRAP73/SPICE1←HYLS1, STAMBP←VPS35L. | `derived/strict_candidate_queue.csv` | Leads for literature triage and orthogonal testing |
+| **Strict candidate queue.** 51 non-paralog pairs are lineage-robust and replicate in RNAi or in Sanger (≥5 B-off models); 33 are explained by known proxies (NAA11 co-activation with cancer-testis antigens, MSI markers → WRN, 9p21 co-deletion with FOCAD, H1). **18 remain unexplained**, led by ITPA←PUDP (r=0.40; Sanger 0.42), SRD5A3←HTATIP2, HSD17B12←LDAH, WRAP73/SPICE1←HYLS1, STAMBP←VPS35L. | `derived/strict_candidate_queue.csv` | Triaged in #95: 9 published, 4 partially known, 7 not found |
 
 ## What this changes
 
