@@ -1,0 +1,10 @@
+{
+  "n_common_depleted": 1572,
+  "n_enzymes": 173,
+  "n_non_enzymes": 1399,
+  "median_r_enzymes": 0.0071816,
+  "median_r_non_enzymes": -0.0040432,
+  "mannwhitney_p_one_sided": 0.00010981290908579293,
+  "top50_gja1_protected_common_depleted_enzyme_fraction": 0.52,
+  "enzyme_fraction_all_common_depleted": 0.11005089058524173
+}

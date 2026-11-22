@@ -1,0 +1,274 @@
+{
+  "H1": {
+    "B": "GJA1",
+    "n_b_off_crispr_lines": 467,
+    "seed_r": {
+      "PFAS": 0.1843,
+      "ATIC": 0.183,
+      "CTPS1": 0.1851,
+      "YRDC": 0.1828
+    },
+    "crispr_set": {
+      "n": 15,
+      "members": [
+        "PPAT",
+        "GART",
+        "PAICS",
+        "ADSL",
+        "IMPDH2",
+        "GMPS",
+        "ADSS2",
+        "CAD",
+        "DHODH",
+        "UMPS",
+        "CTPS2",
+        "PRPS1",
+        "TYMS",
+        "RRM1",
+        "RRM2"
+      ],
+      "mean_r": 0.10565892606973648,
+      "per_gene_r": {
+        "PPAT": 0.1404,
+        "GART": 0.1486,
+        "PAICS": 0.1394,
+        "ADSL": 0.1736,
+        "IMPDH2": 0.0982,
+        "GMPS": 0.1514,
+        "ADSS2": 0.113,
+        "CAD": 0.1347,
+        "DHODH": 0.1091,
+        "UMPS": 0.1046,
+        "CTPS2": 0.0287,
+        "PRPS1": 0.0454,
+        "TYMS": 0.1336,
+        "RRM1": 0.0463,
+        "RRM2": 0.0178
+      },
+      "empirical_p_one_sided": 9.999000099990002e-05
+    },
+    "rnai_per_gene_r": {
+      "PPAT": 0.0998,
+      "GART": 0.0693,
+      "PAICS": 0.0888,
+      "ADSL": 0.0874,
+      "IMPDH2": 0.1049,
+      "GMPS": 0.0385,
+      "CAD": 0.1041,
+      "DHODH": 0.0968,
+      "UMPS": -0.0537,
+      "CTPS2": -0.035,
+      "PRPS1": 0.122,
+      "TYMS": 0.0992,
+      "DHFR": -0.0167,
+      "RRM1": 0.0981,
+      "RRM2": 0.0535,
+      "PFAS": 0.1131,
+      "ATIC": 0.0269,
+      "CTPS1": 0.0005,
+      "YRDC": -0.0367
+    },
+    "rnai_set_mean_r": 0.0638,
+    "pass": true
+  },
+  "H2": {
+    "B": "ALDH2",
+    "n_b_off_crispr_lines": 205,
+    "seed_r": {
+      "BRIP1": 0.2152
+    },
+    "crispr_set": {
+      "n": 16,
+      "members": [
+        "FANCA",
+        "FANCB",
+        "FANCC",
+        "FANCD2",
+        "FANCE",
+        "FANCF",
+        "FANCG",
+        "FANCI",
+        "FANCL",
+        "FANCM",
+        "UBE2T",
+        "FAAP24",
+        "FAAP100",
+        "SLX4",
+        "ERCC4",
+        "ERCC1"
+      ],
+      "mean_r": 0.08495709300041199,
+      "per_gene_r": {
+        "FANCA": 0.0678,
+        "FANCB": 0.0923,
+        "FANCC": 0.0849,
+        "FANCD2": 0.0998,
+        "FANCE": 0.0689,
+        "FANCF": 0.0655,
+        "FANCG": 0.0838,
+        "FANCI": 0.1362,
+        "FANCL": 0.133,
+        "FANCM": -0.0062,
+        "UBE2T": 0.1341,
+        "FAAP24": 0.0207,
+        "FAAP100": 0.1077,
+        "SLX4": 0.0724,
+        "ERCC4": 0.1056,
+        "ERCC1": 0.0927
+      },
+      "empirical_p_one_sided": 9.999000099990002e-05
+    },
+    "rnai_per_gene_r": {
+      "FANCA": 0.0029,
+      "FANCB": -0.0204,
+      "FANCC": 0.0487,
+      "FANCD2": 0.0008,
+      "FANCE": -0.1082,
+      "FANCF": -0.0673,
+      "FANCG": -0.0047,
+      "FANCI": -0.0242,
+      "FANCL": 0.0311,
+      "FANCM": 0.0721,
+      "UBE2T": 0.0375,
+      "FAAP24": -0.0345,
+      "SLX4": -0.0314,
+      "ERCC4": 0.077,
+      "ERCC1": 0.0082,
+      "BRIP1": 0.0294
+    },
+    "rnai_set_mean_r": -0.0008266666666666671,
+    "negative_control_set": {
+      "n": 6,
+      "members": [
+        "MCM2",
+        "MCM3",
+        "MCM4",
+        "MCM5",
+        "MCM6",
+        "MCM7"
+      ],
+      "mean_r": -0.005795686971396208,
+      "per_gene_r": {
+        "MCM2": -0.013,
+        "MCM3": -0.0072,
+        "MCM4": -0.0213,
+        "MCM5": 0.0032,
+        "MCM6": -0.0063,
+        "MCM7": 0.0098
+      },
+      "empirical_p_one_sided": 0.6662333766623337
+    },
+    "pass": false
+  },
+  "H3": {
+    "B": "ACOT9",
+    "n_b_off_crispr_lines": 20,
+    "seed_r": {
+      "SUCLG1": 0.2562,
+      "SUCLA2": 0.3185
+    },
+    "crispr_set": {
+      "n": 4,
+      "members": [
+        "SUCLG2",
+        "OGDH",
+        "DLST",
+        "DLD"
+      ],
+      "mean_r": -0.014262828975915909,
+      "per_gene_r": {
+        "SUCLG2": -0.0211,
+        "OGDH": -0.0298,
+        "DLST": 0.0204,
+        "DLD": -0.0265
+      },
+      "empirical_p_one_sided": 0.8066193380661933
+    },
+    "rnai_per_gene_r": {
+      "SUCLG2": 0.0263,
+      "OGDH": 0.0119,
+      "DLST": 0.0274,
+      "DLD": -0.0618,
+      "SUCLG1": 0.0548,
+      "SUCLA2": -0.0003
+    },
+    "rnai_set_mean_r": 0.0009499999999999977,
+    "pass": false
+  },
+  "H1_growth_pattern_split": {
+    "adherent": {
+      "n_lines": 890,
+      "n_gja1_off": 313,
+      "set_mean_r_including_seeds": 0.1436983346939087,
+      "per_gene_r": {
+        "PPAT": 0.1864,
+        "GART": 0.1844,
+        "PAICS": 0.1748,
+        "ADSL": 0.1939,
+        "IMPDH2": 0.1226,
+        "GMPS": 0.1697,
+        "ADSS2": 0.1407,
+        "CAD": 0.1612,
+        "DHODH": 0.1381,
+        "UMPS": 0.1271,
+        "CTPS2": 0.0266,
+        "PRPS1": 0.0604,
+        "TYMS": 0.1673,
+        "RRM1": 0.0213,
+        "RRM2": 0.0381,
+        "PFAS": 0.2243,
+        "ATIC": 0.208,
+        "CTPS1": 0.1862,
+        "YRDC": 0.1991
+      }
+    },
+    "suspension": {
+      "n_lines": 156,
+      "n_gja1_off": 122,
+      "set_mean_r_including_seeds": 0.02045503444969654,
+      "per_gene_r": {
+        "PPAT": -0.0262,
+        "GART": 0.0055,
+        "PAICS": -0.0061,
+        "ADSL": 0.0467,
+        "IMPDH2": 0.0689,
+        "GMPS": -0.0648,
+        "ADSS2": -0.017,
+        "CAD": 0.0713,
+        "DHODH": 0.0896,
+        "UMPS": 0.0627,
+        "CTPS2": 0.1529,
+        "PRPS1": -0.0175,
+        "TYMS": -0.059,
+        "RRM1": 0.026,
+        "RRM2": -0.1702,
+        "PFAS": 0.0725,
+        "ATIC": 0.0615,
+        "CTPS1": 0.1419,
+        "YRDC": -0.0499
+      }
+    }
+  },
+  "H1_prism": {
+    "n_drug_conditions": 60,
+    "mean_r": 0.000938333333333333,
+    "n_nominal_p_lt_0.05": 4
+  },
+  "sanger": {
+    "n_models": 257,
+    "n_pairs_testable": 192,
+    "n_q_le_0.05": 151,
+    "paralog": {
+      "testable": 42,
+      "q_le_0.05": 38
+    },
+    "non_paralog_candidate": {
+      "testable": 132,
+      "q_le_0.05": 95
+    },
+    "chrY_loss_proxy": {
+      "testable": 18,
+      "q_le_0.05": 18
+    }
+  }
+}
