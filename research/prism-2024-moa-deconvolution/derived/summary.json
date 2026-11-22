@@ -1,0 +1,17 @@
+{
+  "calibration": {
+    "n_annotated_evaluable": 1457,
+    "n_genes": 17205,
+    "top1_rate": 0.03706245710363761,
+    "top10_rate": 0.08030199039121483,
+    "chance_top10_rate": 0.0016019790383045762,
+    "fold_over_chance": 50.12674228009931,
+    "pass": false
+  },
+  "n_active_conditions": 2325,
+  "n_new_active": 901,
+  "n_new_with_hit": 241,
+  "n_new_hit_top_is_annotated_target": 5,
+  "n_discovery_pairs": 236,
+  "n_replicated": 124
+}
