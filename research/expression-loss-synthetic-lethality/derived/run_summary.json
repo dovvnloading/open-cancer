@@ -1,0 +1,54 @@
+{
+  "params": {
+    "min_lineage_size": 10,
+    "essential_strength_genes": 300,
+    "a_dep_threshold": -0.5,
+    "a_min_dependent_lines": 10,
+    "a_min_null_lines": 10,
+    "a_null_threshold": -0.3,
+    "b_off_logtpm": 1.0,
+    "b_on_logtpm": 3.0,
+    "b_min_off_lines": 20,
+    "b_min_on_lines": 20,
+    "max_nan_fraction": 0.05,
+    "discovery_family_alpha": 0.05,
+    "replication_fdr": 0.05,
+    "replication_min_lines": 100,
+    "lolo_min_r_fraction": 0.5,
+    "predictor": "binary_off",
+    "expr_pcs": 20,
+    "expr_pc_genes": 5000
+  },
+  "provenance": {
+    "crispr": {
+      "file": "CRISPRGeneEffect.csv",
+      "md5": "6edf7ade09b9b34199210b559d4745d3"
+    },
+    "expr": {
+      "file": "OmicsExpressionProteinCodingGenesTPMLogp1.csv",
+      "md5": "71794802b750ce77c422dad0720a40af"
+    },
+    "model": {
+      "file": "Model.csv",
+      "md5": "675210d17675f3517b0ce39a3c274f16"
+    },
+    "rnai": {
+      "file": "D2_combined_gene_dep_scores.csv",
+      "md5": "e82566a48993753c20ea5f480f1867ec"
+    }
+  },
+  "n_lines_crispr": 1103,
+  "n_lines_rnai": 541,
+  "n_A": 3954,
+  "n_B": 7194,
+  "n_tests": 28445076,
+  "r_threshold": 0.18028124568100762,
+  "df_crispr": 1056,
+  "n_discovery_hits": 296,
+  "n_rnai_testable": 279,
+  "n_replicated": 86,
+  "n_replicated_lineage_robust": 64,
+  "benchmark_screenable": 4,
+  "benchmark_discovered": 4,
+  "benchmark_replicated": 1
+}
