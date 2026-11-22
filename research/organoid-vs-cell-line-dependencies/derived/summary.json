@@ -1,0 +1,76 @@
+{
+  "n_core_genes": 750,
+  "crc": {
+    "n_organoids": 84,
+    "n_cell_lines": 29,
+    "n_genes_tested": 16448,
+    "msi_organoids": {
+      "MSS": 67,
+      "MSI": 15,
+      "NA": 2
+    },
+    "msi_cell_lines": {
+      "MSS": 19,
+      "MSI": 10
+    }
+  },
+  "esca": {
+    "n_organoids": 59,
+    "n_cell_lines": 7,
+    "n_genes_tested": 16448,
+    "msi_organoids": {
+      "MSS": 56,
+      "MSI": 3
+    },
+    "msi_cell_lines": {
+      "MSS": 7
+    }
+  },
+  "n_crc_hits": 623,
+  "n_replicated": 481,
+  "replicated_by_direction": {
+    "more_essential_in_cell_lines": 298,
+    "more_essential_in_organoids": 183
+  },
+  "replicated_lomo_unstable": 0,
+  "classes": {
+    "niche_signalling": {
+      "n_present": 14,
+      "crc_hits": [
+        "EGFR"
+      ],
+      "replicated": [
+        "EGFR"
+      ],
+      "mean_diff_crc": -0.09033368406835783,
+      "mean_diff_esca": -0.18833487066203444
+    },
+    "adhesion_integrin": {
+      "n_present": 10,
+      "crc_hits": [
+        "ITGB1",
+        "ITGB5"
+      ],
+      "replicated": [
+        "ITGB1",
+        "ITGB5"
+      ],
+      "mean_diff_crc": -0.028500731283417242,
+      "mean_diff_esca": 0.10439518792156358
+    },
+    "oxygen_metabolism": {
+      "n_present": 6,
+      "crc_hits": [],
+      "replicated": [],
+      "mean_diff_crc": -0.03053469803472572,
+      "mean_diff_esca": 0.04674671640212011
+    },
+    "interferon_innate": {
+      "n_present": 5,
+      "crc_hits": [],
+      "replicated": [],
+      "mean_diff_crc": -0.0678165319839541,
+      "mean_diff_esca": -0.0972957897661508
+    }
+  }
+}

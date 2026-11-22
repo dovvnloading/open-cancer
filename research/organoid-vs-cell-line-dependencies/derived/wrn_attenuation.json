@@ -1,0 +1,72 @@
+{
+  "WRN_MSI": {
+    "gene": "WRN",
+    "n_pos_organoid": 15,
+    "n_neg_organoid": 67,
+    "n_pos_line": 10,
+    "n_neg_line": 19,
+    "diff_organoid": -0.667469504571945,
+    "diff_line": -1.4385094863479615,
+    "ratio": 0.46400076670088125,
+    "ratio_ci95": [
+      0.24092024744509152,
+      0.7658052101325634
+    ],
+    "frac_pos_effect_lt_-0.5_organoid": 0.6,
+    "frac_pos_effect_lt_-0.5_line": 0.9
+  },
+  "KRAS_mut": {
+    "gene": "KRAS",
+    "n_pos_organoid": 33,
+    "n_neg_organoid": 51,
+    "n_pos_line": 16,
+    "n_neg_line": 13,
+    "diff_organoid": -0.6914586066003492,
+    "diff_line": -1.3215700031946773,
+    "ratio": 0.5232099736895224,
+    "ratio_ci95": [
+      0.3375648528115681,
+      0.787781395973631
+    ],
+    "frac_pos_effect_lt_-0.5_organoid": 0.7878787878787878,
+    "frac_pos_effect_lt_-0.5_line": 0.9375
+  },
+  "BRAF_V600E": {
+    "gene": "BRAF",
+    "n_pos_organoid": 8,
+    "n_neg_organoid": 73,
+    "n_pos_line": 6,
+    "n_neg_line": 22,
+    "diff_organoid": -0.08492802501988211,
+    "diff_line": -0.5445868310226419,
+    "ratio": 0.15594946513929037,
+    "ratio_ci95": [
+      -0.2277076220442384,
+      0.5981889372141815
+    ],
+    "frac_pos_effect_lt_-0.5_organoid": 0.25,
+    "frac_pos_effect_lt_-0.5_line": 0.6666666666666666
+  },
+  "CTNNB1_mut": {
+    "gene": "CTNNB1",
+    "n_pos_organoid": 3,
+    "n_neg_organoid": 81,
+    "n_pos_line": 3,
+    "n_neg_line": 26,
+    "diff_organoid": -0.10783247601731705,
+    "diff_line": 0.07538544697723393,
+    "ratio": -1.4304150249302359,
+    "ratio_ci95": [
+      -4.576223773499888,
+      20.21065795018625
+    ],
+    "frac_pos_effect_lt_-0.5_organoid": 1.0,
+    "frac_pos_effect_lt_-0.5_line": 0.6666666666666666
+  },
+  "verdict": "general compression / not specific",
+  "eligible_comparators": [
+    "KRAS_mut",
+    "BRAF_V600E",
+    "CTNNB1_mut"
+  ]
+}
