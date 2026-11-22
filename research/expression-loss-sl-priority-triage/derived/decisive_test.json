@@ -1,0 +1,101 @@
+{
+  "diagnostics": {
+    "loss": {
+      "PNPLA4": {
+        "denominator": 6,
+        "positive": 3
+      },
+      "PUDP_RNA_off": {
+        "denominator": 6,
+        "positive": 5
+      },
+      "STS": {
+        "denominator": 6,
+        "positive": 4
+      }
+    },
+    "retained": {
+      "PNPLA4": {
+        "denominator": 202,
+        "positive": 0
+      },
+      "PUDP_RNA_off": {
+        "denominator": 202,
+        "positive": 7
+      },
+      "STS": {
+        "denominator": 202,
+        "positive": 0
+      }
+    }
+  },
+  "draws": 0,
+  "eligibility": {
+    "missing_sex_or_donor": 51,
+    "repeat_donor": 39,
+    "representative": 1013
+  },
+  "exposure": {
+    "intermediate_or_gain": 134,
+    "loss": 6,
+    "retained": 873
+  },
+  "matched_loss": 6,
+  "matched_retained": 202,
+  "n_screen": 1103,
+  "p_margin_lower": null,
+  "p_zero_upper": null,
+  "reason": "insufficient exposure",
+  "retained_minus_loss": 0.20520480409612318,
+  "scope": "Nonclinical, unreviewed computational research",
+  "sha256_lf_utf8": {
+    "research/expression-loss-sl-priority-triage/PROTOCOL.md": "186230e5604fab18538738ad8a3cc7f8a1866cc1652281cb0243dd516f165549",
+    "research/expression-loss-sl-priority-triage/derived/depmap24q4_x_cn.csv": "b9b05cf967fef8a33a0c34209742118cf148182bdc518a229af80a2918d32aa2",
+    "research/expression-loss-synthetic-lethality/derived/depmap24q4_extract_selected_pairs.csv": "b2e81a85af147ca744e4031b00877400d8586fc231b58ca462ad8f47d6dc0e70"
+  },
+  "strata": [
+    {
+      "lineage": "Bowel",
+      "loss": 1,
+      "retained": 16,
+      "retained_minus_loss": 0.04185625,
+      "sex": "Female"
+    },
+    {
+      "lineage": "Breast",
+      "loss": 1,
+      "retained": 33,
+      "retained_minus_loss": -0.12286575757575757,
+      "sex": "Female"
+    },
+    {
+      "lineage": "Head and Neck",
+      "loss": 1,
+      "retained": 40,
+      "retained_minus_loss": -0.03412775,
+      "sex": "Male"
+    },
+    {
+      "lineage": "Liver",
+      "loss": 1,
+      "retained": 19,
+      "retained_minus_loss": 0.5056115789473684,
+      "sex": "Male"
+    },
+    {
+      "lineage": "Lung",
+      "loss": 1,
+      "retained": 78,
+      "retained_minus_loss": 0.1601151282051282,
+      "sex": "Male"
+    },
+    {
+      "lineage": "Pleura",
+      "loss": 1,
+      "retained": 16,
+      "retained_minus_loss": 0.680639375,
+      "sex": "Male"
+    }
+  ],
+  "verdict": "INCONCLUSIVE"
+}
