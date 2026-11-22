@@ -1,0 +1,26 @@
+# Frozen test of the selpercatinib–heparan sulfate signature
+
+Nonclinical, unreviewed research. Frozen November 22, 2026, before joining any response to a dependency, computing any association or counting evaluable records. The source tables, column labels and examples of their formatting were inspected for feasibility. The published kinase and genotype results were known at selection. This is a publicly recorded prospective analysis plan for retrospective data.
+
+## Selection and question
+
+PR #96 failed its frozen calibration (8.0% in the top ten against a 10% bar). Its exploratory lead concerns EXT1, EXT2, SLC35B2, HS2ST1 and FGFR2. Selpercatinib already inhibits FGFR2. An independent drug-response panel can challenge the additional four-gene heparan sulfate (HS) signature. All four genes are fixed here with equal weight. FGFR2 is deliberately excluded from the score because it has direct pharmacological precedent. The paper reports two RET-altered lines, which will be excluded before ranking. The prior screen selected the genes, so the genetic side is shared. Only the drug measurement and platform are independent.
+
+Do cells that depend more on the four HS genes within their lineage also respond at lower selpercatinib concentrations in the independent panel? The null is exchangeability of drug sensitivity across matched models within each lineage, with no positive within-lineage association. Alternative direction: lower CRISPR gene effect accompanies lower IC50.
+
+## Public records
+
+- Kooijman et al. (2022), nine-concentration, 72-hour ATP viability assays, paper DOI 10.3389/fonc.2022.953013. Table S4, DOI 10.3389/fonc.2022.953013.s005, Figshare file 37443889, supplies the selpercatinib IC50 in nM per cell line. Table S2, DOI 10.3389/fonc.2022.953013.s003, file 37443880, supplies Cellosaurus RRIDs. Both are small-molecule monotherapy records. The unit is one cell model, irrespective of wells or doses.
+- Broad Institute Cancer Dependency Map, DepMap Public 24Q4, DOI 10.25452/figshare.plus.27993248.v1. Model.csv (file 51065297) supplies RRID, ModelID and OncotreeLineage. CRISPRGeneEffect.csv (51064667) supplies Chronos gene effects. Source files are CC BY 4.0. Keep only a small attributed extract. No Sanger values or PRISM drug records enter the test.
+
+## Eligibility and single endpoint
+
+1. Enumerate all labeled S4 cell rows, including numeric cell names. Match S4 to S2 on uppercased cell name with non-alphanumeric characters removed. Match S2 RRID to Model.csv by exact nonempty Cellosaurus ID (strip a leading RRID prefix and whitespace). Require unique one-to-one matches at each step. No name rescue or hand matching. Drop ambiguous or reused models, missing lineage and missing/nonfinite dependency values.
+2. Remove LC-2/ad (CCDC6–RET) and TT (RET C634W), the two RET-altered models identified in the source paper. This restriction precedes any data-based exclusion. Keep lineages with at least two otherwise eligible models. Record exclusions, including unmatched identifiers, and effective denominators.
+3. Cap numeric IC50s at 2,500 nM, the #96 nominal screen concentration. Treat a reported greater-than bound at or above 2,500 nM as tied at the cap. Drop a greater-than bound below the cap, a less-than bound, other unparseable values and nonpositive or nonfinite values. This endpoint measures relative sensitivity up to the original in-vitro screening concentration. No interpolation of the individual dose points.
+4. Within each retained lineage, rank each of the four genes and the capped IC50 separately in ascending order using midranks for ties. For a lineage of size n, center and scale each rank as (rank - (n+1)/2) / n. Take each model's arithmetic mean of the four transformed gene ranks. Across retained models calculate the Pearson correlation r between this HS score and the transformed response ranks. This weights models equally on a common within-lineage rank scale. Positive r has the prespecified direction.
+5. Shuffle response ranks within each lineage for 9,999 permutations, with models sorted by ModelID, lineages sorted lexically, and Python random.Random(96). Each permutation starts from the original ranks. One-sided p = (1 + number of shuffled r at least the observed r) / 10,000. Rank-vector norms stay fixed, so dot products can be compared with a 1e-12 absolute tolerance for ties.
+
+## Decisions and failure
+
+Require at least 40 retained models, at least eight with measurable IC50 strictly below the cap, at least two lineages with variation in both score and endpoint, and nonzero score and response variances. Otherwise report INCONCLUSIVE with the reason. On evaluable data the signature PASSES only if r >= 0.20 and p <= 0.05. The effect floor is of the order of the exploratory gene correlations and the significance threshold is one-sided for one prespecified test. Every other evaluable result FAILS. Failure deprioritizes the signature as a transferable cell-line predictor under these conditions. It cannot rule out FGFR2 inhibition, a smaller effect or an effect in a specific lineage. A pass would establish an association only. Report one endpoint and one verdict. No substitute genes, cutoffs, subgroup searches, secondary tests or post-result changes.
