@@ -5,6 +5,13 @@ organoid CRISPR screens (released 2026-07-23) and Project Score cell-line screen
 columns only). Used under Sanger's research-use licence: only gene-level summary statistics are
 committed, never per-model values. No literature priority check has been made.
 
+> **Follow-up audit (PR #99, 2026-11-22).** The organoid screens used the MinLibCas9/Yusa v1.1
+> intersection read at **day 21**. Project Score cell lines used Yusa v1.0/v1.1 read at **day 14**.
+> Different guides and timepoints can rescale selective-dependency effect sizes, so the ~2x
+> "compression" below **may be a campaign artefact**. It is not established as biology. WRN dependence
+> in MSI colorectal organoids is already published, including by Sanger. #99's frozen test of the
+> EGF/EGFR-bypass idea for BRAF V600E was inconclusive, with the direction opposite to the prediction.
+
 ## Results
 
 | Step (all frozen in `PROTOCOL.md` before running) | Result | Verdict |
@@ -15,8 +22,8 @@ committed, never per-model values. No literature priority check has been made.
 
 ## What was learned
 
-1. **Selective oncogene dependencies are about half as strong in colorectal organoids as in
-   same-laboratory cell lines** (WRN in MSI, KRAS in KRAS-mutant), even after normalising each screen to
+1. **Selective oncogene dependencies score about half as strong in colorectal organoid screens as in
+   same-laboratory cell-line screens** (possibly a library/timepoint artefact, see the audit note above) (WRN in MSI, KRAS in KRAS-mutant), even after normalising each screen to
    its own core-essential genes. 60% of MSI organoids vs 90% of MSI lines show a WRN effect < −0.5; 79% vs
    94% of KRAS-mutant models show a KRAS effect < −0.5. Effect sizes measured in cell lines may overstate
    how strongly patient-derived tumour models depend on these targets. Slower growth, subclonality or
