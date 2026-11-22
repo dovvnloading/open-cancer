@@ -1,0 +1,24 @@
+{
+  "n_organoid_msi": 15,
+  "n_organoid_mss": 67,
+  "n_line_msi": 10,
+  "n_line_mss": 19,
+  "n_genes": 16448,
+  "spearman_diff_org_vs_line": 0.11879989318857884,
+  "WRN": {
+    "diff_org": -0.667469504571945,
+    "p_msi_more_essential_org": 0.0005043811702531162,
+    "diff_line": -1.4385094863479615,
+    "p_msi_more_essential_line": 1.423848508932139e-05
+  },
+  "WRN_positive_control_pass": true,
+  "n_line_msi_specific": 1,
+  "n_transfer_to_organoids": 0,
+  "transfer_fraction": 0.0,
+  "line_msi_specific_genes": [
+    "CEBPZ"
+  ],
+  "transferred_genes": [],
+  "n_organoid_only_msi": 0,
+  "organoid_only_top": []
+}
