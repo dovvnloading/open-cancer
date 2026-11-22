@@ -142,7 +142,10 @@ def main():
     # H1 PRISM drug-level test
     cl = pd.read_csv(d / "PRISM_Extended_Primary_Compound_List.csv")
     M = pd.read_csv(d / "PRISM_Extended_Primary_Data_Matrix.csv", index_col=0)
-    M.index = cl["IDs"].values if (M.index == cl["IDs"]).all() else M.index
+    # The compound list is NOT in matrix row order: align metadata to matrix rows by Broad ID
+    # (bug found 2026-11-22 by the MOA calibration in research/prism-2024-moa-deconvolution).
+    cl = cl.drop_duplicates("IDs").set_index("IDs").reindex(M.index)
+    cl.index.name = "IDs"; cl = cl.reset_index()
     drug_rows = []
     for i, row in cl.iterrows():
         tg = set(str(row["repurposing_target"]).replace(" ", "").split(","))

@@ -62,10 +62,10 @@ Strict queue (`queue.py`): 51 pairs; 33 carry a rule-based known/proxy explanati
 | H1 RNAi | mean r over set members present | 0.064 |
 | H1 adherent / suspension | set incl. seeds, mean r (lines; GJA1-off) | 0.144 (890; 313) / 0.021 (156; 122) |
 | H1 controls (GJA1) | ribosome / proteasome / spliceosome / Pol II mean r (p) | 0.004 (0.27) / −0.023 (1.00) / 0.002 (0.46) / 0.005 (0.37); all pass |
-| H1 PRISM primary (frozen) | 60 drug conditions annotated to the enzymes, mean r | 0.001 (4 nominal p<0.05) |
+| H1 PRISM primary (frozen) | 60 drug conditions annotated to the enzymes, mean r | 0.006 (4 nominal p<0.05) |
 | H1 same adherent lines | CRISPR set mean r on 625 lines with PRISM | 0.148 (14/15 positive) |
-| H1 PRISM active-drug sensitivity (post hoc) | 11 active conditions, mean r, condition bootstrap | 0.040 [0.005, 0.075] |
-| H1 paired line bootstrap (1,000; 13 name/dose-matched conditions) | CRISPR − drug; drug alone | [0.064, 0.174]; [−0.006, 0.060]; median drug/CRISPR ratio 0.18 |
+| H1 PRISM active-drug sensitivity (post hoc) | 28 active conditions, mean r, condition bootstrap | 0.032 [0.018, 0.044] |
+| H1 paired line bootstrap (1,000; 28 conditions) | CRISPR − drug; drug alone | [0.044, 0.178]; [−0.022, 0.090]; median drug/CRISPR ratio 0.24 |
 | H1 Sanger | set mean r; p (106 GJA1-off models) | 0.135; ≤ 1e-4 |
 | H1 enzyme enrichment | EC enzymes vs others among 1,572 commonly depleted genes | median 0.0072 vs −0.0040; Mann-Whitney p=1.1e-4; top-50 enzyme fraction 0.52 vs 0.11 base |
 | H2 CRISPR set (16 FA/ICL genes) | mean r; p | 0.085; ≤ 1e-4 (15/16 positive); MCM2-7 control −0.006 (p 0.67) |
@@ -73,9 +73,18 @@ Strict queue (`queue.py`): 51 pairs; 33 carry a rule-based known/proxy explanati
 | H2 Sanger | mean r; p (30 ALDH2-off models) | 0.111; ≤ 1e-4; MCM2-7 control −0.045 (p 0.96) |
 | H3 CRISPR set | mean r; p | −0.014; 0.81 (**falsified**) |
 
-The bootstrap matched 13 PRISM conditions by (name, dose), versus 11 in the active-drug table,
-because two duplicate name/dose conditions from other screen batches were included. This is
-recorded as a discrepancy and does not change the conclusion.
+## Correction (2026-11-22, same day)
+
+The PRISM compound list is **not** stored in the same row order as the PRISM data matrix. The first
+versions of `pathways.py`, `followup.py` and `bootstrap_h1.py` paired matrix rows with list rows by
+position, so the H1 drug-level statistics were computed on the wrong compounds. The bug was found
+when the calibration of the follow-up compound-mechanism screen (research/prism-2024-moa-deconvolution)
+came out near chance. All three scripts now align metadata to matrix rows by Broad ID. Every H1
+drug-level number above is from the corrected rerun. First-version values were: primary 0.001;
+active 0.040 [0.005, 0.075] over 11 conditions; paired difference [0.064, 0.174], drug alone
+[−0.006, 0.060], ratio 0.18. The non-PRISM results reproduced exactly. The qualitative conclusion
+is unchanged: drug-level attenuation holds and a drug-level effect is not established. The numbers
+quoted inside HYPOTHESES.md Addenda B–C are the first-version values, kept as written at the time.
 
 ## Limitations
 

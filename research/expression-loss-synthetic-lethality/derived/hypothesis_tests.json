@@ -251,7 +251,7 @@
   },
   "H1_prism": {
     "n_drug_conditions": 60,
-    "mean_r": 0.000938333333333333,
+    "mean_r": 0.006116666666666664,
     "n_nominal_p_lt_0.05": 4
   },
   "sanger": {

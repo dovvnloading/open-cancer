@@ -21,6 +21,10 @@ def main():
     act = pd.read_csv(a.out / "h1_prism_active_same_lines.csv")
     cl = pd.read_csv(a.data / "PRISM_Extended_Primary_Compound_List.csv")
     M = pd.read_csv(a.data / "PRISM_Extended_Primary_Data_Matrix.csv", index_col=0)
+    # The compound list is NOT in matrix row order: align metadata to matrix rows by Broad ID
+    # (bug found 2026-11-22 by the MOA calibration in research/prism-2024-moa-deconvolution).
+    cl = cl.drop_duplicates("IDs").set_index("IDs").reindex(M.index)
+    cl.index.name = "IDs"; cl = cl.reset_index()
     gp = model["GrowthPattern"].fillna("")
     adherent = set(gp.index[gp.str.contains("Adherent", case=False) & ~gp.str.contains("Suspension", case=False)])
     same = sorted(set(lines) & set(M.columns) & adherent)

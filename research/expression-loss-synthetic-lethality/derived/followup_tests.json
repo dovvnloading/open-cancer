@@ -142,11 +142,11 @@
     "n_genes": 15
   },
   "H1_prism_active_same_lines": {
-    "n_conditions": 11,
-    "mean_r": 0.04005454545454545,
+    "n_conditions": 28,
+    "mean_r": 0.03169285714285715,
     "bootstrap95": [
-      0.004845454545454546,
-      0.07523068181818177
+      0.01824151785714286,
+      0.04436125
     ]
   },
   "sanger_set_replication": {

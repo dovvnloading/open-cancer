@@ -65,3 +65,6 @@ among **commonly depleted genes** (mean CRISPR effect < -0.5 over the screened l
 an HGNC EC number (`enzyme_id`) have higher GJA1 partial r than genes without one
 (one-sided Mann-Whitney, p < 0.01), and the median difference is reported. Mitochondrially
 encoded/translation machinery is not excluded, so this test is conservative for the enzyme class.
+
+> **Correction note:** the PRISM numbers quoted in Addenda B and C came from a row-misaligned compound
+> list. Corrected values are in REPORT.md, section "Correction". The decision rules above were not changed.
