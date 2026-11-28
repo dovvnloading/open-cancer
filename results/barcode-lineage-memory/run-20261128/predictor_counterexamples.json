@@ -1,0 +1,200 @@
+{
+  "scope": "Original SYNTHETIC probability examples; no empirical or clinical data",
+  "examples": [
+    {
+      "label": "SYNTHETIC_PROBABILITY_COUNTEREXAMPLE",
+      "a": 1.0,
+      "b": 0.25,
+      "w": 0.2,
+      "m": 0.001,
+      "epsilon": 0.0001,
+      "own": [
+        0.2,
+        0.001,
+        0.799
+      ],
+      "clean_donor": [
+        0.001,
+        0.998,
+        0.001
+      ],
+      "contaminated_donor": [
+        0.0010999,
+        0.9979002,
+        0.0009999
+      ],
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "donor_total_variation": 9.99e-05,
+      "clean_target_prediction": 0.19908013046186046,
+      "contaminated_target_prediction": 0.20290698976952554,
+      "base_target_prediction": 0.2,
+      "clean_gain": -0.004609957234106288,
+      "contaminated_gain": 0.014430329022676824,
+      "contaminated_minus_clean_score": 0.019040286256783112,
+      "fixed_donor_mixture_score_bound": 0.023829817895316827,
+      "target_only_lower_gain_every_budget_below_one": 0.014430329022676824,
+      "target_only_tipping_status": "unreachable_below_one",
+      "m_to_zero_gain_limit_at_fixed_w_epsilon_b": 1.6094379124341003
+    },
+    {
+      "label": "SYNTHETIC_PROBABILITY_COUNTEREXAMPLE",
+      "a": 1.0,
+      "b": 0.25,
+      "w": 0.2,
+      "m": 1e-05,
+      "epsilon": 0.0001,
+      "own": [
+        0.2,
+        1e-05,
+        0.7999900000000001
+      ],
+      "clean_donor": [
+        1e-05,
+        0.99998,
+        1e-05
+      ],
+      "contaminated_donor": [
+        0.000109999,
+        0.999880002,
+        9.999e-06
+      ],
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "donor_total_variation": 9.9999e-05,
+      "clean_target_prediction": 0.19996644022186716,
+      "contaminated_target_prediction": 0.3128115617006662,
+      "base_target_prediction": 0.2,
+      "clean_gain": -0.00016781297047319121,
+      "contaminated_gain": 0.44728360339869444,
+      "contaminated_minus_clean_score": 0.44745141636916763,
+      "fixed_donor_mixture_score_bound": 0.5994965467120731,
+      "target_only_lower_gain_every_budget_below_one": 0.44728360339869444,
+      "target_only_tipping_status": "unreachable_below_one",
+      "m_to_zero_gain_limit_at_fixed_w_epsilon_b": 1.6094379124341003
+    },
+    {
+      "label": "SYNTHETIC_PROBABILITY_COUNTEREXAMPLE",
+      "a": 1.0,
+      "b": 0.25,
+      "w": 0.2,
+      "m": 1e-08,
+      "epsilon": 0.0001,
+      "own": [
+        0.2,
+        1e-08,
+        0.79999999
+      ],
+      "clean_donor": [
+        1e-08,
+        0.99999998,
+        1e-08
+      ],
+      "contaminated_donor": [
+        0.000100009999,
+        0.999899980002,
+        9.999e-09
+      ],
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "donor_total_variation": 9.9999999e-05,
+      "clean_target_prediction": 0.19999980200019707,
+      "contaminated_target_prediction": 0.7142956652023901,
+      "base_target_prediction": 0.2,
+      "clean_gain": -9.89999504819039e-07,
+      "contaminated_gain": 1.272979606999194,
+      "contaminated_minus_clean_score": 1.272980596998699,
+      "fixed_donor_mixture_score_bound": 2.302635090494463,
+      "target_only_lower_gain_every_budget_below_one": 1.272979606999194,
+      "target_only_tipping_status": "unreachable_below_one",
+      "m_to_zero_gain_limit_at_fixed_w_epsilon_b": 1.6094379124341003
+    },
+    {
+      "label": "SYNTHETIC_PROBABILITY_COUNTEREXAMPLE",
+      "a": 1.0,
+      "b": 0.25,
+      "w": 0.2,
+      "m": 1e-12,
+      "epsilon": 0.0001,
+      "own": [
+        0.2,
+        1e-12,
+        0.7999999999990001
+      ],
+      "clean_donor": [
+        1e-12,
+        0.999999999998,
+        1e-12
+      ],
+      "contaminated_donor": [
+        0.00010000000099990001,
+        0.9998999999980003,
+        9.999e-13
+      ],
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "donor_total_variation": 9.99999999999e-05,
+      "clean_target_prediction": 0.19999999980020014,
+      "contaminated_target_prediction": 0.9615393861765001,
+      "base_target_prediction": 0.2,
+      "clean_gain": -9.989993277059739e-10,
+      "contaminated_gain": 1.5702181609039167,
+      "contaminated_minus_clean_score": 1.570218161902916,
+      "fixed_donor_mixture_score_bound": 4.605195189737925,
+      "target_only_lower_gain_every_budget_below_one": 1.5702181609039167,
+      "target_only_tipping_status": "unreachable_below_one",
+      "m_to_zero_gain_limit_at_fixed_w_epsilon_b": 1.6094379124341003
+    },
+    {
+      "label": "SYNTHETIC_PROBABILITY_COUNTEREXAMPLE",
+      "a": 1.0,
+      "b": 0.25,
+      "w": 0.2,
+      "m": 1e-20,
+      "epsilon": 0.0001,
+      "own": [
+        0.2,
+        1e-20,
+        0.8
+      ],
+      "clean_donor": [
+        1e-20,
+        1.0,
+        1e-20
+      ],
+      "contaminated_donor": [
+        0.00010000000000000002,
+        0.9999,
+        9.999e-21
+      ],
+      "target": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "donor_total_variation": 0.0001,
+      "clean_target_prediction": 0.20000000000000015,
+      "contaminated_target_prediction": 0.9996001699284053,
+      "base_target_prediction": 0.2,
+      "clean_gain": 6.661338147750939e-16,
+      "contaminated_gain": 1.60903800240915,
+      "contaminated_minus_clean_score": 1.6090380024091493,
+      "fixed_donor_mixture_score_bound": 9.210365373226267,
+      "target_only_lower_gain_every_budget_below_one": 1.60903800240915,
+      "target_only_tipping_status": "unreachable_below_one",
+      "m_to_zero_gain_limit_at_fixed_w_epsilon_b": 1.6094379124341003
+    }
+  ]
+}

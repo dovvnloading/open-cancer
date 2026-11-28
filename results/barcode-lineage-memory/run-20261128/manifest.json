@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "task_id": "barcode-lineage-memory",
+  "run_id": "run-20261128",
+  "submitted_by": {
+    "type": "agent",
+    "name": "Open Cancer computational reconstruction",
+    "model_or_tool": "GPT-6 Astra Pro; separate Python mathematical implementations"
+  },
+  "created_at": "2026-11-28T01:48:31.804286+00:00",
+  "inputs": [
+    {
+      "source_id": "whiting-barcode-2025",
+      "accessed_on": "2026-11-28",
+      "url": "https://doi.org/10.1038/s41467-025-59479-7",
+      "query_or_filter": "Publisher Supplementary Data 2 HCTbc and SW6bc paired treated-culture barcode count matrices; original downloads untracked.",
+      "source_release": "Workbook SHA256 5c61f93a15134b795e6655ecab18f2d30e7d52daed33168ca0a60406303ee100"
+    }
+  ],
+  "execution": {
+    "code_path": "reproduce.py",
+    "command": "python results/barcode-lineage-memory/run-20261128/reproduce.py --fetch",
+    "environment": "Python3.12; NumPy>=1.24,<3; OpenPyXL>=3.1,<4 for source preparation; Matplotlib optional for figures"
+  },
+  "artifacts": [
+    {
+      "path": "HCTbc.json",
+      "sha256": "959db26743023519ca0e87575bdc0801a012de4b2bf7d82838157d62a3b4738a",
+      "description": "Original aggregate per-culture calculations and all declared sensitivity outcomes"
+    },
+    {
+      "path": "SW6bc.json",
+      "sha256": "3a9d841466d0722643841a502f3251f0274ba8800dd9f7c36fe1a2f98c32e8a5",
+      "description": "Original aggregate per-culture calculations and all declared sensitivity outcomes"
+    },
+    {
+      "path": "HCTbc_exploratory.json",
+      "sha256": "76dabd7053c77b07beef5af3d90ccf61bc76df7e1bd5ac9e85afdbda2da515bd",
+      "description": "Original aggregate per-culture calculations and all declared sensitivity outcomes"
+    },
+    {
+      "path": "SW6bc_exploratory.json",
+      "sha256": "8571d77f3a2d56a9ff94648244cf5ef9f38b0540e8bd66c4d818e5e9e8b6b39f",
+      "description": "Original aggregate per-culture calculations and all declared sensitivity outcomes"
+    },
+    {
+      "path": "independent_verification.json",
+      "sha256": "a256ddfa3d75765a86853f46fe207096d1a92995054ab9124b53cff6e3a94142",
+      "description": "Separate probability-space and count-weighted empirical replay"
+    },
+    {
+      "path": "predictor_counterexamples.json",
+      "sha256": "32abf3158acbde75786cb358af2879dd921328a19e6bf3bf5b9a97b7f3f60e59",
+      "description": "Explicitly synthetic probability examples and limiting calculations"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "f3bf201513e8c064ede33a3b464b3ac9fe7f16d3e067dbbf15ebf009cfa9eddf",
+      "description": "Fresh reconstruction headline calculations and explicit limits"
+    },
+    {
+      "path": "code_fingerprints.json",
+      "sha256": "67e8a2222415bf3805b70bb029a38866823cdb94c3568683f512aebb7957471d",
+      "description": "Fingerprints of reconstructed code, design and source metadata"
+    },
+    {
+      "path": "research_report.md",
+      "sha256": "b1f6d7017e2d89c99a7cb60f37dab4526345a911bad9d48e381ba29e050da582",
+      "description": "Substantive original report of the reconstructed computational investigation"
+    },
+    {
+      "path": "forecast_robustness.png",
+      "sha256": "7dfdb9e56e1bdde5ab3314f79aaab5232ec329cd428a48533dcbe54e9c66cc74",
+      "description": "Original scientific chart of predictor and outcome sensitivities"
+    },
+    {
+      "path": "forecast_robustness.svg",
+      "sha256": "e895150d451034df7e2ab62e32bfc51f33acbcac0213ac218b42ca53a557e5fe",
+      "description": "Scalable original chart of the freshly calculated comparisons"
+    },
+    {
+      "path": "reproduce.py",
+      "sha256": "d71ecfa236dd3f22c83497b4d8d764db1f6837fe067b76bb80e4618cb14b946b",
+      "description": "Run-specific authenticated source replay and artifact integrity entry point"
+    }
+  ],
+  "findings": [
+    {
+      "id": "primary-gate-failed",
+      "statement": "Reconstructed HCT116 nested forecasts improve all four held-out cultures by mean 0.3106646962 nats/read, but the recorded descriptive robustness gate fails its required abundance-floor refit.",
+      "evidence": [
+        {
+          "source_id": "whiting-barcode-2025",
+          "record_url": "https://doi.org/10.1038/s41467-025-59479-7",
+          "relation": "context"
+        }
+      ],
+      "review_status": "unreviewed",
+      "limitations": "Newly calculated known-result reconstruction. Four cultures share a parent; reads are not independent cells. Source filtering and missing full parental/untreated controls constrain interpretation."
+    },
+    {
+      "id": "rare-donor-predictor-sensitivity",
+      "statement": "Exploratory donor-only filtering below frequency 1e-5 removes 0.19795896\u20130.45781757% of early donor read mass and eliminates every incremental gain while preserving own early inputs, later outcomes, baseline predictions and dictionary.",
+      "evidence": [
+        {
+          "source_id": "whiting-barcode-2025",
+          "record_url": "https://doi.org/10.1038/s41467-025-59479-7",
+          "relation": "context"
+        }
+      ],
+      "review_status": "unreviewed",
+      "limitations": "The sensitivity of this specified fitted predictor does not prove that the removed reads are artifacts or that shared biological information is absent. This is an exploratory follow-up, not a new blinded primary test."
+    },
+    {
+      "id": "outcome-check-does-not-protect-predictors",
+      "statement": "The fixed-predictor adverse 1% outcome-mass deletion lower mean remains +0.3032144247 nats/read. An explicit synthetic construction with a sufficiently small predictor probability floor shows why arbitrarily small donor contamination can evade every target-only deletion check below one.",
+      "evidence": [
+        {
+          "source_id": "whiting-barcode-2025",
+          "record_url": "https://doi.org/10.1038/s41467-025-59479-7",
+          "relation": "context"
+        }
+      ],
+      "review_status": "unreviewed",
+      "limitations": "The construction is probability algebra, not an empirical contamination estimate. A fixed-floor continuity bound states its limit. Sparse temporal resemblance and first-record flowcell support do not uniquely identify spillover causation or reject the source mechanistic analysis."
+    }
+  ],
+  "limitations": "Unreviewed nonclinical reconstruction with prior reported targets known. The previous local history and logs were unavailable; all evidence in this bundle was recomputed. No source tables, barcode identities, raw reads or patient records are redistributed. No biological mechanism, historical priority, exact hopping rate, causal source error or treatment benefit is established. Negative and unavailable results remain explicit."
+}

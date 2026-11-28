@@ -1,0 +1,906 @@
+{
+  "method": "independent reconstructed count-weighted probability-space replay",
+  "checks": [
+    {
+      "cell_line": "HCTbc",
+      "frequency_floor": 0.0,
+      "matched": true,
+      "maximum_absolute_numeric_difference": 2.1316282072803006e-14,
+      "cache_sha256": "2c414bda3c7bcc1a24c1dff9ca6a3b9fe0aec4ff9d5dfac0bcd8ed31c8b224d3",
+      "report_sha256": "959db26743023519ca0e87575bdc0801a012de4b2bf7d82838157d62a3b4738a",
+      "reference": {
+        "available": true,
+        "early_dictionary_lineages": 11721,
+        "mean_gain": 0.3106646962275419,
+        "folds": [
+          {
+            "target_culture": "DT1",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.25,
+            "base_inner_mean_score": -4.589122346022381,
+            "full_inner_mean_score": -4.263464367338068,
+            "base_score": -4.082214228180416,
+            "full_score": -3.937971749688236,
+            "gain": 0.14424247849217964,
+            "untuned_own_score": -4.082214228180416,
+            "untuned_other_score": -16.828925693220114
+          },
+          {
+            "target_culture": "DT2",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.25,
+            "base_inner_mean_score": -4.385530529829176,
+            "full_inner_mean_score": -3.9731067941766853,
+            "base_score": -4.692989676760031,
+            "full_score": -4.650449032273684,
+            "gain": 0.042540644486346715,
+            "untuned_own_score": -4.69298967676003,
+            "untuned_other_score": -12.283775023794234
+          },
+          {
+            "target_culture": "DT3",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.25,
+            "base_inner_mean_score": -4.332048249638864,
+            "full_inner_mean_score": -4.057984366329532,
+            "base_score": -4.853436517330969,
+            "full_score": -3.9440524765992837,
+            "gain": 0.9093840407316863,
+            "untuned_own_score": -4.853436517330969,
+            "untuned_other_score": -13.989727254732918
+          },
+          {
+            "target_culture": "DT4",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.25,
+            "base_inner_mean_score": -4.542880140757139,
+            "full_inner_mean_score": -4.145903648793786,
+            "base_score": -4.220940843976143,
+            "full_score": -4.074449222776188,
+            "gain": 0.14649162119995496,
+            "untuned_own_score": -4.220940843976143,
+            "untuned_other_score": -14.1638041243794
+          }
+        ]
+      }
+    },
+    {
+      "cell_line": "HCTbc",
+      "frequency_floor": 0.0001,
+      "matched": true,
+      "maximum_absolute_numeric_difference": 1.0658141036401503e-14,
+      "cache_sha256": "2c414bda3c7bcc1a24c1dff9ca6a3b9fe0aec4ff9d5dfac0bcd8ed31c8b224d3",
+      "report_sha256": "959db26743023519ca0e87575bdc0801a012de4b2bf7d82838157d62a3b4738a",
+      "reference": {
+        "available": true,
+        "early_dictionary_lineages": 1035,
+        "mean_gain": 0.0,
+        "folds": [
+          {
+            "target_culture": "DT1",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.5597497023612155,
+            "full_inner_mean_score": -4.5597497023612155,
+            "base_score": -4.0422720192850825,
+            "full_score": -4.0422720192850825,
+            "gain": 0.0,
+            "untuned_own_score": -4.0422720192850825,
+            "untuned_other_score": -16.15346279479561
+          },
+          {
+            "target_culture": "DT2",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.351840026938843,
+            "full_inner_mean_score": -4.351840026938843,
+            "base_score": -4.6660010455522,
+            "full_score": -4.6660010455522,
+            "gain": 0.0,
+            "untuned_own_score": -4.6660010455522,
+            "untuned_other_score": -16.112270436053276
+          },
+          {
+            "target_culture": "DT3",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.301648997893209,
+            "full_inner_mean_score": -4.301648997893209,
+            "base_score": -4.816574132689104,
+            "full_score": -4.816574132689104,
+            "gain": 0.0,
+            "untuned_own_score": -4.816574132689104,
+            "untuned_other_score": -16.14831206300196
+          },
+          {
+            "target_culture": "DT4",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.508282399175463,
+            "full_inner_mean_score": -4.508282399175463,
+            "base_score": -4.196673928842343,
+            "full_score": -4.196673928842343,
+            "gain": 0.0,
+            "untuned_own_score": -4.196673928842343,
+            "untuned_other_score": -16.13991577368858
+          }
+        ]
+      }
+    },
+    {
+      "cell_line": "HCTbc",
+      "frequency_floor": 0.001,
+      "matched": true,
+      "maximum_absolute_numeric_difference": 7.105427357601002e-15,
+      "cache_sha256": "2c414bda3c7bcc1a24c1dff9ca6a3b9fe0aec4ff9d5dfac0bcd8ed31c8b224d3",
+      "report_sha256": "959db26743023519ca0e87575bdc0801a012de4b2bf7d82838157d62a3b4738a",
+      "reference": {
+        "available": true,
+        "early_dictionary_lineages": 572,
+        "mean_gain": 0.0,
+        "folds": [
+          {
+            "target_culture": "DT1",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.5076408787353195,
+            "full_inner_mean_score": -4.5076408787353195,
+            "base_score": -3.9954041490756973,
+            "full_score": -3.9954041490756973,
+            "gain": 0.0,
+            "untuned_own_score": -3.9954041490756973,
+            "untuned_other_score": -15.561226088690923
+          },
+          {
+            "target_culture": "DT2",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.332567631205561,
+            "full_inner_mean_score": -4.332567631205561,
+            "base_score": -4.5206238916649735,
+            "full_score": -4.5206238916649735,
+            "gain": 0.0,
+            "untuned_own_score": -4.5206238916649735,
+            "untuned_other_score": -15.529156414771666
+          },
+          {
+            "target_culture": "DT3",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.269308060358761,
+            "full_inner_mean_score": -4.269308060358761,
+            "base_score": -4.710402604205372,
+            "full_score": -4.710402604205372,
+            "gain": 0.0,
+            "untuned_own_score": -4.710402604205372,
+            "untuned_other_score": -15.561226088690924
+          },
+          {
+            "target_culture": "DT4",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.408810214982014,
+            "full_inner_mean_score": -4.408810214982014,
+            "base_score": -4.291896140335612,
+            "full_score": -4.291896140335612,
+            "gain": 0.0,
+            "untuned_own_score": -4.291896140335612,
+            "untuned_other_score": -15.561226088690924
+          }
+        ]
+      }
+    },
+    {
+      "cell_line": "SW6bc",
+      "frequency_floor": 0.0,
+      "matched": true,
+      "maximum_absolute_numeric_difference": 6.696865284538944e-13,
+      "cache_sha256": "f156dc3438c793bf2e334e0b4cda5b8871108b82ab8686bde4cb099596e35411",
+      "report_sha256": "3a9d841466d0722643841a502f3251f0274ba8800dd9f7c36fe1a2f98c32e8a5",
+      "reference": {
+        "available": true,
+        "early_dictionary_lineages": 667045,
+        "mean_gain": 0.0,
+        "folds": [
+          {
+            "target_culture": "DT1",
+            "base_a": 2.0,
+            "full_a": 2.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -7.060808247301707,
+            "full_inner_mean_score": -7.060808247301707,
+            "base_score": -9.522229572633599,
+            "full_score": -9.522229572633599,
+            "gain": 0.0,
+            "untuned_own_score": -10.11416677134408,
+            "untuned_other_score": -13.1965577369967
+          },
+          {
+            "target_culture": "DT2",
+            "base_a": 2.0,
+            "full_a": 2.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -8.120156083657298,
+            "full_inner_mean_score": -8.120156083657298,
+            "base_score": -6.344186063566827,
+            "full_score": -6.344186063566827,
+            "gain": 0.0,
+            "untuned_own_score": -8.531471135389006,
+            "untuned_other_score": -12.333981952710753
+          },
+          {
+            "target_culture": "DT3",
+            "base_a": 2.0,
+            "full_a": 2.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -7.959527208839784,
+            "full_inner_mean_score": -7.959527208839784,
+            "base_score": -6.826072688019367,
+            "full_score": -6.826072688019367,
+            "gain": 0.0,
+            "untuned_own_score": -8.633609618623954,
+            "untuned_other_score": -10.635857464724433
+          },
+          {
+            "target_culture": "DT4",
+            "base_a": 2.0,
+            "full_a": 2.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -7.5641627747399305,
+            "full_inner_mean_score": -7.5641627747399305,
+            "base_score": -8.012165990318927,
+            "full_score": -8.012165990318927,
+            "gain": 0.0,
+            "untuned_own_score": -9.4047940084892,
+            "untuned_other_score": -11.104748168989516
+          }
+        ]
+      }
+    },
+    {
+      "cell_line": "SW6bc",
+      "frequency_floor": 0.0001,
+      "matched": true,
+      "maximum_absolute_numeric_difference": 3.552713678800501e-15,
+      "cache_sha256": "f156dc3438c793bf2e334e0b4cda5b8871108b82ab8686bde4cb099596e35411",
+      "report_sha256": "3a9d841466d0722643841a502f3251f0274ba8800dd9f7c36fe1a2f98c32e8a5",
+      "reference": {
+        "available": true,
+        "early_dictionary_lineages": 646,
+        "mean_gain": -0.2612077468825708,
+        "folds": [
+          {
+            "target_culture": "DT1",
+            "base_a": 0.5,
+            "full_a": 0.5,
+            "full_b": 0.25,
+            "base_inner_mean_score": -5.733187652874068,
+            "full_inner_mean_score": -5.695442679229917,
+            "base_score": -7.295720615299849,
+            "full_score": -7.6430127475098475,
+            "gain": -0.34729213220999966,
+            "untuned_own_score": -9.22455635991775,
+            "untuned_other_score": -10.766303664897787
+          },
+          {
+            "target_culture": "DT2",
+            "base_a": 0.5,
+            "full_a": 0.5,
+            "full_b": 0.25,
+            "base_inner_mean_score": -6.3576335152827985,
+            "full_inner_mean_score": -6.352207043546048,
+            "base_score": -5.422383028073654,
+            "full_score": -6.119921883393937,
+            "gain": -0.6975388553202836,
+            "untuned_own_score": -5.53558419420964,
+            "untuned_other_score": -12.455602684790463
+          },
+          {
+            "target_culture": "DT3",
+            "base_a": 0.5,
+            "full_a": 0.5,
+            "full_b": 0.0,
+            "base_inner_mean_score": -6.291459980135419,
+            "full_inner_mean_score": -6.291459980135419,
+            "base_score": -5.620903633515791,
+            "full_score": -5.620903633515791,
+            "gain": 0.0,
+            "untuned_own_score": -6.141997087703424,
+            "untuned_other_score": -7.313620713924046
+          },
+          {
+            "target_culture": "DT4",
+            "base_a": 0.5,
+            "full_a": 0.5,
+            "full_b": 0.0,
+            "base_inner_mean_score": -6.113002425629765,
+            "full_inner_mean_score": -6.113002425629765,
+            "base_score": -6.156276297032756,
+            "full_score": -6.156276297032756,
+            "gain": 0.0,
+            "untuned_own_score": -7.100391248941,
+            "untuned_other_score": -7.6562687754368195
+          }
+        ]
+      }
+    },
+    {
+      "cell_line": "SW6bc",
+      "frequency_floor": 0.001,
+      "matched": true,
+      "maximum_absolute_numeric_difference": 0.0,
+      "cache_sha256": "f156dc3438c793bf2e334e0b4cda5b8871108b82ab8686bde4cb099596e35411",
+      "report_sha256": "3a9d841466d0722643841a502f3251f0274ba8800dd9f7c36fe1a2f98c32e8a5",
+      "reference": {
+        "available": false
+      }
+    },
+    {
+      "cell_line": "HCTbc",
+      "exploratory_A2": true,
+      "mode": "early_only",
+      "floor": 1e-05,
+      "matched": true,
+      "maximum_absolute_numeric_difference": 3.907985046680551e-14,
+      "report_sha256": "76dabd7053c77b07beef5af3d90ccf61bc76df7e1bd5ac9e85afdbda2da515bd",
+      "cache_sha256": "2c414bda3c7bcc1a24c1dff9ca6a3b9fe0aec4ff9d5dfac0bcd8ed31c8b224d3",
+      "reference": {
+        "available": true,
+        "early_dictionary_lineages": 11721,
+        "mean_gain": 0.0,
+        "folds": [
+          {
+            "target_culture": "DT1",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.589650943494501,
+            "full_inner_mean_score": -4.589650943494501,
+            "base_score": -4.081417147923397,
+            "full_score": -4.081417147923397,
+            "gain": 0.0,
+            "untuned_own_score": -4.081417147923397,
+            "untuned_other_score": -18.57937402908847
+          },
+          {
+            "target_culture": "DT2",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.386067568334707,
+            "full_inner_mean_score": -4.386067568334707,
+            "base_score": -4.692167273402781,
+            "full_score": -4.692167273402781,
+            "gain": 0.0,
+            "untuned_own_score": -4.692167273402781,
+            "untuned_other_score": -13.533896759549666
+          },
+          {
+            "target_culture": "DT3",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.331208747835843,
+            "full_inner_mean_score": -4.331208747835843,
+            "base_score": -4.856743734899371,
+            "full_score": -4.856743734899371,
+            "gain": 0.0,
+            "untuned_own_score": -4.856743734899372,
+            "untuned_other_score": -18.56257499807522
+          },
+          {
+            "target_culture": "DT4",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.54344271874185,
+            "full_inner_mean_score": -4.54344271874185,
+            "base_score": -4.220041822181352,
+            "full_score": -4.220041822181352,
+            "gain": 0.0,
+            "untuned_own_score": -4.220041822181352,
+            "untuned_other_score": -18.560822250527853
+          }
+        ]
+      }
+    },
+    {
+      "cell_line": "HCTbc",
+      "exploratory_A2": true,
+      "mode": "late_only",
+      "floor": 1e-05,
+      "matched": true,
+      "maximum_absolute_numeric_difference": 1.4210854715202004e-14,
+      "report_sha256": "76dabd7053c77b07beef5af3d90ccf61bc76df7e1bd5ac9e85afdbda2da515bd",
+      "cache_sha256": "2c414bda3c7bcc1a24c1dff9ca6a3b9fe0aec4ff9d5dfac0bcd8ed31c8b224d3",
+      "reference": {
+        "available": true,
+        "early_dictionary_lineages": 11721,
+        "mean_gain": 0.31143092391650135,
+        "folds": [
+          {
+            "target_culture": "DT1",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.25,
+            "base_inner_mean_score": -4.577183909647702,
+            "full_inner_mean_score": -4.250801201551137,
+            "base_score": -4.072265224237186,
+            "full_score": -3.9277116673078805,
+            "gain": 0.1445535569293054,
+            "untuned_own_score": -4.072265224237186,
+            "untuned_other_score": -16.827681379471613
+          },
+          {
+            "target_culture": "DT2",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.25,
+            "base_inner_mean_score": -4.373341636147942,
+            "full_inner_mean_score": -3.9601222532809124,
+            "base_score": -4.683792044736463,
+            "full_score": -4.639947038104896,
+            "gain": 0.04384500663156735,
+            "untuned_own_score": -4.683792044736463,
+            "untuned_other_score": -12.27855757521335
+          },
+          {
+            "target_culture": "DT3",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.25,
+            "base_inner_mean_score": -4.32360702384591,
+            "full_inner_mean_score": -4.048812903274119,
+            "base_score": -4.832995881642562,
+            "full_score": -3.922794296685723,
+            "gain": 0.9102015849568391,
+            "untuned_own_score": -4.832995881642562,
+            "untuned_other_score": -13.986457077832304
+          },
+          {
+            "target_culture": "DT4",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.25,
+            "base_inner_mean_score": -4.529684383538737,
+            "full_inner_mean_score": -4.131856891310506,
+            "base_score": -4.214763802564081,
+            "full_score": -4.067640255415788,
+            "gain": 0.1471235471482936,
+            "untuned_own_score": -4.214763802564081,
+            "untuned_other_score": -14.161276420586047
+          }
+        ]
+      }
+    },
+    {
+      "cell_line": "HCTbc",
+      "exploratory_A2": true,
+      "mode": "both",
+      "floor": 1e-05,
+      "matched": true,
+      "maximum_absolute_numeric_difference": 1.4210854715202004e-14,
+      "report_sha256": "76dabd7053c77b07beef5af3d90ccf61bc76df7e1bd5ac9e85afdbda2da515bd",
+      "cache_sha256": "2c414bda3c7bcc1a24c1dff9ca6a3b9fe0aec4ff9d5dfac0bcd8ed31c8b224d3",
+      "reference": {
+        "available": true,
+        "early_dictionary_lineages": 11721,
+        "mean_gain": 0.0,
+        "folds": [
+          {
+            "target_culture": "DT1",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.57612571152299,
+            "full_inner_mean_score": -4.57612571152299,
+            "base_score": -4.070020404437493,
+            "full_score": -4.070020404437493,
+            "gain": 0.0,
+            "untuned_own_score": -4.070020404437493,
+            "untuned_other_score": -18.579563069012558
+          },
+          {
+            "target_culture": "DT2",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.372629509084995,
+            "full_inner_mean_score": -4.372629509084995,
+            "base_score": -4.680509011751475,
+            "full_score": -4.680509011751475,
+            "gain": 0.0,
+            "untuned_own_score": -4.680509011751475,
+            "untuned_other_score": -13.529653594721246
+          },
+          {
+            "target_culture": "DT3",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.32124082835335,
+            "full_inner_mean_score": -4.32124082835335,
+            "base_score": -4.834675053946411,
+            "full_score": -4.834675053946411,
+            "gain": 0.0,
+            "untuned_own_score": -4.834675053946411,
+            "untuned_other_score": -18.567147132453993
+          },
+          {
+            "target_culture": "DT4",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.528401490045126,
+            "full_inner_mean_score": -4.528401490045126,
+            "base_score": -4.213193068871083,
+            "full_score": -4.213193068871083,
+            "gain": 0.0,
+            "untuned_own_score": -4.213193068871083,
+            "untuned_other_score": -18.561096751936198
+          }
+        ]
+      }
+    },
+    {
+      "cell_line": "HCTbc",
+      "exploratory_A2": true,
+      "mode": "donor_feature_only",
+      "floor": 1e-05,
+      "matched": true,
+      "maximum_absolute_numeric_difference": 3.907985046680551e-14,
+      "report_sha256": "76dabd7053c77b07beef5af3d90ccf61bc76df7e1bd5ac9e85afdbda2da515bd",
+      "cache_sha256": "2c414bda3c7bcc1a24c1dff9ca6a3b9fe0aec4ff9d5dfac0bcd8ed31c8b224d3",
+      "reference": {
+        "available": true,
+        "early_dictionary_lineages": 11721,
+        "mean_gain": 0.0,
+        "folds": [
+          {
+            "target_culture": "DT1",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.589122346022381,
+            "full_inner_mean_score": -4.589122346022381,
+            "base_score": -4.082214228180416,
+            "full_score": -4.082214228180416,
+            "gain": 0.0,
+            "untuned_own_score": -4.082214228180416,
+            "untuned_other_score": -18.57937402908847
+          },
+          {
+            "target_culture": "DT2",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.385530529829176,
+            "full_inner_mean_score": -4.385530529829176,
+            "base_score": -4.692989676760031,
+            "full_score": -4.692989676760031,
+            "gain": 0.0,
+            "untuned_own_score": -4.69298967676003,
+            "untuned_other_score": -13.533896759549666
+          },
+          {
+            "target_culture": "DT3",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.332048249638864,
+            "full_inner_mean_score": -4.332048249638864,
+            "base_score": -4.853436517330969,
+            "full_score": -4.853436517330969,
+            "gain": 0.0,
+            "untuned_own_score": -4.853436517330969,
+            "untuned_other_score": -18.56257499807522
+          },
+          {
+            "target_culture": "DT4",
+            "base_a": 1.0,
+            "full_a": 1.0,
+            "full_b": 0.0,
+            "base_inner_mean_score": -4.542880140757139,
+            "full_inner_mean_score": -4.542880140757139,
+            "base_score": -4.220940843976143,
+            "full_score": -4.220940843976143,
+            "gain": 0.0,
+            "untuned_own_score": -4.220940843976143,
+            "untuned_other_score": -18.560822250527853
+          }
+        ]
+      }
+    },
+    {
+      "cell_line": "HCTbc",
+      "exploratory_A2": true,
+      "mode": "temporal",
+      "matched": true,
+      "maximum_absolute_numeric_difference": 1.0269562977782698e-15,
+      "report_sha256": "76dabd7053c77b07beef5af3d90ccf61bc76df7e1bd5ac9e85afdbda2da515bd",
+      "cache_sha256": "2c414bda3c7bcc1a24c1dff9ca6a3b9fe0aec4ff9d5dfac0bcd8ed31c8b224d3",
+      "reference": {
+        "home_results": [
+          {
+            "home_culture": "DT1",
+            "selected_barcodes": 117,
+            "half_selected_barcodes": [
+              59,
+              58
+            ],
+            "available": true,
+            "receiver_half_results": [
+              {
+                "receiver_culture": "DT2",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 1.8860955282124323,
+                "receiver_test_read_count": 11,
+                "receiver_test_occupied_barcodes": 1
+              },
+              {
+                "receiver_culture": "DT2",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 0.49314258290886887,
+                "receiver_test_read_count": 112,
+                "receiver_test_occupied_barcodes": 1
+              },
+              {
+                "receiver_culture": "DT3",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 1.4761424814979587,
+                "receiver_test_read_count": 42,
+                "receiver_test_occupied_barcodes": 2
+              },
+              {
+                "receiver_culture": "DT3",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 0.5225514291078369,
+                "receiver_test_read_count": 332,
+                "receiver_test_occupied_barcodes": 2
+              },
+              {
+                "receiver_culture": "DT4",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 1.8860955282124323,
+                "receiver_test_read_count": 31,
+                "receiver_test_occupied_barcodes": 1
+              },
+              {
+                "receiver_culture": "DT4",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 0.49314258290886887,
+                "receiver_test_read_count": 193,
+                "receiver_test_occupied_barcodes": 1
+              }
+            ],
+            "mean_gain": 1.1261950221413997
+          },
+          {
+            "home_culture": "DT2",
+            "selected_barcodes": 141,
+            "half_selected_barcodes": [
+              77,
+              64
+            ],
+            "available": true,
+            "receiver_half_results": [
+              {
+                "receiver_culture": "DT1",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 0.95,
+                "gain": 0.18125474942670047,
+                "receiver_test_read_count": 31160,
+                "receiver_test_occupied_barcodes": 73
+              },
+              {
+                "receiver_culture": "DT1",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 0.15557101491112327,
+                "receiver_test_read_count": 26632,
+                "receiver_test_occupied_barcodes": 63
+              },
+              {
+                "receiver_culture": "DT3",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 0.23825175911301383,
+                "receiver_test_read_count": 1754,
+                "receiver_test_occupied_barcodes": 40
+              },
+              {
+                "receiver_culture": "DT3",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 0.22765796058207355,
+                "receiver_test_read_count": 1275,
+                "receiver_test_occupied_barcodes": 29
+              },
+              {
+                "receiver_culture": "DT4",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": -1.1752879530819675,
+                "receiver_test_read_count": 193,
+                "receiver_test_occupied_barcodes": 5
+              },
+              {
+                "receiver_culture": "DT4",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 0.0,
+                "gain": 0.0,
+                "receiver_test_read_count": 81,
+                "receiver_test_occupied_barcodes": 2
+              }
+            ],
+            "mean_gain": -0.06209207817484274
+          },
+          {
+            "home_culture": "DT3",
+            "selected_barcodes": 158,
+            "half_selected_barcodes": [
+              75,
+              83
+            ],
+            "available": true,
+            "receiver_half_results": [
+              {
+                "receiver_culture": "DT1",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 3.322352956751926,
+                "receiver_test_read_count": 135,
+                "receiver_test_occupied_barcodes": 2
+              },
+              {
+                "receiver_culture": "DT1",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 0.95,
+                "gain": 3.6926600790651145,
+                "receiver_test_read_count": 120,
+                "receiver_test_occupied_barcodes": 1
+              },
+              {
+                "receiver_culture": "DT2",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 3.8814275613404576,
+                "receiver_test_read_count": 85,
+                "receiver_test_occupied_barcodes": 1
+              },
+              {
+                "receiver_culture": "DT2",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 3.7427073143025464,
+                "receiver_test_read_count": 49,
+                "receiver_test_occupied_barcodes": 1
+              },
+              {
+                "receiver_culture": "DT4",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 3.881427561340457,
+                "receiver_test_read_count": 104,
+                "receiver_test_occupied_barcodes": 1
+              },
+              {
+                "receiver_culture": "DT4",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 3.742707314302547,
+                "receiver_test_read_count": 106,
+                "receiver_test_occupied_barcodes": 1
+              }
+            ],
+            "mean_gain": 3.710547131183841
+          },
+          {
+            "home_culture": "DT4",
+            "selected_barcodes": 151,
+            "half_selected_barcodes": [
+              80,
+              71
+            ],
+            "available": true,
+            "receiver_half_results": [
+              {
+                "receiver_culture": "DT1",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 1.9211235544434608,
+                "receiver_test_read_count": 152,
+                "receiver_test_occupied_barcodes": 2
+              },
+              {
+                "receiver_culture": "DT1",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 1.5646522802930574,
+                "receiver_test_read_count": 54,
+                "receiver_test_occupied_barcodes": 2
+              },
+              {
+                "receiver_culture": "DT2",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 1.9212654907293958,
+                "receiver_test_read_count": 92,
+                "receiver_test_occupied_barcodes": 2
+              },
+              {
+                "receiver_culture": "DT2",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 1.0,
+                "gain": 1.4583865874474062,
+                "receiver_test_read_count": 26,
+                "receiver_test_occupied_barcodes": 2
+              },
+              {
+                "receiver_culture": "DT3",
+                "test_half": 0,
+                "available": true,
+                "selected_weight": 0.05,
+                "gain": 0.026228113533412728,
+                "receiver_test_read_count": 1861,
+                "receiver_test_occupied_barcodes": 35
+              },
+              {
+                "receiver_culture": "DT3",
+                "test_half": 1,
+                "available": true,
+                "selected_weight": 0.15,
+                "gain": -0.011693180028909572,
+                "receiver_test_read_count": 1190,
+                "receiver_test_occupied_barcodes": 26
+              }
+            ],
+            "mean_gain": 1.1466604744029707
+          }
+        ],
+        "available_home_cultures": 4,
+        "equal_home_mean_gain": 1.4803276373883423
+      }
+    }
+  ]
+}

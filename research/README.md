@@ -9,6 +9,23 @@ It records mathematical results, their observation assumptions, and what the
 available data actually tested. No entry establishes a new biological discovery,
 clinical validity, external peer review or bibliographic priority.
 
+## New investigation: rare predictors in barcode forecasts
+
+The [barcode investigation](barcode-lineage-memory/) adds a record-level
+HCT116/SW620 analysis beyond the historical 33-note audit above. The HCT116
+mean held-out gain is **+0.310665 nats/read**, but its recorded robustness
+gate **fails**. Exploratory removal of only **0.20–0.46%** of early donor
+read mass eliminates the increment while preserving own-P1 and every later
+outcome. The adverse 1% outcome-only check remains positive. SW620's primary
+increment is zero. An independent implementation, source audit and synthetic
+proof show why outcome robustness cannot establish predictor integrity.
+This is a [transparent reconstruction](barcode-lineage-memory/RECONSTRUCTION.md)
+with earlier numerical targets known and freshly reauthenticated inputs;
+the missing old local commits and test logs are not treated as recovered.
+It establishes measurement sensitivity of a specified predictor, not a new
+resistance mechanism or causal proof of sequencing contamination. See the
+[aggregate bundle](../results/barcode-lineage-memory/run-20261128/manifest.json).
+
 **Where a discovery is most plausible next:** follow the observable signal in
 [#80](breast-incidence-decline-stage/) with additional temporal or molecular
 contrasts, and test measurement assumptions using matched or repeated
@@ -467,8 +484,9 @@ python -B -m unittest discover -s tests -p 'test_research_*.py' -v
 ```
 
 For one note, replace the `-p` pattern with its linked test **basename**.
-These dedicated research contributions use Python's standard library and
-offline inputs. Individual bounded workloads do not imply the whole programme
+The historical research contributions use Python's standard library and
+offline inputs. The barcode investigation additionally needs NumPy, with
+OpenPyXL for source preparation. Individual bounded workloads do not imply the whole programme
 finishes within a minute. Check stored empirical reports without rewriting:
 
 ```bash

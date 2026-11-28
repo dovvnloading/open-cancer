@@ -1,0 +1,74 @@
+{
+  "reconstruction_design_commit": "d6de5c46b4199483509b1ea88cf35aa19639918b",
+  "original_local_commits_not_recovered": true,
+  "files": [
+    {
+      "path": "research/barcode-lineage-memory/analysis.py",
+      "sha256": "46da61a24f2bbc031f55f9b08b845d34f4273fb24f3a0bb5e3dbd1f7fc02d491"
+    },
+    {
+      "path": "research/barcode-lineage-memory/exploratory.py",
+      "sha256": "30c940033927425995abfaa76c468522e1434417b39453679db697ea5c116c6e"
+    },
+    {
+      "path": "research/barcode-lineage-memory/fetch_source.py",
+      "sha256": "d4720ef03df9ff38230828baa1b0e78b4cb1c15dc076d7fc2076c0f6166b022f"
+    },
+    {
+      "path": "research/barcode-lineage-memory/model.py",
+      "sha256": "274f66c15f08d1adb3ba82b0a89a0b2daa5733be95504c52df5c84ee924d1811"
+    },
+    {
+      "path": "research/barcode-lineage-memory/package_run.py",
+      "sha256": "ce0544cc97d0fee768c5ef972ee486853db56c0e4ad5a5ab0f2934332d9b7569"
+    },
+    {
+      "path": "research/barcode-lineage-memory/plot_results.py",
+      "sha256": "41fac4f14ec917373d912ec9d7e835acad6e24461655a5a455df9c058e775585"
+    },
+    {
+      "path": "research/barcode-lineage-memory/predictor_counterexample.py",
+      "sha256": "2583e7787bff6b8ab5cb19c1fb0cc04a85932c0690a8e71b5832414956aa9bb5"
+    },
+    {
+      "path": "research/barcode-lineage-memory/robustness.py",
+      "sha256": "d3484ca38ad7323e96834b58b82688fb721cb78b2c1e403c2a9cda55ccbbed1d"
+    },
+    {
+      "path": "research/barcode-lineage-memory/verifier.py",
+      "sha256": "179f329d9c354b0f3d42d7be089421f419298223c02079d84dde10a5be7472b1"
+    },
+    {
+      "path": "research/barcode-lineage-memory/PREDICTOR_CONTAMINATION.md",
+      "sha256": "bd04ea12bb876bac9c331c1d484641074833cfa37e5f2eff41cc66f73e6f4723"
+    },
+    {
+      "path": "research/barcode-lineage-memory/PROTOCOL.md",
+      "sha256": "f82656dbfb943a862d34ffc64272bc3636faca351a51a3410745082f31121cbc"
+    },
+    {
+      "path": "research/barcode-lineage-memory/README.md",
+      "sha256": "058e48efa65812db08489ce29b9f38c4baa79fcb3517a9865147d7dfdcd1c4b7"
+    },
+    {
+      "path": "research/barcode-lineage-memory/RECONSTRUCTION.md",
+      "sha256": "347f442afff2fec5e4618f5cb91cef64c7ec7afcbc54be4f4b083cf62226bb85"
+    },
+    {
+      "path": "research/barcode-lineage-memory/SOURCE_AUDIT.md",
+      "sha256": "ba3904d49291fc1b97a367f9d062492e2a0f70d8262505438f5088879e38ac3e"
+    },
+    {
+      "path": "research/barcode-lineage-memory/data/sequencing_provenance.json",
+      "sha256": "d135808cbfd9e1e6dac3245d34c195ab2fac7ca52df533dcf6caeba2ce6c8df7"
+    },
+    {
+      "path": "research/barcode-lineage-memory/data/source_manifest.json",
+      "sha256": "6ec2080a2c7dd06151341c677570540271aa57c584d2e656778cb1caa150fea4"
+    },
+    {
+      "path": "research/barcode-lineage-memory/requirements.txt",
+      "sha256": "05afd89909bb8e30d01b346854d8cc1883aa609289232f939532250e8774503c"
+    }
+  ]
+}
