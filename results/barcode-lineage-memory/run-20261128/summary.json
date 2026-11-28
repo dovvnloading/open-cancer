@@ -1,0 +1,32 @@
+{
+  "review_status": "unreviewed",
+  "reconstruction_with_known_targets": true,
+  "earlier_reported_history_recovered": false,
+  "earlier_reported_headline_values_reproduced": true,
+  "maximum_absolute_difference_from_earlier_reported_headline_values": 7.882583474838611e-15,
+  "primary_hct_verdict": "FAIL",
+  "hct_mean_gain_nats_per_read": 0.3106646962275417,
+  "hct_primary_fold_gains": [
+    0.1442424784921798,
+    0.04254064448634636,
+    0.909384040731686,
+    0.14649162119995485
+  ],
+  "hct_target_only_one_percent_mean_lower_gain": 0.3032144246585809,
+  "exploratory_donor_only_frequency_floor": 1e-05,
+  "exploratory_donor_only_mean_gain": 0.0,
+  "exploratory_donor_removed_mass_fraction_range": [
+    0.0019795896037724248,
+    0.004578175685395425
+  ],
+  "exploratory_late_only_same_floor_mean_gain": 0.3114309239165012,
+  "sw_mean_incremental_gain": 0.0,
+  "exploratory_temporal_conditional_mean_gain": 1.480327637388342,
+  "exploratory_temporal_positive_home_count": 3,
+  "exploratory_temporal_home_count": 4,
+  "exploratory_temporal_single_occupied_halves": 9,
+  "exploratory_temporal_evaluated_halves_not_independent": 24,
+  "independent_checks": 11,
+  "independent_maximum_absolute_numeric_difference": 6.696865284538944e-13,
+  "interpretation": "The specified incremental predictor fails its recorded robustness gate and is sensitive to a small tail of donor measurements. Technical spillover is plausible, not uniquely established. No new biological mechanism or clinical result is claimed."
+}

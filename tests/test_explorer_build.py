@@ -66,7 +66,13 @@ class ExplorerBuildTests(unittest.TestCase):
         for name in ("datasets", "sources", "questions", "reviews", "pilots", "experimental_results"):
             self.assertEqual(index[name], json.loads((api / f"{name}.json").read_bytes()))
         self.assertEqual([], index["reviews"])  # synthetic schema examples stay outside the API
-        self.assertEqual([], index["experimental_results"])  # current pilot is pinned
+        pinned_pilot = ("egfr-luad-evidence-coverage", "pilot-20261110")
+        self.assertEqual({pinned_pilot},
+                         {(row["task_id"], row["run_id"]) for row in index["pilots"]})
+        for item in index["experimental_results"]:
+            self.assertNotEqual(pinned_pilot, (item["task_id"], item["run_id"]))
+            self.assertEqual("experimental", item["publication_status"])
+            self.assertIsNone(item["publication_decision_url"])
         native_paths = sorted((self.root / "catalog/datasets").glob("*.json"))
         self.assertEqual([p.stem for p in native_paths], [r["id"] for r in index["datasets"]])
         for path, row in zip(native_paths, index["datasets"]):
@@ -131,6 +137,9 @@ class ExplorerBuildTests(unittest.TestCase):
 
 
     def test_schema_valid_new_run_stays_experimental(self):
+        before = make_index(self.root, REPOSITORY, REVISION)
+        existing_results = {(row["task_id"], row["run_id"])
+                            for row in before["experimental_results"]}
         source = self.root / "results/egfr-luad-evidence-coverage/pilot-20261110"
         target = source.parent / "new-unreviewed-run"
         shutil.copytree(source, target)
@@ -140,7 +149,16 @@ class ExplorerBuildTests(unittest.TestCase):
         manifest_path.write_text(json.dumps(manifest))
         index = make_index(self.root, REPOSITORY, REVISION)
         self.assertEqual(1, len(index["pilots"]))
-        item, = index["experimental_results"]
+        self.assertEqual(before["pilots"], index["pilots"])
+        fixture_key = (manifest["task_id"], manifest["run_id"])
+        self.assertNotIn(fixture_key, existing_results)
+        self.assertEqual(existing_results | {fixture_key},
+                         {(row["task_id"], row["run_id"])
+                          for row in index["experimental_results"]})
+        matches = [row for row in index["experimental_results"]
+                   if (row["task_id"], row["run_id"]) == fixture_key]
+        self.assertEqual(1, len(matches))
+        item = matches[0]
         self.assertEqual("new-unreviewed-run", item["run_id"])
         self.assertEqual("experimental", item["publication_status"])
         self.assertIsNone(item["publication_decision_url"])

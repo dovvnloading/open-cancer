@@ -1,0 +1,11 @@
+{
+  "id": "barcode-lineage-memory",
+  "title": "Reproduce early-to-late barcode forecast and predictor sensitivity",
+  "question": "Does cross-culture early barcode information improve a held-out later-distribution forecast beyond the target's own early counts, and does that increment survive separate predictor and outcome perturbations?",
+  "status": "complete",
+  "input_source_ids": ["whiting-barcode-2025"],
+  "deliverables": ["Explicit reconstruction record and source audit", "Production and independent forecast implementations", "Target-deletion bounds and synthetic predictor-contamination proof", "Reproducible aggregate result manifest and research report"],
+  "quality_checks": ["Authenticate workbook and canonical count and barcode contents", "Keep held-out late observations out of all parameter tuning", "Retain all four cultures and all negative results", "Recompute previously reported values without adjusting the design to match them", "Run schema validation, Python tests and JavaScript tests"],
+  "non_goals": ["Clinical prediction or treatment advice", "Claiming a new resistance mechanism or historical priority", "Claiming recovered original commits or a fresh blinded preregistration", "Republishing source tables, barcodes, raw reads or patient data"],
+  "created_on": "2026-11-28"
+}
