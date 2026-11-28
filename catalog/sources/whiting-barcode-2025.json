@@ -1,0 +1,19 @@
+{
+  "id": "whiting-barcode-2025",
+  "name": "Whiting 2025 colorectal cell-line barcode experiment",
+  "summary": "Published cell-line lineage tracing during repeated 5-fluorouracil exposure in HCT116 and SW620; paired early and late counts from four treated cultures per model.",
+  "publisher": "Whiting and colleagues; Nature Communications / Springer Nature",
+  "homepage": "https://doi.org/10.1038/s41467-025-59479-7",
+  "data_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12181405/#data-availability",
+  "documentation_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12181405/",
+  "provenance_url": "https://doi.org/10.1038/s41467-025-59479-7",
+  "access": "open",
+  "modalities": ["cell-lines", "functional-genomics"],
+  "reuse": {
+    "status": "verify-upstream",
+    "terms_url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    "license_id": "CC-BY-NC-ND-4.0",
+    "notes": "Article and supplements state CC BY-NC-ND 4.0. Original workbooks, barcode tables and raw read sequences are not redistributed. Only original code, provenance metadata and small aggregate research statistics are included. Academic-only ABC software is not used. Repository MIT terms do not relicense third-party materials."
+  },
+  "reviewed_on": "2026-11-28"
+}
